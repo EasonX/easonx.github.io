@@ -1,0 +1,246 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Batch merge scanned images to single PDF on Windows | Eason&#39;s Blog</title>
+  <meta name="author" content="Eason Tse">
+  
+  <meta name="description" content="Recently, one of my colleague need to scan test papers to pdf files for her girl who’s preparing middle school enrolling examination. Under Mac, Linux">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Batch merge scanned images to single PDF on Windows"/>
+  <meta property="og:site_name" content="Eason&#39;s Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Eason&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-6252783-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Eason&#39;s Blog</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/utils/multimarkdown-table-generator">Util</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2012-12-14T04:12:00.000Z"><a href="/blog/2012/12/14/batch-merge-scanned-images-to-single-pdf-on-windows/">Dec 14 2012</a></time>
+      
+      
+  
+    <h1 class="title">Batch merge scanned images to single PDF on Windows</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Recently, one of my colleague need to scan test papers to pdf files for her girl who’s preparing middle school enrolling examination. Under Mac, Linux or any other POSIX system, it’s very easy because of the combination of 2 powerful command line tools: <a href="http://www.imagemagick.org/script/index.php" target="_blank"><strong>ImageMagick</strong></a> and <a href="http://www.ghostscript.com" target="_blank"><strong>Ghostscript</strong></a>.</p>
+<p>I thought it’s easy, but it turned out need some extra works.</p>
+<h2 id="Conventional_situation">Conventional situation</h2>
+<p>Her images are JPEG format. Firstly, I need to <a href="http://unix.stackexchange.com/questions/29869/converting-multiple-image-files-from-jpeg-to-pdf-format" target="_blank">convert them to pdfs by ImageMagick</a>.</p>
+<pre><code>mogrify -<span class="keyword">format</span> pdf <span class="variable">*.</span>jpg
+</code></pre><p>Then <a href="http://stackoverflow.com/questions/8158584/ghostscript-to-merge-pdfs-compresses-the-result" target="_blank">use ghostscript to combine multiple pdfs to single pdf</a></p>
+<pre><code><span class="comment">gs</span> <span class="literal">-</span><span class="comment">dBATCH</span> <span class="literal">-</span><span class="comment">dNOPAUSE</span> <span class="literal">-</span><span class="comment">q</span> <span class="literal">-</span><span class="comment">sDEVICE=pdfwrite</span> <span class="literal">-</span><span class="comment">sOutputFile=</span><span class="string">.</span><span class="string">.</span><span class="comment">/out</span><span class="string">.</span><span class="comment">pdf</span> <span class="comment">*</span><span class="string">.</span><span class="comment">pdf</span>
+</code></pre><h2 id="Setup_tools_on_Windows">Setup tools on Windows</h2>
+<p>These 2 tools are available on windows platform. Download them from <a href="http://www.imagemagick.org/script/binary-releases.php#windows" target="_blank">here</a> and <a href="http://sourceforge.net/projects/ghostscript/files/GPL%20Ghostscript/" target="_blank">here</a>.</p>
+<p>One more thing, I need to <a href="http://stackoverflow.com/questions/6011373/call-ghostscript-in-windows-by-its-invocation-name" target="_blank">manually add Ghostscript binary into $PATH</a>. </p>
+<h2 id="Different_behaviors_of_windows_terminal">Different behaviors of windows terminal</h2>
+<p>But even when I change <code>gs</code> to windows version <code>gswin32c</code> in windows cmd environment,</p>
+<pre><code><span class="comment">gswin32c</span> <span class="literal">-</span><span class="comment">dBATCH</span> <span class="literal">-</span><span class="comment">dNOPAUSE</span> <span class="literal">-</span><span class="comment">q</span> <span class="literal">-</span><span class="comment">sDEVICE=pdfwrite</span> <span class="literal">-</span><span class="comment">sOutputFile=</span><span class="string">.</span><span class="string">.</span><span class="comment">/out</span><span class="string">.</span><span class="comment">pdf</span> <span class="comment">*</span><span class="string">.</span><span class="comment">pdf</span>
+</code></pre><p>It still always generates error information. I noticed a post on stackoverflow.com, claimed that it may be due to the <a href="http://stackoverflow.com/questions/12550826/ghostscript-how-to-merge-pdfs-with-wild-card-on-windows" target="_blank">process method of wildcard differs on windows platform.</a></p>
+<p>So, I need an alternative terminal other than <code>cmd</code> to expand wildcards. The first candidates comes to my mind is terminal shipped with <a href="http://code.google.com/p/msysgit/" target="_blank">Windows MSYSGit</a>. It generally works well. Only when folders or filename contains Chinese characters, it will just exit even when I use “tab” for auto completion. I cannot <code>cd</code> into any directory contain Chinese files. At last, I have to install <a href="http://sourceforge.net/projects/mingw/files/Installer/mingw-get-inst/" target="_blank">MingW</a>, </p>
+<p>And subsequently install <a href="http://code.google.com/p/mintty/" target="_blank">mintty</a>, to overcome the limits.</p>
+<pre><code>$ ming-<span class="keyword">get</span> install mintty
+</code></pre><h2 id="The_last_thing">The last thing</h2>
+<p>After I did so many workarounds, I found out that <a href="http://superuser.com/questions/54041/how-to-merge-pdfs-using-imagemagick-resolution-problem" target="_blank">I could use ImageMagick merge images to pdf without the help of Ghostscript</a>, even though someone  complain the image quality is lower than original ones.</p>
+<pre><code>$ convert *<span class="preprocessor">.jpg</span> output<span class="preprocessor">.pdf</span>
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Computer/">Computer</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/App/">App</a>, <a href="/tags/ghostscript/">ghostscript</a>, <a href="/tags/ImageMagick/">ImageMagick</a>, <a href="/tags/Windows/">Windows</a>, <a href="/tags/pdf/">pdf</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+  
+</section>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:easontse.info">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Biochemistry/">Biochemistry</a><small>7</small></li>
+  
+    <li><a href="/categories/Books/">Books</a><small>12</small></li>
+  
+    <li><a href="/categories/Computer/">Computer</a><small>54</small></li>
+  
+    <li><a href="/categories/Game/">Game</a><small>12</small></li>
+  
+    <li><a href="/categories/Life/">Life</a><small>20</small></li>
+  
+    <li><a href="/categories/Movie/">Movie</a><small>2</small></li>
+  
+    <li><a href="/categories/Music/">Music</a><small>1</small></li>
+  
+    <li><a href="/categories/Science/">Science</a><small>1</small></li>
+  
+    <li><a href="/categories/Writing/">Writing</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/AD&D/" style="font-size: 13.33px;">AD&D</a><a href="/tags/ANO1/" style="font-size: 13.33px;">ANO1</a><a href="/tags/ANO2/" style="font-size: 10.00px;">ANO2</a><a href="/tags/ANOVA/" style="font-size: 10.00px;">ANOVA</a><a href="/tags/Adult/" style="font-size: 10.00px;">Adult</a><a href="/tags/Aiglx/" style="font-size: 10.00px;">Aiglx</a><a href="/tags/App/" style="font-size: 20.00px;">App</a><a href="/tags/Apple/" style="font-size: 10.00px;">Apple</a><a href="/tags/Apps/" style="font-size: 10.00px;">Apps</a><a href="/tags/BIOS/" style="font-size: 10.00px;">BIOS</a><a href="/tags/Blog/" style="font-size: 10.00px;">Blog</a><a href="/tags/CFBE/" style="font-size: 13.33px;">CFBE</a><a href="/tags/CFTR/" style="font-size: 10.00px;">CFTR</a><a href="/tags/CNAME/" style="font-size: 10.00px;">CNAME</a><a href="/tags/CaCC/" style="font-size: 10.00px;">CaCC</a><a href="/tags/Chinese/" style="font-size: 10.00px;">Chinese</a><a href="/tags/CoT/" style="font-size: 10.00px;">CoT</a><a href="/tags/Compiz/" style="font-size: 10.00px;">Compiz</a><a href="/tags/Debian/" style="font-size: 13.33px;">Debian</a><a href="/tags/Dell/" style="font-size: 13.33px;">Dell</a><a href="/tags/Dropbox/" style="font-size: 13.33px;">Dropbox</a><a href="/tags/Edgy/" style="font-size: 10.00px;">Edgy</a><a href="/tags/Epub/" style="font-size: 10.00px;">Epub</a><a href="/tags/Excel/" style="font-size: 10.00px;">Excel</a><a href="/tags/Firefox/" style="font-size: 10.00px;">Firefox</a><a href="/tags/GFW/" style="font-size: 10.00px;">GFW</a><a href="/tags/GNUPlot/" style="font-size: 10.00px;">GNUPlot</a><a href="/tags/Game/" style="font-size: 16.67px;">Game</a><a href="/tags/GiNaC/" style="font-size: 10.00px;">GiNaC</a><a href="/tags/Git/" style="font-size: 10.00px;">Git</a><a href="/tags/Github/" style="font-size: 10.00px;">Github</a><a href="/tags/Gmail/" style="font-size: 10.00px;">Gmail</a><a href="/tags/Grant proposal/" style="font-size: 10.00px;">Grant proposal</a><a href="/tags/Graphviz/" style="font-size: 10.00px;">Graphviz</a><a href="/tags/Hexo/" style="font-size: 10.00px;">Hexo</a><a href="/tags/ID3/" style="font-size: 10.00px;">ID3</a><a href="/tags/ImageMagick/" style="font-size: 13.33px;">ImageMagick</a><a href="/tags/Ion channels/" style="font-size: 10.00px;">Ion channels</a><a href="/tags/Isc/" style="font-size: 10.00px;">Isc</a><a href="/tags/Japan/" style="font-size: 10.00px;">Japan</a>
+  </div>
+</div>
+
+
+  
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Eason Tse
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'easonx';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

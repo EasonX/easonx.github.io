@@ -1,0 +1,1456 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Page 4 | Eason&#39;s Blog</title>
+  <meta name="author" content="Eason Tse">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Eason&#39;s Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Eason&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-6252783-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Eason&#39;s Blog</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/utils/multimarkdown-table-generator">Util</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2012-11-26T09:12:00.000Z"><a href="/blog/2012/11/26/genotyping-notes/">Nov 26 2012</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2012/11/26/genotyping-notes/">Genotyping notes</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="Enzyme">Enzyme</h2>
+<ul>
+<li>rtaq: <ul>
+<li>&lt; 500bp</li>
+<li>will attach A to tails</li>
+</ul>
+</li>
+<li>pyrobest<ul>
+<li>High resolution, 500-5kbp</li>
+</ul>
+</li>
+</ul>
+<h2 id="Primer">Primer</h2>
+<ul>
+<li>0.05-1μM</li>
+<li>high concentration of primer may cause non-specific priming or primer-dimers. </li>
+</ul>
+<h2 id="template">template</h2>
+<ul>
+<li>10<sup>4</sup> to 10<sup>7</sup> molecules for a typical PCR</li>
+<li>For amplification from genomic DNA, 100 to 500ng DNA. measured by NanoDrop.</li>
+<li>multiplex PCR 2-5 folds amount than a typical one.</li>
+</ul>
+<h2 id="Protocols">Protocols</h2>
+<ul>
+<li>primer extension at 72-74°C for 1 min per kilobase of expected product.</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2012-11-17T16:27:00.000Z"><a href="/blog/2012/11/18/use-pyquery-and-pandoc-to-grab-web-content-and-generate-epub/">Nov 18 2012</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2012/11/18/use-pyquery-and-pandoc-to-grab-web-content-and-generate-epub/">Use PyQuery and Pandoc to grab web content and generate Epub</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="PyQuery">PyQuery</h2>
+<p>In the past I used XPath to manipulate HTML tree to grab information from webpages. It simply works, but not very convenient. <a href="http://pypi.python.org/pypi/pyquery" target="_blank">PyQuery</a> is a python package which support syntax similar to jQuery. I found this package more convenient for filtering and removing nodes.</p>
+<p>To install it:</p>
+<pre><code><span class="variable">$ </span>pip install pyquery
+</code></pre><p>I wrote a python script in <code>~/.bin/pyfilter</code>. </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+</pre></td><td class="code"><pre><span class="comment">#!/usr/bin/env python</span>
+
+<span class="keyword">import</span> sys, pyquery
+<span class="keyword">import</span> urllib
+<span class="keyword">import</span> urllib2
+<span class="keyword">import</span> contextlib
+
+<span class="function"><span class="keyword">def</span> <span class="title">login</span><span class="params">(login_url,username,password)</span>:</span>
+    <span class="string">"""Login to site and return opener.
+    """</span>
+    cookietime=<span class="string">'2592000'</span>
+    cookies = urllib2.HTTPCookieProcessor()
+    opener = urllib2.build_opener(cookies)
+    urllib2.install_opener(opener)
+    login_form=<span class="string">"username="</span>+username+<span class="string">'&password='</span>+password+<span class="string">'&cookietime='</span>+cookietime+<span class="string">'&loginsubmit=true'</span>
+    page=opener.open(login_url,data=login_form)
+    page.close()
+    <span class="keyword">return</span> opener
+
+<span class="function"><span class="keyword">def</span> <span class="title">download_text</span><span class="params">(target_url, opener)</span>:</span>
+    f=opener.open(target_url)
+    u_src_txt=unicode(f.read(),<span class="string">'GBK'</span>)
+    f.close()
+    d=pyquery.PyQuery(u_src_txt)
+    d=d(<span class="string">'div.postmessage.defaultpost h2, div.t_msgfont'</span>)
+    d(<span class="string">'font[@style="font-size:0px;color:#FFF"]'</span>).remove()
+    d(<span class="string">'span[@style="display:none"]'</span>).remove()
+    des_txt_set=[]
+    <span class="keyword">for</span> x <span class="keyword">in</span> d:
+        des_txt_set.append(x.text_content())
+        des_txt_set.append(<span class="string">'\r\n'</span>)
+    des_txt=<span class="string">''</span>.join(des_txt_set)
+    <span class="keyword">return</span> des_txt
+
+<span class="function"><span class="keyword">def</span> <span class="title">write_output</span><span class="params">(filename,text)</span>:</span>
+    f=open(filename,<span class="string">'w'</span>)
+    f.write(text.encode(<span class="string">'utf8'</span>))
+    f.close()
+
+<span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(argv)</span>:</span>
+    login_url=‘www.somesite.org/login’
+    username=‘xxxx’
+    password=‘yyyy’
+    output=<span class="string">'output.txt'</span>
+    opener=login(login_url,username,password)
+
+    <span class="keyword">if</span> ( len(argv)==<span class="number">2</span> ):
+        target_url=argv[<span class="number">1</span>]
+        overall_text=download_text(target_url,opener)
+        write_output(output,overall_text)
+        <span class="keyword">return</span>
+    <span class="keyword">elif</span> ( len(argv)==<span class="number">3</span> ):
+        page_num=argv[<span class="number">2</span>]
+        base_url=argv[<span class="number">1</span>]
+        overall_text_set=[]
+        <span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">1</span>,int(page_num)+<span class="number">1</span>):
+            target_url=base_url+str(x)
+            des_txt=download_text(target_url,opener)
+            overall_text_set.append(des_txt)
+        overall_text=<span class="string">''</span>.join(overall_text_set)
+        write_output(output,overall_text)
+        <span class="keyword">return</span>
+    <span class="keyword">else</span>:
+        <span class="keyword">print</span> <span class="string">"It should be either 1 or 2 arguments."</span>
+        <span class="keyword">return</span>
+
+<span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:
+    main(sys.argv)
+</pre></td></tr></table></figure>
+
+<ul>
+<li>As you could see, I make my script more adaptive by allowing 2 arguments or 1 argument input. so sometimes, such as online book, this script may grab all information together instead of running script for every single page.</li>
+<li>Something useful but I didn’t add is <code>PyQuery.filter()</code>, with this one, you could selectively extract text even you cannot distinguish it by class or id. For instance, you may require that all text should be longer than a length and contain or begin with some words. </li>
+<li>You need to pay more attention on encoding of webpage. Please see the download_text() and write_output() functions.</li>
+<li>Pandoc use ~ pair to generate subscript. Sometimes it may cause format trouble when converting to ePub. My solution is replace it to Chinese character ～ . They look the same, but without the side effect.</li>
+</ul>
+<h2 id="Pandoc">Pandoc</h2>
+<p>In the official document page, there is <a href="http://johnmacfarlane.net/pandoc/epub.html" target="_blank">a chapter describing how to write an ebook by Pandoc</a>.</p>
+<p>I used command below to generate my epub.</p>
+<pre><code><span class="comment">$</span> <span class="comment">pandoc</span> <span class="literal">-</span><span class="comment">t</span> <span class="comment">epub</span> <span class="literal">-</span><span class="comment">o</span> <span class="comment">book_title</span><span class="string">.</span><span class="comment">epub</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">epub</span><span class="literal">-</span><span class="comment">cover</span><span class="literal">-</span><span class="comment">image</span> <span class="comment">title_image</span><span class="string">.</span><span class="comment">jpg</span> <span class="comment">book_title</span><span class="string">.</span><span class="comment">markdown</span>
+</code></pre><ul>
+<li>Pandoc will look for epub.css in data-dir, which is normally in <code>~/.pandoc</code>, if without specific file in <code>--epub-stylesheet</code> by command line.</li>
+<li>Pandoc generate Table-Of-Contents, but only Header 1 will be include. I used open source freeware <a href="http://code.google.com/p/sigil/" target="_blank">Sigil</a> to add header 2 into TOC. It’s easy and free of charge. </li>
+<li>Pandoc require blank line to separate 2 paragraphs. Strangely, even in Mac OSX line break should be “\n”, but I need to use command below in vim to generate extra line.<pre><code><span class="symbol">:%s/</span><span class="variable">$/</span>\r/g
+</code></pre></li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2012-10-28T06:50:00.000Z"><a href="/blog/2012/10/28/ascii-table-formatters/">Oct 28 2012</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2012/10/28/ascii-table-formatters/">ASCII table formatters</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>It’s a long time painful experience to write tables for markdown documents. Especially in considering so many variants of markdown, they may all have “special requirements” and need further processing.</p>
+<p>My old solution is to use Excel, draw the format characters myself, export as tab seperated txt file and copy to the target file I need to fill the table. <a href="http://www.practicallyefficient.com/2010/08/09/my-spreadsheet-to-multimarkdown-table-workflow" target="_blank">An interesting blog entry seems doing the same things.</a></p>
+<p>Is there any good tool for that task? I googled and found something.</p>
+<ul>
+<li>Superuser.com : <a href="http://superuser.com/questions/482688/what-tools-exist-for-generating-ascii-tables-if-any" target="_blank">What tools exist for generating “ASCII Tables”, if any?</a><ul>
+<li><a href="http://www.asciiflow.com/#Draw" target="_blank">Asciiflow</a>: This one is a ASCII drawing tool than a table formatter.</li>
+<li><a href="http://www.sensefulsolutions.com/2010/10/format-text-as-table.html" target="_blank">Senseful Solutions</a>: A great tool, but can only export ASCII Art, HTML and MySQL style table.</li>
+</ul>
+</li>
+<li>stackoverflow.com: <a href="http://stackoverflow.com/questions/10089994/markdown-editor-with-tables" target="_blank">Markdown editor with tables</a><br><em>but the 2 projects mentioned in this post seems only parsers or compilers, not editors.</em><ul>
+<li><a href="http://michelf.ca/projects/php-markdown/extra/" target="_blank">PHP Markdown Extra</a>: server side markdown extension with support of table.</li>
+<li><a href="https://github.com/tanakahisateru/js-markdown-extra" target="_blank">js-markdown-extra</a>: a javascript port of the former <strong>PHP Markdown Extra</strong>. with a demo site on <a href="http://tanakahisateru.github.com/js-markdown-extra/demo.html" target="_blank">here</a>    </li>
+</ul>
+</li>
+</ul>
+<p><a href="http://brettterpstra.com/ios-text-editors/" target="_blank">A great summary for text editor in iOS.</a></p>
+<p>There’s some markdown editors in Mac OS X too:</p>
+<ul>
+<li>Commercial:<br><em>I don’t know their supports for table yet</em><ul>
+<li><a href="http://markedapp.com" target="_blank">Marked</a>: 3.99 USD</li>
+<li><a href="http://bywordapp.com/" target="_blank">Byword</a>: 9.99 USD</li>
+<li><a href="http://getmacchiato.com" target="_blank">Macchiato</a>: 19.99 USD</li>
+<li><a href="http://www.xelaton.com" target="_blank">MarkMyWords</a>: 24.99 USD<br>There is some <a href="http://www.xelaton.com/index.php?section=blog&amp;lang=en&amp;showPost=47" target="_blank">plugins</a> to facilitate jobs like import CSV to markdown table.</li>
+<li><a href="http://www.iawriter.com" target="_blank">IA Writer</a>: 4.99 USD</li>
+</ul>
+</li>
+<li>Free:<ul>
+<li><a href="http://brettterpstra.com/project/nvalt/" target="_blank">nvALT</a>: A notes app instead of table generator.</li>
+</ul>
+</li>
+</ul>
+<p>The temporary soluton changes to <a href="http://www.sensefulsolutions.com/2010/10/format-text-as-table.html" target="_blank">Senseful Solutions</a>. But I still need to modify the copied text because it’s not fully compatible to Kramdown. I check the source code, it’s based on javascript, so that I implement an online version on my own site. </p>
+<h3 id="My_Multi-Markdown_Table_Generator">My Multi-Markdown Table Generator</h3>
+<p>Please check it in <a href="/utils/multimarkdown-table-generator">my Multi-Markdown table generator</a>. </p>
+<ul>
+<li><p>During the process of developing, I found that I must encapsule <strong>button</strong> tag into <strong>div</strong> tag to avoid kramdown escape <strong>button</strong> tag errorly. The warning information is:</p>
+<blockquote>
+<p>Found block HTML tag ‘button’ in span-level text.</p>
+</blockquote>
+</li>
+<li>Tab in textarea didn’t produce a \t.</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2012-10-28T04:31:00.000Z"><a href="/blog/2012/10/28/2012-new-imac-or-2011-refurbished-imac/">Oct 28 2012</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2012/10/28/2012-new-imac-or-2011-refurbished-imac/">2012 new iMac or 2011 refurbished iMac?</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>After evaluation of the benefits of the fusion drive, I have to maked decision which 27-inch iMac I would like to buy: iMac in Library is always taken by others especially in such a busy Mid Term Festival.</p>
+<p>Cause I’m concerning only on the bigger 27 inch iMac. Here I would like to summarize their specifications:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><a href="http://support.apple.com/kb/SP623" target="_blank">2011 iMac 27-inch specifications</a></th>
+<th></th>
+<th><a href="http://www.apple.com/hk/en/imac/specs/" target="_blank">2012 iMac 27-inch specifications</a></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td><strong>MC813xx/A</strong></td>
+<td><strong>MC814xx/A</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Price</td>
+<td>12988HKD</td>
+<td>15488HKD</td>
+<td>13888HKD</td>
+<td>15488HKD</td>
+</tr>
+<tr>
+<td>Processor</td>
+<td>2.7GHz quad-core Intel Core i5</td>
+<td>3.1GHz quad-core Intel Core i5</td>
+<td>2.9GHz quad-core Intel Core i5</td>
+<td>3.2GHz quad-core Intel Core i5</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td>Optional: 3.4 GHz i7</td>
+<td></td>
+<td>Configurable to 3.4GHz quad-core i7</td>
+</tr>
+<tr>
+<td>Memory</td>
+<td>4GB (two 2GB)</td>
+<td>4GB (two 2GB)</td>
+<td>8GB(2 4GB) 1600MHz DDR3</td>
+<td>8GB(2 4GB) 1600MHz DDR3</td>
+</tr>
+<tr>
+<td></td>
+<td>Optional: 16GB</td>
+<td>Optional: 16GB</td>
+<td>Optional 32GB</td>
+<td>Optional 32GB</td>
+</tr>
+<tr>
+<td>Storage</td>
+<td>1TB (7200 rpm)</td>
+<td>1TB (7200 rpm)</td>
+<td>1 TB (7200rpm)</td>
+<td>1 TB (7200rpm)</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td>optional <strong>Fusion drive</strong></td>
+<td>optional <strong>Fusion drive</strong></td>
+</tr>
+<tr>
+<td>Graphics</td>
+<td>Radeon HD 6770M with 512MB</td>
+<td>Radeon HD 6970 with 1GB</td>
+<td>NVIDIA GTX660M with 512MB</td>
+<td>NVIDIA GTX675M with 1GB</td>
+</tr>
+<tr>
+<td>Connections</td>
+<td>SDXC card</td>
+<td>SDXC card</td>
+<td>SDXC card</td>
+<td>SDXC card</td>
+</tr>
+<tr>
+<td></td>
+<td>4x <strong>USB 2.0</strong> ports</td>
+<td>4x <strong>USB 2.0</strong> ports</td>
+<td>4x <strong>USB 3.0</strong> ports</td>
+<td>4x <strong>USB 3.0</strong> ports</td>
+</tr>
+<tr>
+<td></td>
+<td>2x Thunderbolt ports</td>
+<td>2x Thunderbolt ports</td>
+<td>2x Thunderbolt ports</td>
+<td>2x Thunderbolt ports</td>
+</tr>
+<tr>
+<td></td>
+<td>Mini DisplayPort</td>
+<td>Mini DisplayPort</td>
+<td>Mini DisplayPort</td>
+<td>Mini DisplayPort</td>
+</tr>
+<tr>
+<td></td>
+<td>Gigabit Ethernet</td>
+<td>Gigabit Ethernet</td>
+<td>Gigabit Ethernet</td>
+<td>Gigabit Ethernet</td>
+</tr>
+<tr>
+<td></td>
+<td><strong>Super Drive</strong></td>
+<td><strong>Super Drive</strong></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Ratio</td>
+<td>16:9</td>
+<td>16:9</td>
+<td>16:9</td>
+<td>16:9</td>
+</tr>
+<tr>
+<td>Resolution</td>
+<td>27 “, 2560 × 1440</td>
+<td>27 “, 2560 × 1440</td>
+<td>27 “, 2560 × 1440</td>
+<td>27 “, 2560 × 1440</td>
+</tr>
+<tr>
+<td>Wireless</td>
+<td>802.11a/b/g/n</td>
+<td>802.11a/b/g/n</td>
+<td>802.11a/b/g/n</td>
+<td>802.11a/b/g/n</td>
+</tr>
+<tr>
+<td></td>
+<td>Bluetooth 2.1</td>
+<td>Bluetooth 2.1</td>
+<td>Bluetooth 4.0</td>
+<td>Bluetooth 4.0</td>
+</tr>
+<tr>
+<td>Geekbench</td>
+<td>7769</td>
+<td>8195</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td>Weight</td>
+<td>13.8kg</td>
+<td>13.8kg</td>
+<td>9.54kg</td>
+<td>9.54kg</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><em>also referred to <a href="http://en.wikipedia.org/wiki/IMac_%28Intel-based%29" target="_blank">wikipedia</a></em></li>
+<li>optional Fusion drive (1TB mechanic hard disk plus 128GB SSD) price not available yet, but based on Mac mini’s optional price, it will cost about 250USD, roughly 2000HKD.</li>
+</ul>
+<h2 id="Pros_and_Cons">Pros and Cons</h2>
+<h3 id="Pros_of_2012_new_iMac-3a-">Pros of 2012 new iMac:</h3>
+<ul>
+<li>extremely slim and new appearance. 30% lighter.</li>
+<li>with powerful USB 3.0 interface</li>
+<li>Fusion drive will increase read/write performance 3 times better.</li>
+<li>DDR3 1600 and maximun 32GB, old iMac only DDR3 1333 and maximun 16GB ( This limit seems not true, there are many RAM manufacturers such as OWC or Kingstone <strong>DO offer</strong> 32GB memory and it’s widely used). </li>
+<li>Ivy Bridge 22nm, lower heat generation.</li>
+</ul>
+<h3 id="Cons_of_2012_new_iMac-3a-">Cons of 2012 new iMac:</h3>
+<ul>
+<li>without Super Drive, my data backup need a portable optical drive, extra money.</li>
+<li>I’m not a intense game player, extra performance won’t help much.</li>
+<li>Fusion drive cause extra money, the overall price will rocket to roughly 16000HKD. </li>
+<li>Memory once gets into 12GB, not much improvement could be sensed.</li>
+</ul>
+<h2 id="Conclusion">Conclusion</h2>
+<p>I finally bought refurbished 2011 27-inch iMac, the basic configuration for 10388HKD. It’s reasonably good to me.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2012-10-24T16:33:00.000Z"><a href="/blog/2012/10/25/fusion-drive-what-does-it-mean/">Oct 25 2012</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2012/10/25/fusion-drive-what-does-it-mean/">Fusion Drive: What does it mean?</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Apple just released its most updated iMac 2 days ago which includes an optional component called <strong>Fusion Drive</strong>. Even though Apple claimed it’s 3 folds faster than normal 7200rpm harddisk for file copying, but is it really worthy to add this component?</p>
+<h2 id="Literature_Review">Literature Review</h2>
+<ol>
+<li><p>wikipedia:</p>
+<blockquote>
+<p>A <a href="http://en.wikipedia.org/wiki/Hybrid_drive" target="_blank">Hybrid drive</a> is different from standard hard drives in that it integrates a cache using non-volatile memory or even a small solid-state drive (SSD or SSH drive)<br><cite>wikipedia</cite></p>
+</blockquote>
+</li>
+<li><p>According to KnowledgeBase article <a href="http://support.apple.com/kb/HT5446" target="_blank">“Mac mini (Late 2012) and iMac (Late 2012): About Fusion Drive”</a> released by Apple:</p>
+<blockquote>
+<p>Presented as a single volume on your Mac, Fusion Drive automatically and dynamically moves frequently used files to Flash storage for quicker access, while infrequently used items move to the hard disk. As a result you’ll enjoy shorter startup times, and as the system learns how you work you’ll see faster application launches and quicker file access. Fusion Drive manages all this automatically in the background.</p>
+</blockquote>
+<ul>
+<li><p>Do I need to configure Fusion Drive?<br><em>When ordered with a Fusion Drive, your iMac or Mac mini is pre-configured</em>  </p>
+</li>
+<li><p>Can external USB, FireWire, or Thunderbolt hard drives be added to Fusion Drive?  </p>
+</li>
+</ul>
+<p><em>External drives cannot be added to Fusion Drive.</em>  </p>
+<ul>
+<li>The version of Disk Utility that comes with Fusion  Drive is unique. Earlier versions of Disk Utility can’t be used with a Fusion Drive.</li>
+</ul>
+</li>
+<li><p><a href="http://www.macobserver.com/tmo/article/digging-into-fusion-drive-details" target="_blank">Detailed introduction by MacObserver</a>:</p>
+<ul>
+<li><strong>Fusion drive</strong> is different. It’s tier model instead of cache model or RAID.</li>
+</ul>
+</li>
+<li><p>Alternatives:</p>
+<ul>
+<li>Seagate produces a hybrid drive named <strong><a href="http://www.seagate.com/internal-hard-drives/laptop-hard-drives/momentus-xt-hybrid/" target="_blank">Momentus XT Solid State Hybrid Drive</a></strong>. <strong>Tom’s hardware</strong>, a famous hardware site, had a very <a href="http://www.tomshardware.com/reviews/hybrid-hard-drive-flash-ssd,3116.html" target="_blank">detailed benchmark test</a> for it.</li>
+<li>Nvelo’s <strong>Dataplex</strong></li>
+<li>Intel’s <strong>Rapid Storage Technology</strong></li>
+</ul>
+</li>
+</ol>
+<h3 id="Summary">Summary</h3>
+<ul>
+<li>You could use space of both the SSD and the mechanic hard disk. It’s a combination, not a cache.</li>
+<li>The performance, within the limit of available space on SSD, is roughly the same of a SSD.</li>
+<li>Basically a software implement. Physically, it’s 2 hard disks and the auto-swaping is done by OS.</li>
+</ul>
+<h2 id="Could_I_DIY_a_Fusion_Drive-3f-">Could I DIY a Fusion Drive?</h2>
+<p>Cause it’s an optional component and iMac is still not released until November for 21.5 inch and December for 27 inch. The real cost is still not clear. But in Mac Mini, 1TB fusion drive is <strong>250USD</strong> more expensive then standard 1TB 5400rpm harddisk.</p>
+<p>Tom’s hardware had a gallery on <a href="http://www.tomshardware.com/picturestory/593-imac-ssd-do-it-yourself.html" target="_blank">how to replace harddisk to SSD in iMac</a>.</p>
+<p>Because the delay of delivery of the iMac, we still don’t know whether it’s possible to replace hard disk as the gallery showed above. My guess is , at least it will be harder then the old 2011 version iMac. Let us wait and see.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2012-10-24T15:19:00.000Z"><a href="/blog/2012/10/24/cfbe-pharmacological-profile-of-isc/">Oct 24 2012</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2012/10/24/cfbe-pharmacological-profile-of-isc/">CFBE pharmacological profile of Isc</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="-3c-a_href-3d-22-http-3a-2f-2f-www-ncbi-nlm-nih-gov-2f-pubmed-2f-22973054-22-3e-Proinflammatory_Cytokine_Secretion_is_Suppressed_by_TMEM16A_or_CFTR_Channel_Activity_in_Human_Cystic_Fibrosis_Bronchial_Epithelia-3c-2f-a-3e-"><a href="http://www.ncbi.nlm.nih.gov/pubmed/22973054" target="_blank">Proinflammatory Cytokine Secretion is Suppressed by TMEM16A or CFTR Channel Activity in Human Cystic Fibrosis Bronchial Epithelia</a></h2>
+<ul>
+<li>Authors: Guido Veit<em>, Florian Bossard</em>, Julie Goepp<em>, A. S. Verkman †, Luis J.V. Galietta ‡, John W.<br>Hanrahan</em>, and Gergely L. Lukacs*, §<ul>
+<li><a href="http://www.molbiolcell.org/content/early/2012/09/10/mbc.E12-06-0424.full.pdf" target="_blank">PDF fulltext</a></li>
+<li><a href="">Supplyment</a></li>
+</ul>
+</li>
+<li>secretion of IL-8 was inversely proportional to CFTR channel activity in HBE</li>
+<li>direct but not P2Y receptor mediated activation of TMEM16A attenuated IL-8 in respiratory epithelia</li>
+<li>CFBE41o with transactivator + wtCFTR inducible CFTR expression system</li>
+<li>2 new structurally CFTR blockers:<ul>
+<li>pyrimido-pyrrolo-quinoxalinedione PPQ102 (Tradtrantip et al., 2009)</li>
+<li>the benzopyrimido-pyrrolo-oxazinedione compound BPO27 (Snyder et al., 2011)</li>
+</ul>
+</li>
+<li>CFBE mixed population culture indicated higher IL-8 attenuation and non-cell-autonomous mechanism.</li>
+<li>Ca<sup>2+</sup> induced K<sup>+</sup> secretion blocked with TREM34, an inhibitor of the Ca2+-<br>activated potassium channel KCa3.1 in CFBE41o-</li>
+<li>TMEM16A is localized at the apical and lateral membranes of polarized epithelia</li>
+<li>Cell culture: extracellular matrix (ECM mix) consisting of 10 μg/ml human fibronectin (EMD), 30 μg/ml PureCol collagen preparation (Advanced Biomatrix) and 100 μg/ml bovine serum albumin (Sigma-Aldrich) diluted in LHC basal medium (Invitrogen)</li>
+<li>all their I<sub>sc</sub> without noted is under Cl gradient.</li>
+<li>switch to Air-Liquid Culture (ALC) then CFTR inhibition of IL-8 secretion appeared. Their used 8 hours.</li>
+<li>Isc (μA/cm<sup>2</sup>) of endogenous ANO1 by 100μM ATP/UTP <ul>
+<li>shRNA: -3 </li>
+<li>BAPTA-AM: 0</li>
+<li>CTRL: 4</li>
+<li>with 24h IL-4: 6</li>
+</ul>
+</li>
+</ul>
+<h2 id="-3c-a_href-3d-22-http-3a-2f-2f-ajrcmb-atsjournals-org-2f-content-2f-40-2f-6-2f-733-full-22-3e-Apical_versus_Basolateral_P2Y6_Receptor-2013-Mediated_Cl-2212-_Secretion_in_Immortalized_Bronchial_Epithelia_-3c-2f-a-3e-"><a href="http://ajrcmb.atsjournals.org/content/40/6/733.full" target="_blank">Apical versus Basolateral P2Y6 Receptor–Mediated Cl− Secretion in Immortalized Bronchial Epithelia </a></h2>
+<ul>
+<li>Authors: Alison M. Wong1,Alison W. Chow1,Simon C. Au1,Chun-cheung Wong1 and Wing-hung Ko1</li>
+<li>CFBE41o- on Collagen Coated Transwell Cells reach confluence after 10 days with a resistance greater than 150 Ω · cm<sup>2</sup></li>
+<li>7.5 μA/cm<sup>2</sup> Isc recorded upon apical UTP 100uM in CFBE41o-. It could be abolished by DIDS but not CFTRi172</li>
+</ul>
+<h2 id="-3c-a_href-3d-22-http-3a-2f-2f-www-ncbi-nlm-nih-gov-2f-pmc-2f-articles-2f-PMC2830406-2f-22-3e-Functional_Stability_of_Rescued_-394-F508_Cystic_Fibrosis_Transmembrane_Conductance_Regulator_in_Airway_Epithelial_Cells-3c-2f-a-3e-"><a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2830406/" target="_blank">Functional Stability of Rescued ΔF508 Cystic Fibrosis Transmembrane Conductance Regulator in Airway Epithelial Cells</a></h2>
+<ul>
+<li>Authors: Asta Jurkuvenaite,1,3 Lan Chen,2,3 Rafal Bartoszewski,1,3 Rebecca Goldstein,1,3 Zsuzsa Bebok,1,3 Sadis Matalon,2,3 and James F. Collawn1,3</li>
+<li><a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2830406/" target="_blank">Fulltext</a></li>
+<li>Forskolin Isc 4 μA/cm<sup>2</sup> with Cl gradient in HBE</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2012-10-06T12:35:00.000Z"><a href="/blog/2012/10/06/pandoc-on-usb-and-mac/">Oct 6 2012</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2012/10/06/pandoc-on-usb-and-mac/">Pandoc on USB and Mac</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>As blogged before, I choose <a href="http://johnmacfarlane.net/pandoc/" target="_blank">Pandoc</a> as my dissertation writing tool. On Windows or Mac, there do have Official Binary Setup files. But unluckily, I don’t have administrator privilege to Library iMac. What can I do?</p>
+<p><a href="http://www.timdoug.com/unpkg/" target="_blank">unpkg</a> can extra <strong>.pkg</strong> file content. I once used it to extra <strong>Line.app</strong> within official <strong>.pkg</strong> installer so that even without admin power I could use in on public iMac. But after extraction of pandoc.pkg, I notice it’s installed to <strong>/usr/local/</strong> which I don’t have writing access too. even though I can execute the binary under iTerm2. It will complain “Could not find files” cause it searches resource files in <strong>/usr/local/share</strong>.</p>
+<p>I notice the pandoc binary is as large as 27.8M, it must be a static binary and with all haskell platform resources it needs. But I notice a <a href="http://stackoverflow.com/questions/5259249/creating-static-mac-os-x-c-build" target="_blank">enquiry</a> and it claimed that it’s impossible to build static linked binary on Mac. </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">otool</span> <span class="literal">-</span><span class="comment">L</span> <span class="comment">pandoc</span>
+</pre></td></tr></table></figure>
+
+<p>showes that only <em>/usr/lib/libz.1.dylib</em>, <em>/usr/lib/libSystem.B.dylib</em> , <em>/usr/lib/libiconv.2.dylib</em> are dynamic linked. So, at least I could get rid of oversize haskell-platform files. </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="comment">brew</span> <span class="comment">install</span> <span class="comment">haskell</span><span class="literal">-</span><span class="comment">platform</span>
+<span class="comment">cabal</span> <span class="comment">update</span>
+<span class="comment">cabal</span> <span class="comment">install</span> <span class="comment">pandoc</span>
+<span class="comment">cabal</span> <span class="comment">install</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">prefix="/Volumes/Eason/pandoc"</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">flags="executable</span> <span class="literal">-</span><span class="comment">library"</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">reinstall</span> <span class="comment">pandoc</span>
+</pre></td></tr></table></figure>
+
+<p>Then you could uninstall haskell-platform, and delete <em>~/.cabal</em> now.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="comment">brew</span> <span class="comment">uninstall</span> <span class="comment">haskell</span><span class="literal">-</span><span class="comment">platform</span> <span class="comment">ghc</span>
+<span class="comment">rm</span> <span class="literal">-</span><span class="comment">rf</span> <span class="comment">~/</span><span class="string">.</span><span class="comment">cabal</span>
+</pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2012-10-01T12:35:00.000Z"><a href="/blog/2012/10/01/love-actually-sucks/">Oct 1 2012</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2012/10/01/love-actually-sucks/">Love Actually Sucks</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>今天终于看完了云翔的《爱很烂》，英文名也叫做《love actually sucks》。</p>
+<p>开头颇有惊艳的感觉，新娘在婚礼上设计，将新郎与伴郎的情欲口交偷拍场景替代了原本的回忆视频，在宾客们的讶异纷扰中，飘然而去。寥寥几个镜头，《你没有好结果》的超毒配乐用不是交代的方法交代了故事的背景。值得一提的是剪辑张书平，这位王家卫的御用剪辑师，让这部本来就暴点十足的作品，在暴点之外，多了份王氏电影的韵味。新娘奋然决绝的冲上台，之后再闪回和新郎紧握的手一甩而开，一句：＂大家可以吃完或者退回礼金。＂，一个受伤反击的绝望女人便从荧屏，走进观众心里。</p>
+<p>之后的故事，有不伦的兄妹通奸，有喜欢演戏的lesbian情侣，有中年健美操教练追求婚外年轻同性模特而不得，有摇摆在爱狗甚于爱自己的女友与社交舞学生寡居富妇之间的社交舞教练，也有经济不佳的攀岩高手在警察的竞争下失欢于北姑后，杀人携头逃亡，终自杀以殉。</p>
+<p>豆瓣上的得分，出奇的低。所有的故事都暴点十足：同性，兄妹，拉拉，婚外，杀人，都是些极其小众，儿童不宜的题材，换言之，导演的功力需要极强，才能将这么复杂的情节协调在一起，而不成为一锅＂东北乱炖＂，不知云何物。云翔导演挑战难度的态度不可谓不坚决，演员们为艺术而献身的尺度不可谓不大，但是很遗憾，云翔似乎是把几个有意思的故事强扭着串烧在一块，却不知蔬果是蔬果，牛排是牛排，没有合适的烹饪调和，甚至是冷着吃冰鲜的，那好材料也是会做出黑暗料理的。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2012-09-26T09:32:00.000Z"><a href="/blog/2012/09/26/cfbe41o-among-other-epithelial-cell-lines/">Sep 26 2012</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2012/09/26/cfbe41o-among-other-epithelial-cell-lines/">CFBE41o: Among other epithelial cell lines</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="Introduction">Introduction</h2>
+<p>According to Review by Gruenert, Willems, Cassima and Frizzell <a href="http://www.ncbi.nlm.nih.gov/pubmed/15463957" target="_blank">1</a>, there are a bunch of established cell lines in cystic fibrosis research. I pick up those with transepithelial resistance, because it’s the requirement for Ussing chamber short circuit current measurement.</p>
+<table>
+<thead>
+<tr>
+<th>Name/code</th>
+<th>Origin/line</th>
+<th>Cell type</th>
+<th>Species</th>
+<th>Transgene (promoter) or genotype</th>
+<th>Transepithelial resistance (Ω cm2)</th>
+<th>Contact</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>NCF3</td>
+<td></td>
+<td>Airway CF</td>
+<td>H</td>
+<td>none</td>
+<td>~350</td>
+<td>Bob Scholte, Erasmus University, The Netherlands</td>
+</tr>
+<tr>
+<td>Calu-3</td>
+<td>Calu-3</td>
+<td>Serous epith.</td>
+<td>H</td>
+<td>wt CFTR</td>
+<td>~300</td>
+<td>ATCC</td>
+</tr>
+<tr>
+<td>T84</td>
+<td>T84</td>
+<td>Colonic epith.</td>
+<td>H</td>
+<td>wt CFTR</td>
+<td>~1000</td>
+<td>ATCC</td>
+</tr>
+<tr>
+<td>HT29 Cl.19A</td>
+<td>HT29 Cl.19A</td>
+<td>Colonic epith.</td>
+<td>H</td>
+<td>wt CFTR</td>
+<td>~200</td>
+<td>ATCC</td>
+</tr>
+<tr>
+<td>CFPAC-1</td>
+<td>CFPAC-1</td>
+<td>Pancreatic epithelial</td>
+<td>H</td>
+<td>Null control</td>
+<td>300-800</td>
+<td>R.A. Frizzell, U. Pittsburgh</td>
+</tr>
+<tr>
+<td></td>
+<td>CFPAC-1</td>
+<td></td>
+<td>H</td>
+<td>wt CFTR</td>
+<td>inferred from parental</td>
+<td>R.A. Frizzell, U. Pittsburgh</td>
+</tr>
+<tr>
+<td></td>
+<td>CFPAC-1</td>
+<td></td>
+<td>H</td>
+<td>F508del CFTR</td>
+<td>inferred from parental</td>
+<td>R.A. Frizzell, U. Pittsburgh</td>
+</tr>
+<tr>
+<td></td>
+<td>Fisher Rat Thyroid</td>
+<td>Thyroid carcinoma</td>
+<td>R</td>
+<td>wt CFTR</td>
+<td>&gt;1000</td>
+<td>M.J. Welsh, U. Iowa</td>
+</tr>
+<tr>
+<td></td>
+<td>FRT</td>
+<td>Thyroid carcinoma</td>
+<td>R</td>
+<td>F508del CFTR</td>
+<td>&gt;1000</td>
+<td>M.J. Welsh, U. Iowa</td>
+</tr>
+<tr>
+<td>AA</td>
+<td></td>
+<td>Bronchial cells</td>
+<td>H</td>
+<td>wt CFTR</td>
+<td>~150</td>
+<td>S. Randell, UNC</td>
+</tr>
+<tr>
+<td>KK</td>
+<td></td>
+<td>Bronchial cells</td>
+<td>H</td>
+<td>F508del CFTR</td>
+<td>~150</td>
+<td>S. Randell, UNC</td>
+</tr>
+<tr>
+<td>CFT43</td>
+<td></td>
+<td>Airway cells</td>
+<td>H</td>
+<td>F508del CFTR</td>
+<td>100-200</td>
+<td>J. Yankaskas, UNC</td>
+</tr>
+<tr>
+<td>CFT1,</td>
+<td></td>
+<td>Airway cells</td>
+<td>H</td>
+<td>F508del CFTR</td>
+<td>400-500</td>
+<td>J. Yankaskas, UNC</td>
+</tr>
+<tr>
+<td>MDCK GFP-CFTR</td>
+<td>MDCK</td>
+<td></td>
+<td>D</td>
+<td>wt CFTR</td>
+<td>~300</td>
+<td>B. Stanton, Dartmouth</td>
+</tr>
+<tr>
+<td>MDCK GFP-Î”FCFTR</td>
+<td>MDCK</td>
+<td></td>
+<td>D</td>
+<td>F508del CFTR</td>
+<td>~300</td>
+<td>B. Stanton, Dartmouth</td>
+</tr>
+<tr>
+<td>JME/CF15</td>
+<td></td>
+<td>CF airway</td>
+<td></td>
+<td></td>
+<td>200-1000</td>
+<td>D. Jefferson, Tufts</td>
+</tr>
+<tr>
+<td>A6</td>
+<td></td>
+<td>Xenopus kidney</td>
+<td>X</td>
+<td>ENaC, CFTR</td>
+<td>1000-2000</td>
+<td>ATCC</td>
+</tr>
+<tr>
+<td>M1</td>
+<td></td>
+<td>Mouse kidney</td>
+<td></td>
+<td>ENaC</td>
+<td>1000-2000</td>
+<td>ATCC</td>
+</tr>
+<tr>
+<td></td>
+<td>mCT1-CF</td>
+<td>Collecting tubule</td>
+<td>M</td>
+<td>CFTR -/-</td>
+<td>200-500</td>
+<td>C. Cotton, Case Western Reserve University</td>
+</tr>
+<tr>
+<td>mTEC1-CF</td>
+<td>Trachea</td>
+<td>Tracheobronchial epithelial cells</td>
+<td>M</td>
+<td>CFTR -/-</td>
+<td>~100</td>
+<td>C. Cotton, Case Western Reserve University</td>
+</tr>
+<tr>
+<td>mPEC1-CF</td>
+<td>Pancreas</td>
+<td>Pancreatic epithelial cells</td>
+<td>M</td>
+<td>CFTR -/-</td>
+<td>80-180</td>
+<td>C. Cotton, Case Western Reserve University</td>
+</tr>
+<tr>
+<td>mSEC1-CF</td>
+<td>Salivary gland</td>
+<td>Salivary gland epithelial cells</td>
+<td>M</td>
+<td>CFTR -/-</td>
+<td>250-400</td>
+<td>C. Cotton, Case Western Reserve University</td>
+</tr>
+<tr>
+<td>16HBE14o-</td>
+<td>Normal bronchus, 1st bifurcation</td>
+<td>Bronchial epithelial cells</td>
+<td></td>
+<td>Endogenous WT CFTR</td>
+<td>200-1000</td>
+<td>D.C. Gruenert, Cal. Pacific Med. Cent. Res. Inst.</td>
+</tr>
+<tr>
+<td>CFBE41o-</td>
+<td>CF bronchus, 1st bifurcation</td>
+<td>Bronchial epithelial cells</td>
+<td>H</td>
+<td>F508del/F508del</td>
+<td>100-500</td>
+<td>D.C. Gruenert, Cal. Pacific Med. Cent. Res. Inst.</td>
+</tr>
+<tr>
+<td>1HAEo-</td>
+<td>Airway</td>
+<td>Tracheobronchial epithelial cells</td>
+<td>H</td>
+<td>WT</td>
+<td>100-1000</td>
+<td>D.C. Gruenert, Cal. Pacific Med. Cent. Res. Inst.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="CFBE41o">CFBE41o</h3>
+<p>Kunzelmann <em>et al.</em> in Gruenert group produced this cell line<a href="http://www.ncbi.nlm.nih.gov/pubmed/7683197" target="_blank">2</a>.</p>
+<blockquote>
+<ol>
+<li>Electrophysiologically, the cells show no cAMP-dependent Cl transport. </li>
+<li>However, after treatment with the calcium ionophore, ionomycin, cells secrete Cl, albeit at a lower level than that observed in normal cells. </li>
+<li>Genetically, the cells express CFTR mRNA as determined by polymerase chain reaction amplification and CFTR protein as determined by Western hybridization analysis.   </li>
+</ol>
+</blockquote>
+<h2 id="TMEM16A_in_CFBE">TMEM16A in CFBE</h2>
+<p>Galietta group in 2008 <a href="http://www.sciencemag.org/content/322/5901/590.short" target="_blank">3</a>, performed a global gene expression analysis to identify membrane proteins that are regulated by IL-4, which was thought to upregulate CaCC activity/expression. By siRNA against each of the upregulated proteins, they associated TMEM16A with CaCC activity.</p>
+<p>IL-4 (10ng/ml 24h) could upregulate expression of TMEM16A mRNA by 20 folds and activity by 5-6 folds.</p>
+<h2 id="Culture_condition_for_Ussing_chamber">Culture condition for Ussing chamber</h2>
+<ul>
+<li><p><strong>Gruenert</strong> <a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2927120/" target="_blank">4</a>: </p>
+<blockquote>
+<p>Cells were grown in flasks coated with an extracellular matrix cocktail comprised of human fibronectin (BD Biosciences), Vitrogen (Cohesion, Inc.), and bovine serum albumin (Biosource/Biofluids) [12,56] in MEM cell culture medium supplemented with 10% fetal calf serum (FCS), 2 mM glutamine, 100 U/ml penicillin, 100 µg/ml streptomycin sulfate under 5% CO2 at 37°C.  </p>
+</blockquote>
+</li>
+<li><p><strong>Gruenert</strong> <a href="http://www.ncbi.nlm.nih.gov/pubmed/7507342" target="_blank">5</a> protocol for <strong>16HBE14o-</strong>:</p>
+<blockquote>
+<p>Cells for the Ussing chamber studies and electron microscopy were plated in DME/Fl2 supplemented with 2 % Ultroser G (Biotechnics, Paris, France) on Vitrogen (Collagen Corp., Palo Alto, CA) gel-coated permeable filters and grown with an air/liquid interface, as described previously for primary cultures of human cells</p>
+</blockquote>
+</li>
+<li><p><strong>Clancy</strong> <a href="http://www.ncbi.nlm.nih.gov/pubmed/15039139" target="_blank">6</a>:</p>
+<blockquote>
+<p>Cells were grown in Dulbecco’s modified Eagle’s medium/F12 media + 10% fetal bovine serum and 1% penicillin + streptomycin on fibronectin-coated tissue culture flasks until ∼ 90% confluent. The cells were then seeded onto 6.5-mm diameter fibronectin-coated Costar Transwell filters at a density of ∼ 5 × 105 cells/filter. Media was changed every other day on the basolateral surface until filters were confluent (∼ 5 d post seeding) with a resistance &gt; 300 Ω · cm, and then transfected with Ad5-CFTR (CFTR under regulatory control of the CMV promoter, contained in a replication deficient adenovirus vector with deletion of the E1A early genes; generous gift of Dr. J. Zabner, University of Iowa, Iowa City, IA) at an MOI of 50 for 6 h. The transfecting media was then removed, and confluent cells were kept at an air–liquid interface until 48 h after transfection (resistance of 300–500 Ω · cm).</p>
+</blockquote>
+</li>
+<li><p><strong>Staton</strong> <a href="http://www.ncbi.nlm.nih.gov/pubmed/19255514" target="_blank">7</a>: </p>
+<blockquote>
+<p>CFBE41o- cells homozygous for the ΔF508 mutation were originally isolated from a CF patient by Dr. D. Gruenert [16, 17]. Cells were propagated in tissue polystyrene culture flasks in MEM supplemented with 10% FBS, 50 U/ml penicillin, 50 μg/ml streptomycin, and 2 mM L-glutamine. For cytokine assays and Ussing chamber studies cells were seeded on 12 mm diameter collagen-coated semi-permeable polycarbonate membranes (0.4 μm pore size; Corning Corporation; Corning, NY) at 5 x 105 cells per filter and grown in air-liquid interface at 37°C for 7-10 days to develop polarized monolayers. The media was replaced on the basolateral side of the membranes every 24 hours.</p>
+</blockquote>
+</li>
+<li><p><strong>Hsiao Chang Chan</strong> <a href="chan12jcphysiol">8</a>, but not for Ussing:</p>
+<blockquote>
+<p>CFBE41o−, kindly provided by Professor Ko Wing Hung (The Chinese University of Hong Kong), were grown in MEM medium supplemented with 10% fetal bovine serum and 1% penicillin/streptomycin, and maintained in an atmosphere of 5%CO2–95%O2 at 37°C.</p>
+</blockquote>
+</li>
+<li><p><strong>Hanrahan</strong> <a href="http://molpharm.aspetjournals.org/content/73/2/478.full" target="_blank">9</a>: </p>
+<blockquote>
+<p>CFBE41o- cells (5 × 105) were seeded onto fibronectin-coated Snap-well 12-mm inserts (Corning Incorporated, Life Sciences, New York, NY), and the apical medium was removed the following day. Transepithelial resistance was monitored using an EVOM epithelial voltohmmeter (World Precision Instruments, Sarasota, FL), and cells were used when the transepithelial resistance of the monolayer was 300 to 400 Ω · cm2.</p>
+</blockquote>
+</li>
+<li><p><strong>Collawn</strong> <a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2830406/" target="_blank">10</a>:</p>
+<blockquote>
+<p>CFBE41o- cell cultures were maintained in Dulbecco’s modified Eagles medium) and Ham’s F12 medium (50:50, vol/vol) (Invitrogen, Carlsbad, CA) with 10% (vol/vol) FBS. For experiments requiring polarized cells, CFBE41o-ΔF and CFBE41o-WT cells were seeded onto 6.5-mm Transwell filters (Costar, Corning, Acton, MA) for the Ussing chamber experiments, or on 24-mm Transwell filters for the surface biotinylation experiments. Cells were grown at a liquid–liquid interface, and media were changed every 24 hours. Under these conditions, the cells formed polarized monolayers with transepithelial resistances of greater than 1,000 Ω·cm2 after 4 days of culture.</p>
+</blockquote>
+</li>
+<li><p><strong>Steven M. Rowe</strong> <a href="http://ajplung.physiology.org/content/301/4/L587.long" target="_blank">11</a></p>
+<blockquote>
+<p>FRT and CFBE41o− cells expressing F508del-, G551D-, or WT-CFTR were seeded on fibronectin-coated 0.4-μm permeable supports (Costar, Bethesda, MD; 5 × 105 cells/filter, 6.5 mm diameter), grown to confluence, transferred to an air-liquid interface until high (&gt;1,000 Ω/cm2) resistance was achieved.</p>
+</blockquote>
+</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2012-09-24T14:04:00.000Z"><a href="/blog/2012/09/24/markdown-tools-for-dissertation/">Sep 24 2012</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2012/09/24/markdown-tools-for-dissertation/">Markdown tools for Dissertation: Pandoc</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Finally I’m starting my dissertation writing. Since I have relied on Markdown for several months. The simplicity and efficiency really impressed me. So I’m seeking is there a Markdown-based scientific writing environment? My undergraduate thesis is written in <strong>LaTeX</strong>, but honest speaking, it’s too complicated for formatting. To me, it looks like dark magic,so powerful that you could achieve anything but the learning curve are quite sharp.</p>
+<p>According to <a href="http://en.wikipedia.org/wiki/List_of_Markdown_implementations" target="_blank">List of Markdown implementations</a>, firstly, I learnt some concepts:</p>
+<ul>
+<li><p><a href="http://fletcherpenney.net/multimarkdown/" target="_blank"><strong>MultiMarkdown</strong></a> MMD is a superset of the Markdown syntax. It adds multiple syntax features (<strong>tables</strong>, <strong>footnotes</strong>, and <strong>citations</strong>, to name a few), in addition to the <strong>various output formats</strong> listed above (Markdown only creates HTML). Additionally, it builds in “smart” typography for various languages (proper left- and right-sided quotes, for example).</p>
+</li>
+<li><p><a href="http://johnmacfarlane.net/pandoc/" target="_blank"><strong>Pandoc</strong></a> Pandoc understands a number of useful markdown syntax extensions, including document metadata (<strong>title, author, date</strong>); <strong>footnotes</strong>; <strong>tables</strong>; definition lists; superscript and subscript; strikeout; enhanced ordered lists (start number and numbering style are significant); running example lists; delimited code blocks with syntax highlighting; smart quotes, dashes, and ellipses; markdown inside HTML blocks; and inline LaTeX.</p>
+</li>
+</ul>
+<p>There are several comparison report between these two, like <a href="https://github.com/jgm/pandoc/wiki/Pandoc-vs-Multimarkdown" target="_blank">this</a> and <a href="http://ewcrr.wordpress.com/2012/03/23/the-intersection-of-pandoc-and-multimarkdown/" target="_blank">this</a>.</p>
+<h2 id="Advantages_of_Pandoc">Advantages of Pandoc</h2>
+<h3 id="Supported_format">Supported format</h3>
+<ul>
+<li><strong>Input</strong>:  <strong>markdown</strong> and (subsets of) Textile, reStructuredText, HTML, LaTeX, and DocBook XML</li>
+<li><strong>Output</strong>: plain text, markdown, reStructuredText, XHTML, HTML 5, <strong>LaTeX</strong> (including beamer slide shows), ConTeXt, RTF, DocBook XML, OpenDocument XML, ODT, <strong>Word docx</strong>, GNU Texinfo, MediaWiki markup, <strong>EPUB</strong>, Textile, groff man pages, Emacs Org-Mode, AsciiDoc, and Slidy, Slideous, DZSlides, or S5 HTML slide shows. It can also produce PDF output on systems where LaTeX is installed.</li>
+</ul>
+<h3 id="Extentions_of_Markdown">Extentions of Markdown</h3>
+<ul>
+<li><strong>Citation</strong> </li>
+<li><strong>Docx output support</strong></li>
+<li><strong>Template</strong></li>
+</ul>
+<p>These 3 are critical for me. So even MMD may be supported by more applications, I prefer pandoc for my dissertation writing. Let’s see what will happen.</p>
+<h2 id="-3c-a_href-3d-22-http-3a-2f-2f-yihui-name-2f-knitr-2f-22-3e-Knitr-3c-2f-a-3e-"><a href="http://yihui.name/knitr/" target="_blank">Knitr</a></h2>
+<p>I first know this is from <a href="http://www.yangzhiping.com/tech/r-markdown-knitr.html" target="_blank">a chinese blog</a>. When I was undergraduate, I did use R for some of my statistics courses. But mostly my preference was always Python as the primary script language. By embedding R code in markdown document, I could:</p>
+<ul>
+<li>eliminate the pain of generating figures in Excel and adjust all those formatting stuff. </li>
+<li>record the real value of my data in the document.</li>
+<li>use \<!-- --> to annotate the original datafile which contain data.</li>
+</ul>
+<p>Normally I will write my markdown document in <a href="">R studio</a>.</p>
+<h2 id="Citations">Citations</h2>
+<p>I already bought <a href="http://www.mekentosj.com/papers/" target="_blank">Papers</a> and it could orgainze papers in mannual collections and export them into bib format. So I could use <a href="http://gorgias.mine.nu/repos/citeproc-hs/" target="_blank">citeproc-hs</a> in pandoc to cite and generate them. Generally speaking, you could either rely </p>
+<ul>
+<li><a href="http://www.carlboettiger.info/2012/03/24/citations-in-markdown-using-knitr.html" target="_blank">on Knitr</a> or </li>
+<li><a href="http://johnmacfarlane.net/pandoc/README.html#automatic-citations" target="_blank">Pandoc’s own citation support</a>.</li>
+</ul>
+<p>Different csl format could be downloaded from <a href="http://www.zotero.org/styles" target="_blank">zotero repository</a>. Place the downloaded file into <code>~./csl</code> then you could use it in pandoc command.</p>
+<p>Place your bib database file <code>citations.bib</code> in <code>~/.pandoc</code>. </p>
+<h2 id="Template_and_working_flow">Template and working flow</h2>
+<p>Refering to “<a href="http://kariert.wordpress.com/2012/05/17/reproducible-research-with-markdown-knitr-and-pandoc/" target="_blank">Reproducible research with markdown, knitr and pandoc</a>“ and <a href="http://johnmacfarlane.net/pandoc/README.html#citations" target="_blank">pandoc’s citation options</a></p>
+<pre><code><span class="comment">$</span> <span class="comment">Rscript</span> <span class="literal">-</span><span class="comment">e</span> <span class="comment">"library(knitr);</span> <span class="comment">knit('thesis_example</span><span class="string">.</span><span class="comment">Rmd')"</span>
+<span class="comment">$</span> <span class="comment">pandoc</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">bibliography="citations</span><span class="string">.</span><span class="comment">bib"</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">csl="nature"</span> <span class="literal">-</span><span class="comment">o</span> <span class="comment">thesis_example</span><span class="string">.</span><span class="comment">docx</span>  <span class="literal">-</span><span class="comment">t</span> <span class="comment">docx</span> <span class="comment">thesis_example</span><span class="string">.</span><span class="comment">md</span> 
+</code></pre><p>Pandoc support reference format docx. According to <a href="http://johnmacfarlane.net/pandoc/README.html#options-affecting-specific-writers" target="_blank">pandoc references</a>. We could firstly produce our format document by pandoc. Then place it it <code>~/.pandoc</code> folder, which is the default data directory. Rename it to <code>reference.docx</code> and the format will be applied while the content will be discarded. This setting will overwrite the default format settings,</p>
+<p>Finally, create alias in <code>~/.bash_login</code> (in Mac)</p>
+<pre><code><span class="comment">alias</span> <span class="comment">meq='pandoc</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">bibliography="/Users/your_account_name/</span><span class="string">.</span><span class="comment">pandoc/citations</span><span class="string">.</span><span class="comment">bib"</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">csl="nature'</span> <span class="literal">-</span><span class="comment">t</span> <span class="comment">docx</span> <span class="literal">-</span><span class="comment">o</span> <span class="comment">QE</span><span class="string">.</span><span class="comment">docx</span> <span class="comment">QE</span><span class="string">.</span><span class="comment">markdown</span>
+</code></pre><p>pandoc could not understand <code>~</code> which is traditionally <em>HOME</em> folder in UNIX/LINUX world, so u need to use the absolute path. Strange.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/page/3/" class="alignleft prev">Prev</a>
+  
+  
+    <a href="/page/5/" class="alignright next">Next</a>
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:easontse.info">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Biochemistry/">Biochemistry</a><small>7</small></li>
+  
+    <li><a href="/categories/Books/">Books</a><small>12</small></li>
+  
+    <li><a href="/categories/Computer/">Computer</a><small>54</small></li>
+  
+    <li><a href="/categories/Game/">Game</a><small>12</small></li>
+  
+    <li><a href="/categories/Life/">Life</a><small>20</small></li>
+  
+    <li><a href="/categories/Movie/">Movie</a><small>2</small></li>
+  
+    <li><a href="/categories/Music/">Music</a><small>1</small></li>
+  
+    <li><a href="/categories/Science/">Science</a><small>1</small></li>
+  
+    <li><a href="/categories/Writing/">Writing</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/AD&D/" style="font-size: 13.33px;">AD&D</a><a href="/tags/ANO1/" style="font-size: 13.33px;">ANO1</a><a href="/tags/ANO2/" style="font-size: 10.00px;">ANO2</a><a href="/tags/ANOVA/" style="font-size: 10.00px;">ANOVA</a><a href="/tags/Adult/" style="font-size: 10.00px;">Adult</a><a href="/tags/Aiglx/" style="font-size: 10.00px;">Aiglx</a><a href="/tags/App/" style="font-size: 20.00px;">App</a><a href="/tags/Apple/" style="font-size: 10.00px;">Apple</a><a href="/tags/Apps/" style="font-size: 10.00px;">Apps</a><a href="/tags/BIOS/" style="font-size: 10.00px;">BIOS</a><a href="/tags/Blog/" style="font-size: 10.00px;">Blog</a><a href="/tags/CFBE/" style="font-size: 13.33px;">CFBE</a><a href="/tags/CFTR/" style="font-size: 10.00px;">CFTR</a><a href="/tags/CNAME/" style="font-size: 10.00px;">CNAME</a><a href="/tags/CaCC/" style="font-size: 10.00px;">CaCC</a><a href="/tags/Chinese/" style="font-size: 10.00px;">Chinese</a><a href="/tags/CoT/" style="font-size: 10.00px;">CoT</a><a href="/tags/Compiz/" style="font-size: 10.00px;">Compiz</a><a href="/tags/Debian/" style="font-size: 13.33px;">Debian</a><a href="/tags/Dell/" style="font-size: 13.33px;">Dell</a><a href="/tags/Dropbox/" style="font-size: 13.33px;">Dropbox</a><a href="/tags/Edgy/" style="font-size: 10.00px;">Edgy</a><a href="/tags/Epub/" style="font-size: 10.00px;">Epub</a><a href="/tags/Excel/" style="font-size: 10.00px;">Excel</a><a href="/tags/Firefox/" style="font-size: 10.00px;">Firefox</a><a href="/tags/GFW/" style="font-size: 10.00px;">GFW</a><a href="/tags/GNUPlot/" style="font-size: 10.00px;">GNUPlot</a><a href="/tags/Game/" style="font-size: 16.67px;">Game</a><a href="/tags/GiNaC/" style="font-size: 10.00px;">GiNaC</a><a href="/tags/Git/" style="font-size: 10.00px;">Git</a><a href="/tags/Github/" style="font-size: 10.00px;">Github</a><a href="/tags/Gmail/" style="font-size: 10.00px;">Gmail</a><a href="/tags/Grant proposal/" style="font-size: 10.00px;">Grant proposal</a><a href="/tags/Graphviz/" style="font-size: 10.00px;">Graphviz</a><a href="/tags/Hexo/" style="font-size: 10.00px;">Hexo</a><a href="/tags/ID3/" style="font-size: 10.00px;">ID3</a><a href="/tags/ImageMagick/" style="font-size: 13.33px;">ImageMagick</a><a href="/tags/Ion channels/" style="font-size: 10.00px;">Ion channels</a><a href="/tags/Isc/" style="font-size: 10.00px;">Isc</a><a href="/tags/Japan/" style="font-size: 10.00px;">Japan</a>
+  </div>
+</div>
+
+
+  
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Eason Tse
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'easonx';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

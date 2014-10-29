@@ -1,0 +1,2124 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Page 7 | Eason&#39;s Blog</title>
+  <meta name="author" content="Eason Tse">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Eason&#39;s Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Eason&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-6252783-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Eason&#39;s Blog</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/utils/multimarkdown-table-generator">Util</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2012-05-26T09:12:00.000Z"><a href="/blog/2012/05/26/setup-octopress-under-mac-os-x-lion/">May 26 2012</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2012/05/26/setup-octopress-under-mac-os-x-lion/">Setup Octopress under Mac OS X Lion</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>It’s the first post I wrote under <a href="http://octopress.org" target="_blank">octopress</a>. So it’s good to share my experience to install and setup on my iMac. Mostly I refered to this great <a href="http://blog.4321.la/articles/2012/01/25/set-up-octopress/" target="_blank">post</a> and the official document of <strong>octopress</strong> and <strong>github</strong>. </p>
+<h2 id="Install">Install</h2>
+<p>First, please open terminal and install homebrew by</p>
+<pre><code>$ /usr/bin/ruby <span class="operator">-e</span> <span class="string">"<span class="variable">$(/usr/bin/curl -fsSL https://raw.github.com/mxcl/homebrew/master/Library/Contributions/install_homebrew.rb)</span>"</span>
+</code></pre><p>I already have <strong>xcode</strong> installed, so I didn’t need to mannually install <strong>GCC</strong>, If you don’t have it yet, you could download it from <strong>Mac App Store</strong>, it’s free. </p>
+<p>Then edit <strong>~/.bash_login</strong> add this line:</p>
+<pre><code><span class="keyword">export</span> PATH=/usr/local/sbin:<span class="variable">$PATH</span>
+</code></pre><p>Update homebrew package information:</p>
+<pre><code><span class="variable">$ </span>brew update
+</code></pre><p>Then install necessary packages via homebrew:</p>
+<pre><code><span class="comment">$</span> <span class="comment">brew</span> <span class="comment">install</span> <span class="comment">ruby</span> <span class="comment">ruby</span><span class="literal">-</span><span class="comment">build</span> <span class="comment">rbenv</span> <span class="comment">pow</span>
+</code></pre><p>Even though Mac already include Ruby, but the version is too low ( 1.8.7 ), <strong>octopress</strong> require at least 1.9.2. Then we need to add the Ruby into our <strong>PATH</strong>, so edit  <strong>~/.bash_login</strong> add this line:</p>
+<pre><code>export <span class="constant">PATH</span>=<span class="regexp">/usr/local</span><span class="regexp">/Cellar/ruby</span><span class="regexp">/1.9.3-p194/bin</span><span class="symbol">:</span><span class="variable">$PATH</span>
+</code></pre><p>Please modify the version according to your installation. </p>
+<p>Then we could install <strong>octopress</strong> now, change to directory <strong>~/Sites</strong>, </p>
+<pre><code><span class="char">$ </span>git clone <span class="method">git:</span>//github.com/imathis/octopress.git octopress
+<span class="char">$ </span>cd octopress
+</code></pre><p>Install some ruby stuffs <strong>octopress</strong> required:</p>
+<pre><code><span class="variable">$ </span>gem install bundler
+<span class="variable">$ </span>rbenv rehash
+<span class="variable">$ </span>bundle install
+<span class="variable">$ </span>rake install
+</code></pre><p>Then <strong>octopress</strong> is installed.</p>
+<h2 id="Deploy">Deploy</h2>
+<p>Login into <a href="http://github.com" target="_blank">github</a> then add a repository <strong>username.github.com</strong>. Please use your username instead. For me, as your url address showed, it’s <strong>easonx.github.com</strong>. For this kind of special repository name, you cannot add github page in the admin interface, install, it will be your default content for the site.</p>
+<p>Once this is done, in <strong>Terminal</strong>:</p>
+<pre><code><span class="variable">$ </span>rake setup_github_pages
+</code></pre><p>The system will ask your git URL. it should be like this,</p>
+<pre><code>git@github<span class="preprocessor">.com</span>:username/username<span class="preprocessor">.github</span><span class="preprocessor">.com</span><span class="preprocessor">.git</span>
+</code></pre><p>also, replace username to your own id.</p>
+<p>Produce HTML</p>
+<pre><code><span class="variable">$ </span>rake generate
+</code></pre><p>Deploy</p>
+<pre><code><span class="variable">$ </span>rake deploy
+</code></pre><p>If this is the first time you upload the site, it may wait 10 minutes to initialized the site. But afterwards you can see change immediately. The system will email you to annouce the availability. </p>
+<h2 id="Customization_and_Post">Customization and Post</h2>
+<p>You could modified the config file: <strong>_config.yml</strong> to do some simple customization.</p>
+<p>To add post:</p>
+<pre><code><span class="variable">$ </span>rake new_post[<span class="string">"Your long post name"</span>]
+</code></pre><p>Or page:<br>    $rake new_page[“about”]</p>
+<p>Please refer to the <a href="http://octopress.org/docs/" target="_blank">official document</a> for further references.</p>
+<h2 id="Add_QR-Code">Add QR-Code</h2>
+<p>Follow the instruction of this <a href="https://github.com/sailor79/Octopress-dynamic-QR-Code-aside" target="_blank">entry</a>. </p>
+<ul>
+<li><em>copy qrcode.html into source/_includes/custom/asides/</em></li>
+<li><em>add ‘custom/asides/qrcode.html’ to default_asides in _config.yml</em></li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2012-01-01T21:58:00.000Z"><a href="/blog/2012/01/02/cipher-crack-the-code-walkthrough/">Jan 2 2012</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2012/01/02/cipher-crack-the-code-walkthrough/">Cipher: Crack the Code Walkthrough</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <ul>
+<li>1-13: <a href="/blog/2011/11/30/cipher-crack-the-code-1/">2011-11-30-cipher-crack-the-code-1</a></li>
+<li>14-17: <a href="/blog/2011/12/02/cipher-crack-the-code-2/">2011-12-02-cipher-crack-the-code-2</a></li>
+<li>18-24: <a href="/blog/2011/12/03/cipher-crack-the-code-3/">2011-12-03-cipher-crack-the-code-3</a></li>
+<li>25-31: <a href="/blog/2011/12/05/cipher-crack-the-code-4/">2011-12-05-cipher-crack-the-code-4</a></li>
+<li>32-36: <a href="/blog/2011/12/09/cipher-crack-the-code-5/">2011-12-09-cipher-crack-the-code-5</a></li>
+<li>37-40: <a href="/blog/2011/12/13/cipher-crack-the-code-6/">2011-12-13-cipher-crack-the-code-6</a></li>
+<li>41-45: <a href="/blog/2011/12/14/cipher-crack-the-code-7/">2011-12-14-cipher-crack-the-code-7</a></li>
+<li>46-49: <a href="/blog/2011/12/16/cipher-crack-the-code-8/">2011-12-16-cipher-crack-the-code-8</a></li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2011-12-29T13:21:00.000Z"><a href="/blog/2011/12/29/2011pan-dian-zhi-chi-he-wan-le/">Dec 29 2011</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2011/12/29/2011pan-dian-zhi-chi-he-wan-le/">2011盘点之吃喝玩乐</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>虽然木有去博物馆，木有听演唱会，木有出国旅游，但是总的来说，学术上不靠谱，但是在吃喝玩乐上，还是比较靠谱的。</p>
+<p>首先，购置了ipod touch4，ipad，iMac，ipod shuffle等各种电子产品，成功变身果粉一名。购买了Civilization V，Neverwinter nights 2，Civilization Revolution for ipad等众多游戏，成功kill掉众多本来应该做实验的时间。实验室labmate们，也陆陆续续的果化。最新的进展是，发现老板在AEARU11的时候，眼镜几乎一直盯着捧着的ipad……</p>
+<p>其次，去上海两次，杭州一次，慰问了魔都和天堂的童鞋们。</p>
+<p>在第四季度，发下了每周至少出去吃一次的宏愿，到现在为止，执行的还算不错。</p>
+<p>不过在自制伙食上，似乎木有进步，只偶尔做点甜食吃。做的梅菜扣肉也非常之不给力。牛蛙肉离店里面又嫩又香的水准也还差好多。总之，同志仍需努力。</p>
+<p>提名：</p>
+<ul>
+<li>坑口，聪嫂甜品，白果薏米杏仁露</li>
+<li>IFC，礼日本料理，象拔蚌</li>
+<li>坑口，翠河茶餐厅，皮蛋瘦肉粥，牛腩饭</li>
+<li>老板家，师母做的烤肉</li>
+<li>上环，浦和日本料理，秋刀鱼</li>
+<li>宝琳，牛阵火锅，</li>
+<li>观塘，御泰坊，</li>
+<li>深圳，大剧院，豆花工房，酸辣牛蛙</li>
+<li>旺角，谭鱼头</li>
+</ul>
+<p>最后获奖：</p>
+<p><code>IFC，礼日本料理</code></p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2011-12-29T06:08:00.000Z"><a href="/blog/2011/12/29/2011nian-zhong-zong-jie-du-shu/">Dec 29 2011</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2011/12/29/2011nian-zhong-zong-jie-du-shu/">2011年终总结：读书</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>2012之前的这一年，貌似又无惊无险的过去了，年初的愿望貌似木有实现，希望明年实现。</p>
+<p>马亲王的：笔冢随录，风起陇西，官渡杀人事件，我在江湖，她死在qq上，小篆战争，寂静之城，街亭，殷商舰队玛雅征服史。</p>
+<p>九州缥缈录-虎牙，辰月之征，一生之盟。</p>
+<p>华尔街生存实录，科人往事，法律忽悠谈×权利篇，商业篇，生活篇，菜刀传奇，还原金庸小说的历史真相，民主的细节，民主是个技术活，魔鬼经济学，生命八卦，明朝出了个张居正，宋江是怎么当上老大的，瓦尔登湖，异色物语，余欢，娱乐至死，</p>
+<p>最后是个人推荐名单:</p>
+<p>笔冢随录，余欢，娱乐至死，生命八卦</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2011-12-16T15:49:00.000Z"><a href="/blog/2011/12/16/cipher-crack-the-code-8/">Dec 16 2011</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2011/12/16/cipher-crack-the-code-8/">Cipher: Crack the Code (8)</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="46-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-randomnonsense-2f-geflugelspiegelfunken-htm-22-3e-F1-3c-2f-a-3e-">46. <a href="http://www.gamemastertips.com/cipher/randomnonsense/geflugelspiegelfunken.htm" target="_blank">F1</a></h2>
+<p>Click the button:</p>
+<blockquote>
+<p>You just had to press it, didn’t you?</p>
+</blockquote>
+<p>button.htm:</p>
+<blockquote>
+<p>Yes, it’s a button. It knows the answers of the universe. It knows the meaning of life. It knows where you live. Actually, it doesn’t, because it’s just a button.</p>
+<p>So stop reading this sarcastic crap and get back to the bloody level.</p>
+</blockquote>
+<p>According to <a href="http://knowyourmeme.com/memes/the-answer-to-life-the-universe-and-everything-42" target="_blank">this</a>, this paragraph is suggesting <code>42</code>.</p>
+<p>F1 normally means “Help”, so help.htm:</p>
+<blockquote>
+<p>Nope, I’m afraid I can’t give you any help. Fresh out. Go get your own.</p>
+</blockquote>
+<p>F1 could also imply <a href="http://www.formula1.com/" target="_blank"><code>formula1</code></a>, so formula1.htm:</p>
+<blockquote>
+<p>Vrooooooooom….you just zoomed waaay off track.</p>
+</blockquote>
+<p>No clue now. I tried several methods to change URL, it just simply won’t work. What can a number mean for a clueless level? Maybe like previous levels for threshold? But whate ver I tried, no luck.</p>
+<p>Help and Button, wait a second, does it literally mean the help button of the first page of the game? I picked up the picture and fill light by Picasa, oops, there are 2 numbers in either the top right corner or the bottom right corner:</p>
+<blockquote>
+<p>3, 7</p>
+</blockquote>
+<p>And then I examine the EXIF information, </p>
+<blockquote>
+<p>title: 5<br>subject: 5<br>tags: 1;4</p>
+</blockquote>
+<p>Several trials, finally it means 5 subjects of number:</p>
+<blockquote>
+<p>3,7,5,1,4</p>
+</blockquote>
+<p>And according to <a href="http://www.gamemastertips.com/cipher/help.htm" target="_blank">help</a> page, the initial letters of description of the matching levels are:</p>
+<blockquote>
+<p>Level 3: <strong>E</strong>ver<br>Level 7: <strong>Y</strong>ou<br>Level 5: <strong>W</strong>hat<br>Level 1: <strong>C</strong>reepy<br>Level 4: <strong>H</strong>mm</p>
+</blockquote>
+<p>After <a href="http://www.wordsmith.org/anagram/anagram.cgi?anagram=eywch&amp;t=1000&amp;a=n" target="_blank">anagram</a> calculation, the answer is <strong>chewy</strong>.</p>
+<h2 id="47-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-randomnonsense-2f-chewy-22-3e-Muahahahahaha-21-21-21-21-3c-2f-a-3e-">47. <a href="http://www.gamemastertips.com/cipher/randomnonsense/chewy" target="_blank">Muahahahahaha!!!!</a></h2>
+<p>The same technique of filling light on image. several colors in the grids.</p>
+<p>I saved the only pic in this level and then adjust level of the picture, high to 4% , mid-tone to 2%, plus maximized the exposure in <a href="http://www.pixelmator.com/" target="_blank">Pixelmator</a>. </p>
+<p><img src="/files/cipher/lv47.png" alt="lvl 47"></p>
+<p>I tried many transposition cipher methods, but all of them failed. Noticing blocks with the 3 major color on the background, suddenly experience of Domination level reminds me. Maybe it’s just a <strong>SHAPE</strong>.</p>
+<p><img src="/files/cipher/lv47n.jpg" alt="lvl 47"></p>
+<p>The answer comes: <strong>nohint4u</strong></p>
+<h2 id="48-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-randomnonsense-2f-nohint4u-22-3e-Exclude_lawful_yogurt-_Value_lava_lightning_money-21-3c-2f-a-3e-">48. <a href="http://www.gamemastertips.com/cipher/randomnonsense/nohint4u" target="_blank">Exclude lawful yogurt. Value lava lightning money!</a></h2>
+<p>Compare to other level, this one is much easier. The only information you could use is the title and the object in the image: mobile phone keyboard.</p>
+<p>Mapping every letters of each word to the keyboard, </p>
+<table>
+<thead>
+<tr>
+<th>word</th>
+<th>keys</th>
+<th>letter shape</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>exclude</td>
+<td>2,3,5,8,9</td>
+<td>c</td>
+</tr>
+<tr>
+<td>lawful</td>
+<td>2,3,5,8,9</td>
+<td>c</td>
+</tr>
+<tr>
+<td>yogurt</td>
+<td>4,6,7,8,9</td>
+<td>U</td>
+</tr>
+<tr>
+<td>value</td>
+<td>2,3,5,8</td>
+<td>r</td>
+</tr>
+<tr>
+<td>lava</td>
+<td>2,5,8</td>
+<td>I</td>
+</tr>
+<tr>
+<td>lightning</td>
+<td>4,5,6,8</td>
+<td>T</td>
+</tr>
+<tr>
+<td>money</td>
+<td>3,6,9</td>
+<td>I</td>
+</tr>
+<tr>
+<td>—————-</td>
+<td>—————-</td>
+<td>———————</td>
+</tr>
+</tbody>
+</table>
+<p>By anagram, the answer is <strong>circuit</strong>.</p>
+<h2 id="49-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-asphyxiation-2f-chambers-2f-bewilderment-htm-22-3e-REST_ASSURED-2c-_YOU-2019-LL_GIVE_UP_NOW-3c-2f-a-3e-">49. <a href="http://www.gamemastertips.com/cipher/asphyxiation/chambers/bewilderment.htm" target="_blank">REST ASSURED, YOU’LL GIVE UP NOW</a></h2>
+<p>Hints:</p>
+<p>In source code:</p>
+<table>
+<thead>
+<tr>
+<th>name</th>
+<th>content</th>
+<th>link</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>rect 1</td>
+<td>79=G</td>
+<td>../../balthazar/</td>
+</tr>
+<tr>
+<td>rect 2</td>
+<td>XX=3</td>
+<td></td>
+</tr>
+<tr>
+<td>circle</td>
+<td>12=H</td>
+<td></td>
+</tr>
+<tr>
+<td>star</td>
+<td>38=D</td>
+<td>../../creppy/</td>
+</tr>
+<tr>
+<td>comment</td>
+<td>52=S</td>
+<td></td>
+</tr>
+<tr>
+<td>————-</td>
+<td>————-</td>
+<td>—————————</td>
+</tr>
+</tbody>
+</table>
+<p>And 2 comments:</p>
+<blockquote>
+<p>the fish shop had a sale on red herring</p>
+</blockquote>
+<p>Other than fish, <strong>red herring</strong> means a clue which is intentionally or unintentionally misleading or distracting from the actual issue. Of course here it is a pan.</p>
+<blockquote>
+<p>if you need an egg, sometimes all you have to do is ask…</p>
+</blockquote>
+<p>Or change URL:</p>
+<table>
+<thead>
+<tr>
+<th>URL</th>
+<th>hint</th>
+<th>after level adjustment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>49a</td>
+<td>original image</td>
+<td></td>
+</tr>
+<tr>
+<td>49b</td>
+<td>24=B</td>
+<td>doodling make face on me</td>
+</tr>
+<tr>
+<td>49c</td>
+<td>UTS68MSJD4</td>
+<td>doodling make face on me too</td>
+</tr>
+<tr>
+<td>49d</td>
+<td>too many hints</td>
+<td>but do pay attention to caps</td>
+</tr>
+<tr>
+<td>egg</td>
+<td>Okay, now what?</td>
+<td></td>
+</tr>
+<tr>
+<td>——-</td>
+<td>————————-</td>
+<td>———————————————</td>
+</tr>
+</tbody>
+</table>
+<p>BTW, all image with the same EXIF information:</p>
+<table>
+<thead>
+<tr>
+<th>item</th>
+<th>content</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>title</td>
+<td>black and red all over</td>
+</tr>
+<tr>
+<td>keywords</td>
+<td>reverse the inverse</td>
+</tr>
+<tr>
+<td>description</td>
+<td>-..—-.—…-.—-</td>
+</tr>
+<tr>
+<td>——————-</td>
+<td>————————————</td>
+</tr>
+</tbody>
+</table>
+<p>Cause the hint of “<strong>caps</strong>“, the only capitalized part is the title. Connect all the first letter of words in title: <strong>raygun</strong>, leads to an Error page. Base64 cannot decode the message. </p>
+<p>But search string “htm”, a new hints revealed: <strong>euphoriant.htm</strong></p>
+<p>This page require password, of course, we don’t have it. There’s a image with greek letters: προχωρω, which means <strong>Proceed</strong>. But this information seems useless. The link will go into a list of links of all levels.</p>
+<p>Links are correct, but the texts are not always correct too. for 1-48 levels, if consistent is 1, inconsistent is 0, we could have several ASCII codes:</p>
+<table>
+<thead>
+<tr>
+<th>levels</th>
+<th>ASCII</th>
+<th>letter</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1-8</td>
+<td>1100111</td>
+<td>g</td>
+</tr>
+<tr>
+<td>9-16</td>
+<td>1101000</td>
+<td>h</td>
+</tr>
+<tr>
+<td>17-24</td>
+<td>1101111</td>
+<td>o</td>
+</tr>
+<tr>
+<td>25-32</td>
+<td>1110011</td>
+<td>s</td>
+</tr>
+<tr>
+<td>33-40</td>
+<td>1110100</td>
+<td>t</td>
+</tr>
+<tr>
+<td>41-48</td>
+<td>1110011</td>
+<td>s</td>
+</tr>
+<tr>
+<td>————-</td>
+<td>————-</td>
+<td>————</td>
+</tr>
+</tbody>
+</table>
+<p>click the false level 50 link, and change the url to <strong>ghosts</strong>, we will begin <a href="http://gamemastertips.com/cipher/balthazar/labyrinth/madness/ghosts.htm" target="_blank">level 50</a>.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2011-12-14T15:49:00.000Z"><a href="/blog/2011/12/14/cipher-crack-the-code-7/">Dec 14 2011</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2011/12/14/cipher-crack-the-code-7/">Cipher: Crack the Code (7)</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="41-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-another-2f-strangelevel-htm-22-3e-2026-3c-2f-a-3e-">41. <a href="http://www.gamemastertips.com/cipher/another/strangelevel.htm" target="_blank">…</a></h2>
+<p>After search “<strong>silent language</strong>“ in google images, it appears that it’s suggesting <strong>sign language</strong>, specifically , signs on the top left corner is <strong><a href="http://en.wikipedia.org/wiki/American_Sign_Language" target="_blank">America Sign Language</a></strong>. According to the alphabet picture below:</p>
+<p><img src="/files/cipher/184px-ABC_pict.png" alt="ASL Alphabet"></p>
+<p>Click the image and input username:passwd as <strong>cipher:higher</strong>.</p>
+<h2 id="42-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-technically-2f-complicated-htm-22-3e-Am_per_sand_pound-3c-2f-a-3e-">42. <a href="http://www.gamemastertips.com/cipher/technically/complicated.htm" target="_blank">Am per sand pound</a></h2>
+<p>Search <strong>am per sand pound</strong>, this <a href="http://www.frogfeet.co.uk/1/ampersand.html" target="_blank">link</a> seems make sense. <em>Ampersand sign</em>  is <strong>&amp;</strong> and pound is suggesting <strong>#</strong>. numbers postfix these 2 in HTML is Special Characters. And refering <a href="http://goodtools.net/pages/HowCharactersMap.html" target="_blank">this</a>, <a href="http://www.tedmontgomery.com/tutorial/htmlchrc.html" target="_blank">this</a> and <a href="http://www.kenyoung.net/characters-000-399.html" target="_blank">this</a>, the symbols on the bottom of picture are:</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Ť</th>
+<th style="text-align:center">ŗ</th>
+<th style="text-align:center">ņ</th>
+<th style="text-align:center">ī</th>
+<th style="text-align:center">č</th>
+<th style="text-align:center">í</th>
+<th style="text-align:center">Ć</th>
+<th style="text-align:center">Ä </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">356</td>
+<td style="text-align:center">343</td>
+<td style="text-align:center">326</td>
+<td style="text-align:center">299</td>
+<td style="text-align:center">269</td>
+<td style="text-align:center">237</td>
+<td style="text-align:center">262</td>
+<td style="text-align:center">196 </td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Ĝ</th>
+<th>¥</th>
+<th>Ő</th>
+<th>©</th>
+<th>ť</th>
+<th>¾</th>
+<th>Ż</th>
+<th>«</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>284</td>
+<td>165</td>
+<td>336</td>
+<td>169</td>
+<td>357</td>
+<td>190</td>
+<td>379</td>
+<td>171 </td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>ư</th>
+<th>§</th>
+<th>Ǉ</th>
+<th>¿</th>
+<th>Ƶ</th>
+<th>ê</th>
+<th>Ɓ</th>
+<th>ī</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>432</td>
+<td>167</td>
+<td>455</td>
+<td>191</td>
+<td>437</td>
+<td>234</td>
+<td>385</td>
+<td>299</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> Image, ImageDraw</span>
+<span class="title">sym</span>=[<span class="number">354</span>,<span class="number">343</span>,<span class="number">326</span>,<span class="number">299</span>,<span class="number">269</span>,<span class="number">237</span>,<span class="number">262</span>,<span class="number">196</span>,<span class="number">284</span>,<span class="number">165</span>,<span class="number">336</span>,<span class="number">169</span>,<span class="number">357</span>,<span class="number">190</span>,<span class="number">379</span>,<span class="number">171</span>,<span class="number">432</span>,<span class="number">167</span>,<span class="number">455</span>,<span class="number">191</span>,<span class="number">437</span>,<span class="number">234</span>,<span class="number">385</span>,<span class="number">299</span>]
+<span class="title">im</span> = <span class="type">Image</span>.open(<span class="string">"ropes42.jpg"</span>)
+<span class="title">draw</span> = <span class="type">ImageDraw</span>.<span class="type">Draw</span>(im)
+<span class="title">draw</span>.line(sym,fill=<span class="number">128</span>)
+<span class="title">del</span> draw
+<span class="title">im</span>.show()
+</pre></td></tr></table></figure>
+
+<p>And it’s a <strong>heart</strong> shape.</p>
+<h2 id="43-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-morphine-2f-piercing-htm-22-3e-Domination-21-3c-2f-a-3e-">43. <a href="http://www.gamemastertips.com/cipher/morphine/piercing.htm" target="_blank">Domination!</a></h2>
+<p>It’s a really difficult one for a know-nothing in Music. First I google <strong>Domination Music Wiki</strong> and get into entry of <a href="http://en.wikipedia.org/wiki/Dominant_(music" target="_blank">dominant</a>. Why do I think it’s music related? Cause it’s a picture with notes water mark at the bottom, though reverted. </p>
+<p>Then I tried to change URL to <strong>dominant</strong>, new message:</p>
+<blockquote>
+<p>Oh indeed, maestro… :)</p>
+</blockquote>
+<p>At least I’m not in the wrong way. But what does the information in the source code suggest? </p>
+<blockquote>
+<p>What is all des?</p>
+</blockquote>
+<p>After carefully reading of <a href="http://en.wikipedia.org/wiki/Note" target="_blank">Note</a> entry in wiki. I noticed that des means D flat. Maybe I should change the URL to this kind of writing? Cause the only flat is D, I can deduce others’ name: <strong>gisadesa</strong>.</p>
+<blockquote>
+<p>No, no, no, you must dominate! DOMINATE!!!!</p>
+</blockquote>
+<p>Maybe it implys me to use the fifth note higher than now? </p>
+<blockquote>
+<p>Des —&gt; As; A —&gt; E; Gis —&gt; Dis</p>
+</blockquote>
+<p>And it’s <strong>disease</strong>.</p>
+<p>The second movement appeared.</p>
+<p>The picture shows a melody, with the background music named <strong>ladeedadeeda.wav</strong></p>
+<p>But the notes seems in a strange organization, it seems like letters: <strong>hallmark</strong>. Bingo, let’s come to the level 44.</p>
+<h2 id="44-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-morphine-2f-hallmark-22-3e-Where_is_it-3f-3c-2f-a-3e-">44. <a href="http://www.gamemastertips.com/cipher/morphine/hallmark" target="_blank">Where is it?</a></h2>
+<p>Hints:</p>
+<blockquote>
+<p>lunatic44a.jpg</p>
+</blockquote>
+<p>I could find subsequent lunatic44b.jpg to lunatic44e.jpg. But they all look the same.</p>
+<blockquote>
+<p>It’s never Lupus</p>
+</blockquote>
+<p>Google <strong>Lupus</strong>, it’s either an autoimmune disease, or a <a href="http://en.wikipedia.org/wiki/Lupus_(constellation" target="_blank">constellation</a>).</p>
+<p>But googling “It’s never Lupus”, almost all refered to quote from famous TV series hero: <strong>Dr. House</strong>. So maybe it’s suggestion <strong>Houses</strong> in Zodiac?</p>
+<p>I look back to the 5 pictures, after imported into iPhoto, I noticed the date of the picture is different.</p>
+<blockquote>
+<p>lunatic44a: 4 October, 2009<br>lunatic44b: 18 March, 2003<br>lunatic44c: 31 July, 2004<br>lunatic44d: 9 May, 2009<br>lunatic44e: 1 November, 2001  </p>
+</blockquote>
+<p>OMJMN? obvious it’s not a word. How about Zodiac of Sun Sign?<br>It’s:</p>
+<blockquote>
+<p>Libra Pisces Leo Taurus Scorpio</p>
+</blockquote>
+<p>Still not working. After extensive googling I notice a <a href="http://www.lunarium.co.uk/moonsign/calculator.jsp" target="_blank">page</a>. It can calculate the moon position on a specific date.</p>
+<blockquote>
+<p>Aries, Virgo, Aries, Scorpio, Taurus</p>
+</blockquote>
+<p>The password is <strong>avast</strong>.</p>
+<h2 id="45_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-transcendental-2f-desolation-htm-22-3e-Quartet-3c-2f-a-3e-">45 <a href="http://www.gamemastertips.com/cipher/transcendental/desolation.htm" target="_blank">Quartet</a></h2>
+<p>4 link pages from 4 persons’ heads. Plus a poetry</p>
+<blockquote>
+<p>We are each very different,<br>But we all get along.<br>So come and play with us!<br>Just don’t guess us wrong.   </p>
+</blockquote>
+<p>The 4 pages have extra riddle and those answers are: <strong>spade</strong>, <strong>diamond</strong>, <strong>club</strong> and <strong>heart</strong>. Go to individual page, and collect information in source code:</p>
+<blockquote>
+<p>How clever you are…you solved that riddle on a <strong>whim</strong>!<br>Well done! But ‘tis a shame that you waste perfectly valuable brain power on such <strong>si</strong>lly riddles.<br>Amazing! Your riddle-solving skills are simply magi<strong>cal</strong>!<br>That is astoundingly correct! You are most certainly in the minor<strong>ity</strong> if you got this one right.</p>
+</blockquote>
+<p><a href="http://www.gamemastertips.com/cipher/transcendental/whimsicality" target="_blank"><strong>whimsicality</strong></a>, going to 45B part.</p>
+<p>Title:</p>
+<blockquote>
+<p>Pick a card…</p>
+</blockquote>
+<p>And Coordinates of X: <strong>K</strong>ing, <strong>Q</strong>ueen, <strong>J</strong>ack</p>
+<p>Coordinates of Y: <strong>S</strong>pade, <strong>D</strong>iamond, <strong>C</strong>lub, <strong>H</strong>eart</p>
+<p>6 cards link to a small piece of card, noticing it’s Bicycle Brand. And extensive googling, luckily I found this picture including all cards we needed.</p>
+<p><img src="http://1.bp.blogspot.com/-iyjKa95L5l4/TnYaGK7uo6I/AAAAAAAABB0/WJ_mMLhS1f4/s1600/DSC00984+copy.jpg" alt="CQ"></p>
+<p>so, even the color is inverted, I could still guess it’s piece of cards.</p>
+<blockquote>
+<p>oddcarda: King of Clubs<br>oddcardb: Queen of Diamonds<br>oddcardc: King of Hearts<br>oddcardd: Jack of Diamonds<br>oddcarde: Jack of Spades<br>oddcardf: King of Spades  </p>
+</blockquote>
+<p>According to the coordinates, the letters are:</p>
+<blockquote>
+<p><strong>vortex</strong></p>
+</blockquote>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2011-12-13T15:49:00.000Z"><a href="/blog/2011/12/13/cipher-crack-the-code-6/">Dec 13 2011</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2011/12/13/cipher-crack-the-code-6/">Cipher: Crack the Code (6)</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="37-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-convolutionistic-2f-furryanimalprotest-htm-22-3e-Clever_little_swine-3c-2f-a-3e-">37. <a href="http://www.gamemastertips.com/cipher/convolutionistic/furryanimalprotest.htm" target="_blank">Clever little swine</a></h2>
+<p>letters in the picture:</p>
+<blockquote>
+<p>N U. r. j. o L r y</p>
+</blockquote>
+<p>googling “cipher” make me notice a special cipher named “<a href="http://en.wikipedia.org/wiki/Pigpen_cipher" target="_blank">Pigpen Cipher</a>“. It perfectly fits content of the picture. </p>
+<p>Change URL to <strong>pigpen.htm</strong>:</p>
+<blockquote>
+<p>Correctamundo…whaddya gonna do next?</p>
+</blockquote>
+<p>But pigpen cipher is mapping letters to symbols, we already got letters here, how can we get symbols and translate them to letters? Wait, the selection of letters look like symbols, maybe they are not letters at all!</p>
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/36/Pigpen_cipher_key.svg/200px-Pigpen_cipher_key.svg.png" alt="pigpen map"></p>
+<blockquote>
+<p>n—&gt;h, u.—&gt;k, r.—&gt;r, J.—&gt;j, o—&gt;e, L—&gt;c, r—&gt;i, J—&gt;a</p>
+</blockquote>
+<p>for short, it should be <a href="http://wordsmith.org/anagram/" target="_blank">anagram</a> of “hkrjecia”, the answer is <strong>hijacker</strong>.</p>
+<h2 id="38-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-balthazar-2f-seesyou-htm-22-3e-963_959_966_959_954_955_951_962-3c-2f-a-3e-">38. <a href="http://www.gamemastertips.com/cipher/balthazar/seesyou.htm" target="_blank">963 959 966 959 954 955 951 962</a></h2>
+<p>Hints:</p>
+<blockquote>
+<p>&amp;#</p>
+<p>sweetbalthazar38.jpg</p>
+</blockquote>
+<p>The numbers sequence must suggest something, <strong>&amp;#</strong> looks like the prefix of special characters in HTML, maybe it’s HTML symbols?</p>
+<p>According to w3school <a href="http://www.w3schools.com/tags/ref_symbols.asp" target="_blank">reference</a>, the numbers stand for:</p>
+<blockquote>
+<p>σ ο φ ο κ λ η ς</p>
+</blockquote>
+<p>Greek alphabet? <a href="http://translation.babylon.com/greek/to-english/" target="_blank">Translating</a> into english:</p>
+<blockquote>
+<p>sophokles</p>
+</blockquote>
+<p>New page add more hints:</p>
+<p>Title:</p>
+<blockquote>
+<p>The creature stirs…</p>
+</blockquote>
+<p>Source:</p>
+<blockquote>
+<p>FREEMEMORTAL</p>
+<p>You’re planning your own demise. Don’t listen to the insane creature. Just go to escape.htm and skip the rest of the level altogether; it’s for your own good.</p>
+<p>sophocles.jpg<br>eyeofbalthazar.jpg</p>
+</blockquote>
+<p><strong>escape.htm</strong> had hints:</p>
+<blockquote>
+<p>NOESCAPE</p>
+<p>FUTILEMORTAL<br>TURNBACKANDFREEMEFROMMYCONFINES</p>
+<p>escape.jpg</p>
+<p>(Go back to level 38; there is no way to proceed from here)</p>
+</blockquote>
+<p>There is a table <strong>eyeofbalthazar.jpg</strong>. Seems some greek characters again.</p>
+<p>By using the greek letters in title of seesyou.htm, as x-y coordinates,</p>
+<blockquote>
+<p>σ ο —&gt; κ<br>φ ο —&gt; α<br>κ λ —&gt; τ<br>η ς —&gt; ι</p>
+</blockquote>
+<p>Go to <strong>kati.htm</strong>, content is:</p>
+<blockquote>
+<p>Agklikos</p>
+</blockquote>
+<p>It’s pronunciation of <a href="http://www.greek-dictionary.org/translate-english/english" target="_blank"><strong>αγγλικός</strong></a>, which means english in Greek. </p>
+<p>Does it suggest change <strong>κατι</strong> to English word? By <a href="http://www.greek-dictionary.org/search/%CE%BA%CE%B1%CF%84%CE%B9/greek" target="_blank">translating</a>, it means <strong>something</strong> in English.</p>
+<p>A page title <strong><a href="http://www.gamemastertips.com/cipher/balthazar/something.htm" target="_blank">IAMWOKEN!</a></strong> is on <strong>something.htm</strong>, click the cipher symbol, next level comes.</p>
+<h2 id="39-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-balthazar-2f-riseofbalthazar-htm-22-3e-ISEEYOUSTILL-3c-2f-a-3e-">39. <a href="http://www.gamemastertips.com/cipher/balthazar/riseofbalthazar.htm" target="_blank">ISEEYOUSTILL</a></h2>
+<p>Source code next to title:</p>
+<blockquote>
+<p>BUTYOUCANNOTSEEMEINTHEDARK</p>
+</blockquote>
+<p>In the head:</p>
+<blockquote>
+<p>THEREARENOMORELETTERSHERE</p>
+</blockquote>
+<p>In the body:</p>
+<blockquote>
+<p>atomic39.png<br>FUTILEFUTILE<br>CATCHMEMORTAL<br>IAMMASTEROFTHEELEMENTS<br>YOURIGNORANCEBLINDSYOU  </p>
+</blockquote>
+<p>The only useful information is <strong>atomic</strong> and <strong>Master of the elements</strong> Let’s come to the picture. The level number is not as usual, it’s:</p>
+<blockquote>
+<p>λθ</p>
+</blockquote>
+<p>According to wiki <a href="http://en.wikipedia.org/wiki/Greek_numerals" target="_blank">entry</a>, it’s 39 in greek numeral system.</p>
+<p>A red greek word is on the picture:</p>
+<blockquote>
+<p>βαλθαζαρ</p>
+</blockquote>
+<p>And their are 4 points in the pictures too. 4 elements?</p>
+<blockquote>
+<p>But you cannot see me in the dark</p>
+</blockquote>
+<p>Adjust threshold again?</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> Image</span>
+<span class="title">pic</span>=<span class="type">Image</span>.open('atomic39.png')
+<span class="title">f</span>=lambda x: x &gt; <span class="number">39</span> and <span class="number">255</span> or <span class="number">0</span>
+<span class="title">new_pic</span>=pic.point(f)
+<span class="title">new_pic</span>.show()
+</pre></td></tr></table></figure>
+
+<p>After several attempts, I got nothing. Dark? Maybe it’s not threshold, it’s brightness?</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> Image, ImageEnhance</span>
+<span class="title">pic</span>=<span class="type">Image</span>.open('atomic39.png')
+<span class="title">enh</span>=<span class="type">ImageEnhance</span>.<span class="type">Brightness</span>(pic)
+<span class="title">enh</span>.enhance(<span class="number">50</span>).show()
+</pre></td></tr></table></figure>
+
+<p>Haha, new hints:</p>
+<blockquote>
+<p>PLAYWITHMENOW<br>DONOTSEARCHFORME<br>SEARCHFORWHATYOUCANNOTDECIPHER<br>DICIPHERME</p>
+</blockquote>
+<p>And we can see 4 groups of greek numbers in the four corners.</p>
+<blockquote>
+<p>top-left: β, η, ιη, λβ, ιη, θ, β (2,8,18,32,18,9,2)<br>top-right: β, η, ιη, λβ, ιη, η, β (2,8,18,32,18,8,2)<br>bottom-left: β, η, ιη, ιη, ϝ (2,8,18,18,6)<br>bottom-right: β, η, ιη, α (2,8,18,1)</p>
+</blockquote>
+<p>The numbers are quite regular. It looks like the <a href="http://en.wikipedia.org/wiki/Electron_configurations_of_the_elements_(data_page" target="_blank">electron configuration of chemical elements</a>)</p>
+<p>Then the 4 elements should be:</p>
+<blockquote>
+<p>top-left: 89 Ac actinium<br>top-right: 88 Ra radium<br>bottom-left: 52 Te tellurium<br>bottom-right: 29 Cu copper</p>
+</blockquote>
+<p>By getting anagram of “AcRaTeCu”, the answer should be <strong>accurate</strong>.</p>
+<h2 id="40-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-balthazar-2f-accurate-htm-22-3e-TORNISTHEBARRIER-3c-2f-a-3e-">40. <a href="http://www.gamemastertips.com/cipher/balthazar/accurate.htm" target="_blank">TORNISTHEBARRIER</a></h2>
+<blockquote>
+<p>THATBINDSMESO<br>accurate.jpg<br>CATCHME<br>IAMFREE</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+</pre></td><td class="code"><pre><span class="title">from</span> cStringIO <span class="import"><span class="keyword">import</span> StringIO</span>
+<span class="import"><span class="keyword">import</span> Image, ImageDraw, urllib, ImageEnhance, ImageFont</span>
+
+<span class="title">pic</span>=<span class="type">Image</span>.open(<span class="type">StringIO</span>(urllib.urlopen('http://cipher:hijacker@www.gamemastertips.com/cipher/balthazar/accurate.jpg').read()))
+<span class="title">flip_pic</span>=pic.transpose(<span class="type">Image</span>.<span class="type">FLIP_LEFT_RIGHT</span>)
+<span class="preprocessor">#flip_pic.show()</span>
+
+<span class="preprocessor">#Oops, it looks like web page source code hiding behind the picture!</span>
+<span class="preprocessor">#Picture seems too dark? Would brightness increasing help?</span>
+
+<span class="title">enh</span>=<span class="type">ImageEnhance</span>.<span class="type">Brightness</span>(pic)
+<span class="title">enh_pic</span>=enh.enhance(<span class="number">100</span>)
+<span class="preprocessor">#enh_pic.show()</span>
+
+<span class="preprocessor">#Does it suggest we use this mask to source code and see which letters were selected? Let's prepare the mask first</span>
+
+<span class="title">f</span>=lambda x: x &gt; <span class="number">103</span> and <span class="number">255</span> or <span class="number">0</span>
+<span class="title">mask</span>=enh_pic.point(f)
+<span class="preprocessor">#mask.show()</span>
+</pre></td></tr></table></figure>
+
+<p>Then use screen shot to capture the source code browser window. for instance like this:</p>
+<p><img src="http://panchoat.org/files/cipher/lv40sc.jpg" alt="source code"></p>
+<p>Once got the screen shot, then we could get the masked image.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> Image</span>
+<span class="title">im</span>=<span class="type">Image</span>.open('lv40sc.jpg')
+<span class="title">l</span>,t=-<span class="number">3</span>,<span class="number">3</span>
+<span class="title">r</span>,b=l+<span class="number">534</span>,t+<span class="number">417</span>
+<span class="title">box</span>=(l,t,r,b)
+<span class="title">src_pic</span>=im.crop(box).convert('<span class="type">RGBA'</span>)
+<span class="title">src_pic</span>.putalpha(mask.convert('<span class="type">L'</span>))
+<span class="title">src_pic</span>.save('lv40rst.png')
+</pre></td></tr></table></figure>
+
+<p><img src="http://panchoat.org/files/cipher/lv40rst.png" alt="source code"></p>
+<p>But the mapped letters:</p>
+<blockquote>
+<p>e, h, a, i, o</p>
+</blockquote>
+<p>cannot form any anagram. After careful scrutiny, It seems the source code image had a tiny missmatch. So, it will consume too much time to adjust my source code picture. So I just mapped the letters manually.   </p>
+<p>the smallest x-axis distance is between line 1 and line 4, it’s about 0.2mm in my screen. I measured the distance between the white point to the left and top black edge in <strong>mask</strong> image. They were:</p>
+<blockquote>
+<p>first: y=2mm, line=1;x=20mm, 10th character:a<br>second: y=10.5mm, line=3: x=16mm, 8th characer: r<br>third: y=23.5mm, line=6; x=6mm, 3rd character: u<br>fourth: y=27mm line=7; x=18mm, 9th character: g<br>fifth: y=39.5mm line=10; x=10mm. 5th character: d  </p>
+</blockquote>
+<p>Change URL to <strong>guard.htm</strong>, it firstly showed a image page then redirect to <strong>tooslow.htm</strong> and the content is:</p>
+<blockquote>
+<p>YOUCANNOTCATCHMEMORTAL</p>
+</blockquote>
+<p>it’s simple, we could get the content by python script:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> urllib</span>
+<span class="title">text</span>=urllib.urlopen('http://cipher:hijacker@www.gamemastertips.com/cipher/balthazar/guard.htm').read()
+</pre></td></tr></table></figure>
+
+<p>Haha,according to the content of <strong>text</strong>, let’s go to <strong>dawn.htm</strong>.</p>
+<p>Click the right eye of balthazar, go to <strong>break.htm</strong>.</p>
+<p>In the image tag, property “alt” is :</p>
+<blockquote>
+<p>dawn:break</p>
+</blockquote>
+<p>so, click the image, and input username:password. next level is <a href="http://www.gamemastertips.com/cipher/another/strangelevel.htm" target="_blank">strangelevel</a>.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2011-12-09T15:49:00.000Z"><a href="/blog/2011/12/09/cipher-crack-the-code-5/">Dec 9 2011</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2011/12/09/cipher-crack-the-code-5/">Cipher: Crack the Code (5)</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="32-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-aroundtherosie-2f-rhombicosidodecahedron-htm-22-3e-Codeword-3a-_Blowgun-3c-2f-a-3e-">32. <a href="http://www.gamemastertips.com/cipher/aroundtherosie/rhombicosidodecahedron.htm" target="_blank">Codeword: Blowgun</a></h2>
+<p>Hints:</p>
+<p>Next to title in source code:</p>
+<blockquote>
+<p>forget this until you find the object to which you can apply it</p>
+<p>../music1.wav<br>yayfor32.jpg</p>
+</blockquote>
+<p>There must be “music2.wav” or “nayfor32.jpg”. I tried both but they all redirect to the one appeared in the source code. We got clues!</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> urllib</span>
+<span class="title">music2</span>=urllib.urlopen(<span class="string">"http://awesome:sauce@www.gamemastertips.com/cipher/music2.wav"</span>).read()
+<span class="title">nayfor32</span>=urllib.urlopen(<span class="string">"http://awesome:sauce@www.gamemastertips.com/cipher/aroundtherosie/nayfor32.jpg"</span>).read()
+<span class="import"><span class="keyword">import</span> Image</span>
+<span class="title">from</span> cStringIO <span class="import"><span class="keyword">import</span> StringIO</span>
+<span class="title">nayfor32</span>=<span class="type">Image</span>.open(<span class="type">StringIO</span>(nayfor32))
+</pre></td></tr></table></figure>
+
+<p>But it’s useless. I guess it may be the same as previous level, so I change extention to different format as PNG or GIF. And it turn out to be GIF.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> urllib</span>
+<span class="title">nayfor32</span>=urllib.urlopen(<span class="string">"http://awesome:sauce@www.gamemastertips.com/cipher/aroundtherosie/nayfor32.gif"</span>).read()
+<span class="import"><span class="keyword">import</span> Image</span>
+<span class="title">from</span> cStringIO <span class="import"><span class="keyword">import</span> StringIO</span>
+<span class="title">nayfor32</span>=<span class="type">Image</span>.open(<span class="type">StringIO</span>(nayfor32))
+</pre></td></tr></table></figure>
+
+<p>After several trial, It’s a GIF animation with 26 frames. </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="code"><pre><span class="transposed_variable">nayfor32.</span>seek(<span class="number">0</span>)
+<span class="transposed_variable">nayfor32.</span>save(<span class="string">'lv32-0.jpg'</span>)
+pics=<span class="matrix">[nayfor32.copy()]</span>
+palette=<span class="transposed_variable">nayfor32.</span>getpalette()
+<span class="keyword">for</span> <span class="built_in">i</span> in range(<span class="number">1</span>,<span class="number">26</span>):
+	<span class="transposed_variable">nayfor32.</span>seek(<span class="built_in">i</span>)
+	pic=<span class="transposed_variable">nayfor32.</span>copy()
+	<span class="transposed_variable">pic.</span>putpalette(palette)
+	<span class="transposed_variable">pics.</span>append(pic)
+	<span class="transposed_variable">pic.</span>save(<span class="string">'lv32-%d.gif'</span> <span class="comment">% i)</span>
+</pre></td></tr></table></figure>
+
+<p><a href="http://www.evanolds.com/" target="_blank">GIF Frame Extractor</a> is an alternative program if you don’t want to do the python coding.</p>
+<p>And each one has a new letter in it. from 0 -&gt; 25, they are:</p>
+<blockquote>
+<p>G A H O T A E O L I U L I Y C X Q T N I M S H J A G,</p>
+</blockquote>
+<p>So I tried <strong>gahotaeoliuliycxqtnimshjag</strong> but failed.</p>
+<p>wikipedia for <strong><a href="http://en.wikipedia.org/wiki/Code_word" target="_blank">code word</a></strong> and <strong><a href="http://en.wikipedia.org/wiki/Blowgun" target="_blank">blowgun</a></strong>:</p>
+<blockquote>
+<p><strong>Code Word</strong>: In communication, a code word is an element of a standardized code or protocol. Each code word is assembled in accordance with the specific rules of the code and assigned a unique meaning. Code words are typically used for reasons of reliability, clarity, brevity, or secrecy.  </p>
+<p><strong>Blow Gun</strong>: A blowgun (also called a blowpipe or blow tube) is a simple weapon consisting of a small tube for firing light projectiles or darts.  </p>
+</blockquote>
+<p>I need to find another direction. 26 layers? does it means replacing letters? Or it’s  Vigenère cipher again? Let’s try.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> string</span>
+<span class="title">encoded</span>=<span class="string">"G A H O T A E O L I U L I Y C X Q T N I M S H J A G"</span>.translate(<span class="type">None</span>,<span class="string">" "</span>).lower()
+<span class="title">len_e</span>=len(encoded)
+<span class="title">decoded</span>=<span class="string">""</span>
+<span class="title">password</span>=<span class="string">"blowgun"</span>
+<span class="title">ord_a</span>=ord('a')
+<span class="title">lc</span>=string.lowercase
+<span class="title">len_p</span>=len(password)
+<span class="title">for</span> x <span class="keyword">in</span> range(len_e):
+	base=ord(encoded[x])-ord_a
+	shift=ord(password[x%len_p])-ord_a
+	decoded+=chr((base-shift)%<span class="number">26</span>+ord_a)
+</pre></td></tr></table></figure>
+
+<p>The result is nonsense. substitution?</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre>import string
+encoded=<span class="string">"G A H O T A E O L I U L I Y C X Q T N I M S H J A G"</span><span class="preprocessor">.translate</span>(None,<span class="string">" "</span>)<span class="preprocessor">.lower</span>()
+tbl=string<span class="preprocessor">.maketrans</span>(string<span class="preprocessor">.lowercase</span>,encoded)
+<span class="string">"blowgun"</span><span class="preprocessor">.translate</span>(tbl)
+</pre></td></tr></table></figure>
+
+<p>Oops, it seems work! The result is “<strong>alchemy</strong>“.</p>
+<h2 id="33-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-aroundtherosie-2f-alchemy-htm-22-3e-Fortune_teller-3c-2f-a-3e-">33. <a href="http://www.gamemastertips.com/cipher/aroundtherosie/alchemy.htm" target="_blank">Fortune teller</a></h2>
+<p>Hints: </p>
+<p>A long paragraph:</p>
+<blockquote>
+<p>In the present, a mad buffoon prances past. He is the spirit seeking experience;<br>From the past comes to me the iron fist of power, command, and order;<br>But the future is grim. Chaos, ruin; they blaze across my eyes like wildfire;<br>The reason behind the inquiry appears to ride on honor, conquest, and victory;<br>Lastly, there is great potential, but first there is a pressing need to withdraw from isolation and share what you have learned with the world.  </p>
+</blockquote>
+<p>picture name:</p>
+<blockquote>
+<p>gettingcreeped33.jpg</p>
+</blockquote>
+<p>link to next level:</p>
+<blockquote>
+<p>../convolutionistic/</p>
+</blockquote>
+<p>click the link:</p>
+<blockquote>
+<p>The rider is waiting.</p>
+</blockquote>
+<p>After several random googling. It turns out to be related to Tarot: <a href="http://en.wikipedia.org/wiki/Rider-Waite-Colman_Smith_deck" target="_blank">Rider-Waite-Colman smith deck</a>.</p>
+<p>And the 5 lines suggesting 5 cards in Major arcana:</p>
+<blockquote>
+<p>The Fool, The Emperor, The Tower, The Chariot and The Hermit.</p>
+</blockquote>
+<p>Connect the Initials, answer should be: <strong>fetch</strong>(username:cipher).</p>
+<h2 id="34-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-convolutionistic-2f-sentences-htm-22-3e-2C-3d-Y-3c-2f-a-3e-">34. <a href="http://www.gamemastertips.com/cipher/convolutionistic/sentences.htm" target="_blank">2C=Y</a></h2>
+<p>Hints:</p>
+<blockquote>
+<p>F7=N<br>white.jpg<br>A4=G  </p>
+</blockquote>
+<p>First, try <strong>black.jpg</strong>. A new figure showed and more hints:</p>
+<blockquote>
+<p>H6=X<br>Similarity breeds solution</p>
+</blockquote>
+<p>Refering to <a href="http://en.wikipedia.org/wiki/Chess" target="_blank">Chess</a> entry in wikipedia, I learnt the notation of chess.</p>
+<blockquote>
+<p>Rook, kNight, King, Queen, Pawn, Bishop</p>
+</blockquote>
+<p>But there’s no <strong>G</strong> , <strong>X</strong> or <strong>Y</strong> in the notation. After serveral trial, It turns out that it’s very simple: just place A-Z in the chessboard, and each position will represent a letter. Then , all four hints are in their position. </p>
+<blockquote>
+<p>A B C D E F G H<br>I J K L M N O P<br>Q R S T U V W X<br>Y Z A B C D E F<br>G H I J K L M N<br>O P Q R S T U V<br>W X Y Z A B C D<br>E F G H I J K L</p>
+</blockquote>
+<p>first, the white.jpg:</p>
+<blockquote>
+<p>white: B, M, R, S, X, Z, B, F<br>black: D, F, L, Q, U, W, A, F, H, D</p>
+</blockquote>
+<p>then, the black.jpg:</p>
+<blockquote>
+<p>white: U, B, L, R, S, W, C, D, F, J, L<br>black: B, G, I, J, M, P, V, A  </p>
+</blockquote>
+<p>What’s similarity? letters in common?</p>
+<p>From the top to bottom line, left to right direction, letters in shared position between 2 pictures are:</p>
+<blockquote>
+<p>B, U, A, R, S, D, </p>
+</blockquote>
+<p>By <a href="http://wordsmith.org/anagram/" target="_blank">anagram solver</a>, the anagram word should be <strong>absurd</strong>.</p>
+<h2 id="35-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-convolutionistic-2f-absurd-htm-22-3e-Quel_type_de_photographie_est_ceci-3f-3c-2f-a-3e-">35. <a href="http://www.gamemastertips.com/cipher/convolutionistic/absurd.htm" target="_blank">Quel type de photographie est ceci?</a></h2>
+<p>Source code:</p>
+<blockquote>
+<p>silvousplait35.jpg<br>Vous pouvez apprendre beaucoup plus sur une photo en regardant au-delà de la surface  </p>
+</blockquote>
+<p>The language seems like France. By <a href="http://translate.google.com" target="_blank">google translate</a>, the title means:</p>
+<blockquote>
+<p>What type of photography is this?</p>
+</blockquote>
+<p>And the picture filename:</p>
+<blockquote>
+<p>please</p>
+</blockquote>
+<p>The description:</p>
+<blockquote>
+<p>You can learn much more about a picture, looking beyond the surface</p>
+</blockquote>
+<p>To investigate the title question, I check wikipedia <a href="http://en.wikipedia.org/wiki/Photography" target="_blank">entry</a>. In the <strong>See Also</strong> Session, in the column of <strong>Techniques</strong>. There is a word and only it’s French word: <a href="http://en.wikipedia.org/wiki/Contre-jour" target="_blank"><strong>Contre-jour</strong></a> and it seems suitable for the picture.</p>
+<p>To address the second question, I think EXIF information will be helpful. According to <a href="http://stackoverflow.com/questions/765396/exif-manipulation-library-for-python" target="_blank">stackoverflow</a>, I used the code:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="code"><pre><span class="keyword">from</span> PIL <span class="keyword">import</span> Image
+<span class="keyword">from</span> PIL.ExifTags <span class="keyword">import</span> TAGS
+
+<span class="function"><span class="keyword">def</span> <span class="title">get_exif</span><span class="params">(fn)</span>:</span>
+    ret = {}
+    i = Image.open(fn)
+    info = i._getexif()
+    <span class="keyword">for</span> tag, value <span class="keyword">in</span> info.items():
+        decoded = TAGS.get(tag, tag)
+        ret[decoded] = value
+    <span class="keyword">return</span> ret
+
+exif=get_exif(<span class="string">'silvousplait35.jpg'</span>)
+</pre></td></tr></table></figure>
+
+<p>A strange part in the exif is the date it was taken: <strong>1826-01-01</strong>. I google this date and French together. And it turns out that it was the first photo taken by <strong>Joseph Niepce</strong>. And He called this kind of photo <strong>heliography</strong>.</p>
+<p>Change the URL to <strong>heliography.jpg</strong>, and an identical picture appeared. Does it really the same?</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>exif=get_exif(<span class="comment">'heliography.jpg')</span>
+<span class="string">""</span>.<span class="built_in">join</span>([ <span class="built_in">chr</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> exif[<span class="number">40092</span>][::<span class="number">2</span>] ])
+</pre></td></tr></table></figure>
+
+<p>Next level should be <strong>jeprendslechoudansmonpantalon.htm</strong></p>
+<h2 id="36-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-convolutionistic-2f-jeprendslechoudansmonpantalon-htm-22-3e-Level_36-3c-2f-a-3e-">36. <a href="http://www.gamemastertips.com/cipher/convolutionistic/jeprendslechoudansmonpantalon.htm" target="_blank">Level 36</a></h2>
+<p>This level is very tricky, it will redirect directly to a new <a href="http://www.gamemastertips.com/cipher/convolutionistic/securityconfirmation.htm" target="_blank">page</a>.</p>
+<p>The hint is :</p>
+<blockquote>
+<p>Please re-enter the answer for level 36 in order to progress to level 37.</p>
+</blockquote>
+<p>By using google translate, the link is french and in English it means:</p>
+<blockquote>
+<p>I take the cabbage in my pants</p>
+</blockquote>
+<p>So, change the URL to <strong>itakethecabbageinmypants.htm</strong></p>
+<p>The new page appeared. </p>
+<p>The picture name:</p>
+<blockquote>
+<p>itakecabbageinmytrousers.jpg</p>
+</blockquote>
+<p>Then I was stuck here, I must look back to the page before redirecting. </p>
+<p>I have to use python code to get the content.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> urllib</span>
+<span class="title">f</span>=open('lv36.txt','w')
+<span class="title">lv36</span>=urllib.urlopen('http://www.gamemastertips.com/cipher/convolutionistic/jeprendslechoudansmonpantalon.htm').read()
+<span class="title">f</span>.write(lv36)
+<span class="title">f</span>.close()
+</pre></td></tr></table></figure>
+
+<p>The cotents are:</p>
+<blockquote>
+<p>|-|3ll0, d15 15 73|~| 1337 h4&gt;<x0r5 b0B. h4>&lt;&gt;<0r5 b0B H45 ha>&lt;&gt;&lt;0r33d L\/l 36 10L0L010L.<br>u n0 |-|4\/3<br>n0 w41 2 50l\/3 1\/L 36 n4u lolL00lo0lz0rrz2 j00<br>73|-| f41L3r H4xx0z b0b pwnz n00b20rz l0L00L0l!!!!1! joo c4n7 3\/3n f16ur3 0\/\/t b0b5 1337<br>53kr37 c0d3 LOl0l0lol!!!!1!!1  </p>
+</blockquote>
+<p>Obviously, it’s <a href="http://en.wikipedia.org/wiki/Leet" target="_blank">Leet</a>, after <a href="http://www.jayssite.com/stuff/l33t/l33t_translator.html" target="_blank">translation</a>, it should be:</p>
+<blockquote>
+<p>hello, dis is teh elite haxxors bob. haxxors bob has haxxoreed lvl eg iololoiol.<br>u no have<br>no wai to solve level 36 nau lollooloolerrzs you<br>teh failer haxxos bob owns noobers loloolol.i.you cant even figure owt bobs leet<br>sekret code lolololol.i.i</p>
+</blockquote>
+<p>Something similar to the tarot level, right? Connect the initials: <a href="http://www.gamemastertips.com/cipher/convolutionistic/hunts.htm" target="_blank"><strong>hunts</strong></a>.</p>
+<p>Even though this page claims it’s Error 403, but actually, new hint in the source:</p>
+<pre><code><span class="function_or_atom">l00oL</span> |-|<span class="number">4</span>kx20r5 <span class="function_or_atom">b0B</span> <span class="function_or_atom">h45</span> <span class="function_or_atom">h4</span>&gt;&lt;<span class="function_or_atom">xor33d</span> <span class="function_or_atom">d15</span> <span class="function_or_atom">p463</span> + <span class="function_or_atom">f0</span>\/\/<span class="function_or_atom">nd</span> <span class="function_or_atom">f0rb11d3n</span> <span class="function_or_atom">f1l3</span> <span class="number">10</span><span class="variable">L0lL0L</span> + <span class="number">73</span>h <span class="function_or_atom">f1l3</span> <span class="function_or_atom">n4m3</span> <span class="number">15</span> <span class="number">5</span>up3r4w50m3 <span class="function_or_atom">d07</span> <span class="function_or_atom">z1p</span> <span class="variable">L0llol1lz</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="number">1</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="number">1</span>
+</code></pre><p>after translation, it’s </p>
+<blockquote>
+<p>loool hakxers bob has haxxoreed dis page t fownd forbllden file iolollol t the file name is superawsome dot zip lollolils.i.i</p>
+</blockquote>
+<p>So, just download this file <a href="http://www.gamemastertips.com/cipher/convolutionistic/superawesome.zip" target="_blank"><strong>superawesome.zip</strong></a> and after extraction, the content of <strong>teh_answer.txt</strong> is:</p>
+<pre><code><span class="variable">L0000l0l11l0l22zzz</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span> <span class="number">1</span> <span class="function_or_atom">f007z0r23d</span> <span class="function_or_atom">joo</span> <span class="function_or_atom">n00bz0r</span> <span class="variable">LOLOLOL10101lol</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="number">11</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="number">1</span> <span class="variable">Teh</span> <span class="number">4</span>n5w3r <span class="number">15</span> <span class="number">1</span>n <span class="function_or_atom">t3</span>|-| <span class="number">533</span>kr37 <span class="function_or_atom">c0d3</span> <span class="function_or_atom">bu7</span> <span class="function_or_atom">jooz</span> <span class="function_or_atom">r</span> <span class="number">2</span> <span class="function_or_atom">n00b20r3d</span>  <span class="function_or_atom">f0r</span> <span class="function_or_atom">my</span> <span class="number">1337</span>z00r <span class="function_or_atom">c0d3</span> <span class="variable">LOLO1lOloLOL</span><span class="exclamation_mark">!</span><span class="variable">Lo1l10LoloLr0tflmfao</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="number">1</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="number">1</span><span class="exclamation_mark">!</span> <span class="variable">BTW</span> /\/\<span class="function_or_atom">y</span> <span class="function_or_atom">n4m3</span> <span class="number">15</span>n7 <span class="function_or_atom">b0B</span> <span class="function_or_atom">i75</span> <span class="number">54</span>mul3 + <span class="number">1</span>m <span class="function_or_atom">m0r3</span> |~|<span class="number">0</span>r53 <span class="variable">L0000Lz0rz</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="number">1</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="number">1</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span> <span class="number">111011101000101110100010100011101110001110101110111</span> 
+</code></pre><p>which means:</p>
+<pre><code><span class="transposed_variable">loooolollllolzzzzs.</span><span class="built_in">i</span> footerzed you noober <span class="transposed_variable">lolololioioilol.</span><span class="transposed_variable">ll.</span><span class="built_in">i</span> the answer is in the seekret code but yous are <span class="number">5</span> noobered  <span class="keyword">for</span> my elitezoor code <span class="transposed_variable">loloilolololiloiliolololrotflmfao.</span><span class="transposed_variable">i.</span><span class="transposed_variable">i.</span>btw my name isnt bob its samule t im more <span class="built_in">i</span>~brse <span class="transposed_variable">loooolers.</span><span class="transposed_variable">i.</span><span class="transposed_variable">i.</span>lliollioloooiollioloooiolooolliolllooollioiolliolli
+</code></pre><p>The last line seems like ASCII code, </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>str=<span class="string">"111011101000101110100010100011101110001110101110111"</span>
+<span class="function"><span class="title">len</span><span class="params">(str)</span></span>
+</pre></td></tr></table></figure>
+
+<p>The length is 51, so it must not be ASCII. Noticing the lenght of sequence of 1 or 0, it’s either 1 or 3, is it morse code?</p>
+<blockquote>
+<p>—. .-. .. — -.—</p>
+</blockquote>
+<p>Online <a href="http://www.onlineconversion.com/morse_code.htm" target="_blank">translator</a> help to decode this string to:</p>
+<blockquote>
+<p> <strong>GRIMY</strong> </p>
+</blockquote>
+<p>And that’s it. New page <a href="http://www.gamemastertips.com/cipher/convolutionistic/grimy.htm" target="_blank">grimy.htm</a> shows:</p>
+<blockquote>
+<p>Zip-a-dee-doo-dah</p>
+</blockquote>
+<p>So, download file <strong>grimy.zip</strong>, it contains a figure named level37_concept_ar_old.jpg. Address line URL is :</p>
+<blockquote>
+<p><strong>furryanimalprotest.htm</strong></p>
+</blockquote>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2011-12-05T05:26:00.000Z"><a href="/blog/2011/12/05/cipher-crack-the-code-4/">Dec 5 2011</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2011/12/05/cipher-crack-the-code-4/">Cipher: Crack the Code (4)</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="25-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-portention-2f-tomatojuice-htm-22-3e-A_colorful_table-3c-2f-a-3e-">25. <a href="http://www.gamemastertips.com/cipher/portention/tomatojuice.htm" target="_blank">A colorful table</a></h2>
+<p>Hints:</p>
+<blockquote>
+<p>gimmelevel25.jpg<br>i got another gift for you</p>
+</blockquote>
+<p>First, <a href="http://en.wikipedia.org/wiki/Gimme" target="_blank">gimme</a> means:</p>
+<blockquote>
+<p>In golf, a gimme is a shot that the other players agree can count automatically without actually being played.</p>
+</blockquote>
+<p>Gift? Maybe GIF?</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> urllib, Image  </span>
+<span class="title">from</span> cStringIO <span class="import"><span class="keyword">import</span> StringIO  </span>
+<span class="title">lv25_str</span>=urllib.urlopen(<span class="string">"http://cipher:pyramids@www.gamemastertips.com/ cipher/portention/gimmelevel25.gif"</span>).read()  
+<span class="title">lv25_io</span>=<span class="type">StringIO</span>(lv25_str)  
+<span class="title">lv25_pic</span>=<span class="type">Image</span>.open(lv25_io)
+</pre></td></tr></table></figure>
+
+<p>But it’s not a normal GIF file. Refer to <a href="http://www.onicos.com/staff/iz/formats/gif.html#header" target="_blank">this page</a>:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre> <span class="number">13</span>      ? <span class="keyword">bytes</span>  &lt;Global Color Table(<span class="number">0.</span><span class="number">.255</span> x <span class="number">3</span> <span class="keyword">bytes</span>) <span class="keyword">if</span> GCTF is <span class="constant">one</span>&gt;  
+         ? <span class="keyword">bytes</span>  &lt;Blocks&gt;  
+         <span class="number">1</span> <span class="keyword">bytes</span>  &lt;Trailer&gt; (<span class="number">0x3b</span>)
+</pre></td></tr></table></figure>
+
+<p>Color Table? It must be what we need. </p>
+<pre><code><span class="transposed_variable">lv25_str.</span><span class="built_in">find</span>(<span class="string">'\x3b'</span>)
+</code></pre><p>returned 76. So:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>g=lambda l,<span class="attribute">n</span>:[l[<span class="attribute">i</span>:i+n] <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>, len(l), n)]
+color_tbl=g(lv25_str[<span class="number">13</span>:<span class="number">76</span>],<span class="number">3</span>)
+</pre></td></tr></table></figure>
+
+<p>Reformat our color table color and export human readable form:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> binascii</span>
+<span class="title">rf</span>=lambda x: binascii.b2a_hex(x).upper()
+<span class="title">clrtbl</span>=['%s%s' % ('#',rf(x)) for x <span class="keyword">in</span> color_tbl]
+</pre></td></tr></table></figure>
+
+<p>And draw a picture to show the table:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="code"><pre><span class="comment">import</span> <span class="comment">ImageDraw</span>
+<span class="comment">block_size=50;</span> <span class="comment">gap_size=</span> <span class="comment">20</span>
+<span class="comment">x_len=7*(block_size</span><span class="literal">+</span><span class="comment">gap_size)</span><span class="literal">+</span><span class="comment">gap_size</span>
+<span class="comment">y_len=3*(block_size</span><span class="literal">+</span><span class="comment">gap_size)</span><span class="literal">+</span><span class="comment">gap_size</span>
+<span class="comment">newpic=Image</span><span class="string">.</span><span class="comment">new('RGB'</span><span class="string">,</span><span class="comment">(x_len</span><span class="string">,</span><span class="comment">y_len)</span><span class="string">,</span> <span class="comment">color=(255</span><span class="string">,</span><span class="comment">255</span><span class="string">,</span><span class="comment">255))</span>
+<span class="comment">draw=ImageDraw</span><span class="string">.</span><span class="comment">Draw(newpic)</span>
+<span class="comment">for</span> <span class="comment">x</span> <span class="comment">in</span> <span class="comment">range(7):</span>
+<span class="comment">	for</span> <span class="comment">y</span> <span class="comment">in</span> <span class="comment">range(3):</span>
+<span class="comment">		ul=(gap_size</span><span class="literal">-</span><span class="comment">1</span><span class="literal">+</span><span class="comment">x*(block_size</span><span class="literal">+</span><span class="comment">gap_size)</span><span class="string">,</span><span class="comment">gap_size</span><span class="literal">-</span><span class="comment">1</span><span class="literal">+</span><span class="comment">y*(block_size</span><span class="literal">+</span><span class="comment">gap_size))</span>
+<span class="comment">		lr=(ul</span><span class="title">[</span><span class="comment">0</span><span class="title">]</span><span class="literal">+</span><span class="comment">block_size</span><span class="string">,</span><span class="comment">ul</span><span class="title">[</span><span class="comment">1</span><span class="title">]</span><span class="literal">+</span><span class="comment">block_size)</span>
+<span class="comment">		draw</span><span class="string">.</span><span class="comment">rectangle((ul</span><span class="string">,</span><span class="comment">lr)</span><span class="string">,</span><span class="comment">fill=clrtbl</span><span class="title">[</span><span class="comment">y*3</span><span class="literal">+</span><span class="comment">x</span><span class="title">]</span><span class="string">,</span><span class="comment">outline="#000000")</span>
+</pre></td></tr></table></figure>
+
+<p><img src="http://panchoat.org/files/cipher/lv25.gif" alt="lv25 gif"></p>
+<p>Let’s look back to the pictures. According to this color table we made. Based on the order of color, we could deduce the order of letters, and only the first line could be identified as word. It should be <strong>Galaxy</strong>.</p>
+<h2 id="26-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-portention-2f-galaxy-htm-22-3e-Kung_Hei_Fat_Choy-3c-2f-a-3e-">26. <a href="http://www.gamemastertips.com/cipher/portention/galaxy.htm" target="_blank">Kung Hei Fat Choy</a></h2>
+<p>Hints:</p>
+<blockquote>
+<p>yearlyscraps.jpg</p>
+</blockquote>
+<p>The title is a common wish word in Cantonese, on the other hand, the word <a href="http://en.wikipedia.org/wiki/Scrap" target="_blank">scrap</a> means:</p>
+<blockquote>
+<p>Scrap is a term used to describe recyclable and other materials left over from every manner of product consumption, such as parts of vehicles, building supplies, and surplus materials.</p>
+</blockquote>
+<p>So, it must be something recyclable, and yearly , and related to Cantonese. So does it means <a href="http://en.wikipedia.org/wiki/Chinese_zodiac" target="_blank">Chinese Zodiac</a>?</p>
+<p>|——————|————|———————————————————————|<br>| Event Year | Zodiac |        Item                                  |<br>|:—————:|:———:|:——————————————————————:|<br>|1329         | Snake  | David II becomes king of scotland            |<br>|1218         | Tiger  | Minamoto no Sanetomo becomes Udaijin of Japan|<br>|1561         | Rooster| Madrid is declared the capital of Spain      |<br>|1733         | Ox     | Joseph Priestley is born                     |<br>|1104          | Monkey | Baldwin I captures Acre                      |<br>|——————|————|———————————————————————|</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>zodiac=[<span class="attribute">'Rat</span>',<span class="attribute">'Ox</span>',<span class="attribute">'Tiger</span>',<span class="attribute">'Rabbit</span>',<span class="attribute">'Dragon</span>',<span class="attribute">'Snake</span>', <span class="attribute">'Horse</span>',<span class="attribute">'Goat</span>',<span class="attribute">'Monkey</span>',<span class="attribute">'Rooster</span>',<span class="attribute">'Dog</span>',<span class="attribute">'Pig</span>']
+g=lambda x: <span class="number">1984</span>&gt;=x <span class="keyword">and</span> zodiac[(x-<span class="number">1984</span>)%<span class="number">12</span>] <span class="keyword">or</span> zodiac[(<span class="number">12</span>-<span class="number">1984</span>+x)%<span class="number">12</span>]
+</pre></td></tr></table></figure>
+
+<p>According to the Initial letter, the answer is easy: <strong>storm</strong>.</p>
+<h2 id="27-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-portention-2f-storm-htm-22-3e-Whose_idea_was_this-3f-3c-2f-a-3e-">27. <a href="http://www.gamemastertips.com/cipher/portention/storm.htm" target="_blank">Whose idea was this?</a></h2>
+<p>Hints:</p>
+<blockquote>
+<p>klndmuzvxytrikzhnnynhlw<br>mysteriosolevel27.jpg</p>
+</blockquote>
+<p>Word in the crystal ball:</p>
+<blockquote>
+<p>Reflect</p>
+</blockquote>
+<p>This one is the first real cipher game. I google wikipedia for “<a href="http://en.wikipedia.org/wiki/Cipher" target="_blank">cipher</a>“</p>
+<p>In the paragraph subtitled “Historical ciphers”, at first I tried “substitution ciphers” and “transposition ciphers” without any hint and luck. Then continue to “<a href="http://en.wikipedia.org/wiki/Polyalphabetic_substitution" target="_blank">Polyalphabetic cipher</a>“. </p>
+<p><img src="http://en.wikipedia.org/wiki/File:Vigen%C3%A8re_square_shading.svg" alt="lv27 cipher keys"></p>
+<p>So if we use password “reflect”</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> string</span>
+<span class="title">encoded</span>=<span class="string">"klndmuzvxytrikzhnnynhlw"</span>
+<span class="title">len_e</span>=len(encoded)
+<span class="title">decoded</span>=<span class="string">""</span>
+<span class="title">password</span>=<span class="string">"reflect"</span>
+<span class="title">ord_a</span>=ord('a')
+<span class="title">lc</span>=string.lowercase
+<span class="title">len_p</span>=len(password)
+<span class="title">for</span> x <span class="keyword">in</span> range(len_e):
+	base=ord(encoded[x])-ord_a
+	shift=ord(password[x%len_p])-ord_a
+	decoded+=chr((base-shift)%<span class="number">26</span>+ord_a)
+</pre></td></tr></table></figure>
+
+<p>And the answer is “<strong>thisisgettingridiculous</strong>“.</p>
+<h2 id="28-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-portention-2f-thisisgettingridiculous-htm-22-3e-Don-2019-t_you_just_hate_math-3f-3c-2f-a-3e-">28. <a href="http://www.gamemastertips.com/cipher/portention/thisisgettingridiculous.htm" target="_blank">Don’t you just hate math?</a></h2>
+<p>Hints:</p>
+<blockquote>
+<p>numbers28.jpg</p>
+<p>HOBBIES + OBSESSES + (GLIBSOI / 16) - (OOZES x 2) + SHELLOIL - SEIZES - GOOSEGOG + BOBSLEIGH - (EBOOLESIE / 7) - (2x GHLOSHES) = ???<br>This isn’t some kind of cipher where you have to figure out the numerical values of each letter of the alphabet…look at your hints and think simpler.</p>
+</blockquote>
+<p>And the picture is an old phone. Maybe it’s asking us to translate letters into numbers by phone key mapping? According to the common map:</p>
+<p><img src="http://www.yorku.ca/mack/chapter5-f2.jpg" alt="phone map"></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="code"><pre><span class="keyword">import</span> string
+<span class="function"><span class="keyword">def</span> <span class="title">numap</span><span class="params">(x)</span>:</span>
+	l=[<span class="string">'ABC'</span>,<span class="string">'DEF'</span>,<span class="string">'GHI'</span>,<span class="string">'jklJKL'</span>,<span class="string">'MNO'</span>,<span class="string">'PGRS'</span>,<span class="string">'TUV'</span>,<span class="string">'WXYZ'</span>]
+	all=string.uppercase
+	<span class="keyword">if</span> x <span class="keyword">in</span> all:
+		<span class="keyword">for</span> a <span class="keyword">in</span> range(len(l)):
+			<span class="keyword">if</span> x <span class="keyword">in</span> l[a]: 
+				<span class="keyword">return</span> str(a+<span class="number">2</span>)
+	<span class="keyword">else</span>:
+		<span class="keyword">return</span> x
+lv28_str_exp=<span class="string">"HOBBIES + OBSESSES + (GLIBSOI / 16) - (OOZES x 2) + SHELLOIL - SEIZES - GOOSEGOG + BOBSLEIGH - (EBOOLESIE / 7) - (2x GHLOSHES)"</span>
+lv28_num_exp= <span class="string">""</span>.join ([ numap(x) <span class="keyword">for</span> x <span class="keyword">in</span> lv28_str_exp])
+trans=string.maketrans(<span class="string">"x"</span>,<span class="string">"*"</span>)
+lv28_num_exp=lv28_num_exp.translate(trans)
+eval(lv28_num_exp)
+</pre></td></tr></table></figure>
+
+<p>But the result <strong>221411216</strong> is not correct. We need to reinvestigate the picture.</p>
+<blockquote>
+<p>Enter</p>
+</blockquote>
+<p>I notice this is on the bottom of the phone and it’s inversed. Is it suggest we should invert something?</p>
+<p>All appeared characters are:</p>
+<blockquote>
+<p>HOBIESGLZ</p>
+</blockquote>
+<p>and if we invert them, each of them looks like:</p>
+<blockquote>
+<p>4,0,8,1,3,5,6,7,2</p>
+</blockquote>
+<p>Maybe it’s simpler than we thought.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="comment">import</span> <span class="comment">string</span>
+<span class="comment">trans=string</span><span class="string">.</span><span class="comment">maketrans("HOBIESGLZx"</span><span class="string">,</span><span class="comment">"408135672*")</span>
+<span class="comment">lv28_str_exp="HOBBIES</span> <span class="literal">+</span> <span class="comment">OBSESSES</span> <span class="literal">+</span> <span class="comment">(GLIBSOI</span> <span class="comment">/</span> <span class="comment">16)</span> <span class="literal">-</span> <span class="comment">(OOZES</span> <span class="comment">x</span> <span class="comment">2)</span> <span class="literal">+</span> <span class="comment">SHELLOIL</span> <span class="literal">-</span> <span class="comment">SEIZES</span> <span class="literal">-</span> <span class="comment">GOOSEGOG</span> <span class="literal">+</span> <span class="comment">BOBSLEIGH</span> <span class="literal">-</span> <span class="comment">(EBOOLESIE</span> <span class="comment">/</span> <span class="comment">7)</span> <span class="literal">-</span> <span class="comment">(2x</span> <span class="comment">GHLOSHES)"</span>
+<span class="comment">lv28_num_exp=lv28_str_exp</span><span class="string">.</span><span class="comment">translate(trans)</span>
+</pre></td></tr></table></figure>
+
+<pre><code><span class="comment">4088135</span><span class="literal">+</span><span class="comment">8535535</span> <span class="literal">+</span> <span class="comment">6718501/16</span> <span class="literal">-</span><span class="comment">235*2</span> <span class="literal">+</span><span class="comment">54377017</span><span class="literal">-</span><span class="comment">531235</span> <span class="literal">-</span> <span class="comment">60053606</span> <span class="literal">+</span> <span class="comment">808573164</span> <span class="literal">-</span><span class="comment">(380073513/7)</span> <span class="literal">-</span> <span class="comment">2*64705435</span>
+</code></pre><p>But after calculation, the answer <strong>631701360</strong> is still wrong. Maybe invertion is for the whole word instead of every letters?</p>
+<pre><code><span class="comment">5318804</span> <span class="literal">+</span> <span class="comment">53553580</span> <span class="literal">+</span> <span class="comment">1058176</span> <span class="comment">/</span> <span class="comment">16</span> <span class="literal">-</span> <span class="comment">53200</span> <span class="comment">*</span> <span class="comment">2</span> <span class="literal">+</span> <span class="comment">71077345</span> <span class="literal">-</span> <span class="comment">532135</span> <span class="literal">-</span> <span class="comment">60635006</span> <span class="literal">+</span> <span class="comment">461375808</span> <span class="literal">-</span> <span class="comment">315370083</span> <span class="comment">/</span> <span class="comment">7</span> <span class="literal">-</span> <span class="comment">2</span> <span class="comment">*</span> <span class="comment">53450746</span>
+</code></pre><p>The answer <strong>378163771</strong> came out. But wait a minute, it’s still not the answer. Do you notice translation table we used to translate words into numbers? We need to invert it to word: key to next level is <strong>illeGlBle</strong>.</p>
+<h2 id="29-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-portention-2f-illegible-htm-22-3e-Flag_me_down-3c-2f-a-3e-">29. <a href="http://www.gamemastertips.com/cipher/portention/illegible.htm" target="_blank">Flag me down</a></h2>
+<p>Other than title, Hints are:</p>
+<blockquote>
+<p>dizzying.jpg</p>
+</blockquote>
+<p>The picture is like rotating and surrounded by colorful edges.</p>
+<p>Via googling:</p>
+<blockquote>
+<p><a href="http://idioms.thefreedictionary.com/flag+down" target="_blank">flag down</a>: to signal or wave, indicating that someone should stop.</p>
+<p><a href="http://www.thefreedictionary.com/dizzying" target="_blank">dizzy</a>: Having a whirling sensation and a tendency to fall.</p>
+</blockquote>
+<p>Does it suggest flag signal in the sea? Wikipedia for <a href="http://en.wikipedia.org/wiki/International_Code_of_Signals" target="_blank">International Code of Signals</a></p>
+<p><img src="http://upload.wikimedia.org/wikipedia/commons/f/fa/ICS-flags.png" alt="Flag Signals"></p>
+<p>From outer to inner, the code could be translate to :</p>
+<blockquote>
+<p><strong>R,E,D,U,N,D,A,N,T</strong></p>
+</blockquote>
+<p>Click and input this to next level.</p>
+<h2 id="30-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-encore-2f-22-3e-This_is_not_the_answer_that_you_seek-3c-2f-a-3e-">30. <a href="http://www.gamemastertips.com/cipher/encore/" target="_blank">This is not the answer that you seek.</a></h2>
+<p>Hints:</p>
+<p>next to the source code of title, a comment:</p>
+<blockquote>
+<p>liar!</p>
+<p>gloomy30.jpg</p>
+</blockquote>
+<p>Then, “this” must be the answer. change the URL to “this.htm”.</p>
+<blockquote>
+<p>Uhh…wrong! Go back! Nothing to see here, honest! </p>
+</blockquote>
+<p>But in the source code, </p>
+<blockquote>
+<p>liar again. try that instead</p>
+</blockquote>
+<p>Change to “that.htm”, a picture with word “O RLY?” appeared. And the source code:</p>
+<blockquote>
+<p>orly.jpg</p>
+</blockquote>
+<p>I guess it’s “Oh, Really?”. Google and wikipedia “<a href="http://en.wikipedia.org/wiki/O_RLY%3F" target="_blank">O RLY?</a>“</p>
+<blockquote>
+<p>O RLY? is an Internet phenomenon, typically presented as an image macro featuring a Snowy Owl. The phrase “O RLY?”, an abbreviated form of “Oh, really?”, is popularly used in Internet forums in a sarcastic manner, often in response to an obvious, predictable, or blatantly false statement. Similar owl image macros followed the original to present different views, including images with the phrases “YA RLY” (Yeah, really.) and “NO WAI!!” (No way!).</p>
+</blockquote>
+<p>There’s others like </p>
+<blockquote>
+<p>YARLY, NOWAI, SRSLY</p>
+</blockquote>
+<p>tried to use them as URL. “yarly.htm” will redirect to “norly.htm”. And there’s link in the source:</p>
+<blockquote>
+<p>../aroundtherosie/</p>
+</blockquote>
+<p>Where’s the password?</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> urllib</span>
+<span class="title">src</span>=urllib.urlopen(<span class="string">"http://cipher:redundant@www.gamemastertips.com/cipher/encore/yarly.htm"</span>).read()
+</pre></td></tr></table></figure>
+
+<p>Haha, the password and answer is in the file: <strong>awesome:sauce</strong>. Click and to the next.</p>
+<h2 id="31-_-3c-a_href-3d-22-http-3a-2f-2f-awesome-3a-sauce-40-www-gamemastertips-com-2f-cipher-2f-aroundtherosie-2f-22-3e-Level_31-3c-2f-a-3e-">31. <a href="http://awesome:sauce@www.gamemastertips.com/cipher/aroundtherosie/" target="_blank">Level 31</a></h2>
+<p>Hints:</p>
+<blockquote>
+<p>hexagram.jpg</p>
+</blockquote>
+<p>In the picture, there are other shape:</p>
+<blockquote>
+<p>triangle, square, star and others. </p>
+</blockquote>
+<p>From <a href="http://en.wikipedia.org/wiki/List_of_regular_polytopes#Two-dimensional_regular_polytopes" target="_blank">entry</a> in wikipedia.</p>
+<p>We know their names:</p>
+<blockquote>
+<p>triangle, square, pentagon, hexagon, heptagon ,octagon, Enneagon, Decagon, Hendecagon, Dodecagon, Tridecagon, Tetradecagon…</p>
+</blockquote>
+<p>The picture file name and the write-line shape are not matched. It should be a octagram. Change URL to “octagram.jpg”, Oops, new picture showes. Follow the sequence, they are:</p>
+<blockquote>
+<p>hexagram.jpg -&gt; octagram.jpg -&gt; decagon.jpg -&gt; heptagon.jpg -&gt; pentagram.jpg -&gt; nonagon.jpg -&gt; icosagram.jpg -&gt; triskaidecagon.jpg</p>
+</blockquote>
+<p>During the process, I noticed the pictures seem like a intact one being separated into several ones.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre>import urllib, Image
+from cStringIO import StringIO
+names=[<span class="attribute">'hexagram</span>',<span class="attribute">'octagram</span>',<span class="attribute">'decagon</span>',<span class="attribute">'heptagon</span>',<span class="attribute">'pentagram</span>',<span class="attribute">'nonagon</span>',<span class="attribute">'icosagram</span>',<span class="attribute">'triskaidecagon</span>']
+pics=[]
+<span class="keyword">for</span> a <span class="keyword">in</span> names:
+	pic=Image.<span class="keyword">open</span>(StringIO(urllib.urlopen( <span class="attribute">'http</span>://awesome:sauce@www.gamemastertips.com/cipher/aroundtherosie/%s.jpg' % a).read()))
+	pics.append(pic)
+</pre></td></tr></table></figure>
+
+<p>I could get every pics size:</p>
+<pre><code>[x.<span class="keyword">size</span> <span class="keyword">for</span> x <span class="keyword">in</span> pics]
+</code></pre><p>and the result is:</p>
+<blockquote>
+<p>[(344,184),(177,184),(357,215),(153,398),(267,164),(243,164),(164,186),(164,193)]</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="code"><pre>newpic=<span class="transposed_variable">Image.</span>new(<span class="string">'RGB'</span>,(<span class="number">674</span>,<span class="number">562</span>))
+<span class="transposed_variable">newpic.</span>paste(pics<span class="matrix">[<span class="number">0</span>]</span>,(<span class="number">0</span>,<span class="number">0</span>))
+<span class="transposed_variable">newpic.</span>paste(pics<span class="matrix">[<span class="number">1</span>]</span>,(<span class="number">344</span>,<span class="number">0</span>))
+<span class="transposed_variable">newpic.</span>paste(pics<span class="matrix">[<span class="number">3</span>]</span>,(<span class="number">521</span>,<span class="number">0</span>))
+<span class="transposed_variable">newpic.</span>paste(pics<span class="matrix">[<span class="number">4</span>]</span>,(<span class="number">407</span>,<span class="number">398</span>))
+<span class="transposed_variable">newpic.</span>paste(pics<span class="matrix">[<span class="number">2</span>]</span>,(<span class="number">164</span>,<span class="number">184</span>))
+<span class="transposed_variable">newpic.</span>paste(pics<span class="matrix">[<span class="number">5</span>]</span>,(<span class="number">164</span>,<span class="number">398</span>))
+<span class="transposed_variable">newpic.</span>paste(pics<span class="matrix">[<span class="number">6</span>]</span>,(<span class="number">0</span>,<span class="number">184</span>))
+<span class="transposed_variable">newpic.</span>paste(pics<span class="matrix">[<span class="number">7</span>]</span>,(<span class="number">0</span>,<span class="number">369</span>))
+<span class="transposed_variable">newpic.</span>save(<span class="string">'lv31.jpg'</span>)
+</pre></td></tr></table></figure>
+
+<p><img src="http://panchoat.org/files/cipher/lv31.jpg" alt="lv31"></p>
+<p>After that, we could see the background is a design to make a 3-dimention polygon. After google, this is one of the <a href="http://en.wikipedia.org/wiki/Archimedean_solid" target="_blank">Archimedean solid</a> named: <strong>rhombicosidodecahedron</strong>.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2011-12-03T01:51:00.000Z"><a href="/blog/2011/12/03/cipher-crack-the-code-3/">Dec 3 2011</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2011/12/03/cipher-crack-the-code-3/">Cipher: Crack the Code (3)</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="18-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-monkey-2f-repair-htm-22-3e-Follow_me-2026-3c-2f-a-3e-">18. <a href="http://www.gamemastertips.com/cipher/monkey/repair.htm" target="_blank">Follow me…</a></h2>
+<p>Hints:</p>
+<blockquote>
+<p>cantfindyourway.jpg</p>
+<p>E 2 paces, N 1 pace, W 2 paces, N 1 pace, E 2 paces<br>N 2 paces<br>E 1 pace, S 1 pace, W 2 paces, N 2 paces, E 2 paces<br>N 2 paces, SE 2 paces, N 2 paces<br>E 2 paces, N 1 pace, W 2 paces, N 1 pace, E 2 paces</p>
+</blockquote>
+<p>ENWS? It must be directions: East, North, West, South. Whatever, just follow the instruction and draw the map. And the answer comes: <strong>signs</strong>. This level I think it’s not so well design, too straight forward and should be placed in the beginning warmer level.</p>
+<h2 id="19-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-monkey-2f-signs-htm-22-3e-My_F7_is_broken-3c-2f-a-3e-">19. <a href="http://www.gamemastertips.com/cipher/monkey/signs.htm" target="_blank">My F7 is broken</a></h2>
+<p>Hints:</p>
+<ol>
+<li><p>Filename in the picture:</p>
+<blockquote>
+<p>donkeysareyourfriendsdonotbelievethemedia.doc</p>
+</blockquote>
+</li>
+<li><p>Title</p>
+<blockquote>
+<p>My F7 is broken</p>
+</blockquote>
+</li>
+<li><p>It’s microsoft office word.</p>
+</li>
+</ol>
+<p>First I download the file by changing the URL to the filename. But the content is useless:</p>
+<blockquote>
+<p>Nope. Nothing here.</p>
+<p>No, seriously, go back—this document is useless. Everything you need is in the level itself.</p>
+</blockquote>
+<p>Oops, F7 is <strong>grammer and spelling check</strong> in MS Word.it must be something wrong in the paper.</p>
+<blockquote>
+<p>You MUST OPEN YOUR EYES<br>DO<br>Recent studies show that the Earth is a large spherical beach ball. Scientists speculate that this breakthrough may not bode well for elephants. Amphibians, too, must learn to adapt to this <strong>raipidy</strong> changing cycle, and many <strong>peple</strong> must come to realize that they may no longer be able to order a rare steak.<br>NOT<br>If these changes persist, we may have to begin <strong>thiking</strong> about what is important in life. DONKEYS ARE YOUR FRIENDS <strong>Ther</strong> are some things we simply cannot comprehend.<br>BELIEVE<br>Six by nine. Forty two.<br>That’s it. That’s <strong>al</strong> there is.<br>I always thought something was <strong>fundamentall</strong> wrong with the universe<br>THE MEDIA<br>DONKEYS ARE YOUR FRIENDS  </p>
+</blockquote>
+<p>All are missing character. linking these missing letters: <strong>lonely</strong>.</p>
+<h2 id="20-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-monkey-2f-lonely-htm-22-3e-Maths-2c-_anyone-3f-3c-2f-a-3e-">20. <a href="http://www.gamemastertips.com/cipher/monkey/lonely.htm" target="_blank">Maths, anyone?</a></h2>
+<p>Hints:</p>
+<p>Title:</p>
+<blockquote>
+<p>Math, anyone?</p>
+</blockquote>
+<p>In the picture:</p>
+<blockquote>
+<p>10<sup>100</sup></p>
+</blockquote>
+<p>In the source, closed to a series of coordinates defining a poly shape, link to <code>../skeptic/</code></p>
+<blockquote>
+<p>no, it’s not about these numbers</p>
+</blockquote>
+<p>So it must related to the numbers in the picture. </p>
+<p>Google suggests a word <a href="http://en.wikipedia.org/wiki/Googol" target="_blank"><strong>googol</strong></a> in wikipedia. Let’s try. And a new hint shows up:</p>
+<blockquote>
+<p>Yes, that is the first hint. Now go and find the answer! ;)</p>
+</blockquote>
+<p>I stucked at here for a long time. But after carefully scrutiny, actually there does be extra hint in the source. The normal google search link is different from other levels. </p>
+<blockquote>
+<p>supergoogle.htm</p>
+</blockquote>
+<p>See, it’s hosted on this server instead of Google’s.</p>
+<p>This new page are all normal, except in the source code, on the very bottom:</p>
+<blockquote>
+<p><strong>gobbledygook</strong></p>
+</blockquote>
+<p>Oops, click the poly shape in the pictures and input the password. Next level.</p>
+<h2 id="21-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-skeptic-2f-discovery-htm-22-3e-250_Mya-3c-2f-a-3e-">21. <a href="http://www.gamemastertips.com/cipher/skeptic/discovery.htm" target="_blank">250 Mya</a></h2>
+<p>Hints:</p>
+<ol>
+<li><p>Title</p>
+<blockquote>
+<p>250 Mya</p>
+</blockquote>
+</li>
+<li><p>Source</p>
+<blockquote>
+<p>things used to be different<br>theoneandthetwenty.jpg</p>
+</blockquote>
+</li>
+<li><p>Picture is a world map.</p>
+</li>
+</ol>
+<p>What doese Mya mean? According to <a href="http://en.wikipedia.org/wiki/Mya_%28unit%29#Symbols_y_and_yr" target="_blank">wikipedia</a>, it means </p>
+<blockquote>
+<p><strong>M</strong>illion <strong>Y</strong>ears <strong>A</strong>go, a unit of time used in astronomy, geology and biology.</p>
+</blockquote>
+<p>OK, it must imply us to get the world map 250 Mya. According to wiki, it should be <strong>Mesozoic Era</strong>, or more specificallly, <strong>Lower/Early Triassic (Scythian)</strong>.  Via the wikipedia <a href="http://en.wikipedia.org/wiki/Triassic" target="_blank">entry</a>, in the field of Paleogeography:</p>
+<blockquote>
+<p>During the Triassic, almost all the Earth’s land mass was concentrated into a single supercontinent centered more or less on the equator, called Pangaea (“all the land”)</p>
+</blockquote>
+<p>Great. So googling “Pangaea” map.</p>
+<p><img src="http://en.wikipedia.org/wiki/File:Pangaea_continents.svg" alt="pangaea map"></p>
+<p>They are:</p>
+<blockquote>
+<p>Eurasia, North America, South America, Africa, Antarctica, India, Australia</p>
+</blockquote>
+<p>But, what does this mean? I Check previous level, and have no clue. So I just try to connect the first Letters and guess whether  they will have some hints.</p>
+<blockquote>
+<p>E, N, S, A,A, I, A</p>
+</blockquote>
+<p>I cannot form any meaningful words. May be the URL? After change the URL to pangaea.jpg, bingo! There’s number in the picture and pointing to different continents. Follow the numerical order. Answer appeared: <strong>insane</strong>.</p>
+<h2 id="22-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-skeptic-2f-insane-htm-22-3e-Image_Threshold_-26-gt-3b-_104-3c-2f-a-3e-">22. <a href="http://www.gamemastertips.com/cipher/skeptic/insane.htm" target="_blank">Image Threshold &gt; 104</a></h2>
+<p>Hints:</p>
+<blockquote>
+<p>Image Threshold &gt; 104<br>look familiar?<br>knockknock.png</p>
+</blockquote>
+<p>The instruction is quite straight forward. Let’s code:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> urllib, Image</span>
+<span class="title">from</span> cStringIO <span class="import"><span class="keyword">import</span> StringIO </span>
+<span class="title">pic</span>=<span class="type">StringIO</span>(urllib.urlopen('http://cipher:gobbledygook@www.gamemastertips.com/cipher/skeptic/knockknock.png').read())
+<span class="title">pic</span>=<span class="type">Image</span>.open(pic)
+<span class="title">f</span>=lambda x: x &gt; <span class="number">103</span> and <span class="number">255</span> or <span class="number">0</span>
+<span class="title">new_pic</span>=pic.point(f)
+<span class="title">new_pic</span>.show()
+</pre></td></tr></table></figure>
+
+<p><img src="http://panchoat.org/files/cipher/lv22-1.png" alt="Lion Door on lv22"></p>
+<p>I tried 104, but it could not produce the right picture. Any way the new hint is:</p>
+<blockquote>
+<p>The answer that you seek is not here. It can be found beneath the door of the lion twins.</p>
+</blockquote>
+<p>Combining with the hint claiming “look familiar?”, it must be something we experienced. Do you remember the “Bert is evil” story? So I start to seek anything useful from the beginning of the Games. And you know what? level 2 is a door with 2 lions!</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> urllib, Image</span>
+<span class="title">from</span> cStringIO <span class="import"><span class="keyword">import</span> StringIO </span>
+<span class="title">pic</span>=<span class="type">StringIO</span>(urllib.urlopen('http://www.gamemastertips.com/cipher/omgits/pictureof2.png').read())
+<span class="title">pic</span>=<span class="type">Image</span>.open(pic)
+<span class="title">f</span>=lambda x: x &gt; <span class="number">103</span> and <span class="number">255</span> or <span class="number">0</span>
+<span class="title">new_pic</span>=pic.point(f)
+<span class="title">new_pic</span>.show()
+</pre></td></tr></table></figure>
+
+<p><img src="http://panchoat.org/files/cipher/lv22-2.png" alt="Lion Door on lv2"></p>
+<p>And the answer is <strong>unrevealing</strong>. Click the door and input username cipher and the password unrevealing — to the next level.</p>
+<h2 id="23-_-3c-a_href-3d-22-http-3a-2f-2f-cipher-3a-unrevealing-40-www-gamemastertips-com-2f-cipher-2f-juicebox-2f-slurpee-htm-22-3e-Beep-2026-Beep-2026-3c-2f-a-3e-">23. <a href="http://cipher:unrevealing@www.gamemastertips.com/cipher/juicebox/slurpee.htm" target="_blank">Beep…Beep…</a></h2>
+<p>Hints:</p>
+<p>Title and source code:</p>
+<blockquote>
+<p>Beep…Beep…<br>bleepinglevel23.jpg</p>
+</blockquote>
+<p>And numbers in the picture:</p>
+<blockquote>
+<p>284905847 487 562815023 385<br>374927649 891028947 784029170<br>142 683<br>129047859 038 </p>
+</blockquote>
+<p>I have no idea, just notice the digits of the numbers are either 9 or 3. And the first letter could be 0. So I googled. Of course, —- I found nothing. </p>
+<p>Beep and Bleeping are the same. What kind of action will produce this sound?  Maybe telegram? In the entry of <a href="http://en.wikipedia.org/wiki/Morse_code" target="_blank">Morse code</a>:</p>
+<blockquote>
+<p>Each character (letter or numeral) is represented by a unique sequence of dots and dashes. The duration of a dash is three times the duration of a dot. Each dot or dash is followed by a short silence, equal to the dot duration. The letters of a word are separated by a space equal to three dots (one dash), and two words are separated by a space equal to seven dots. The dot duration is the basic unit of time measurement in code transmission.</p>
+</blockquote>
+<p>Maybe the digits are the information rather than the number itself?</p>
+<p>so, translate this into Morse code:</p>
+<blockquote>
+<p>-.-.<br>-—<br>..<br>-.  </p>
+</blockquote>
+<p>It should be <strong>coin</strong>.</p>
+<h2 id="24-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-juicebox-2f-coin-htm-22-3e-Golf_Mike_Tango-3c-2f-a-3e-">24. <a href="http://www.gamemastertips.com/cipher/juicebox/coin.htm" target="_blank">Golf Mike Tango</a></h2>
+<p>Hints:</p>
+<p>Title and source code:</p>
+<blockquote>
+<p>Golf Mike Tango<br>hotelindianovembertango24.jpg</p>
+<p>7 to 4<br>54 to 42<br>16 to 11<br>23 to 24<br>8 to 20<br>1 to 10<br>3 to 7<br>82 to 76  </p>
+</blockquote>
+<p>Have no idea again . T_T . Google “Golf Mike Tango wiki”, the first entry is <a href="http://en.wikipedia.org/wiki/List_of_military_time_zones" target="_blank">List of military time zones</a>. It seems that the number shoudl imply time zones.</p>
+<blockquote>
+<p>-3<br>-12<br>-5<br>1<br>12<br>9<br>4<br>-6</p>
+</blockquote>
+<p>Mapping to the name in the list above:</p>
+<blockquote>
+<p>P<br>Y<br>R<br>A<br>M<br>I<br>D<br>S</p>
+</blockquote>
+<p>Answer: <strong>pyramids</strong>.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/page/6/" class="alignleft prev">Prev</a>
+  
+  
+    <a href="/page/8/" class="alignright next">Next</a>
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:easontse.info">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Biochemistry/">Biochemistry</a><small>7</small></li>
+  
+    <li><a href="/categories/Books/">Books</a><small>12</small></li>
+  
+    <li><a href="/categories/Computer/">Computer</a><small>54</small></li>
+  
+    <li><a href="/categories/Game/">Game</a><small>12</small></li>
+  
+    <li><a href="/categories/Life/">Life</a><small>20</small></li>
+  
+    <li><a href="/categories/Movie/">Movie</a><small>2</small></li>
+  
+    <li><a href="/categories/Music/">Music</a><small>1</small></li>
+  
+    <li><a href="/categories/Science/">Science</a><small>1</small></li>
+  
+    <li><a href="/categories/Writing/">Writing</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/AD&D/" style="font-size: 13.33px;">AD&D</a><a href="/tags/ANO1/" style="font-size: 13.33px;">ANO1</a><a href="/tags/ANO2/" style="font-size: 10.00px;">ANO2</a><a href="/tags/ANOVA/" style="font-size: 10.00px;">ANOVA</a><a href="/tags/Adult/" style="font-size: 10.00px;">Adult</a><a href="/tags/Aiglx/" style="font-size: 10.00px;">Aiglx</a><a href="/tags/App/" style="font-size: 20.00px;">App</a><a href="/tags/Apple/" style="font-size: 10.00px;">Apple</a><a href="/tags/Apps/" style="font-size: 10.00px;">Apps</a><a href="/tags/BIOS/" style="font-size: 10.00px;">BIOS</a><a href="/tags/Blog/" style="font-size: 10.00px;">Blog</a><a href="/tags/CFBE/" style="font-size: 13.33px;">CFBE</a><a href="/tags/CFTR/" style="font-size: 10.00px;">CFTR</a><a href="/tags/CNAME/" style="font-size: 10.00px;">CNAME</a><a href="/tags/CaCC/" style="font-size: 10.00px;">CaCC</a><a href="/tags/Chinese/" style="font-size: 10.00px;">Chinese</a><a href="/tags/CoT/" style="font-size: 10.00px;">CoT</a><a href="/tags/Compiz/" style="font-size: 10.00px;">Compiz</a><a href="/tags/Debian/" style="font-size: 13.33px;">Debian</a><a href="/tags/Dell/" style="font-size: 13.33px;">Dell</a><a href="/tags/Dropbox/" style="font-size: 13.33px;">Dropbox</a><a href="/tags/Edgy/" style="font-size: 10.00px;">Edgy</a><a href="/tags/Epub/" style="font-size: 10.00px;">Epub</a><a href="/tags/Excel/" style="font-size: 10.00px;">Excel</a><a href="/tags/Firefox/" style="font-size: 10.00px;">Firefox</a><a href="/tags/GFW/" style="font-size: 10.00px;">GFW</a><a href="/tags/GNUPlot/" style="font-size: 10.00px;">GNUPlot</a><a href="/tags/Game/" style="font-size: 16.67px;">Game</a><a href="/tags/GiNaC/" style="font-size: 10.00px;">GiNaC</a><a href="/tags/Git/" style="font-size: 10.00px;">Git</a><a href="/tags/Github/" style="font-size: 10.00px;">Github</a><a href="/tags/Gmail/" style="font-size: 10.00px;">Gmail</a><a href="/tags/Grant proposal/" style="font-size: 10.00px;">Grant proposal</a><a href="/tags/Graphviz/" style="font-size: 10.00px;">Graphviz</a><a href="/tags/Hexo/" style="font-size: 10.00px;">Hexo</a><a href="/tags/ID3/" style="font-size: 10.00px;">ID3</a><a href="/tags/ImageMagick/" style="font-size: 13.33px;">ImageMagick</a><a href="/tags/Ion channels/" style="font-size: 10.00px;">Ion channels</a><a href="/tags/Isc/" style="font-size: 10.00px;">Isc</a><a href="/tags/Japan/" style="font-size: 10.00px;">Japan</a>
+  </div>
+</div>
+
+
+  
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Eason Tse
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'easonx';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

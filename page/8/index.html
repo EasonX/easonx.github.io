@@ -1,0 +1,1460 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Page 8 | Eason&#39;s Blog</title>
+  <meta name="author" content="Eason Tse">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Eason&#39;s Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Eason&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-6252783-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Eason&#39;s Blog</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/utils/multimarkdown-table-generator">Util</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2011-12-02T02:24:00.000Z"><a href="/blog/2011/12/02/cipher-crack-the-code-2/">Dec 2 2011</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2011/12/02/cipher-crack-the-code-2/">Cipher:Crack the Code (2)</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Continue to previous levels.</p>
+<h2 id="14-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-pippity-2f-madman-htm-22-3e-level_14-3c-2f-a-3e-">14. <a href="http://www.gamemastertips.com/cipher/pippity/madman.htm" target="_blank">level 14</a></h2>
+<p>A reminder reveals, saying that this level is <strong>optional</strong>. If we want to solve it, go to link <a href="http://www.gamemastertips.com/cipher//pippity/puyrruh.htm" target="_blank">!pu yrruH</a>. Or we could skip this level to level 15.</p>
+<p>The title seems like <strong>Hurry up!</strong> has been reversed. and the hint in source code is:</p>
+<blockquote>
+<p>retsaf klat…uoy raeh t’nac i</p>
+</blockquote>
+<p>reverse the characters,</p>
+<blockquote>
+<p>I can’t hear you …talk faster</p>
+</blockquote>
+<p>There is a wav file loop playing. Maybe I need to reverse the sound and made it faster?</p>
+<p>Python wave modules could help.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> wave, struct  </span>
+<span class="title">wav</span>=wave.open('puyrruh.wav')
+<span class="title">nc</span>,sw,fr,nf,ct,cn=wav.getparams()
+<span class="title">frames</span>=wav.readframes(nc*nf)
+<span class="title">new_wav</span>=wave.open('after.wav','w')
+<span class="title">new_wav</span>.setnchannels(nc)
+<span class="title">new_wav</span>.setsampwidth(sw)
+<span class="title">new_wav</span>.setframerate(fr)
+<span class="title">new_wav</span>.setnframes(nf/<span class="number">8</span>)
+<span class="title">new_wav</span>.setcomptype(ct,cn)
+<span class="title">new_wav</span>.writeframes(frames[::-<span class="number">8</span>])
+<span class="title">new_wav</span>.close()
+<span class="title">wav</span>.close()
+</pre></td></tr></table></figure>
+
+<p>And you could play the sound (if you are under windows) by:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> winsound</span>
+<span class="title">winsound</span>.<span class="type">PlaySound</span>('after.wav', winsound.<span class="type">SND_FILENAME</span>)
+</pre></td></tr></table></figure>
+
+<p>A clear sound: <strong>dissolve</strong>.</p>
+<h2 id="15-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-2f-pippity-2f-dissolve-htm-22-3e-What-2019-s_wrong_with_this_picture-3f-3c-2f-a-3e-">15. <a href="http://www.gamemastertips.com/cipher//pippity/dissolve.htm" target="_blank">What’s wrong with this picture?</a></h2>
+<p>From the source code, the image is actually a txt file: <strong>screenthe15th.txt</strong>. The content is a lot of ASCII code, it must be encoded. What kind of encode will only display ASCII characters? The first name come to my brain is <strong>Base64</strong>.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> base64,urllib,Image</span>
+<span class="title">istr</span>=urllib.urlopen('http://www.gamemastertips.com/cipher//pippity/screenthe15th.txt').read()
+<span class="title">ofile</span>=open('<span class="number">15.</span>jpg','wb')
+<span class="title">ostr</span>=base64.decodestring(istr)
+<span class="title">ofile</span>.write(ostr)
+<span class="title">ofile</span>.close()
+<span class="title">pic</span>=<span class="type">Image</span>.open('<span class="number">15.</span>jpg')
+<span class="title">pic</span>.show()
+</pre></td></tr></table></figure>
+
+<p>A monkey watching you and answer is <strong>/monkey/wrench.htm</strong></p>
+<h2 id="16-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-2f-monkey-2f-wrench-htm-22-3e-level_16-3c-2f-a-3e-">16. <a href="http://www.gamemastertips.com/cipher//monkey/wrench.htm" target="_blank">level 16</a></h2>
+<p>Hint is :</p>
+<blockquote>
+<p>key, please</p>
+</blockquote>
+<p>And they are attached to the tail of source code:</p>
+<blockquote>
+<p>K311 K282 K545 K331 K332</p>
+</blockquote>
+<p>Filename of the picture is:</p>
+<blockquote>
+<p>hammertime.jpg</p>
+</blockquote>
+<p>What does all information mean? Google “K311 key” , wikipedia <a href="http://en.wikipedia.org/wiki/Piano_Sonata_No._9_(Mozart" target="_blank">item</a>) comes first. It’s Mozart’s piano sonata No. 9. </p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Code</strong></th>
+<th style="text-align:center"><strong>Title</strong></th>
+<th style="text-align:right"><strong>Composer</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">K311</td>
+<td style="text-align:center">Piano Sonata No. 9 in <strong>D</strong> major</td>
+<td style="text-align:right">Mozart</td>
+</tr>
+<tr>
+<td style="text-align:left">K282</td>
+<td style="text-align:center">Piano Sonata No. 4 in <strong>E</strong>-flat major</td>
+<td style="text-align:right">Mozart</td>
+</tr>
+<tr>
+<td style="text-align:left">K545</td>
+<td style="text-align:center">Piano Sonata No. 16 in <strong>C</strong> major</td>
+<td style="text-align:right">Mozart</td>
+</tr>
+<tr>
+<td style="text-align:left">K331</td>
+<td style="text-align:center">Piano Sonata No. 11 in <strong>A</strong> major</td>
+<td style="text-align:right">Mozart</td>
+</tr>
+<tr>
+<td style="text-align:left">K332</td>
+<td style="text-align:center">Piano Sonata No. 12 in <strong>F</strong> major</td>
+<td style="text-align:right">Mozart</td>
+</tr>
+</tbody>
+</table>
+<p>After change the URL to <strong>keys</strong>(“decaf”), the bottom left side of the picture changed, and text shows up.</p>
+<blockquote>
+<p>D566</p>
+</blockquote>
+<p>The title is </p>
+<blockquote>
+<p>S244/2</p>
+</blockquote>
+<p>The image file name:</p>
+<blockquote>
+<p>RV552</p>
+</blockquote>
+<p>The source code:</p>
+<blockquote>
+<p>TWV41:D6<br>WoO10/2 </p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th style="text-align:left"><strong>Code</strong></th>
+<th style="text-align:center"><strong>Title</strong></th>
+<th style="text-align:right"><strong>composer</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">S244/2</td>
+<td style="text-align:center">Hungarian Rhapsody No. 2 in <strong>C</strong></td>
+<td style="text-align:right">Franz Liszt</td>
+</tr>
+<tr>
+<td style="text-align:left">RV552</td>
+<td style="text-align:center">Violin Concerto in <strong>A</strong> major</td>
+<td style="text-align:right">Vivaldi, Antonio</td>
+</tr>
+<tr>
+<td style="text-align:left">WoO10/2</td>
+<td style="text-align:center">Minuet In <strong>G</strong></td>
+<td style="text-align:right">Schumann</td>
+</tr>
+<tr>
+<td style="text-align:left">D566</td>
+<td style="text-align:center">Piano Sonata No.6 in <strong>E</strong></td>
+<td style="text-align:right">Franz Peter Schubert</td>
+</tr>
+<tr>
+<td style="text-align:left">TWV41:D6</td>
+<td style="text-align:center">Cello Sonata in <strong>D</strong></td>
+<td style="text-align:right">Georg Philipp Telemann</td>
+</tr>
+</tbody>
+</table>
+<p>So, new answer is <strong>caged</strong>.</p>
+<h2 id="17-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-monkey-2f-caged-htm-22-3e-Something_odd_about_this_level-3c-2f-a-3e-">17. <a href="http://www.gamemastertips.com/cipher/monkey/caged.htm" target="_blank">Something odd about this level</a></h2>
+<p>The picture named <strong>first.jpg</strong>, so I tried second, third , fourth, fifth, sixth , seventh and eighth. But only first 7 pictures are available. </p>
+<p>There’re symbols in the pictures. It looks like characters disassembled into pieces.</p>
+<p>So, by using PIL, we could combine this symbol together.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="code"><pre>import urllib,Image,ImageDraw,PIL.ImageOps
+from cStringIO import StringIO
+fa=[<span class="attribute">'first</span>',<span class="attribute">'second</span>',<span class="attribute">'third</span>',<span class="attribute">'fourth</span>',<span class="attribute">'fifth</span>',<span class="attribute">'sixth</span>',<span class="attribute">'seventh</span>']
+pica=[]
+<span class="keyword">for</span> x <span class="keyword">in</span> fa:
+	pic=Image.<span class="keyword">open</span>(StringIO(urllib.urlopen(<span class="attribute">'http</span>://monkey:wrench@www.gamemastertips.com/cipher/monkey/'+x+'.jpg').read()))
+	pica.append(pic.convert(<span class="attribute">'RGBA</span>'))
+bg=Image.<span class="keyword">new</span>(<span class="attribute">'RGBA</span>',pica[<span class="number">0</span>].size,(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>))
+<span class="keyword">for</span> x <span class="keyword">in</span> pica:
+	mask_pic=x.convert(mode=<span class="literal">'L'</span>)
+	bg.paste(x,mask=mask_pic)
+</pre></td></tr></table></figure>
+
+<p>But the result is quite strange:</p>
+<p><img src="/files/cipher/lv15-1.jpg" alt="Level 15 Picture 1"></p>
+<p>Wait, the title claims someting “odd”, is it literal? I change the code:</p>
+<pre><code><span class="keyword">for</span> x <span class="keyword">in</span> <span class="attribute">pica</span>:
+</code></pre><p>into<br>    for x in pica[::2]:</p>
+<p>Bingo. It works.</p>
+<p><img src="/files/cipher/lv15-2.jpg" alt="Level 15 Picture 2"></p>
+<p>Answer is <strong>repair</strong>.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2011-11-30T02:24:00.000Z"><a href="/blog/2011/11/30/cipher-crack-the-code-1/">Nov 30 2011</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2011/11/30/cipher-crack-the-code-1/">Cipher:Crack the Code (1)</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Recommended by Vincent Chan, I love this game, it’s kind of similar to <strong><a href="http://panchoat.org/blog/2008/04/08/python-challenge/" target="_blank">Python  Challenge</a></strong> I played before but with less intensive programming requirement.</p>
+<h2 id="-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-cipher-htm-22-3e-Ciphyer_-_An_Online_Riddle-3c-2f-a-3e-"><a href="http://www.gamemastertips.com/cipher/cipher.htm" target="_blank">Ciphyer - An Online Riddle</a></h2>
+<p>Just Click <em>start</em> then we will go to level 1.</p>
+<h2 id="1-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-begin-2f-clickthedoor-htm-22-3e-Begin-3c-2f-a-3e-">1. <a href="http://www.gamemastertips.com/cipher/begin/clickthedoor.htm" target="_blank">Begin</a></h2>
+<p>As the arrow shows, click the center door of the picture.</p>
+<h2 id="2-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-omgits-2f-level2-htm-22-3e-URL-3f-3c-2f-a-3e-">2. <a href="http://www.gamemastertips.com/cipher/omgits/level2.htm" target="_blank">URL?</a></h2>
+<p>Once click the center door, a alert window pop up and give a hint on the <strong>title</strong>, title is <code>URL?</code>, so change <em>level2.htm</em> to <em>level3.htm</em>.</p>
+<h2 id="3-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-omgits-2f-level3-htm-22-3e-View_-26-gt-3b-_Source-3c-2f-a-3e-">3. <a href="http://www.gamemastertips.com/cipher/omgits/level3.htm" target="_blank">View &gt; Source</a></h2>
+<p>Reminder on the bottom says go to the source, and the source say</p>
+<blockquote>
+<p>\&lt;!—go to <strong>braggart.htm</strong> —></p>
+</blockquote>
+<h2 id="4-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-omgits-2f-braggart-htm-22-3e-Computer_Speak-3c-2f-a-3e-">4. <a href="http://www.gamemastertips.com/cipher/omgits/braggart.htm" target="_blank">Computer Speak</a></h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>str_array=[<span class="number">0b01110100</span>,<span class="number">0b01110010</span>,<span class="number">0b01101111</span>,<span class="number">0b01101010</span>,<span class="number">0b01100001</span>,<span class="number">0b01101110</span>]
+<span class="keyword">for</span> x <span class="keyword">in</span> <span class="attribute">str_array</span>:
+	<span class="built_in">print</span> chr(x)
+</pre></td></tr></table></figure>
+
+<p>So the result will be <strong>trojan</strong>. Click to the <strong>4</strong> area, answer the password, done!</p>
+<h2 id="5-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-bricks-2f-wall-htm-22-3e-Come_to_the_dark_side-3c-2f-a-3e-">5. <a href="http://www.gamemastertips.com/cipher/bricks/wall.htm" target="_blank">Come to the dark side</a></h2>
+<p>The hint is “Come to the dark side”. After highlight dark area below the picture, you can see a very tiny text: “<strong>hollow.htm</strong>“.</p>
+<h2 id="6-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-bricks-2f-hollow-htm-22-3e-Letters-3c-2f-a-3e-">6. <a href="http://www.gamemastertips.com/cipher/bricks/hollow.htm" target="_blank">Letters</a></h2>
+<p>After checking of the source code, the hint is <em>“Why ‘a?’ Why not something else?”</em> And the picture embbed is named screen6a.jpg. So change the URL to this <strong>screen6b.jpg</strong>, a new picture shown, to <strong>screen6o.jpg</strong>, subsequently, </p>
+<blockquote>
+<p>aboLished</p>
+</blockquote>
+<p>And finally, it gave me the hint: <em>what do you want now? I just gave you the answer…;)</em>. Answer: <strong>abolished.htm</strong></p>
+<h2 id="7-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-brick-2f-abolished-htm-22-3e-Illuminate_the_darkness-2026-3c-2f-a-3e-">7. <a href="http://www.gamemastertips.com/cipher/brick/abolished.htm" target="_blank">Illuminate the darkness…</a></h2>
+<p>The hint is as title claimed. So I use <strong>Pixelmator</strong>, under Image Menu, Level Item, and change the Gray value to %4, <strong>concealed</strong> is displayed on the right bottom of the picture. But the answer is not <strong>concealed.htm</strong>. Looking into the source code, there is a circle shape area you could click, actually it’s the eye of squirrel. Click, and filled the answer <strong>concealed</strong>, bingo.</p>
+<h2 id="8-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-creppy-2f-22-3e-ASCII-3c-2f-a-3e-">8. <a href="http://www.gamemastertips.com/cipher/creppy/" target="_blank">ASCII</a></h2>
+<p>From the source code, after the image <strong>screen8.jpg</strong> </p>
+<blockquote>
+<p>gif me something else</p>
+</blockquote>
+<p>Then an animated GIF was shown. Since <strong>Pixelmator</strong> still cannot handle animated GIF. I download <strong>Pixen</strong> from <strong>Mac App Store</strong>, it’s free and I can got the animation layers with numbers now. The title is Ascii, it should be like level 4. </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>str_array=[<span class="number">97</span>,<span class="number">103</span>,<span class="number">105</span>,<span class="number">108</span>,<span class="number">105</span>,<span class="number">116</span>,<span class="number">121</span>]
+<span class="keyword">for</span> x <span class="keyword">in</span> <span class="attribute">str_array</span>:
+	<span class="built_in">print</span> chr(x)
+</pre></td></tr></table></figure>
+
+<p> The answer is <strong>agility</strong></p>
+<h2 id="9-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-creppy-2f-agility-htm-22-3e-The_9th-3c-2f-a-3e-">9. <a href="http://www.gamemastertips.com/cipher/creppy/agility.htm" target="_blank">The 9th</a></h2>
+<p>The picture in page named “picture8ofdoom.jpg”. Obvious, this is level 9, not 8. After changing the URL, a set of staffs appeared. 6 is a, 7 is b, 1 is c, 2 is d , 3 is e, 4 is f and 5 is g. That’s what my music teacher taught me when I was in primary school. According to this, we can translate staffs into <strong>cabbage</strong>.</p>
+<h2 id="10-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-creppy-2f-cabbage-htm-22-3e-This_level_is_HEXed-3c-2f-a-3e-">10. <a href="http://www.gamemastertips.com/cipher/creppy/cabbage.htm" target="_blank">This level is HEXed</a></h2>
+<p>The hint in source code claimed:</p>
+<blockquote>
+<p>in a colorful sort of way</p>
+</blockquote>
+<p>The color seems a little bit different, so I grab the picture and use <strong>Pixelmator</strong> to identify the color value.</p>
+<p>It turned out to be <em>#dddddd</em>,<em>#eeeeee</em>,<em>#cccccc</em>,<em>#aaaaaa</em>,<em>#dddddd</em> and <em>#eeeeee</em>. So the answer is <strong>decade</strong>. Click “Answer” and input the password. </p>
+<h2 id="11-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-pippity-2f-22-3e-Numerals-3f-3c-2f-a-3e-">11. <a href="http://www.gamemastertips.com/cipher/pippity/" target="_blank">Numerals?</a></h2>
+<p>This picture is screenxi.jpg, and the source code said no geography is required. Noticing the light <strong>1009</strong> on the picture, the answer should be <strong>mix.htm</strong></p>
+<h2 id="12-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-pippity-2f-mix-htm-22-3e-The_keys_to_solving_the_level-3c-2f-a-3e-">12. <a href="http://www.gamemastertips.com/cipher/pippity/mix.htm" target="_blank">The keys to solving the level</a></h2>
+<p>Hint</p>
+<blockquote>
+<p>are right in front of you</p>
+</blockquote>
+<p>and the rule is</p>
+<blockquote>
+<p>i -&gt; o and x -&gt; c</p>
+</blockquote>
+<p>on the bottom of source:</p>
+<blockquote>
+<p>decode: ubcwbruib</p>
+</blockquote>
+<p>It seems keys literally means keys on keyboard, the encode method is using the right key to replace the key on the keyboard. So, answer is:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre><span class="title">u</span>-&gt;i
+<span class="title">b</span>-&gt;n
+<span class="title">c</span>-&gt;v
+<span class="title">w</span>-&gt;e
+<span class="title">b</span>-&gt;n
+<span class="title">r</span>-&gt;t
+<span class="title">u</span>-&gt;i
+<span class="title">i</span>-&gt;o
+<span class="title">b</span>-&gt;n
+</pre></td></tr></table></figure>
+
+<p>Answer should be <strong>invention</strong>.</p>
+<h2 id="13-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-pippity-2f-invention-htm-22-3e-Friday-3c-2f-a-3e-">13. <a href="http://www.gamemastertips.com/cipher/pippity/invention.htm" target="_blank">Friday</a></h2>
+<p>Hint:</p>
+<blockquote>
+<p>dd/{mm}/1949 1st<br>dd/{mm}/1984 2nd<br>dd/{mm}/1946 2nd<br>dd/{mm}/1955 1st<br>dd/{mm}/1937 1st<br>dd/{mm}/1981 3rd  </p>
+</blockquote>
+<p>According to this <a href="http://www.taliscope.com/FindFriday13.html" target="_blank">site</a>. The months name should be:</p>
+<ul>
+<li>May, 1949</li>
+<li>April, 1984</li>
+<li>December, 1946</li>
+<li>May, 1955</li>
+<li>August, 1937</li>
+<li>November, 1981</li>
+</ul>
+<p>So, answer comes out: <strong>madman</strong>.</p>
+<h3 id="To_be_continue">To be continue</h3>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2011-07-12T02:52:00.000Z"><a href="/blog/2011/07/12/remote-desktop-solution-on-mac-and-linux/">Jul 12 2011</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2011/07/12/remote-desktop-solution-on-mac-and-linux/">Remote Desktop Solution on Mac and Linux</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Finally I bought cheapest new iMac. After so many years Linux experience, I think Mac may be more integrated and require me less maintaining energy. My lenovo laptop still runs nx-server and my office PC installed nx-client. But since now my main box turning into Mac, I need to find a new solution.</p>
+<h2 id="Mac">Mac</h2>
+<h3 id="VNC">VNC</h3>
+<p>The first product coming into my mind is VNC, classic and cross platform. Mac already has a default VNC named “<strong>Remote Management</strong>“. It’s quite good, but if I turn off <strong>Magic Mouse</strong>, it will froze when I try to login. And another issue is, the speed is compromised, Flash, Movie, are definetely not playable.</p>
+<h3 id="-3c-a_href-3d-22-http-3a-2f-2f-www-splashtop-com-22-3e-Splashtop-3c-2f-a-3e-"><a href="http://www.splashtop.com" target="_blank">Splashtop</a></h3>
+<p>I visited several forum and fount this combination: <strong>Splashtop Streamer</strong> and <strong>Splashtop Client</strong>.  It’s available on iOS, Windows and Mac. The speed is quite good while I am in intranet. Video? work like a breeze. And it could forward audio. The only problem is, I need to reset my display setting everytime because my office PC only got 1280x1024 resolution while my iMac is 1920x1080. Finally I pick this one as my Mac solution.</p>
+<h2 id="Linux">Linux</h2>
+<h3 id="VNC-1">VNC</h3>
+<p>Actually I gave up VNC at the very beginning. POSIX X server is design to be client and server structure. Why I trouble my self to a whole desktop while I can run application remotely just like in my office PC? </p>
+<h3 id="X11_forwarding">X11 forwarding</h3>
+<p>It’s my preferred mehtod for several month. I installed <strong>XMing</strong> in my office as X server and set it up to be <em>rootless</em> so that there is no entire desktop displayed.</p>
+<h3 id="NX_Server">NX Server</h3>
+<p>But the problem is, X forwarding is still too slow for video playing. So I turn into NX server, it’s developed by a commercial company <a href="http://www.nomachine.com" target="_blank"><strong>No Machine</strong></a>. There are 2 implementation, I use <strong>FreeNX</strong>, the opensource one. The speed is quite good while still incapable of forwarding audio. This is my final choice under Linux.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2010-12-10T16:45:00.000Z"><a href="/blog/2010/12/11/python-script-to-check-apple-online-store-status/">Dec 11 2010</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2010/12/11/python-script-to-check-apple-online-store-status/">Python script to check Apple online store status</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>There are some GUI tools on Windows platform to regularily check the online store condition of whether new iphone released. Below is my trial to do it on Linux.</p>
+<figure class="highlight lang-python"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+</pre></td><td class="code"><pre><span class="comment">#encodig=utf-8</span>
+<span class="keyword">import</span> mechanize
+<span class="keyword">import</span> hashlib
+
+ORIGINAL_MD5SUM=<span class="string">'a6718d4b18f4b1c1c728123519830558'</span>
+
+<span class="function"><span class="keyword">def</span> <span class="title">get_apple_hk_md5sum</span><span class="params">()</span>:</span>
+    <span class="string">"""return md5sum hex of apple iphone order page"""</span>
+    br = mechanize.Browser()
+    response = br.open(<span class="string">"http://store.apple.com/hk/browse/home/shop_iphone/family/iphone?mco=OTY2ODA2OQ"</span>)
+    forms=str([str(i) <span class="keyword">for</span> i <span class="keyword">in</span> br.forms()])
+    apple_hk_md5sum = hashlib.md5(forms)
+    <span class="keyword">return</span> apple_hk_md5sum.hexdigest()
+
+<span class="keyword">import</span> smtplib
+<span class="keyword">from</span> email.mime.text <span class="keyword">import</span> MIMEText
+
+<span class="function"><span class="keyword">def</span> <span class="title">send_notification_mail</span><span class="params">()</span>:</span>
+    <span class="string">"""send mail from gmail account to myself"""</span>
+    mailto_list=[<span class="string">'aaa@gmail.com'</span>,<span class="string">'bbb@hotmail.com'</span>,<span class="string">'ccc@me.com'</span>]
+    gmail_usr = <span class="string">'someone@gmail.com'</span>
+    gmail_pwd= <span class="string">'password'</span>
+    gmail_smtp_server= <span class="string">'smtp.gmail.com'</span>
+    sender= gmail_usr
+    msg=MIMEText(<span class="string">'Apple iPhone order page changed!'</span>)
+    msg[<span class="string">'Subject'</span>]=<span class="string">'iPhone Alert! Order ASAP!'</span>
+    msg[<span class="string">'From'</span>]=sender
+    msg[<span class="string">'To'</span>]=mailto_list
+
+    s=smtplib.SMTP(gmail_smtp_server,<span class="number">587</span>)
+    s.ehlo(sender)
+    s.starttls()
+    s.ehlo(sender)
+    s.login(gmail_usr,gmail_pwd)
+    s.sendmail(sender,mailto_list,msg.as_string())
+    s.close()
+     
+<span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:
+    <span class="keyword">if</span> get_apple_hk_md5sum() != ORIGINAL_MD5SUM:
+        send_notification_mail()
+</pre></td></tr></table></figure>
+
+<p>Make a folder name <code>pyapple</code>, and save script above to <code>__init__.py</code>. Now You could use <strong>Cron Service</strong> to check the website every several minutes. </p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2010-12-07T03:28:00.000Z"><a href="/blog/2010/12/07/r-tutorial-and-notes-2/">Dec 7 2010</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2010/12/07/r-tutorial-and-notes-2/">R tutorial and notes (2)</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Other than group bar graph, I also need to draw time series.</p>
+<h1 id="Data_presentation">Data presentation</h1>
+<p>First read file as data frame.</p>
+<figure class="highlight lang-r"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+</pre></td><td class="code"><pre><span class="comment"># change to working directory</span>
+setwd(<span class="string">"/Users/xxxx/R-Project"</span>)
+df &lt;- read.table(table(file=<span class="string">"data/Fig1-trace.txt"</span>, header=<span class="literal">TRUE</span>)
+<span class="keyword">attach</span>(df)
+```	
+
+if the file looks like:
+
+	head(df)
+
+|   | Time |   CTRL   | TREATMENT |
+|---|------|----------|-----------|
+| 1 |    0 | 7.308960 | 3.866848  |
+| 2 |    2 | 7.417467 | 3.853285  |
+| 3 |    5 | 7.431030 | 3.758341  |
+|---|------|----------|-----------|
+
+Then draw the first line by `linex`:
+
+```r
+linex &lt;-plot(Time,CTRL, type=<span class="string">'l'</span>, cex=<span class="number">1.2</span>, axes=<span class="literal">FALSE</span>,col=<span class="string">"black"</span>,ylab=<span class="string">""</span>, xlab=<span class="string">""</span>,ylim=c(<span class="number">0</span>,<span class="number">24</span>), lwd=<span class="number">3</span>, lty= <span class="string">"solid"</span>, pch=<span class="string">"*"</span>)
+</pre></td></tr></table></figure>
+
+<p>Draw another line:</p>
+<figure class="highlight lang-r"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre>points(Time, CFTRi172, type=<span class="string">'l'</span>, cex=<span class="number">1.2</span>, xlab=<span class="string">""</span>, ylab=<span class="string">""</span>, col=<span class="string">"red"</span>, lwd=<span class="number">3</span>)
+</pre></td></tr></table></figure>
+
+<p>Mark x and y unit description mannually:</p>
+<figure class="highlight lang-r"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre>lines(c(<span class="number">20</span>,<span class="number">20</span>), c(<span class="number">40</span>,<span class="number">30</span>), type=<span class="string">'l'</span>, col=<span class="string">"black"</span>,lwd=<span class="number">3</span> )
+lines(c(<span class="number">20</span>,<span class="number">620</span>), c(<span class="number">35</span>,<span class="number">35</span>), type=<span class="string">'l'</span>, col=<span class="string">"black"</span>,lwd=<span class="number">3</span> )
+text(<span class="number">520</span>,<span class="number">38</span>,labels=expression(paste(<span class="number">10</span>, <span class="string">" "</span>, someunit)), cex=<span class="number">1.2</span>)
+text(<span class="number">520</span>,<span class="number">32</span>,labels=expression(paste(<span class="number">5</span>, <span class="string">" "</span>,min)), cex=<span class="number">1.2</span>)
+</pre></td></tr></table></figure>
+
+<p>Add extra text and arrow for further information:</p>
+<figure class="highlight lang-r"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre>text(<span class="number">2500</span>,<span class="number">15</span>,labels=<span class="string">"Some thing A"</span>, cex=<span class="number">1.2</span>)
+arrows(<span class="number">2500</span>,<span class="number">16</span>,<span class="number">2900</span>,<span class="number">17</span>, lwd=<span class="number">3</span>, length=<span class="number">.1</span>)
+text(<span class="number">1200</span>,<span class="number">7</span>,labels=<span class="string">"Some thing B"</span>, cex=<span class="number">1.2</span>)
+arrows(<span class="number">1000</span>,<span class="number">5</span>,<span class="number">700</span>,<span class="number">3</span>, lwd=<span class="number">3</span>, length=<span class="number">.1</span>)
+</pre></td></tr></table></figure>
+
+<p>add legend and title:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="xml"><span class="tag"><span class="attribute">legend</span>("<span class="attribute">topleft</span>", <span class="attribute">names</span>(<span class="attribute">df</span>)[<span class="attribute">2:3</span>], <span class="attribute">col</span>=<span class="value">c('black',</span> '<span class="attribute">red</span>'),<span class="attribute">box.lwd</span>=<span class="value">0,</span> <span class="attribute">bty</span>=<span class="value">'l'</span>, <span class="attribute">cex</span>=<span class="value">1.3,</span> <span class="attribute">lty</span>=<span class="value">"solid"</span>, <span class="attribute">lwd</span>=<span class="value">3)</span> 
+<span class="attribute">title</span>(<span class="attribute">ylab</span>=<span class="value">expression(paste(ylabel),</span> <span class="attribute">cex.lab</span>=<span class="value">2</span> , <span class="attribute">line</span>=<span class="value">0</span> )</span></span>
+</pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2010-12-04T04:03:00.000Z"><a href="/blog/2010/12/04/nian-zhong-pan-dian-zhi-chi-he-wan-le/">Dec 4 2010</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2010/12/04/nian-zhong-pan-dian-zhi-chi-he-wan-le/">年终盘点之吃喝玩乐</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>吃在惠州：笃记的榴莲冰皮包，顺天兴盛的榴莲酥，麦家鸽鸟轩的鸽子汤。蒙记的生鱼片过得去吧。</p>
+<p>吃在HK：天坛大佛下面的素斋，模样可喜。海港城的马可波罗，第一次吃300/人的自助餐。</p>
+<p>喝：不喝酒，没意见，张同学的自制杨枝甘露勾起了无限食欲。</p>
+<p>玩：无</p>
+<p>乐：无</p>
+<p>综上……悲剧的一年……</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2010-12-03T11:34:00.000Z"><a href="/blog/2010/12/03/nian-zhong-pan-dian-zhi-du-shu-pian/">Dec 3 2010</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2010/12/03/nian-zhong-pan-dian-zhi-du-shu-pian/">年终盘点之读书篇</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>首先要声明的是，不包括paper——鄙人看的paper实在是页数数得出来，不值一晒～</p>
+<p>不分先后，完全乱序。</p>
+<p>已经读完的：</p>
+<p>消闲娱乐：</p>
+<p>《大旗英雄传》《游侠传》《天涯明月刀》《大唐双龙传》《货币战争》《百年孤独》（重读）《霍乱时期的爱情》  《书剑恩仇录》（重读） 《九州＊龙痕》《追风筝的人》《把妹达人（The Game）》 《荒人手记》《明朝那些事》《一个中国人在中国的遭遇》</p>
+<p>知识杂谈：</p>
+<p>《中东战争全史》《金融炼金术》《改革历程》《木子月月鸟8x8日记》《万历十五年》（重读）《从零到亿万》（和田一夫自传） 《田中角荣传》《日本史》（林明德版）</p>
+<p>心灵鸡汤：</p>
+<p>《怪诞心理学》《爱的艺术》《35岁之前要做的33件事情》《处世悬镜》</p>
+<p>在读中（不计入推荐名单）：</p>
+<p>《厚黑学》《黄帝内经太素》《世界是平的》</p>
+<p>最后是推荐名单（排名不分先后）：</p>
+<p>《怪诞心理学》《爱的艺术》《田中角荣传》《万历十五年》《木子月月鸟8x8日记》</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2010-11-18T15:14:00.000Z"><a href="/blog/2010/11/18/r-tutorial-and-notes-1/">Nov 18 2010</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2010/11/18/r-tutorial-and-notes-1/">R tutorial and notes (1)</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="Data_Matrix">Data Matrix</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre># first get data frame
+
+df <span class="tag">&lt;<span class="title">-</span> <span class="attribute">read.table</span>(<span class="attribute">header</span>=<span class="value">TRUE,</span> <span class="attribute">text</span>=<span class="value">"
+       	cate1	cate2	cate3	cate4	cate5	cate6
+CTRL	18.54 	15.40 	22.30	22.07 	14.74 	30.46 
+TREATMENT	10.46 	8.87 	20.42	20.50 	13.33 	24.75                         
+"</span>) 
+# <span class="attribute">then</span> <span class="attribute">convert</span> <span class="attribute">it</span> <span class="attribute">to</span> <span class="attribute">matrix</span>
+<span class="attribute">mf</span> &lt;<span class="attribute">-</span> <span class="attribute">data.matrix</span>(<span class="attribute">df</span>)</span>
+</pre></td></tr></table></figure>
+
+<h2 id="Draw_bar_graph_in_barplot">Draw bar graph in barplot</h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="xml"><span class="tag"><span class="attribute">barplot</span>(<span class="attribute">mf</span>, <span class="attribute">beside</span>=<span class="value">TRUE,</span> <span class="attribute">legend.text</span>= <span class="attribute">T</span>,<span class="attribute">args.legend</span> = <span class="attribute">list</span>(<span class="attribute">x</span> =<span class="value">"topleft"</span>, <span class="attribute">cex</span>=<span class="value">1.2</span> ,<span class="attribute">box.lwd</span>=<span class="value">0),</span> <span class="attribute">density</span>=<span class="value">20,</span> <span class="attribute">cex.names</span>=<span class="value">1.2,</span> <span class="attribute">cex.axis</span>=<span class="value">1.2,</span> <span class="attribute">ylim</span>=<span class="value">c(0,40))</span></span></span>
+</pre></td></tr></table></figure>
+
+<ul>
+<li>“beside” decide it’s parallel bar or stacked bar.</li>
+</ul>
+<h2 id="FAQ_for_normal_plot">FAQ for normal plot</h2>
+<h3 id="How_to_add_greek_letters_and_subscript_or_superscript_in_my_plot-3f-">How to add greek letters and subscript or superscript in my plot?</h3>
+<pre><code><span class="title">ylabname</span> = expression(paste(<span class="string">"I"</span>[<span class="string">"sc"</span>],<span class="string">" "</span>,mu,<span class="string">"A/cm"</span>^{<span class="number">2</span>}))
+</code></pre><ul>
+<li>subscript could be encapsuled in “[]”</li>
+<li>superscript in “^{}” or ‘^”super”‘</li>
+</ul>
+<h3 id="How_to_remove_box_around_legend-3f-">How to remove box around legend?</h3>
+<pre><code><span class="xml"><span class="tag"><span class="attribute">args.legend</span> = <span class="attribute">list</span>( <span class="attribute">box.lwd</span>=<span class="value">0)</span></span></span>
+</code></pre><h3 id="How_to_add_error_bar-3f-">How to add error bar?</h3>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre>errdf <span class="tag">&lt;<span class="title">-</span> <span class="attribute">read.table</span>(<span class="attribute">header</span>=<span class="value">TRUE,</span> <span class="attribute">text</span>=<span class="value">"
+       	cate1	cate2	cate3	cate4	cate5	cate6
+CTRL	1 	2 	1	2 	1 	2 
+TREATMENT	2 	2 	2	2 	2	2                         
+"</span>) 
+# <span class="attribute">then</span> <span class="attribute">convert</span> <span class="attribute">it</span> <span class="attribute">to</span> <span class="attribute">matrix</span>
+<span class="attribute">errmf</span> &lt;<span class="attribute">-</span> <span class="attribute">data.matrix</span>(<span class="attribute">errdf</span>)
+<span class="attribute">arrows</span>(<span class="attribute">barx</span>,<span class="attribute">mf</span>+<span class="attribute">errmf</span>, <span class="attribute">barx</span>, <span class="attribute">mf-errmf</span>, <span class="attribute">angle</span>=<span class="value">90,</span> <span class="attribute">code</span>=<span class="value">3,</span> <span class="attribute">length</span>=<span class="value">0.05)</span></span>
+</pre></td></tr></table></figure>
+
+<h3 id="Margin_not_enough_and_axis_label_only_displayed_partially-3f-">Margin not enough and axis label only displayed partially?</h3>
+<pre><code><span class="xml"><span class="tag"># <span class="attribute">numerical</span> <span class="attribute">vector</span> <span class="attribute">of</span> <span class="attribute">the</span> <span class="attribute">form</span> <span class="attribute">c</span>(<span class="attribute">bottom</span>, <span class="attribute">left</span>, <span class="attribute">top</span>, <span class="attribute">right</span>) <span class="attribute">which</span> <span class="attribute">gives</span> <span class="attribute">the</span> <span class="attribute">margin</span> <span class="attribute">size</span> <span class="attribute">specified</span> <span class="attribute">in</span> <span class="attribute">inches</span>
+<span class="attribute">new_mai</span>=<span class="value">par("mai")*c(1,1.2,1,1)</span>
+<span class="attribute">par</span>(<span class="attribute">mai</span>=<span class="value">new_mai)</span></span></span>
+</code></pre><h3 id="Set_cex-axis_while_using_expression_and_paste-3f-">Set cex.axis while using expression and paste?</h3>
+<p>Strangely, while using the expression and paste function to work around greek characters, <code>cex.axis</code> setting won’t work. A new work around is:</p>
+<pre><code><span class="function"><span class="title">title</span><span class="params">(ylab=ylabname,cex.lab=<span class="number">1.2</span>)</span></span>
+</code></pre><h3 id="switch_patterns_or_colors_between_group-3f-">switch patterns or colors between group?</h3>
+<pre><code><span class="comment"># other options include grey50, grey30,grep70, rainbows(n), heat.colors(n), etc...</span>
+barplot(<span class="keyword">...</span>,col=c(<span class="string">"white"</span>,<span class="string">"black"</span>),den=c(<span class="number">14</span>,<span class="number">20</span>),<span class="keyword">...</span>)
+</code></pre><h3 id="Add_significance_star_symbol-3f-">Add significance star symbol?</h3>
+<pre><code><span class="title">blanks</span> &lt;- rep(<span class="string">""</span>,<span class="number">6</span>)
+<span class="title">stars</span> &lt;- c(<span class="string">"*"</span>,<span class="string">"*"</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>,<span class="string">""</span>)
+<span class="title">letters</span> &lt;- as.vector(rbind(blanks,stars))
+<span class="title">text</span>(x=barx ,y=mf+<span class="number">4</span>,label=letters)
+</code></pre><h3 id="subplot-3f-">subplot?</h3>
+<pre><code><span class="function"><span class="title">par</span><span class="params">(mfcol=<span class="function_name">c</span>(<span class="number">2</span>,<span class="number">1</span>))</span></span>
+</code></pre><p>And then do 2 plots subsequently.</p>
+<h3 id="split_string_by_empty_line-3f-">split string by empty line?</h3>
+<pre><code>strsplit(str,"<span class="command">\n</span><span class="special">[</span><span class="command">\t</span><span class="special">]</span>*<span class="command">\n</span>")
+</code></pre><h3 id="reuse_my_own_functions-3f-">reuse my own functions?</h3>
+<pre><code><span class="function"><span class="title">source</span><span class="params">(<span class="string">"func_file.R"</span>)</span></span>
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2010-07-26T03:56:00.000Z"><a href="/blog/2010/07/26/jie/">Jul 26 2010</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2010/07/26/jie/">结</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>“心有千千结”。我一直觉得结这个字用的很好。爱，恨，怨……一切的貪、嗔、痴具化成为数不清的思绪，纠缠在一起，成为一团剪不断理还乱的线团郁结在心里。每每自省之时，总觉着要清理一番，但是细细玩弄之后，终于又总是无法可解，疲于去解，于是线团加上记忆的沉淀，便成为凝固的一团混沌。</p>
+<p>年轻的时候还会写情诗，“雨线飘短，风丝绕长”～痴恋之时许也想不到戏剧的落幕未必是喜剧。悲剧和正剧也是生活，而且人生本就不是来享受的：基督的说法是我们来还原罪的孽，佛家的意见是六道轮回的考验，gc教主马克思的说法是为着xx目标努力奋斗～总之，这些都与快乐无关。人生中的快乐，其实就像是个稀疏矩阵，原本只是星星点点，只不过我们的记忆自动把它们highlight了，人生就在这样的修正中变的美好了很多。</p>
+<p>这许多的结，总有一些，是更不愿去解，甚至更不愿意去看的。有的时候，我们会发见一个自卑的人突然变的自高自大无法无天起来；有的时候，是一个内向自敛的人突然变成social animal，或者相反；有的时候，发生巨变的就是我们自己。</p>
+<p>现在挺流行一个词：“纠结”。其实，真正尝过滋味的人，用的其实反而不多吧，“却道天凉好个秋”。悲喜剧看得多，最touch的，却还是自己的那套戏，说到底，自我的这个ego，始终在这里，别人的是别人的，冷暖自知。</p>
+<p>这周六，有个心结解开了，很开心，很开心，谢谢你。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2010-05-22T16:42:00.000Z"><a href="/blog/2010/05/23/python-matplotlib-generate-grouped-bar-figure/">May 23 2010</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2010/05/23/python-matplotlib-generate-grouped-bar-figure/">Python Matplotlib generate grouped bar figure</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="Motivation">Motivation</h2>
+<p>Recently, I’m frustrated by the graphic drawing of office. Even though it has some kind of template support, but firstly, it’s not working well, secondly it still cannot recognize my customized input table.</p>
+<h2 id="Matplotlib">Matplotlib</h2>
+<p><a href="http://matplotlib.org" target="_blank">Python module Matplotlib</a> is a 2D plot lib with similar grammer with <a href="http://www.gnuplot.info" target="_blank">GNUPlot, a ortable command-line driven graphing utility for Linux, OS/2, MS Windows, OSX, VMS, and many other platforms since 1986</a>.</p>
+<p>Data is like:</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Ctrl</th>
+<th>Treatment</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>test1</td>
+<td>12.62</td>
+<td>14.14</td>
+</tr>
+<tr>
+<td>test2</td>
+<td>3.19</td>
+<td>6.60</td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>1.60</td>
+<td>1.99</td>
+</tr>
+<tr>
+<td></td>
+<td>0.70</td>
+<td>0.84</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight lang-python"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+</pre></td><td class="code"><pre><span class="comment">#! /usr/bin/env python</span>
+<span class="keyword">import</span> numpy <span class="keyword">as</span> np
+<span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt
+<span class="keyword">import</span> sys
+<span class="keyword">import</span> matplotlib
+<span class="keyword">from</span> matplotlib <span class="keyword">import</span> rc
+matplotlib.use(<span class="string">'Agg'</span>)
+<span class="keyword">import</span> pylab
+<span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span>
+	content=text_content.splitlines()
+	gn1,gn2=content[<span class="number">0</span>].split()
+	hn1,data1,data2=content[<span class="number">1</span>].split()
+	hn2,data3,data4=content[<span class="number">2</span>].split()
+	err1,err2=content[<span class="number">4</span>].split()
+	err3,err4=content[<span class="number">5</span>].split()
+	data=[]
+	err=[]
+	<span class="keyword">for</span> i <span class="keyword">in</span> [ data1,data2,data3,data4 ]:
+		data.append(float(i))
+	<span class="keyword">for</span> i <span class="keyword">in</span> [err1,err2,err3,err4]:
+		err.append(float(i))
+
+	CtrlMeans=[data[<span class="number">0</span>],data[<span class="number">2</span>]]
+	TreatMeans=[data[<span class="number">1</span>],data[<span class="number">3</span>]]
+	CtrlStds=[err[<span class="number">0</span>],err[<span class="number">2</span>]]
+	TreatStds=[err[<span class="number">1</span>],err[<span class="number">3</span>]]
+	N=<span class="number">2</span>
+	ind=np.arange(N)
+	width=<span class="number">0.35</span>
+	LEFT=<span class="number">0</span>
+	plt.rc(<span class="string">'lines'</span>,lw=<span class="number">3</span>)
+	plt.rc(<span class="string">'axes'</span>,linewidth=<span class="number">3</span>)
+	plt.rc(<span class="string">'grid'</span>,linewidth=<span class="number">3</span>)
+	font={ <span class="string">'weight'</span>: <span class="string">'bold'</span>, <span class="string">'size'</span> : <span class="string">'20'</span>	}
+	plt.rc(<span class="string">'font'</span>,**font)
+	fig=plt.figure(linewidth=<span class="number">3</span>)
+	ax=fig.add_subplot(<span class="number">111</span>)
+	plt.title=<span class="string">'Some important title'</span>
+	rects1=ax.bar(ind+LEFT,CtrlMeans,width,color=<span class="string">'w'</span>,capsize=<span class="number">9</span>,yerr=CtrlStds,ecolor=<span class="string">'k'</span>,linewidth=<span class="number">3</span>)
+	rects2=ax.bar(ind+width+LEFT,TreatMeans,width,color=<span class="string">'k'</span>,capsize=<span class="number">9</span>,lw=<span class="number">3</span>,ecolor=<span class="string">'black'</span>,yerr=TreatStds,fill=<span class="keyword">False</span>,hatch=<span class="string">'/'</span>)
+	ax.set_xticks(ind+width)
+	ax.set_xticklabels((hn1,hn2))
+	ax.legend((rects1[<span class="number">0</span>],rects2[<span class="number">0</span>]),(gn1,gn2),<span class="string">'upper right'</span>)
+	ax.set_xlim((-<span class="number">0.25</span>,<span class="number">1.95</span>))
+	pylab.ylabel=(<span class="string">'I_{sc} $\mu A/cm^2$'</span>)
+	plt.show()
+</pre></td></tr></table></figure>
+
+<h2 id="Server_side_Script">Server side Script</h2>
+<p>I want to make my script accessible from Web.</p>
+<p>Receive form data, named “coldata”, which is tab/space separated text like the table we showed.</p>
+<figure class="highlight lang-html"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="tag">&lt;<span class="title">form</span> <span class="attribute">method</span>=<span class="value">"POST"</span> <span class="attribute">action</span>=<span class="value">"cgi-bin/make-col.py"</span> <span class="attribute">target</span>=<span class="value">"_blank"</span>&gt;</span>
+	<span class="tag">&lt;<span class="title">textarea</span> <span class="attribute">name</span>=<span class="value">"coldata"</span> <span class="attribute">rows</span>=<span class="value">"10"</span> <span class="attribute">cols</span>=<span class="value">"20"</span>&gt;</span>Type your text here...<span class="tag">&lt;/<span class="title">textarea</span>&gt;</span>
+	<span class="tag">&lt;<span class="title">input</span> <span class="attribute">type</span>=<span class="value">"submit"</span> <span class="attribute">value</span>=<span class="value">"Submit"</span> /&gt;</span>
+<span class="tag">&lt;/<span class="title">form</span>&gt;</span>
+</pre></td></tr></table></figure>
+
+<figure class="highlight lang-python"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+</pre></td><td class="code"><pre><span class="keyword">import</span> cgi
+
+form=cgi.FieldStorage()
+<span class="keyword">if</span> form.getvalue(<span class="string">'coldata'</span>):
+	text_content=form.getvalue(<span class="string">'coldata'</span>)
+<span class="keyword">else</span>:
+	<span class="keyword">print</span> <span class="string">"Content-type: text/html\n"</span>
+	<span class="keyword">print</span> <span class="string">"&lt;html&gt;"</span>
+	<span class="keyword">print</span> <span class="string">"&lt;body&gt;&lt;h1&gt;No data!&lt;/h1&gt;&lt;/body&gt;"</span>
+	<span class="keyword">print</span> <span class="string">"&lt;/html&gt;"</span>
+	<span class="keyword">return</span>
+</pre></td></tr></table></figure>
+
+<p>And below it’s the way to return png picture as form submitted result.</p>
+<figure class="highlight lang-python"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="keyword">print</span> <span class="string">"Content-type: image/png\n"</span>
+pylab.savefig( sys.stdout, format=<span class="string">'png'</span>)
+</pre></td></tr></table></figure>
+
+<p>I set up my own gentoo box to host my graphic site. For testing purpuse, I setup host by python script too:</p>
+<figure class="highlight lang-python"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre><span class="comment">#!/usr/bin/env python</span>
+
+<span class="keyword">from</span> CGIHTTPServer <span class="keyword">import</span> CGIHTTPRequestHandler
+<span class="keyword">from</span> BaseHTTPServer <span class="keyword">import</span> HTTPServer     
+server_address=(<span class="string">''</span>,<span class="number">80</span>)
+httpd = HTTPServer(server_address, CGIHTTPRequestHandler)
+httpd.serve_forever()
+</pre></td></tr></table></figure>
+
+<h2 id="jQuery">jQuery</h2>
+<p>I also use jQuery to offer some dynamic effects.</p>
+<figure class="highlight lang-html"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+</pre></td><td class="code"><pre><span class="tag">&lt;<span class="title">script</span> <span class="attribute">type</span>=<span class="value">"text/javascript"</span> <span class="attribute">src</span>=<span class="value">"jquery.js"</span>&gt;</span><span class="javascript"></span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+<span class="tag">&lt;<span class="title">script</span>&gt;</span><span class="javascript">$(document).ready(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+		$(<span class="string">":input[name=Mode]"</span>).click(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>   
+			<span class="keyword">var</span> state=($(<span class="string">":input[name=Mode]:checked"</span>).val());
+			<span class="keyword">if</span> (state==<span class="string">'expand'</span>) {
+				$(<span class="string">".expand"</span>).show(<span class="string">"slow"</span>);
+				$(<span class="string">".default"</span>).hide(<span class="string">"slow"</span>);					}
+			<span class="keyword">else</span> {
+				$(<span class="string">".expand"</span>).hide(<span class="string">"slow"</span>);
+				$(<span class="string">".default"</span>).show(<span class="string">"slow"</span>);
+			};});
+		$(<span class="string">":input[name=hasTitle]"</span>).click(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+			<span class="keyword">if</span> ($(<span class="string">":input[name=hasTitle]"</span>).is(<span class="string">":checked"</span>)) {
+				$(<span class="string">"#Title"</span>).show(<span class="string">"slow"</span>);
+				$(<span class="string">":input[name=hasTitle]"</span>).val(<span class="string">"1"</span>);}
+			<span class="keyword">else</span> {
+				$(<span class="string">"#Title"</span>).hide(<span class="string">"slow"</span>);
+				$(<span class="string">":input[name=hasTitle]"</span>).val(<span class="string">"0"</span>);};
+			});	
+		$(<span class="string">":input[name=hasYlabel]"</span>).click(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+			<span class="keyword">if</span> ($(<span class="string">":input[name=hasYlabel]"</span>).is(<span class="string">":checked"</span>)) {
+				$(<span class="string">"#Ylabel"</span>).show(<span class="string">"slow"</span>);
+				$(<span class="string">":input[name=hasYlabel]"</span>).val(<span class="string">"1"</span>)}
+			<span class="keyword">else</span> {
+				$(<span class="string">"#Ylabel"</span>).hide(<span class="string">"slow"</span>);
+				$(<span class="string">":input[name=hasYlabel]"</span>).val(<span class="string">"0"</span>)
+			};
+		});	
+		$(<span class="string">":input[name=desLegendPos]"</span>).click(<span class="function"><span class="keyword">function</span><span class="params">()</span>{</span>
+			<span class="keyword">if</span> ($(<span class="string">":input[name=desLegendPos]"</span>).is(<span class="string">":checked"</span>)) {								$(<span class="string">"#LegendPos"</span>).show(<span class="string">"slow"</span>);
+				$(<span class="string">":input[name=desLegendPos]"</span>).val(<span class="string">"1"</span>)
+				}
+			<span class="keyword">else</span> {
+				$(<span class="string">"#LegendPos"</span>).hide(<span class="string">"slow"</span>);
+				$(<span class="string">":input[name=desLegendPos]"</span>).val(<span class="string">"0"</span>)
+			};
+		});	    
+	});</span><span class="tag">&lt;/<span class="title">script</span>&gt;</span>
+</pre></td></tr></table></figure>
+
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/page/7/" class="alignleft prev">Prev</a>
+  
+  
+    <a href="/page/9/" class="alignright next">Next</a>
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:easontse.info">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Biochemistry/">Biochemistry</a><small>7</small></li>
+  
+    <li><a href="/categories/Books/">Books</a><small>12</small></li>
+  
+    <li><a href="/categories/Computer/">Computer</a><small>54</small></li>
+  
+    <li><a href="/categories/Game/">Game</a><small>12</small></li>
+  
+    <li><a href="/categories/Life/">Life</a><small>20</small></li>
+  
+    <li><a href="/categories/Movie/">Movie</a><small>2</small></li>
+  
+    <li><a href="/categories/Music/">Music</a><small>1</small></li>
+  
+    <li><a href="/categories/Science/">Science</a><small>1</small></li>
+  
+    <li><a href="/categories/Writing/">Writing</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/AD&D/" style="font-size: 13.33px;">AD&D</a><a href="/tags/ANO1/" style="font-size: 13.33px;">ANO1</a><a href="/tags/ANO2/" style="font-size: 10.00px;">ANO2</a><a href="/tags/ANOVA/" style="font-size: 10.00px;">ANOVA</a><a href="/tags/Adult/" style="font-size: 10.00px;">Adult</a><a href="/tags/Aiglx/" style="font-size: 10.00px;">Aiglx</a><a href="/tags/App/" style="font-size: 20.00px;">App</a><a href="/tags/Apple/" style="font-size: 10.00px;">Apple</a><a href="/tags/Apps/" style="font-size: 10.00px;">Apps</a><a href="/tags/BIOS/" style="font-size: 10.00px;">BIOS</a><a href="/tags/Blog/" style="font-size: 10.00px;">Blog</a><a href="/tags/CFBE/" style="font-size: 13.33px;">CFBE</a><a href="/tags/CFTR/" style="font-size: 10.00px;">CFTR</a><a href="/tags/CNAME/" style="font-size: 10.00px;">CNAME</a><a href="/tags/CaCC/" style="font-size: 10.00px;">CaCC</a><a href="/tags/Chinese/" style="font-size: 10.00px;">Chinese</a><a href="/tags/CoT/" style="font-size: 10.00px;">CoT</a><a href="/tags/Compiz/" style="font-size: 10.00px;">Compiz</a><a href="/tags/Debian/" style="font-size: 13.33px;">Debian</a><a href="/tags/Dell/" style="font-size: 13.33px;">Dell</a><a href="/tags/Dropbox/" style="font-size: 13.33px;">Dropbox</a><a href="/tags/Edgy/" style="font-size: 10.00px;">Edgy</a><a href="/tags/Epub/" style="font-size: 10.00px;">Epub</a><a href="/tags/Excel/" style="font-size: 10.00px;">Excel</a><a href="/tags/Firefox/" style="font-size: 10.00px;">Firefox</a><a href="/tags/GFW/" style="font-size: 10.00px;">GFW</a><a href="/tags/GNUPlot/" style="font-size: 10.00px;">GNUPlot</a><a href="/tags/Game/" style="font-size: 16.67px;">Game</a><a href="/tags/GiNaC/" style="font-size: 10.00px;">GiNaC</a><a href="/tags/Git/" style="font-size: 10.00px;">Git</a><a href="/tags/Github/" style="font-size: 10.00px;">Github</a><a href="/tags/Gmail/" style="font-size: 10.00px;">Gmail</a><a href="/tags/Grant proposal/" style="font-size: 10.00px;">Grant proposal</a><a href="/tags/Graphviz/" style="font-size: 10.00px;">Graphviz</a><a href="/tags/Hexo/" style="font-size: 10.00px;">Hexo</a><a href="/tags/ID3/" style="font-size: 10.00px;">ID3</a><a href="/tags/ImageMagick/" style="font-size: 13.33px;">ImageMagick</a><a href="/tags/Ion channels/" style="font-size: 10.00px;">Ion channels</a><a href="/tags/Isc/" style="font-size: 10.00px;">Isc</a><a href="/tags/Japan/" style="font-size: 10.00px;">Japan</a>
+  </div>
+</div>
+
+
+  
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Eason Tse
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'easonx';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

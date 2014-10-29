@@ -1,0 +1,783 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Page 11 | Eason&#39;s Blog</title>
+  <meta name="author" content="Eason Tse">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Eason&#39;s Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Eason&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-6252783-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Eason&#39;s Blog</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/utils/multimarkdown-table-generator">Util</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2007-01-21T18:37:00.000Z"><a href="/blog/2007/01/22/yu-lu/">Jan 22 2007</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2007/01/22/yu-lu/">语录</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>我从来不愿意把自己的痛苦跟人分享，我认为那是对人的不尊重，凭什么就把别人当垃圾桶？<br><cite>代三个表</cite></p>
+<p>人生的成功不在于拿到一副好牌，而在于怎样打好一副坏牌。<br><cite>THU的Joe</cite></p>
+</blockquote>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2007-01-20T20:54:00.000Z"><a href="/blog/2007/01/21/apt-and-dpkg-tips/">Jan 21 2007</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2007/01/21/apt-and-dpkg-tips/">Apt and Dpkg Tips</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <pre><code><span class="comment">$</span> <span class="comment">apt</span><span class="literal">-</span><span class="comment">cache</span> <span class="comment">dump</span>
+</code></pre><p>Lists every package in the cache. This command is especially helpful in<br>combination with a grep pipe such as</p>
+<pre><code>$ apt-cache <span class="keyword">dump</span> | <span class="keyword">grep</span> foo
+</code></pre><p>To search for packages whose<br>names or dependencies<br>include “foo”.</p>
+<pre><code><span class="comment">$</span> <span class="comment">apt</span><span class="literal">-</span><span class="comment">cache</span> <span class="comment">policy</span>
+</code></pre><p>Lists the repositories (main/restricted/universe/multiverse) in which a package exists.</p>
+<pre><code><span class="comment">$</span> <span class="comment">apt</span><span class="literal">-</span><span class="comment">cache</span> <span class="comment">show</span>
+</code></pre><p>Displays information about a binary package.</p>
+<pre><code><span class="comment">$</span> <span class="comment">apt</span><span class="literal">-</span><span class="comment">cache</span> <span class="comment">showsrc</span>
+</code></pre><p>Displays information about a source package.</p>
+<pre><code><span class="comment">$</span> <span class="comment">apt</span><span class="literal">-</span><span class="comment">cache</span> <span class="comment">rdepends</span>
+</code></pre><p>Shows reverse dependencies for a package (which packages require the<br>queried one.</p>
+<pre><code><span class="comment">$</span> <span class="comment">dpkg</span> <span class="literal">-</span><span class="comment">S</span>
+</code></pre><p>Lists the binary package to which a particular file belongs.</p>
+<pre><code>$ dpkg <span class="operator">-l</span>
+</code></pre><p>Lists currently installed packages. This is similar to <strong>apt-cache dump</strong><br>but for installed packages.</p>
+<pre><code><span class="comment">$</span> <span class="comment">dpkg</span> <span class="literal">-</span><span class="comment">c</span>
+</code></pre><p>Lists the contents of a binary package. It is useful for ensuring that<br>files are installed to the right places.</p>
+<pre><code>$ dpkg <span class="operator">-f</span>
+</code></pre><p>Shows the control file for a binary package. It is useful for ensuring that<br>the dependencies are correct.</p>
+<pre><code><span class="comment">$</span> <span class="comment">grep</span><span class="literal">-</span><span class="comment">dctrl</span>
+</code></pre><p>Searches for specialized information in packages. It is a specific use of<br>the grep package (but not installed by default).</p>
+<pre><code><span class="comment">$</span> <span class="comment">apt</span><span class="literal">-</span><span class="comment">build</span>
+</code></pre><p>是一个自动优化编译的包，debian体系一直使用i386的体系包，相比gentoo这类源码发行的，速度上确实慢了不少。使用apt-build自动使用新的cpu优化参数编译，这样与gentoo也不差啦。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2007-01-16T23:28:00.000Z"><a href="/blog/2007/01/17/zai-linux-xia-shi-yong-duo-mei-ti-jian/">Jan 17 2007</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2007/01/17/zai-linux-xia-shi-yong-duo-mei-ti-jian/">在linux下使用多媒体键</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>多媒体键的应用，在很多linux下是个比较麻烦的问题。但其实是难者不会，会者不难：</p>
+<pre><code>$ apt-<span class="keyword">get</span> install hotkeys
+</code></pre><p>这样就已经将我们所需要的包装好了。</p>
+<p>2、在终端下执行</p>
+<pre><code><span class="variable">$ </span>xev
+</code></pre><p>之后按你的多媒体键，会有下面类似的显示：</p>
+<blockquote>
+<p>KeyPress event, serial 30, synthetic NO, window 0x2a00001,<br>  root 0x5d, subw 0x0, time 786649796, (315,107), root:(866,429),<br>  state 0x0, <strong>keycode 237</strong> (keysym 0x1008ff32, XF86AudioMedia),<br>same_screen YES,<br>  XLookupString gives 0 bytes:<br>  XmbLookupString gives 0 bytes:<br>  XFilterEvent returns: False  </p>
+<p>KeyRelease event, serial 30, synthetic NO, window 0x2a00001,<br>  root 0x5d, subw 0x0, time 786649796, (315,107), root:(866,429),<br>  state 0x0, <strong>keycode 237</strong> (keysym 0x1008ff32, XF86AudioMedia),<br>same_screen YES,<br>  XLookupString gives 0 bytes:<br>  XFilterEvent returns: False  </p>
+</blockquote>
+<p>我们只关心里面的<strong>keycode</strong>的值，在这里是237。<br>将你的<code>/usr/share/hotkeys/XXXX.def</code>中的对应功能的keycode换成上面检测到值。<br>具体功能是执行的什么命令，可以修改<strong>/etc/hotkeys.conf</strong>来决定。</p>
+<p>上面这种方法是用于keycode的，但我们还可以由scancode直接决定。<br>不过这样比较方便，先写到这吧。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2007-01-04T12:07:00.000Z"><a href="/blog/2007/01/04/misc-notes/">Jan 4 2007</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2007/01/04/misc-notes/">Misc Notes</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <ul>
+<li><strong>GiNaC</strong> 一个很好的库，C++的，arbitrary的符号计算的库。不过依赖cln库，只能用gnu C++的编译器。</li>
+<li><strong>ubuntu 中的locale-gen</strong> 和debian,arch不同，locale-gen不读取/etc/locale.gen而是读取/var/lib/locales/surpported.d/目录下的文件.</li>
+<li><strong>LaTeX的文档</strong> 偶然发现的，感觉非常好。李果正前辈的<a href="http://edt1023.sayya.org/tex/mycjk/node1.html" target="_blank">大作</a>。</li>
+<li><p><strong>用于计算的库</strong> 数学真是计算机真正的推动力。有一个要进行大数分解的试验。发现这么几个内容：</p>
+<ol>
+<li>GNU MP，一个用于计算的库，跨平台，任意长浮点，整数。在4中已经有了C++绑定。</li>
+<li>alps：要求boost库，对矩阵，物理方面的计算很方便。</li>
+<li><p>ntl，还没有用过，但是好像很方便的样子。</p>
+<p>另外有一个小PS，就是在aniC中是没有VC中的itoa的，一般都是用sprintf来代替。但是我们如果实在是想浪费电，也可以用boost来实现。</p>
+<h1 id="include_-3c-boost-2f-lexical_cast-hpp-3e-">include <boost/lexical_cast.hpp></h1>
+<p> std::string tmp2=boost::lexical_cast<std::string>(*pL);</p>
+</li>
+</ol>
+</li>
+<li><p><strong>Shapepar</strong> 可以让字体段落变成各种形状的包。有以下shape可以选择</p>
+<pre><code>  <span class="command">\shaperpar</span><span class="special">{</span>xxx<span class="special">}</span> The paragraph
+  <span class="command">\diamondshape</span>
+  <span class="command">\heartshape</span>
+  <span class="command">\circleshape</span>
+  <span class="command">\starshape</span>
+  <span class="command">\nutshape</span>
+  <span class="command">\squareshape</span>
+</code></pre></li>
+<li><p><strong>e17</strong> e17的正式源for edgy的老是没有enlightment包，但是却有源文件 <strong>edevelop.org</strong><br>每次都要自己编译，真麻烦，是因为太大了吗？又或者是主要还是给dapper的？</p>
+</li>
+<li><strong><a href="http://www.stardict.org/index.php" target="_blank">stardict.org</a></strong> 是著名的星际译王的网络版，辞典内容就不用说了，注册也很方便。没带笔记本的时候有福了！</li>
+</ul>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2007-01-02T06:24:00.000Z"><a href="/blog/2007/01/02/qemu-she-zhi-fang-fa/">Jan 2 2007</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2007/01/02/qemu-she-zhi-fang-fa/">qemu设置方法</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>1.安装</p>
+<pre><code>$ sudo aptitude install qemu qemu<span class="attribute">-launcher</span> kqemu<span class="attribute">-source</span>
+<span class="variable">$sudo</span> m<span class="attribute">-a</span> a<span class="attribute">-i</span> kqemu
+</code></pre><p>结束，这是最简单的debian的方法。我觉得这才是debian的魅力所在，万能的apt系统阿，赞美你！</p>
+<p>2.安装win</p>
+<p>找个win2000。装上。</p>
+<p>3.配置网络，使用网桥模式。可以双向互通。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2006-12-14T16:31:00.000Z"><a href="/blog/2006/12/15/tex-cjkfonts/">Dec 15 2006</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2006/12/15/tex-cjkfonts/">tex-cjkfonts</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>在TeX的安装配置中，最麻烦的应该就是字体包的安装了，网上有各种各样的方法，大体上都是由王垠的或者是何勃亮的修改过的gbkfonts版本，制作gbk字体，然后修改map文件，等等等等。但这些方法有些不足：</p>
+<ol>
+<li>不管怎样的用脚本封装好这些复杂的操作，总还是有少许麻烦。</li>
+<li>生成的是GBK的字体，在UTF－8编码环境下不能使用，必须先手动用iconv将编码更改为gbk。</li>
+<li>如果过程中出了什么错，对新手很难知道为什么出错，怎样修改。也就是没有一个好的滚回机制。</li>
+</ol>
+<p>而这些缺陷其实只要有一个支持utf8的包管理的机制就可以了，这也是tex-cjkfonts所实现的：制作字体并将之打包成为deb包。如果对这个字体不满意，直接dpkg －r就可以回滚到之前的状态。并且，这个脚本还支持制作utf-8的编码格式的字体，我们可以直接使用，不需要对tex进行转码。</p>
+<p>这个包是THU的 <a href="mailto:oseen@newsmth.org">oseen</a> 大侠的功绩。在享受方便的同时，多念叨几声～大侠万寿无僵～包的来源是ustc的sid的debian-uo源。经过测试，在sid和feisty下都可以～其实是因为这个本来就只是脚本而已，而且ubuntu的tex没有对debian的进行修改。</p>
+<p>要注意的是有两点：</p>
+<ol>
+<li><p>脚本有两个命令（实际上是一个，另一个是第一个的连接）make-fpkg-sys和make-fpkg。其中前者是制作deb包用的。后者只是建立一个tar.gz，在自己的主目录解压就可以了（这样不需要root权限）。在我的系统上，会有错误，只能生成gz包，所以我自己是把脚本中的判断是不是生成deb和生成gz的部分注释掉了。个人用户可以自己选择。</p>
+</li>
+<li><p>生成的字体有个小瑕疵，但我看脚本没看出问题来，所以就没改。具体的说就是：在/usr/share/texmf/tex/latex/CJK/UTF8 目录下生成的c70$facename.fd的内容里，f 都被错误的当作^L了（注意这里的^L是由Ctrl+L键生成的，不是^字符和L字符），所以在使用新utf8字体前，我们要手动修改这个文件。我在vi里就是</p>
+<p>  :%s/^L/\f/g</p>
+</li>
+</ol>
+<p>然后就可以使用了。</p>
+<p>例如我们的样本test.tex的内容是：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+</pre></td><td class="code"><pre>\documentclass<span class="matrix">[<span class="number">12</span>pt,a4paper]</span><span class="cell">{article}</span>
+\usepackage<span class="cell">{CJKutf8}</span>
+\usepackage<span class="matrix">[T1]</span><span class="cell">{fontenc}</span>
+\usepackage<span class="matrix">[unicode,dvipdfm]</span><span class="cell">{hyperref}</span>
+\begin<span class="cell">{document}</span>
+\begin<span class="cell">{CJK*}</span><span class="cell">{UTF8}</span><span class="cell">{zhuanfan}</span> <span class="comment">%你的字体名！</span>
+\tableofcontents
+\section<span class="cell">{将进酒}</span>
+君不見，黄河之水天上來，奔流到海不复回。
+\section<span class="cell">{桃花源记}</span>
+晋太元中，武陵人，捕魚为业，缘溪行，忘路之远近。
+\newpage
+\<span class="keyword">end</span><span class="cell">{CJK*}</span>
+\<span class="keyword">end</span><span class="cell">{document}</span>
+</pre></td></tr></table></figure>
+
+<p>应该可以正常编译的了。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2006-12-13T17:54:00.000Z"><a href="/blog/2006/12/14/mysql-5-dot-0-de-charset-xiang-jie/">Dec 14 2006</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2006/12/14/mysql-5-dot-0-de-charset-xiang-jie/">mysql 5.0的charset 详解</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>重新配置了一下mysql，新老板的新项目，好好跟师兄混～<br>恩，闲话休提，正文开始。</p>
+<p>本文全部内容以mysql官方网站的document为依据，基本上就是5.0的英文的笔记而已，没什么技术含量。</p>
+<ol>
+<li>mysql的charset分为几个级别，server，database，table，column，都可以有不同的charset</li>
+<li>mysql的charset定义分为两项，一项是character set（1），是实际的储存的字符形式，还有一项是collation（2），是在查询比对的时候所使用的形式。前者与后者是严格一对多的的关系。每个charset（short for character set）都有一个默认的collation。在定义的时候如果按照这个顺序来确定某一项的charset和collation；</li>
+</ol>
+<p>明示 1 和 2 ，则按照 1，2 定义<br>明示 1 ，则按照 1 和 1 的默认来确定 2<br>明示 2 ，按照 2 和 2 对应的 1 来定义<br>均未明示，按照上一级数据单位（如server，database，table）的定义来定义。</p>
+<p>注：<br>collation的命名规范 charset_lan/country_cs大小写敏感/ci大小写不敏感/bin<br>character set 可以缩写为charset</p>
+<p>所用命令：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="operator"><span class="keyword">SHOW</span> <span class="keyword">COLLATION</span>；
+<span class="keyword">SHOW</span> <span class="keyword">CHARACTER</span> <span class="keyword">SET</span>;</span>
+<span class="operator"><span class="keyword">create</span> xxx <span class="keyword">character</span> <span class="keyword">set</span> XX <span class="keyword">collate</span> XX_yy_ci/cs/bin</span>
+</pre></td></tr></table></figure>
+
+<p>那么查找时呢？也就是select的时候呢？<br>有这样的语法</p>
+<pre><code><span class="matrix">[_charset_name]'</span><span class="transposed_variable">string'</span> <span class="matrix">[COLLATE collation_name]</span>
+</code></pre><p>就是说，用前面的这一项说明了后面的string是什么charset。注意不要漏掉了前面的”_”哦！<br>如果没有直接明示，则由系统变量character_set_connection和collation_connection决定。</p>
+<p>下面的三个命令适用于客户端的。<br>有以下的系统变量：</p>
+<pre><code>character_<span class="keyword">set</span>_connection：人为设定的传输数据的形式
+character_<span class="keyword">set</span>_results：告诉服务器发回的数据用什么形式
+character_<span class="keyword">set</span>_client：告诉服务器，我本地的客户是什么形式
+</code></pre><p><code>SET NAMES</code>的作用：改变</p>
+<pre><code>character_<span class="keyword">set</span>_connection
+character_<span class="keyword">set</span>_results
+character_<span class="keyword">set</span>_client
+</code></pre><p>的值！</p>
+<p><code>SET CHARACTER SET</code>的作用：改变</p>
+<pre><code><span class="title">character_set_client</span>
+<span class="title">character_set_results</span>
+<span class="title">collation_connection</span> = @@collation_database％！！！这里不一样!
+</code></pre><p>前者强制改变了connection的方式，而后者是与所用的database相关的！</p>
+<p>charset utf8的作用：<br>与1相同，但同时对连接断掉以后的新建的连接形式也有作用！</p>
+<p>National Character Set</p>
+<p>这是标准sql定义的一个数据类型（NCHAR ｜ NATIONAL CHAR）在mysql5.0里面是默认的utf8。所以下面两行是等价的：</p>
+<pre><code><span class="operator"><span class="keyword">SELECT</span> N<span class="string">'some text'</span>;</span>
+<span class="operator"><span class="keyword">SELECT</span> _utf8<span class="string">'some text'</span>;</span>
+</code></pre><p>当前ucs2不能作为连接的形式，也许下一个版本就可以了吧^_^。</p>
+<p>补充一个系统变量的作用character_set_system，这么多种编码，总有一个是内部默认的吧？没错，系统默认的就是由这个变量定义的。默认值是utf8，如果character_set_results没有设置，那么，服务器不知道该怎样返回结果，就会直接用这个内部的形式。</p>
+<p>对了，可能有人会问，在utf8的collation中，有这么多种，怎么会这样？utf8不是支持多国语言的吗？是这样的，unicode的支持现在并不是很完整。有两种通用的utf8的collation：</p>
+<pre><code><span class="title">utf8_unicode_ci</span>
+<span class="title">utf8_general_ci</span>
+</code></pre><p>其中前者支持扩展的比对，但比对的算法还没能完全实现，而后者则不支持扩展比对，但速度上比较快。对于前者算法不理想的语言种类，会开发一个新的collation。这也就是为什么有这么多种不同的collation的原因。对于我们中文，当然直接用general就可以了。</p>
+<p>总结:<br>我们要一个完全由utf8作为从内到外的编码系统的数据库，只要做到：<br>在<strong>/etc/mysql/my.cnf</strong>内这么配置就可以了：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="title">[mysql]</span>
+<span class="setting">default-character-set=<span class="value">utf8</span></span>
+<span class="title">[mysqld]</span>
+<span class="setting">character_set_server=<span class="value">utf8</span></span>
+</pre></td></tr></table></figure>
+
+<p>就可以了</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2006-11-21T15:57:00.000Z"><a href="/blog/2006/11/21/song-yi-dian-le/">Nov 21 2006</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2006/11/21/song-yi-dian-le/">松一点了</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>到了D那里，很客气，不知道是不是想用这种方法表达对我的感觉。行程很合理，一切都是D在安排，都是D的主意。LD是个很好的人，见了面很大方，“很早就从照片里看到过你了，经常听D提起你”，看得出对D十分的在意。</p>
+<p>我说不说好呢？其实来的时候已经有答案了吧，清华的大哥就是强，早已预见了一切。D是个好孩子，我不能教坏，一个陌生的女孩我尚且同情，何况是我最好的朋友？</p>
+<p>现在D去中心拿表格去了，其实我很想去，我们基本上没有独处的时间，只有刚见面时那么一小会，但还是没有，怕自己做出些什么不理智的事情。保留下来，对谁都好。如果未来有一天他们分了，再说不迟。</p>
+<p>他的推荐的学校并不合适，所以我竟然有点迟疑，嘿嘿，自己好傻阿，昨天中午吃饭的时候，他提到的我的身体，感觉就是自己的爸妈也没有这样的考虑。嘿嘿，真的没有看错他。</p>
+<p>康熙选接班人的时候，犯了踌躇，姚鼐提出选皇子难，则不如选皇孙，这样还可多保一代平安……我今天也面临这样的处境——D是明智的，我又喜欢D，这样就跟着D吧，D到哪我到哪。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2006-11-15T13:39:00.000Z"><a href="/blog/2006/11/15/shi-huan-dang-zuo-zhi-jin-wu/">Nov 15 2006</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2006/11/15/shi-huan-dang-zuo-zhi-jin-wu/">仕宦当作执金吾</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>大帅哥刘秀的肺腑之言，一个未来皇帝的人生理想却看来如此很简单。</p>
+<p>刘秀，也许不是最伟大的皇帝，但却是我最喜欢的皇帝。喜欢他，也羡慕他，他身上有我理想的人格：平和。</p>
+<p>我也不知道应该怎样形容这个温和的皇帝，所以只能选了这个没有什么特点的词。他少年时并没有什么吞并天下的大志，只是老老实实的修自己的身，齐自己的家，但一旦起事，人们却相信这个老实人一定是有理的；他并不是不喜欢辉煌的仪仗，很简单的表达了自己的想法，没有什么掩饰，虚伪，但他的坐骑却长期由家中的牛来充任；他先后迎娶了两位皇后，中间还有地位互换的波折，但他的皇宫却没有惯见的争宠斗争，黑幕血腥，有的只是一个简单的家庭，有点破损，但很快就修补的看不出来。</p>
+<p>经常有人说东汉是多么的窝囊，留给我们的映像就是那一拨接一拨的外戚，宦官，还有三国里可怜的献帝——但谁又知道，匈奴是怎样被彻底赶出中华，成为罗马帝国畏惧的上帝之鞭的吗？这是窦太后的族弟，大将军窦宪的功劳。</p>
+<p>刘秀平和，用平和的方法教育孩子，所以他的孩子一代一代的要记住母亲的好，但这又有什么错呢？制度在人，后世的不肖让我们忘记了先辈的太平盛世。</p>
+<p>不管怎样，这个平和的皇帝在千年之后仍然吸引了我：他的形象不是一个坐在宝座上傲视四方的英雄，他只是简单的微笑，对着他的妻子，对着他的孩子，对着他的子民。胸中有丘壑，但何必尽现于世人呢？</p>
+<p>刘秀的目标很简单，生活在这个简单的生活中却是一个不简单的任务，但他做到了。</p>
+<p>当他的儿子在知天命的年纪，仍然在睡梦的呼唤中惊醒，因为他见到了父亲母亲，手挽着手，漫步与柳林湖畔的时候，他的老泪又怎能不纵横？</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2006-11-03T02:23:00.000Z"><a href="/blog/2006/11/03/xin-qing-bu-hao/">Nov 3 2006</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2006/11/03/xin-qing-bu-hao/">心情不好</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>十年相识，八年暗恋。</p>
+<blockquote>
+<p>人生若只如初见，何事西风悲画扇？<br>等闲变却故人心，却道故人心易变。<br>骊山语罢清宵半，夜雨霖铃终不怨。<br>何如薄幸锦衣儿，比翼连枝当日愿。  </p>
+</blockquote>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/page/10/" class="alignleft prev">Prev</a>
+  
+  
+    <a href="/page/12/" class="alignright next">Next</a>
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:easontse.info">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Biochemistry/">Biochemistry</a><small>7</small></li>
+  
+    <li><a href="/categories/Books/">Books</a><small>12</small></li>
+  
+    <li><a href="/categories/Computer/">Computer</a><small>54</small></li>
+  
+    <li><a href="/categories/Game/">Game</a><small>12</small></li>
+  
+    <li><a href="/categories/Life/">Life</a><small>20</small></li>
+  
+    <li><a href="/categories/Movie/">Movie</a><small>2</small></li>
+  
+    <li><a href="/categories/Music/">Music</a><small>1</small></li>
+  
+    <li><a href="/categories/Science/">Science</a><small>1</small></li>
+  
+    <li><a href="/categories/Writing/">Writing</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/AD&D/" style="font-size: 13.33px;">AD&D</a><a href="/tags/ANO1/" style="font-size: 13.33px;">ANO1</a><a href="/tags/ANO2/" style="font-size: 10.00px;">ANO2</a><a href="/tags/ANOVA/" style="font-size: 10.00px;">ANOVA</a><a href="/tags/Adult/" style="font-size: 10.00px;">Adult</a><a href="/tags/Aiglx/" style="font-size: 10.00px;">Aiglx</a><a href="/tags/App/" style="font-size: 20.00px;">App</a><a href="/tags/Apple/" style="font-size: 10.00px;">Apple</a><a href="/tags/Apps/" style="font-size: 10.00px;">Apps</a><a href="/tags/BIOS/" style="font-size: 10.00px;">BIOS</a><a href="/tags/Blog/" style="font-size: 10.00px;">Blog</a><a href="/tags/CFBE/" style="font-size: 13.33px;">CFBE</a><a href="/tags/CFTR/" style="font-size: 10.00px;">CFTR</a><a href="/tags/CNAME/" style="font-size: 10.00px;">CNAME</a><a href="/tags/CaCC/" style="font-size: 10.00px;">CaCC</a><a href="/tags/Chinese/" style="font-size: 10.00px;">Chinese</a><a href="/tags/CoT/" style="font-size: 10.00px;">CoT</a><a href="/tags/Compiz/" style="font-size: 10.00px;">Compiz</a><a href="/tags/Debian/" style="font-size: 13.33px;">Debian</a><a href="/tags/Dell/" style="font-size: 13.33px;">Dell</a><a href="/tags/Dropbox/" style="font-size: 13.33px;">Dropbox</a><a href="/tags/Edgy/" style="font-size: 10.00px;">Edgy</a><a href="/tags/Epub/" style="font-size: 10.00px;">Epub</a><a href="/tags/Excel/" style="font-size: 10.00px;">Excel</a><a href="/tags/Firefox/" style="font-size: 10.00px;">Firefox</a><a href="/tags/GFW/" style="font-size: 10.00px;">GFW</a><a href="/tags/GNUPlot/" style="font-size: 10.00px;">GNUPlot</a><a href="/tags/Game/" style="font-size: 16.67px;">Game</a><a href="/tags/GiNaC/" style="font-size: 10.00px;">GiNaC</a><a href="/tags/Git/" style="font-size: 10.00px;">Git</a><a href="/tags/Github/" style="font-size: 10.00px;">Github</a><a href="/tags/Gmail/" style="font-size: 10.00px;">Gmail</a><a href="/tags/Grant proposal/" style="font-size: 10.00px;">Grant proposal</a><a href="/tags/Graphviz/" style="font-size: 10.00px;">Graphviz</a><a href="/tags/Hexo/" style="font-size: 10.00px;">Hexo</a><a href="/tags/ID3/" style="font-size: 10.00px;">ID3</a><a href="/tags/ImageMagick/" style="font-size: 13.33px;">ImageMagick</a><a href="/tags/Ion channels/" style="font-size: 10.00px;">Ion channels</a><a href="/tags/Isc/" style="font-size: 10.00px;">Isc</a><a href="/tags/Japan/" style="font-size: 10.00px;">Japan</a>
+  </div>
+</div>
+
+
+  
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Eason Tse
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'easonx';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

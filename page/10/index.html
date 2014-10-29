@@ -1,0 +1,1621 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Page 10 | Eason&#39;s Blog</title>
+  <meta name="author" content="Eason Tse">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Eason&#39;s Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Eason&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-6252783-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Eason&#39;s Blog</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/utils/multimarkdown-table-generator">Util</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2008-04-13T12:03:00.000Z"><a href="/blog/2008/04/13/python-challenge-4/">Apr 13 2008</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2008/04/13/python-challenge-4/">Python Challenge (4)</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="13-_-3c-a_href-3d-22-http-3a-2f-2f-www-pythonchallenge-com-2f-pc-2f-return-2f-disproportional-html-22-3e-call_him-3c-2f-a-3e-">13. <a href="http://www.pythonchallenge.com/pc/return/disproportional.html" target="_blank">call him</a></h2>
+<blockquote>
+<p>phone that &lt; remote /&gt; evil</p>
+</blockquote>
+<p>and the button 5 is linked to </p>
+<blockquote>
+<p>../phonebook.php</p>
+</blockquote>
+<p>After clicking, a xml file appeared. All these evidence point to a unique concept: XML-RPC. Supposedly, we need to “phone” evil. But who’s evil? Do you remember the evil4.jpg in level 12? Bingo, Bert is the evil. So let’s complete the code:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="xml"><span class="tag"><span class="attribute">import</span> <span class="attribute">xmlrpclib</span>
+<span class="attribute">evil</span>=<span class="value">'Bert'</span>
+<span class="attribute">server</span>=<span class="value">xmlrpclib.ServerProxy('http:</span>//<span class="attribute">www.pythonchallenge.com</span>/<span class="attribute">pc</span>/<span class="attribute">phonebook.php</span>')
+<span class="attribute">ans</span>=<span class="value">server.phone(evil)</span></span></span>
+</pre></td></tr></table></figure>
+
+<p>And answer is <strong>555-Italy</strong>, change URL to <strong>italy</strong> then you could go to next level.</p>
+<h2 id="14-_-3c-a_href-3d-22-http-3a-2f-2f-huge-3a-file-40-www-pythonchallenge-com-2f-pc-2f-return-2f-italy-html-22-3e-walk_around-3c-2f-a-3e-">14. <a href="http://huge:file@www.pythonchallenge.com/pc/return/italy.html" target="_blank">walk around</a></h2>
+<p>Hint:</p>
+<blockquote>
+<p>remember: 100*100 = (100+99+99+98) + (…</p>
+</blockquote>
+<p>and a strange picture appeared named ‘wire.png’.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> urllib, Image</span>
+<span class="title">from</span> cStringIO <span class="import"><span class="keyword">import</span> StringIO</span>
+<span class="title">io</span>=<span class="type">StringIO</span>(urllib.urlopen('http://huge:file@www.pythonchallenge.com/pc/return/wire.png').read())
+<span class="title">pic</span>=<span class="type">Image</span>.open(io)
+</pre></td></tr></table></figure>
+
+<p>And turn out the picture file is a ten thousand x pixels and 1 y pixels PNG file. Plus the title is :</p>
+<blockquote>
+<p>walk around</p>
+</blockquote>
+<p>Maybe, it implied the pixels actually are from a 100x100 pixels picture, and it begin from the out side rotating ‘walk around’ into the center, which was referred in the first hint in the source. </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+</pre></td><td class="code"><pre>newpic=<span class="transposed_variable">Image.</span>new(<span class="string">'RGB'</span>,(<span class="number">100</span>,<span class="number">100</span>),<span class="number">255</span>)
+direct=<span class="matrix">[(<span class="number">1</span>,<span class="number">0</span>),(<span class="number">0</span>,<span class="number">1</span>),(-<span class="number">1</span>,<span class="number">0</span>),(<span class="number">0</span>,-<span class="number">1</span>)]</span>
+cursor=<span class="matrix">[<span class="number">0</span>,<span class="number">0</span>]</span>
+array=<span class="matrix">[<span class="number">100</span>]</span>
+<span class="keyword">for</span> x in range(<span class="number">1</span>,<span class="number">100</span>)<span class="matrix">[::-<span class="number">1</span>]</span>:
+	<span class="transposed_variable">array.</span>append(x)
+	<span class="transposed_variable">array.</span>append(x)
+n=<span class="number">0</span>
+<span class="keyword">for</span> x in range(len(array)):
+	<span class="built_in">length</span>=array<span class="matrix">[x]</span>
+	<span class="keyword">for</span> y in range(<span class="built_in">length</span>):
+		<span class="transposed_variable">newpic.</span>putpixel(cursor,<span class="transposed_variable">pic.</span>getpixel((n,<span class="number">0</span>)))
+		n+=<span class="number">1</span>
+		next_cursor=cursor
+		<span class="keyword">if</span> y&lt;<span class="built_in">length</span>-<span class="number">1</span>:
+			next_cursor<span class="matrix">[<span class="number">0</span>]</span>+=direct<span class="matrix">[x%<span class="number">4</span>]</span><span class="matrix">[<span class="number">0</span>]</span>
+			next_cursor<span class="matrix">[<span class="number">1</span>]</span>+=direct<span class="matrix">[x%<span class="number">4</span>]</span><span class="matrix">[<span class="number">1</span>]</span>
+		<span class="keyword">else</span>:
+			next_cursor<span class="matrix">[<span class="number">0</span>]</span>+=direct<span class="matrix">[(x+<span class="number">1</span>)%<span class="number">4</span>]</span><span class="matrix">[<span class="number">0</span>]</span>
+			next_cursor<span class="matrix">[<span class="number">1</span>]</span>+=direct<span class="matrix">[(x+<span class="number">1</span>)%<span class="number">4</span>]</span><span class="matrix">[<span class="number">1</span>]</span>
+		cursor=next_cursor
+<span class="transposed_variable">newpic.</span>save(<span class="string">'lv16.png'</span>)
+</pre></td></tr></table></figure>
+
+<p><img src="http://panchoat.org/files/python-challenge/lv14.png" alt="Level 14 Cat"></p>
+<p>It’s a cat! and change URL to <strong>cat</strong>.htm, a page saying her name is <strong>uzi</strong> (what a strange name) and it’s the next level.</p>
+<h2 id="15-_-3c-a_href-3d-22-http-3a-2f-2f-www-pythonchallenge-com-2f-pc-2f-return-2f-uzi-html-22-3e-whom-3f-3c-2f-a-3e-">15. <a href="http://www.pythonchallenge.com/pc/return/uzi.html" target="_blank">whom?</a></h2>
+<p>Hints are, title:</p>
+<blockquote>
+<p>whom?</p>
+</blockquote>
+<p>in the source:</p>
+<blockquote>
+<p>he ain’t the youngest, he is the second<br> todo: buy flowers for tomorrow</p>
+</blockquote>
+<p>The calendar picture is showing January in an unknown year. 2 numbers in the middle is burned. And the February comes after has 29 days, means it’s leap year. So let’s get all possible years.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="xml"><span class="tag"><span class="attribute">years</span>=<span class="value">range(1006,2000,10)</span>
+<span class="attribute">g</span>=<span class="value">lambda</span> <span class="attribute">x:</span> (<span class="attribute">x</span>%<span class="attribute">4</span>=<span class="value">=0</span> <span class="attribute">and</span> <span class="attribute">x</span>%<span class="attribute">100</span>!=<span class="value">0</span> <span class="attribute">or</span> <span class="attribute">x</span>%<span class="attribute">400</span>=<span class="value">=0)</span> <span class="attribute">and</span> <span class="attribute">True</span> <span class="attribute">or</span> <span class="attribute">False</span>
+<span class="attribute">years</span>=<span class="value">filter(g,years)</span>
+<span class="attribute">f</span>=<span class="value">lambda</span> <span class="attribute">x:</span> <span class="attribute">datetime.date</span>(<span class="attribute">x</span>,<span class="attribute">1</span>,<span class="attribute">1</span>)<span class="attribute">.weekday</span>()=<span class="value">=3</span> <span class="attribute">and</span> <span class="attribute">True</span> <span class="attribute">or</span> <span class="attribute">False</span>
+<span class="attribute">years</span>=<span class="value">filter(f,years)</span></span></span>
+</pre></td></tr></table></figure>
+
+<p>And the result is :</p>
+<blockquote>
+<p>1176,1356,1576,1756,1976</p>
+</blockquote>
+<p>Because it’s the second youngest, so it would be year 1756. On Jan-27-1756, what happened?</p>
+<p>Google tells us that, all links are point to <strong>Wolfgang Amadeus Mozart</strong> was born on that day.</p>
+<p>I guess the answer is <strong>mozart</strong> and this bring me to the next level.</p>
+<h2 id="16-_-3c-a_href-3d-22-http-3a-2f-2f-www-pythonchallenge-com-2f-pc-2f-return-2f-mozart-html-22-3e-let_me_get_this_straight-3c-2f-a-3e-">16. <a href="http://www.pythonchallenge.com/pc/return/mozart.html" target="_blank">let me get this straight</a></h2>
+<p>Another image processing level. The title already told us all we need to do: by using the purple marker, re-arrange all lines of the pictures and make the marker form a straight line. </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="code"><pre><span class="xml"><span class="tag"><span class="attribute">import</span> <span class="attribute">urllib</span>, <span class="attribute">Image</span>, <span class="attribute">numpy</span> <span class="attribute">as</span> <span class="attribute">np</span>
+<span class="attribute">from</span> <span class="attribute">cStringIO</span> <span class="attribute">import</span> <span class="attribute">StringIO</span>
+<span class="attribute">io</span>=<span class="value">StringIO(urllib.urlopen('http:</span>//<span class="attribute">huge:file</span>@<span class="attribute">www.pythonchallenge.com</span>/<span class="attribute">pc</span>/<span class="attribute">return</span>/<span class="attribute">mozart.gif</span>')<span class="attribute">.read</span>())
+<span class="attribute">pic</span>=<span class="value">Image.open(io)</span>
+<span class="attribute">array</span>=<span class="value">np.asarray(pic)</span>
+<span class="attribute">pattern</span>=<span class="value">np.array([195,195,195,195,195],dtype='uint8').tostring()</span>
+<span class="attribute">new_array</span>=<span class="value">np.zeros((480,640),dtype='uint8')</span>
+<span class="attribute">for</span> <span class="attribute">x</span> <span class="attribute">in</span> <span class="attribute">xrange</span>(<span class="attribute">len</span>(<span class="attribute">array</span>))<span class="attribute">:</span>
+	<span class="attribute">it</span>=<span class="value">array[x]</span>
+	<span class="attribute">index</span>=<span class="value">it.tostring().index(pattern)</span>
+	<span class="attribute">new_array</span>[<span class="attribute">x</span>]=<span class="value">np.append(it[index:],it[:index])</span>
+<span class="attribute">new_pic</span>=<span class="value">Image.fromarray(new_array)</span></span></span>
+</pre></td></tr></table></figure>
+
+<p>Answer is <strong>romance</strong>.</p>
+<h2 id="17-_-3c-a_href-3d-22-http-3a-2f-2f-www-pythonchallenge-com-2f-pc-2f-return-2f-romance-html-22-3e-eat-3f-3c-2f-a-3e-">17. <a href="http://www.pythonchallenge.com/pc/return/romance.html" target="_blank">eat?</a></h2>
+<p>Hints:</p>
+<blockquote>
+<p>cookies.jpg</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> requests <span class="keyword">as</span> rq</span>
+<span class="title">r</span> = rq.get('http://www.pythonchallenge.com/pc/return/cookies.jpg', auth=('huge', 'file'))
+<span class="title">r</span>.cookies.get_dict()
+</pre></td></tr></table></figure>
+
+<p>This code get nothing. Noticing the thumbnail picture showing level 4 linkedlist level, is the cookie in level 4?</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> requests <span class="keyword">as</span> rq</span>
+<span class="title">r</span> = rq.get('http://www.pythonchallenge.com/pc/def/linkedlist.php')
+<span class="title">r</span>.cookies.get_dict()
+</pre></td></tr></table></figure>
+
+<p>Haha, new hints:</p>
+<blockquote>
+<p>info: you+should+have+followed+busynothing…</p>
+</blockquote>
+<p>busynothing must be a new linked list.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+</pre></td><td class="code"><pre><span class="xml"><span class="tag"><span class="attribute">import</span> <span class="attribute">requests</span> <span class="attribute">as</span> <span class="attribute">rq</span>, <span class="attribute">re</span>
+<span class="attribute">url</span>=<span class="value">'http://www.pythonchallenge.com/pc/def/linkedlist.php?busynothing='</span>
+<span class="attribute">seed</span>=<span class="value">"44827"</span>
+<span class="attribute">r</span>=<span class="value">rq.get(url+seed)</span>
+<span class="attribute">url_str</span>=<span class="value">r.text</span>
+<span class="attribute">next_obj</span>=<span class="value">re.search('\d+',url_str)</span>
+<span class="attribute">cookie_str</span>=<span class="value">"B"</span>+<span class="attribute">r.cookies.get</span>('<span class="attribute">info</span>')
+<span class="attribute">while</span> <span class="attribute">next_obj:</span>
+	<span class="attribute">seed</span>=<span class="value">next_obj.group()</span>
+	<span class="attribute">print</span> <span class="attribute">url_str</span>
+	<span class="attribute">r</span>=<span class="value">rq.get(url+seed)</span>
+	<span class="attribute">cookie_str</span>+=<span class="value">r.cookies.get('info')</span>
+	<span class="attribute">url_str</span>=<span class="value">r.text</span>
+	<span class="attribute">print</span> <span class="attribute">cookie_str</span>
+	<span class="attribute">next_obj</span>=<span class="value">re.search('\d+',url_str)</span>
+<span class="attribute">import</span> <span class="attribute">bz2</span>,<span class="attribute">urllib</span>
+<span class="attribute">bz2.decompress</span>(<span class="attribute">urllib.unquote_plus</span>(<span class="attribute">cookie_str</span>))</span></span>
+</pre></td></tr></table></figure>
+
+<blockquote>
+<p>is it the 26th already? call his father and inform him that “the flowers are on their way”. he’ll understand.</p>
+</blockquote>
+<p>Google “mozart father”, we know his name is <strong>Leopold</strong>.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="xml"><span class="tag"><span class="attribute">import</span> <span class="attribute">xmlrpclib</span>
+<span class="attribute">evil</span>=<span class="value">'Leopold'</span>
+<span class="attribute">server</span>=<span class="value">xmlrpclib.ServerProxy('http:</span>//<span class="attribute">www.pythonchallenge.com</span>/<span class="attribute">pc</span>/<span class="attribute">phonebook.php</span>')
+<span class="attribute">ans</span>=<span class="value">server.phone(evil)</span></span></span>
+</pre></td></tr></table></figure>
+
+<blockquote>
+<p>violin</p>
+</blockquote>
+<p>change URL to violin.htm, </p>
+<blockquote>
+<p>no! i mean yes! but ../stuff/violin.php.</p>
+</blockquote>
+<p>then to violin.php. The title claims:</p>
+<blockquote>
+<p>it’s me. what do you want?</p>
+</blockquote>
+<p>Oops, maybe send him the message?</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="title">from</span> urllib <span class="import"><span class="keyword">import</span> quote_plus</span>
+<span class="import"><span class="keyword">import</span> requests <span class="keyword">as</span> rq</span>
+<span class="title">msg</span>='the flowers are on their way'
+<span class="title">r</span>=rq.get('http://www.pythonchallenge.com/pc/stuff/violin.php',cookies={'info':msg})
+</pre></td></tr></table></figure>
+
+<blockquote>
+<p>oh well, don’t you dare to forget the balloons.</p>
+</blockquote>
+<p>Bingo, <strong>balloons</strong>.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2008-04-12T13:35:00.000Z"><a href="/blog/2008/04/12/python-challenge-3/">Apr 12 2008</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2008/04/12/python-challenge-3/">Python Challenge (3)</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="10-_-3c-a_href-3d-22-http-3a-2f-2f-huge-3a-file-40-www-pythonchallenge-com-2f-pc-2f-return-2f-bull-html-22-3e-What_are_you_looking_at-3f-3c-2f-a-3e-">10. <a href="http://huge:file@www.pythonchallenge.com/pc/return/bull.html" target="_blank">What are you looking at?</a></h2>
+<p>After clicking the bull, a <strong>sequence.txt</strong> appeared.</p>
+<blockquote>
+<p>a = [1, 11, 21, 1211, 111221, </p>
+</blockquote>
+<p>and a question is on the screen:</p>
+<blockquote>
+<p>len(a[30]) = ?</p>
+</blockquote>
+<p>Let’s find the regular pattern. we could summarize these patterns:</p>
+<ol>
+<li>Single ‘1’ will transform into ‘11’ in the subsequent item.</li>
+<li>‘11’ will transform into ‘21’.</li>
+<li>Single ‘2’ will transform into ‘12’.</li>
+<li>transformation start from the left side.</li>
+</ol>
+<p>So, recursion code:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+</pre></td><td class="code"><pre><span class="xml"><span class="tag"><span class="attribute">a</span>=<span class="value">['1','11','21','1211','111221']</span>
+<span class="attribute">for</span> <span class="attribute">x</span> <span class="attribute">in</span> <span class="attribute">range</span>(<span class="attribute">5</span>,<span class="attribute">31</span>)<span class="attribute">:</span>
+	<span class="attribute">a_next_str</span>=<span class="value">''</span>
+	<span class="attribute">a_str</span>=<span class="value">str(a[x-1])</span>
+	<span class="attribute">for</span> <span class="attribute">y</span> <span class="attribute">in</span> <span class="attribute">range</span>(<span class="attribute">0</span>,<span class="attribute">len</span>(<span class="attribute">a_str</span>),<span class="attribute">2</span>)<span class="attribute">:</span>
+		<span class="attribute">if</span> <span class="attribute">a_str</span>[<span class="attribute">y:y</span>+<span class="attribute">2</span>] =<span class="value">=</span> '<span class="attribute">12</span>'<span class="attribute">:</span> 
+			<span class="attribute">a_next_str</span>+=<span class="value">'1112'</span>
+		<span class="attribute">elif</span> <span class="attribute">a_str</span>[<span class="attribute">y:y</span>+<span class="attribute">2</span>] =<span class="value">=</span> '<span class="attribute">11</span>'<span class="attribute">:</span> 
+			<span class="attribute">a_next_str</span>+=<span class="value">'21'</span>
+		<span class="attribute">elif</span> <span class="attribute">a_str</span>[<span class="attribute">y:y</span>+<span class="attribute">2</span>] =<span class="value">=</span> '<span class="attribute">21</span>'<span class="attribute">:</span> 
+			<span class="attribute">a_next_str</span>+=<span class="value">'1211'</span>
+		<span class="attribute">elif</span> <span class="attribute">a_str</span>[<span class="attribute">y:y</span>+<span class="attribute">2</span>] =<span class="value">=</span> '<span class="attribute">22</span>'<span class="attribute">:</span> 
+			<span class="attribute">a_next_str</span>+=<span class="value">'1212'</span>
+	<span class="attribute">a.append</span>(<span class="attribute">a_next_str</span>)
+<span class="attribute">print</span> <span class="attribute">len</span>(<span class="attribute">a</span>[<span class="attribute">30</span>])</span></span>
+</pre></td></tr></table></figure>
+
+<p>Then answer is <strong>1664080</strong>, but this number failed. Maybe our pattern summary is wrong?</p>
+<p>re-looking at the array. It could be:</p>
+<ol>
+<li>single 1,</li>
+<li>previous item is 1 ‘1’.</li>
+<li>previous item is 2 ‘1’.</li>
+<li>previous item is 1 ‘2’ followed by 1 ‘1’.</li>
+</ol>
+<p>Then, rewrite the code:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="code"><pre><span class="comment">import</span> <span class="comment">re</span>
+<span class="comment">a=</span><span class="title">[</span><span class="comment">'1'</span><span class="string">,</span><span class="comment">'11'</span><span class="string">,</span><span class="comment">'21'</span><span class="string">,</span><span class="comment">'1211'</span><span class="string">,</span><span class="comment">'111221'</span><span class="title">]</span>
+<span class="comment">for</span> <span class="comment">x</span> <span class="comment">in</span> <span class="comment">range(5</span><span class="string">,</span><span class="comment">31):</span>
+<span class="comment">	a_next_str=''</span>
+<span class="comment">	a_str=a</span><span class="title">[</span><span class="comment">x</span><span class="literal">-</span><span class="comment">1</span><span class="title">]</span>
+<span class="comment">	parse_a=re</span><span class="string">.</span><span class="comment">findall('(1</span><span class="literal">+</span><span class="comment">|2</span><span class="literal">+</span><span class="comment">|3</span><span class="literal">+</span><span class="comment">|4</span><span class="literal">+</span><span class="comment">|5</span><span class="literal">+</span><span class="comment">|6</span><span class="literal">+</span><span class="comment">|7</span><span class="literal">+</span><span class="comment">|8</span><span class="literal">+</span><span class="comment">|9</span><span class="literal">+</span><span class="comment">)'</span><span class="string">,</span><span class="comment">a_str)</span>
+<span class="comment">	for</span> <span class="comment">item</span> <span class="comment">in</span> <span class="comment">parse_a:</span>
+<span class="comment">		a_next_str</span><span class="literal">+</span><span class="comment">=str(len(item))</span><span class="literal">+</span><span class="comment">item</span><span class="title">[</span><span class="comment">0</span><span class="title">]</span>
+<span class="comment">	a</span><span class="string">.</span><span class="comment">append(a_next_str)</span>
+<span class="comment">print(len(a</span><span class="title">[</span><span class="comment">30</span><span class="title">]</span><span class="comment">))</span>
+</pre></td></tr></table></figure>
+
+<p>The answer is <strong>5080</strong>.</p>
+<h2 id="11-_-3c-a_href-3d-22-http-3a-2f-2f-huge-3a-file-40-www-pythonchallenge-com-2f-pc-2f-return-2f-5808-html-22-3e-odd_even-3c-2f-a-3e-">11. <a href="http://huge:file@www.pythonchallenge.com/pc/return/5808.html" target="_blank">odd even</a></h2>
+<p>The picture seems a little bit strange. No need to say the file name is <strong>cave</strong>.  Maybe that’s because it’s 2 picture?</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="code"><pre>import Image, ImageDraw
+pic=<span class="transposed_variable">Image.</span>open(<span class="string">'cave.jpg'</span>)
+draw_pic_1=<span class="transposed_variable">ImageDraw.</span><span class="transposed_variable">Image.</span>new(<span class="string">'RGB'</span>,(<span class="number">320</span>,<span class="number">240</span>))
+draw_pic_2=<span class="transposed_variable">ImageDraw.</span><span class="transposed_variable">Image.</span>new(<span class="string">'RGB'</span>,(<span class="number">320</span>,<span class="number">240</span>))
+<span class="keyword">for</span> x in range(<span class="number">0</span>,<span class="number">640</span>):
+	<span class="keyword">for</span> y in range(<span class="number">0</span>,<span class="number">480</span>):
+		<span class="keyword">if</span> ((x+y)<span class="comment">%2):</span>
+			<span class="transposed_variable">draw_pic_1.</span>putpixel((x/<span class="number">2</span>,y/<span class="number">2</span>),<span class="transposed_variable">pic.</span>getpixel((x,y)))
+		<span class="keyword">else</span>:
+			<span class="transposed_variable">draw_pic_2.</span>putpixel((x/<span class="number">2</span>,y/<span class="number">2</span>),<span class="transposed_variable">pic.</span>getpixel((x,y)))
+<span class="transposed_variable">draw_pic_1.</span>show()
+<span class="transposed_variable">draw_pic_2.</span>show()
+</pre></td></tr></table></figure>
+
+<p><code>Picture 1</code> is just like the original painting. But <code>picture 2</code> is a mostly dark picture, with red word <strong>evil</strong> on the upper right.</p>
+<h2 id="12-_-3c-a_href-3d-22-http-3a-2f-2f-huge-3a-file-40-www-pythonchallenge-com-2f-pc-2f-return-2f-evil-html-22-3e-dealing_evil-3c-2f-a-3e-">12. <a href="http://huge:file@www.pythonchallenge.com/pc/return/evil.html" target="_blank">dealing evil</a></h2>
+<p>A picture , similar to the previous level, showed up. But the code of previous level found nothing new. From the source, we could see the picture embbed is called <code>evil1.jpg</code>, so how about others?</p>
+<ul>
+<li><strong>evil2.jpg</strong> “not jpg - -.gfx”</li>
+<li><strong>evil3.jpg</strong> “no more evils”</li>
+<li><strong>evil4.jpg</strong> actually this is not a JPEG file but after download, it’s an ASCII file:<blockquote>
+<p>Bert is evil, go back </p>
+</blockquote>
+</li>
+</ul>
+<p>Still not helping at all.</p>
+<p>After loading the <code>evil2.gfx</code> file. </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> urllib</span>
+<span class="title">data</span>=urllib.urlopen('http://huge:file@www.pythonchallenge.com/pc/return/evil2.gfx').read()
+<span class="title">data</span>[:<span class="number">100</span>]
+</pre></td></tr></table></figure>
+
+<p>And I tried to find some pattern, what kind of file it is? I noticed some ASCII characters in the lines.    After stripped other non-ASCII characters:</p>
+<pre><code>data<span class="special">[</span>0:100<span class="special">]</span>.translate(string.maketrans("",""),"<span class="command">\xff</span><span class="command">\x</span>89<span class="command">\x</span>00<span class="command">\x</span>01<span class="command">\xb</span>4<span class="command">\xf</span>0<span class="command">\x</span>04<span class="command">\x</span>90<span class="command">\xd</span>8<span class="command">\xe</span>0<span class="command">\r</span><span class="command">\x</span>10<span class="command">\n</span><span class="command">\x</span>1a<span class="command">\xe</span>7<span class="command">\x</span>02")
+</code></pre><p>The result is </p>
+<pre><code><span class="constant">GPIPNFNG8G7aJ</span><span class="variable">@JFFIIFFIIHHDDRR</span>@
+</code></pre><p><strong>87a</strong>? This look familiar because I know GIF87a or GIF89a are flags of GIF file, so go back to the original data,</p>
+<pre><code><span class="tag">data</span><span class="attr_selector">[:100]</span>
+</code></pre><p>And there are 4 characters (<em>including invisible ones</em>) between 8 and 7</p>
+<blockquote>
+<p>G, \xe0, \x00, \r</p>
+</blockquote>
+<p>And 4 characters between 7 and a</p>
+<blockquote>
+<p>\r, \x00, \x10, \n</p>
+</blockquote>
+<p>Maybe it’s every 5 characters?</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="tag">data</span><span class="attr_selector">[0:100:5]</span>, <span class="tag">data</span><span class="attr_selector">[1:100:5]</span>, <span class="tag">data</span><span class="attr_selector">[2:100:5]</span>, <span class="tag">data</span><span class="attr_selector">[3:100:5]</span>, <span class="tag">data</span><span class="attr_selector">[4:100:5]</span>
+</pre></td></tr></table></figure>
+
+<p>Result</p>
+<blockquote>
+<p>\xff\xd8\xff\xe0\x00\x10JFIF\x00\x01\x01\x01\x00\xb4\x00\xb4\x00\x00<br>\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00\x01\x90<br>GIF87a@\x01\xf0\x00\xe7\x00\x00\x00\x01\x00\x00\x01\x04\x02<br>\x89PNG\r\n\x1a\n\x00\x00\x00\rIHDR\x00\x00\x01@<br>\xff\xd8\xff\xe0\x00\x10JFIF\x00\x01\x01\x01\x00\xb4\x00\xb4\x00\x00</p>
+</blockquote>
+<p>Oops, bingo~ <code>\x89PNG</code> must be PNG file flag and what’s <strong>JFIF</strong>? Google tell me it’s “JPEG/JIFF images”. </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre>ext=[<span class="attribute">'jpg</span>',<span class="attribute">'png</span>',<span class="attribute">'gif</span>',<span class="attribute">'png</span>',<span class="attribute">'jpg</span>']
+<span class="keyword">for</span> x <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">5</span>):
+	pic=<span class="keyword">open</span>(<span class="attribute">'tmp_image_file</span>_'+str(x)+'.'+ext[x],<span class="attribute">'wb</span>')
+	pic.write(data[x::<span class="number">5</span>])
+	pic.close()
+</pre></td></tr></table></figure>
+
+<p>According to the pictures, the answer should be <strong>disproportional</strong> </p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2008-04-10T08:40:00.000Z"><a href="/blog/2008/04/10/python-challenge-2/">Apr 10 2008</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2008/04/10/python-challenge-2/">Python Challenge (2)</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="7-_-3c-a_href-3d-22-http-3a-2f-2f-www-pythonchallenge-com-2f-pc-2f-def-2f-oxygen-html-22-3e-smarty-3c-2f-a-3e-">7. <a href="http://www.pythonchallenge.com/pc/def/oxygen.html" target="_blank">smarty</a></h2>
+<p>This level a image shows up. with gray band in the middle of the image. It should be hint. </p>
+<p>To process image, we need <strong>PIL</strong> (python Image Library).</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> Image</span>
+<span class="title">pic</span>=<span class="type">Image</span>.open(<span class="string">"oxygen.png"</span>)
+<span class="title">x</span>,y=pic.size()
+</pre></td></tr></table></figure>
+
+<p>The result is <code>629</code> for x and <code>95</code> for y. The band is in the middle, so, try to read the pixel value in $$\frac{95+1}{2}=48$$.</p>
+<pre><code>r,g,b,<span class="built_in">depth</span> = pic.getpixel((<span class="number">0</span>,<span class="number">48</span>))
+</code></pre><p>The answer is<br>    115,115,115,255</p>
+<p>After trial of 1,2,3,4,5 for x, it seems every 5 pixels, the value will change. </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">629</span>,<span class="number">5</span>):
+	<span class="built_in">print</span> pic.getpixel((x,<span class="number">48</span>))
+</pre></td></tr></table></figure>
+
+<p>The last 4 lines do not have the same value for R, G, B channel. And we could see the band actually end earlier. Another things is the value of color seems in the range of 32 to 121, which is quite like ASCII we experience before. So, we try to collect the message:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="title">msg</span>=''
+<span class="title">for</span> x <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">609</span>,<span class="number">5</span>):
+	r,g,b,depth=pic.getpixel((x,<span class="number">48</span>))
+	msg=msg+chr(g)
+<span class="title">print</span> msg
+</pre></td></tr></table></figure>
+
+<p>Next hint shows up:</p>
+<blockquote>
+<p>smmarrt gguyy, yyouu maadee itt.  thee nnextt lleveel  is  [1105,, 1110,, 1116,, 1101,, 1103,, 1114,, 1105,, 1116,, 1121]]</p>
+</blockquote>
+<p>There are many duplicates and after processing:</p>
+<blockquote>
+<p>smart guy, you made it. the next level is [105,110,116,101,114,105,116,121]</p>
+</blockquote>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="title">msg</span>=''
+<span class="title">code</span>=[<span class="number">105</span>,<span class="number">110</span>,<span class="number">116</span>,<span class="number">101</span>,<span class="number">103</span>,<span class="number">114</span>,<span class="number">105</span>,<span class="number">116</span>,<span class="number">121</span>]
+<span class="title">for</span> x <span class="keyword">in</span> code:
+	msg+=chr(x)
+<span class="title">print</span> msg
+</pre></td></tr></table></figure>
+
+<p>Next level should be <strong>integrity</strong></p>
+<h2 id="8-_-3c-a_href-3d-22-http-3a-2f-2f-www-pythonchallenge-com-2f-pc-2f-def-2f-integrity-html-22-3e-working_hard-3f-3c-2f-a-3e-">8. <a href="http://www.pythonchallenge.com/pc/def/integrity.html" target="_blank">working hard?</a></h2>
+<p>A picture of bee in working, and a poly area when clicked, we need to offer username and password. In the source code, </p>
+<pre><code>un: 'BZh91AY<span class="special">&amp;</span>SYA<span class="command">\xaf</span><span class="command">\x</span>82<span class="command">\r</span><span class="command">\x</span>00<span class="command">\x</span>00<span class="command">\x</span>01<span class="command">\x</span>01<span class="command">\x</span>80<span class="command">\x</span>02<span class="command">\xc</span>0<span class="command">\x</span>02<span class="command">\x</span>00 <span class="command">\x</span>00!<span class="command">\x</span>9ah3M<span class="command">\x</span>07&lt;<span class="special">]</span><span class="command">\xc</span>9<span class="command">\x</span>14<span class="command">\xe</span>1BA<span class="command">\x</span>06<span class="command">\xbe</span><span class="command">\x</span>084'
+pw: 'BZh91AY<span class="special">&amp;</span>SY<span class="command">\x</span>94<span class="formula">$|<span class="command">\x</span>0e<span class="command">\x</span>00<span class="command">\x</span>00<span class="command">\x</span>00<span class="command">\x</span>81<span class="command">\x</span>00<span class="command">\x</span>03$</span> <span class="command">\x</span>00!<span class="command">\x</span>9ah3M<span class="command">\x</span>13&lt;<span class="special">]</span><span class="command">\xc</span>9<span class="command">\x</span>14<span class="command">\xe</span>1BBP<span class="command">\x</span>91<span class="command">\xf</span>08'
+</code></pre><p>Un must be username and pw must be password. But what’s that? the head of string is <code>BZh91AY&amp;SY</code>, after googling, it turns out to be the flag of <strong>bz2</strong>, so</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre>import bz2
+username=bz2.decompress('BZh91AY<span class="special">&</span>SYA<span class="command">\xaf</span><span class="command">\x</span>82<span class="command">\r</span><span class="command">\x</span>00<span class="command">\x</span>00<span class="command">\x</span>01<span class="command">\x</span>01<span class="command">\x</span>80<span class="command">\x</span>02<span class="command">\xc</span>0<span class="command">\x</span>02<span class="command">\x</span>00 <span class="command">\x</span>00!<span class="command">\x</span>9ah3M<span class="command">\x</span>07&lt;<span class="special">]</span><span class="command">\xc</span>9<span class="command">\x</span>14<span class="command">\xe</span>1BA<span class="command">\x</span>06<span class="command">\xbe</span><span class="command">\x</span>084')
+password=bz2.decompress('BZh91AY<span class="special">&</span>SY<span class="command">\x</span>94<span class="formula">$|<span class="command">\x</span>0e<span class="command">\x</span>00<span class="command">\x</span>00<span class="command">\x</span>00<span class="command">\x</span>81<span class="command">\x</span>00<span class="command">\x</span>03$</span> <span class="command">\x</span>00!<span class="command">\x</span>9ah3M<span class="command">\x</span>13&lt;<span class="special">]</span><span class="command">\xc</span>9<span class="command">\x</span>14<span class="command">\xe</span>1BBP<span class="command">\x</span>91<span class="command">\xf</span>08')
+print username, password
+</pre></td></tr></table></figure>
+
+<p>The answer are <strong>huge</strong> and <strong>file</strong>.</p>
+<h2 id="9-_-3c-a_href-3d-22-http-3a-2f-2f-huge-3a-file-40-www-pythonchallenge-com-2f-pc-2f-return-2f-good-html-22-3e-connect_the_dots-3c-2f-a-3e-">9. <a href="http://huge:file@www.pythonchallenge.com/pc/return/good.html" target="_blank">connect the dots</a></h2>
+<p>There are a series of dots on the picture. And the title also said to “connect the dots”. It’s straight forward. In the source code, 2 group of data <strong>first</strong> and <strong>second</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre><span class="xml"><span class="tag"><span class="attribute">first</span>=<span class="value">[146,399,163,403,170,393,169,391,166,386,170,381,170,371,170,355,169,346,167,335,170,329,170,320,170,</span>
+…
+…
+<span class="attribute">332</span>,<span class="attribute">155</span>,<span class="attribute">348</span>,<span class="attribute">156</span>,<span class="attribute">353</span>,<span class="attribute">153</span>,<span class="attribute">366</span>,<span class="attribute">149</span>,<span class="attribute">379</span>,<span class="attribute">147</span>,<span class="attribute">394</span>,<span class="attribute">146</span>,<span class="attribute">399</span>]
+<span class="attribute">second</span>=<span class="value">[156,141,165,135,169,131,176,130,187,134,191,140,191,146,186,150,179,155,175,157,168,157,163,157,159,</span>
+…
+…
+<span class="attribute">158</span>,<span class="attribute">121</span>,<span class="attribute">157</span>,<span class="attribute">128</span>,<span class="attribute">156</span>,<span class="attribute">134</span>,<span class="attribute">157</span>,<span class="attribute">136</span>,<span class="attribute">156</span>,<span class="attribute">136</span>]</span></span>
+</pre></td></tr></table></figure>
+
+<p>Because the counts are different, I guess maybe it’s 2 group of coordinates.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>first_cord= [<span class="keyword">first</span>[x:x+<span class="number">2</span>] <span class="keyword">for</span> x <span class="operator">in</span> xrange(<span class="number">0</span>,<span class="built_in">len</span>(<span class="keyword">first</span>),<span class="number">2</span>)]
+second_cord= [<span class="keyword">second</span>[x:x+<span class="number">2</span>] <span class="keyword">for</span> x <span class="operator">in</span> xrange(<span class="number">0</span>,<span class="built_in">len</span>(<span class="keyword">second</span>),<span class="number">2</span>)]
+</pre></td></tr></table></figure>
+
+<p>Draw points</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre>import Image, ImageDraw
+pic=<span class="transposed_variable">Image.</span>open(<span class="string">'good.jpg'</span>)
+draw=<span class="transposed_variable">ImageDraw.</span>Draw(pic)
+first_points=<span class="matrix">[]</span>
+<span class="keyword">for</span> x in first_cord:
+	<span class="transposed_variable">draw.</span>rectangle(<span class="matrix">[x[<span class="number">0</span>]</span>,x<span class="matrix">[<span class="number">1</span>]</span>,x<span class="matrix">[<span class="number">0</span>]</span>+<span class="number">3</span>,x<span class="matrix">[<span class="number">1</span>]</span>+<span class="number">3</span>],fill=<span class="string">'#ff0000'</span>)
+<span class="keyword">for</span> x in second_cord:
+	<span class="transposed_variable">draw.</span>rectangle(<span class="matrix">[x[<span class="number">0</span>]</span>,x<span class="matrix">[<span class="number">1</span>]</span>,x<span class="matrix">[<span class="number">0</span>]</span>+<span class="number">3</span>,x<span class="matrix">[<span class="number">1</span>]</span>+<span class="number">3</span>],fill=<span class="string">'#00ff00'</span>)
+</pre></td></tr></table></figure>
+
+<p>Then we could see an animal, I have several guess: fox, cat, sheep, and cow. In <strong>cow.htm</strong>, it said:</p>
+<blockquote>
+<p>hmm. it’s a male.</p>
+</blockquote>
+<p>So the answer is <strong>bull</strong>.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2008-04-08T13:35:00.000Z"><a href="/blog/2008/04/08/python-challenge-1/">Apr 8 2008</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2008/04/08/python-challenge-1/">Python Challenge (1)</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Very interesting programming game. </p>
+<h2 id="0-_-3c-a_href-3d-22-http-3a-2f-2f-www-pythonchallenge-com-2f-pc-2f-def-2f-0-html-22-3e-Warming_up-3c-2f-a-3e-">0. <a href="http://www.pythonchallenge.com/pc/def/0.html" target="_blank">Warming up</a></h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="number">2</span><span class="variable">**</span><span class="number">38</span>
+</pre></td></tr></table></figure>
+
+<h2 id="1-_-3c-a_href-3d-22-http-3a-2f-2f-www-pythonchallenge-com-2f-pc-2f-def-2f-map-html-22-3e-What_about_making_trans-3f-3c-2f-a-3e-">1. <a href="http://www.pythonchallenge.com/pc/def/map.html" target="_blank">What about making trans?</a></h2>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre><span class="title">from</span> string <span class="import"><span class="keyword">import</span> maketrans</span>
+<span class="title">str_a</span>=<span class="string">"ab"</span>
+<span class="title">str_b</span>=<span class="string">"cdefghijklmnopqrstuvwxyz"</span>
+<span class="title">src</span>=str_a + str_b
+<span class="title">dest</span>=str_b + str_a
+<span class="title">transtab</span>=maketrans(src,dest)
+<span class="title">str</span>=<span class="string">"g fmnc wms bgblr rpylqjyrc gr zw fylb. rfyrq ufyr amknsrcpq ypc dmp. bmgle gr gl zw fylb gq glcddgagclr ylb rfyr'q ufw rfgq rcvr gq qm jmle. sqgle qrpgle.kyicrpylq() gq pcamkkclbcb. lmu ynnjw ml rfc spj."</span>
+<span class="title">print</span> str.translate(transtab)
+</pre></td></tr></table></figure>
+
+<p>Then we got the translated hint:</p>
+<blockquote>
+<p>i hope you didnt translate it by hand. thats what computers are for. doing it in by hand is inefficient and that’s why this text is so long. using string.maketrans() is recommended. now apply on the url.</p>
+</blockquote>
+<p>so, change <strong>str</strong> to <em>map</em>, the result should be <strong>ocr</strong>.</p>
+<h2 id="2-_-3c-a_href-3d-22-http-3a-2f-2f-www-pythonchallenge-com-2f-pc-2f-def-2f-ocr-html-22-3e-ocr-3c-2f-a-3e-">2. <a href="http://www.pythonchallenge.com/pc/def/ocr.html" target="_blank">ocr</a></h2>
+<p>Save the trunk of characters in source file to a file name <strong>ocr.src</strong>. Then:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="title">encode_str</span>=open(<span class="string">"ocr.src"</span>).read()
+<span class="title">encode_str</span>.translate(<span class="type">None</span>,'~!@#$%^&*()_+\n[]{}')
+</pre></td></tr></table></figure>
+
+<p>Then the answer will show up: <strong>equality</strong>.</p>
+<h2 id="3-_-3c-a_href-3d-22-http-3a-2f-2f-www-pythonchallenge-com-2f-pc-2f-def-2f-equality-html-22-3e-re-3c-2f-a-3e-">3. <a href="http://www.pythonchallenge.com/pc/def/equality.html" target="_blank">re</a></h2>
+<p>Regular expression, a powerful string tool. Save the src to file <strong>equality.src</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+</pre></td><td class="code"><pre><span class="comment">import</span> <span class="comment">re</span><span class="string">,</span> <span class="comment">string</span>
+<span class="comment">encode_str=open("equality</span><span class="string">.</span><span class="comment">src")</span><span class="string">.</span><span class="comment">read()</span>
+<span class="comment">up=string</span><span class="string">.</span><span class="comment">uppercase</span>
+<span class="comment">low=string</span><span class="string">.</span><span class="comment">lowercase</span>
+<span class="comment">expression=</span> <span class="comment">'</span><span class="title">[</span><span class="comment">'</span><span class="literal">+</span><span class="comment">low</span><span class="literal">+</span><span class="comment">'</span><span class="title">]</span><span class="title">[</span><span class="comment">'</span><span class="literal">+</span><span class="comment">up</span><span class="literal">+</span><span class="comment">'</span><span class="title">]</span><span class="comment">{3}(</span><span class="title">[</span><span class="comment">'</span><span class="literal">+</span><span class="comment">low</span><span class="literal">+</span><span class="comment">'</span><span class="title">]</span><span class="comment">)</span><span class="title">[</span><span class="comment">'</span><span class="literal">+</span><span class="comment">up</span><span class="literal">+</span><span class="comment">'</span><span class="title">]</span><span class="comment">{3}</span><span class="title">[</span><span class="comment">'</span><span class="literal">+</span><span class="comment">low</span><span class="literal">+</span><span class="comment">'</span><span class="title">]</span><span class="comment">'</span>
+<span class="comment">result=re</span><span class="string">.</span><span class="comment">findall(</span> <span class="comment">expression</span> <span class="string">,</span><span class="comment">encode_str)</span>
+<span class="comment">print</span> <span class="comment">result</span>
+</pre></td></tr></table></figure>
+
+<p>The answer is <strong>linkedlist</strong>.</p>
+<h2 id="4-_-3c-a_href-3d-22-http-3a-2f-2f-www-pythonchallenge-com-2f-pc-2f-def-2f-linkedlist-php-22-3e-follow_the_chain-3c-2f-a-3e-">4. <a href="http://www.pythonchallenge.com/pc/def/linkedlist.php" target="_blank">follow the chain</a></h2>
+<p>According to the source hints. We need to use <strong>urllib</strong>.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre>import urllib,re
+next_num=<span class="comment">'12345'</span>
+url_str=urllib.urlopen(<span class="comment">'http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing='+next_num).read()</span>
+next_obj=re.search(<span class="comment">'\d+',url_str)</span>
+<span class="keyword">while</span> next_obj:
+	next_num=next_obj.<span class="keyword">group</span>()
+	print url_str
+	url_str=urllib.urlopen(<span class="comment">'http://www.pythonchallenge.com/pc/def/linkedlist.php?nothing='+next_num).read()</span>
+	next_obj=re.search(<span class="comment">'\d+',url_str)</span>
+</pre></td></tr></table></figure>
+
+<p>After running, it stop at<br>    and the next nothing is 16044</p>
+<p>Change the URL, a hint comes:<br>    Yes. Divide by two and keep going.</p>
+<p>then change the <strong>next_num</strong> to ‘8022’, rerun the script, it stops at a hint:</p>
+<pre><code>There maybe misleading numbers <span class="keyword">in</span> the text. One example <span class="keyword">is</span> <span class="number">82683.</span> Look only <span class="keyword">for</span> the <span class="keyword">next</span> <span class="literal">nothing</span> <span class="keyword">and</span> the <span class="keyword">next</span> <span class="literal">nothing</span> <span class="keyword">is</span> <span class="number">63579</span>
+</code></pre><p>OK, change the <strong>next_num</strong> again. and it stop at 66831. Changed URL. Answer is <strong>peak.html</strong>.</p>
+<h2 id="5-_-3c-a_href-3d-22-http-3a-2f-2f-www-pythonchallenge-com-2f-pc-2f-def-2f-peak-html-22-3e-peak_hell-3c-2f-a-3e-">5. <a href="http://www.pythonchallenge.com/pc/def/peak.html" target="_blank">peak hell</a></h2>
+<p>Pronounce it? Oops, it should be <em>Pickle</em>. Hint in source html:</p>
+<pre><code><span class="tag">&lt;<span class="title">peakhell</span> <span class="attribute">src</span>=<span class="value">"banner.p"</span>/&gt;</span>
+</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> urllib</span>
+<span class="import"><span class="keyword">import</span> cPickle <span class="keyword">as</span> pickle</span>
+<span class="title">url_str</span>=urllib.urlopen('http://www.pythonchallenge.com/pc/def/banner.p').read()
+<span class="title">pickle_obj</span>=pickle.loads(url_str)
+</pre></td></tr></table></figure>
+
+<p>And it turns out to be a multi-dimention array. The first and last element are<br>    [(‘ ‘, 95)]</p>
+<p>and the second is</p>
+<pre><code>[(' ', <span class="number">14</span>), ('#', <span class="number">5</span>), (' ', <span class="number">70</span>), ('#', <span class="number">5</span>), (' ', <span class="number">1</span>)]
+</code></pre><p>So, what do you see? it seems like a ASCII picture whose width is 95, right? So, Let’s print it.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="keyword">for</span> <span class="built_in">line</span> <span class="operator">in</span> pickle_obj:
+	line_str=<span class="string">''</span>
+	<span class="keyword">for</span> <span class="keyword">item</span> <span class="operator">in</span> <span class="built_in">line</span>:
+		line_str+=<span class="keyword">item</span>[<span class="number">0</span>]*<span class="keyword">item</span>[<span class="number">1</span>]
+	print line_str
+</pre></td></tr></table></figure>
+
+<p>Result is a ASCII figure: <strong>channel</strong>.</p>
+<h2 id="6-_-3c-a_href-3d-22-http-3a-2f-2f-www-pythonchallenge-com-2f-pc-2f-def-2f-channel-html-22-3e-now_there_are_pairs-3c-2f-a-3e-">6. <a href="http://www.pythonchallenge.com/pc/def/channel.html" target="_blank">now there are pairs</a></h2>
+<p>Hint in Source html only 3 letters: <strong>zip</strong>. So, download the file: <code>channel.zip</code>. After extraction, it’s a directory with many files name in numbers. And the content is like in <a href="http://www.pythonchallenge.com/pc/def/linkedlist.php" target="_blank">level 4</a>. </p>
+<p>Inside the directory, a <code>readme.txt</code> shows hints:</p>
+<pre><code><span class="attribute">hint1</span>: <span class="string">start from 90052</span>
+<span class="attribute">hint2</span>: <span class="string">answer is inside the zip</span>
+</code></pre><figure class="highlight lang-python"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="code"><pre>
+<span class="keyword">import</span> re
+next_num=<span class="string">'90052'</span>
+file_str=open(next_num+<span class="string">'.txt'</span>).read()
+next_obj=re.search(<span class="string">'\d+'</span>,file_str)
+<span class="keyword">while</span> next_obj:
+	next_num=next_obj.group()
+	<span class="keyword">print</span> file_str
+	file_str=open(next_num+<span class="string">'.txt'</span>).read()
+	next_obj=re.search(<span class="string">'\d+'</span>,file_str)
+</pre></td></tr></table></figure>
+
+
+<p>Stopped at <code>46145</code>, check the content:</p>
+<pre><code>Collect <span class="operator">the</span> comments.
+</code></pre><p>How to collect comments? </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> zipfile</span>
+<span class="title">zf</span>=zipfile.<span class="type">ZipFile</span>('channel.zip','r')
+<span class="title">zf</span>.getinfo('<span class="number">90052.</span>txt').comment
+</pre></td></tr></table></figure>
+
+<p>it’s a <code>*</code>, what’s the next? The comment of <code>94191.txt</code> is still a <code>*</code>, wait, it looks like <strong>level 5</strong>, Maybe we could print the sequence. Combine the code together:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="code"><pre>import re,zipfile
+zf=zipfile.ZipFile(<span class="comment">'channel.zip','r')</span>
+next_num=<span class="comment">'90052'</span>
+file_str=zf.read(next_num+<span class="comment">'.txt')</span>
+next_obj=re.search(<span class="comment">'\d+',file_str)</span>
+result_str=<span class="comment">''</span>
+<span class="keyword">while</span> next_obj:
+	result_str+=zf.getinfo(next_num+<span class="comment">'.txt').comment</span>
+	next_num=next_obj.<span class="keyword">group</span>()
+	file_str=zf.read(next_num+<span class="comment">'.txt')</span>
+	next_obj=re.search(<span class="comment">'\d+',file_str)</span>
+print result_str
+</pre></td></tr></table></figure>
+
+<p>The answer is <strong>hockey</strong>. Change to <strong>hockey.html</strong>, bu it showes:</p>
+<pre><code><span class="keyword">it</span>'s <span class="keyword">in</span> <span class="keyword">the</span> air. look <span class="keyword">at</span> <span class="keyword">the</span> letters.
+</code></pre><p>After looking into the figure, each character is composed by 1 letter, the real answer should be <strong>oxygen</strong>.</p>
+<h3 id="To_be_continue">To be continue</h3>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2007-09-25T15:56:00.000Z"><a href="/blog/2007/09/25/ren-sheng-ruo-zhi-ru-chu-jian/">Sep 25 2007</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2007/09/25/ren-sheng-ruo-zhi-ru-chu-jian/">人生若只如初见</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>题记：受好友所嘱，作文一篇，自高考之后，更无为他人所看之文，遍搜枯肠，行此题。古旧用变，聊付一笑。</p>
+</blockquote>
+<p>夕阳没有什么余光，喧嚣的城市都只是眼前的一缕浮光。躲在身后的角落，笨笨迷茫的眼神中，冒出了一滴泪，悬在眶边上。W城，这个寂热的城市，就要离开了。</p>
+<p>恰是一天前，笨笨怀着一腔的烦闷来到这个城市，本来这里是可来，可不来的，尤其是现在这个紧张的时刻，正处在人生的十字路口的他，应该是在与命运搏击，赢得人生的目标的时刻。但是，莫名的情愫，让笨笨告诉自己：这个时候，听听他的意见，一定是种正确的选择，毕竟，他不止是最好的朋友，还是知己，一些道不明的东西，驱使着他。</p>
+<p>见到面的时候，没有想象的亲热，似乎越是熟识的人，越是拘谨。只是一个很随意的拥抱，然后笑笑：“还没吃吧？走，先去吃饭，我也饿了。”</p>
+<p>一路上开着些不紧不松的玩笑，很快，就到了吃饭的地方。很不错，不像是学生应该去的地方。</p>
+<p>“你小子挺小资的阿，是不是做干部被腐化了？天天来这种地方？”</p>
+<p>“嘿嘿，我也是第二次来，上次我爸来的时候偶然发现的”……心里有些触动，不过还是一张笑嘻嘻的死鱼脸。对所受的一切处之泰然。笨笨知道，过分的拘谨对大家都不好。人是种很奇怪的动物，有时候知道怎样做才是合乎关系的，但是又期望着象普通人的一种认知。似乎熟悉和陌生只是一种很相对的概念，视乎心情，视乎环境。</p>
+<p>“如果说我要是你，那么对最合适的出路只有一个：去香港。”</p>
+<p>毕竟是soul mate级的人物，这么开门见山，笨笨什么都还没说，他就已经知道了来意。“我和你不同，你有隐忧，如果是美国，就算你的家人，我们，都放也心，你自己也不会放心。一旦出了什么事，怎么办？”</p>
+<p>“所以说看看你的要求，和你自己最主要的矛盾，那么，都是说香港才是你最合适的选择，首先那里打的气候，饮食，和家里都差不多，其次，从未来的发展，我们都知道未来如果最合适的地方，应该还是国内，我们要的是见世面，是增长见闻。在这点上，香港很合适。”</p>
+<p>“我以前也考虑过去德国，也和你提过，但是最后还是觉得国内对香港的认同比对德国强……”</p>
+<p>“……”</p>
+<p>这些考虑，肯定是来之前就想好了，对这个，笨笨更在意。</p>
+<p>只有你care somebody的时候，才会琢磨这个人的目的，想法，才会去做些事情。我们，通常叫这种行为叫做关心。</p>
+<p>本来笨笨还有些头疼，不知道该怎么开始这个谈话。笨笨不是一个很会说话，很能说话的人。但是以前人们总认为笨笨是个话多的人，家人还会用期待的语气说：“咱们家是要出个律师哦！”</p>
+<p>话多，是为了掩饰孤单。</p>
+<p>话多的人，往往都喜欢自顾自的讲话，他们怕看别人的眼神，怕自己的掩饰被识破。</p>
+<p>就像是最自大的人往往内心深处极度的自卑一样，世界上的事，不外如是。</p>
+<p>可是现在，这份担心就这么悄悄的烟消云散了，不露着一丝痕迹。我们对这种“解围”之类的行为都会生出一种特殊的感激，笨笨心想：“其实，感激的是理解吧~”</p>
+<p>就如对面坐着的这个人，虽然是童年的玩伴，但是后来的玩伴一个又一个的换了，又怎么会如此特殊呢？记忆一点一点的滴入心头……</p>
+<p>场景回到了那个纯真的年代。笨笨和他都还是孩子。</p>
+<p>“你是自己把自己孤立起来，下围棋对你的意义就是这样吧？”</p>
+<p>“一个人呆在没人的屋子里，琢磨没有人关心的东西，看别人看不懂或者不愿看的书，”</p>
+<p>“其实，你是寂寞的吧~”</p>
+<p>就像是用牛皮纸做胶布粘好的伤口被撕开了一样，有种被揭光了的恼怒。</p>
+<p>笨笨很想发火，原本的生活尽管不甚如意，但总是自得其乐吧，连自己都从未也不愿思考的东西，对面这个人却直白的说了出来，就像是用别人的眼睛做镜子，看着光噗噗的自己，然后还满身伤痕。</p>
+<p>可是,笨笨发出的声音却是低低的啜泣，这样的失态让自己难堪的很，在未来的生活中再也没有过了。</p>
+<p>第二天，他们还是朋友，很好的朋友，只是，在笨笨的心里，他已经永远的不一样了。</p>
+<p>世界上有三种题目，是所有的文学作品都扰不过的：爱情，母爱，生与死。在笨笨心中，却有些小小的腹诽：爱情固然激动人心，但是酒凉化茶，童话里的公主王子我们生活中也有：查尔斯,黛安娜，他们遇见，相爱，然后离婚；母爱无私而又坚忍，但是这种有着无奈代沟的温润之玉有时给的并不是我们想要或者需要的，爱到深处却又剑走偏锋，就像是练高深的内功，走火之后往往受伤越烈；只有生与死，是人类无法逾越的障碍。但是生，老，病，死，爱离别，怨憎会，求不得，乃是佛家七苦，苦痛之事展示于人，这是施虐抑或受虐？</p>
+<p>只有一种感情，跨越时间，只会越陈越香，这种感情叫做：理解。</p>
+<p>人最怕什么？</p>
+<p>一千个人有一千个答案。</p>
+<p>但人们都害怕一种东西：寂寞。多少人因为寂寞而谈恋爱，然后在伤了别人之后又伤了自己，又有多少人在寂寞中迷失自己，犯下难以弥补的过错？</p>
+<p>我们年少轻狂，但我们不是坏人，我们也只是在追逐中希望填补那些寂寞的空缺而已。</p>
+<p>寂寞，解药是理解。</p>
+<p>笨笨的思绪被拉回到阳光下的W城，窗外行走的车子玻璃的炽烈反光告诉我们这是个多么美好的下午。这次来的目的已经得到了，但是笨笨心里总还是有些失落，不知道失落的是什么，只是有些莫名的空虚在侵蚀着内心中的某个角落。</p>
+<p>就这么悠悠荡荡的走着，坐着，聊着，然后看着对面的人傻傻的笑。日子，仿佛又回到了从前。</p>
+<p>晚上，约着其他同学们见面，火锅，聊着以前的往事，未来的前程。笨笨的朋友很多，在此地的几个人也都很熟，自然是觥筹交错，宾主尽欢而散。</p>
+<p>又是一个paradox，内心极度封闭的人，却又能够和很多人打成一片：也许是把揣摩他人的心思，从对方的角度出发思考问题变成了一种本能吧，只是这种打量，不是出自关心，而是一种畏惧似的自我保护。</p>
+<p>不过，今晚这餐饭是值得的。因为见到了一个人：</p>
+<p>K。</p>
+<p>很早就知道K了，他们是大二的那个元旦晚上成为一对的，在一个High到极致的party之后。一直想看看这是怎么样的一个人，能让对面的万花丛中过，片叶不粘身的高手心甘情愿的进入围城。毕竟，在围城之前的半年，一次彻夜的清谈中，他还是个独身主义者。</p>
+<p>“你好，早就知道你了， H经常提起你，早就看过你的照片了，初次见面，多关照”</p>
+<p>K比想像中还要大方，倒显得笨笨过分拘谨了，一边急忙起身，握手，一边礼貌的寒喧。一阵忙乱之后，才有机会细细的观察起这个也许不算最漂亮，但是却在自信中天然体现出气质的女孩。</p>
+<p>吃完饭，结账，讲价，打折卡，招呼着客人，和老板堆着笑的打趣，这一切都是如此自然。</p>
+<p>大方的女孩大多显得比较成熟。</p>
+<p>H应该是喜欢这一型的女孩子的吧~以前他身边的女孩也都是这样的。</p>
+<p>“气自内而华”</p>
+<p>这是笨笨多年以前总结的一句话，用来形容心目中真正的女孩，想到这，他不由得看了看K旁边的他：“这小子挺有福气的”。</p>
+<p>不过这不要紧，以前也是这样，H身边从来不缺女孩子，似乎他有一种对女孩子的特殊的魅力，每天运动完H和笨笨一起吃饭，对面总会有个女孩，这样的搭配总会让饭吃的特别香。笨笨也会有时候觉得自己是不是功率太高了，太强的灯光会让人的眼睛看不清情况的，于是会专门的避开两天，每到这个时候就想个办法自动的消失。</p>
+<p>不习惯的倒是他，会专门来找。</p>
+<p>于是三人行的日子照旧。只是，那个女孩子过段时间会变成另一个，但是对笨笨而言不要紧，身边的人不变就可以了，反正对面的人都会很好说话，用来配饭都会很香。</p>
+<p>就像是拓扑里的不动点吧，什么都在变，唯有你不变。</p>
+<p>但是今天不一样。</p>
+<p>今天，笨笨才是那个坐在对面的人，他身边的人是她。</p>
+<p>饭后，去看看著名的万人自习室。一路上，W城的公交的飙车，赛车，成了大家嘴里笑声的天然发酵剂。</p>
+<p>“为了飙车，公交车会冲上人行道的呢，这里离市区比较远，本来人行道上也没几个人”</p>
+<p>一个同学在叙述他看到的惊险一幕。</p>
+<p>“想想吧，车况又不好，两辆体积这么庞大的家伙就这么并行的飙车，这么个道怎么够使？比生死时速可惊险多了~”</p>
+<p>走在人行道上的他下意识的，拖住了笨笨的手，然后又去寻找另一双她的手。走了两步，又向是想起来什么似的，放开了笨笨的手。之后笨笨就一直独行在一行人的最前面。</p>
+<p>“这就是传说中的国家实验室了，怎么样？很雄伟吧？”路过，又一个同学发起新的话题。</p>
+<p>“嗯，确实是很壮观阿，前面的立柱支起的空间也这么大，倒有点象一个加油站的结构，用来避雨可不错。只是，这么高造价的加油站确实也是难找得到了。”</p>
+<p>“……”</p>
+<p>“我的实验室也是国家实验室呢，只是在下面的一个小分支罢了。”</p>
+<p>“……”</p>
+<p>上面这些不和时宜的话笨笨是不会说出来的。年纪空长，但是什么该说，什么不该说，还是该知道一点的。这个时候，只要努力的笑笑，赞叹一下，就是最好的回应了。而且，不知道为什么，今晚，月色似乎太明亮了，让人很不习惯。</p>
+<p>边走边看，转眼便要回去。</p>
+<p>“买点东西吧，明天要吃的，用的，对了，你没带洗刷用品吧？要不要也买点？”呵呵，看来那小子真是洞察人心阿，知道笨笨的粗心大意。毕竟，两次一起旅游，都没能带够换洗衣物的家伙，一定也会第三次忘记带洗涮。</p>
+<p>他最后只买了两瓶饮料，其他东西都是笨笨粗心大意的代用品。</p>
+<p>出了超市，刚从教室拿出来的书包一下子成了累赘。手上的袋子一时不方便，他露出了寻找某人的眼神。</p>
+<p>笨笨再熟悉不过这种眼神了，笑笑，向他走去。</p>
+<p>还没过去，寻找的眼神却变了，一下子变得清明。很自然的，他把东西塞到了在旁边和巧遇的女同学说着话的她。回过头来，微笑着说：“走吧，也很晚了，你坐了一天车，还没好好休息呢。”</p>
+<p>笨笨的眼神只闪现了一星黯淡，之后却没事人似的，和其他同学依依惜别，中间还打趣了可怜的被到处枭首示众的Einstein，竟然在宿舍区也不能幸免。</p>
+<p>只是， 她知道，他们已经永远不一样了，她已经不是那个坐在他身边的人了。这个位置有了新的主人。</p>
+<p>一夜无言。只是，笨笨并没有睡着。明天还有明天的事，another day is just the same as usual。</p>
+<p>第二天一早，好容易等到8点，去看看他，只见他睡在她旁边，早晨的阳光在床头，映照着他脸上，宛如圣婴。</p>
+<p>“唉，还是这么懒床~”</p>
+<p>笨笨无奈的笑笑，轻轻的关上了房门。嗯，让他睡吧，反正已经想好了，这次来的目的也达到了，虽然和所有给自己意见的人想的都不一样。但自己知道，这才是最理想的结果。至于其他的什么事，都是可办可不办的。</p>
+<p>12点。看了一上午paper的笨笨知道，也到了该叫醒他的时候了。</p>
+<p>惺忪的眼神，满脸的不好意思，嚅嚅的说到：</p>
+<p>“昨晚上赶大试验的仿真，到四点半才睡，结果还是没能做完，让你等久了~”</p>
+<p>“也是最近事太多了，申请之类的东西搞的太烦琐，又加上大试验~”</p>
+<p>笨笨只是笑笑。</p>
+<p>“没啥，下午怎么安排吧？”</p>
+<p>在昨天的刚来的地方吃午饭，只是，这次是她请客。她落落如故，谈笑风生，一点没有刚认识应有的不自然，仿佛本来大家就是老朋友似的。</p>
+<p>饭后：</p>
+<p>“你对她是怎么想的？你出去，她怎么办？”</p>
+<p>“你觉得呢？”</p>
+<p>“其他我看不出，对一个人的了解就这么点接触，说出来太不负责。但是我知道，她真的很在乎你。”</p>
+<p>“说真的，我也还是像假期和你去旅游时的想法一样，我觉得未来实在是不确定，我包不准自己会不会变，她也是。”</p>
+<p>“她有些性格很配你阿，遇到这样的人真的很难得，而且她是真的对你动了情。只有对对方真正在意，才会在意他身边的人。”</p>
+<p>“我现在还是有些矛盾吧，她还是愿意等我，但我自己的前途也还没有定。”</p>
+<p>“相信我，好好待她，很多人，一旦失去就不再了。”</p>
+<p>“……”该说的都说了，也是时候平静的回去了。</p>
+<p>“干嘛这么急阿，反正回去也没有什么事？再玩两天吧，我大试验做完，就可以陪你逛逛W城了，W城人的聪明才智，都集中到发明小吃上去了~没试过可真可惜了~大试验今晚上肯定能搞完了~”</p>
+<p>“呵呵，在外面久了，心里不踏实阿，有种负疚感呢~”</p>
+<p>“我还是走吧，订上晚上的票，明天早上就能到了，周一还有组会呢，不要错过了。”</p>
+<p>笨笨下决定很慢，但一旦下了决心，便是十头牛也拉不住的。她想回去，自然就会回去。</p>
+<p>踏上归程，窗外是如时光一去不复返的街道。人人都在这夜色迷蒙中赶着自己的生活。眼前少了的这个人，也这样留在了热寂的城市的回忆里。</p>
+<p>笨笨抱着胸前的装着衣物的鼓鼓的书包，底下了头，埋在包上，躲在角落里，静静的啜泣，生怕旁的人发觉。只是，旁的人有他们的生活，怎么会瞧陌生人的热闹呢？这些都是笨笨的多虑了。</p>
+<p>从低低的啜泣声中，仿佛听到一句断断续续的模糊不清的词串：“我……我……也是……喜欢……你……你的……阿……”</p>
+<blockquote>
+<p>纳兰性德说：</p>
+<p>德也狂生耳</p>
+<p>偶然间、淄尘京国，乌衣门第</p>
+<p>有酒惟浇赵州土，谁会成生此意</p>
+<p>不信道、遂成知己</p>
+<p>青眼高歌俱未老</p>
+<p>向尊前、拭尽英雄泪</p>
+<p>君不见，月如水</p>
+<p>共君此夜须沉醉</p>
+<p>且由他、娥眉谣诼，古今同忌</p>
+<p>身世悠悠何足问，冷笑置之而已</p>
+<p>寻思起、从头翻悔</p>
+<p>一日心期千劫在</p>
+<p>后身缘、恐结他生里</p>
+<p>然诺重，君须记</p>
+</blockquote>
+<p>然而，未来真的不会“结他生里”吗？</p>
+<blockquote>
+<p>人生若只如初见，何事西风悲画扇？</p>
+</blockquote>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2007-09-13T11:18:00.000Z"><a href="/blog/2007/09/13/shang-shan-ruo-shui/">Sep 13 2007</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2007/09/13/shang-shan-ruo-shui/">上善若水</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>对任何一本西方哲学专著，都会提到泰勒斯，作为哲学的起源。我们不知道这个米利都人真正有些什么事迹，他就象我们传统的三皇五帝一样，很多事迹近乎神迹：例如，在那个年代（前6世纪），他预言了一次日蚀;在埃及，他应用了相似三角形的方法计算了金字塔的高度────也许在现在我们只会觉得这是至多一个初中生就能够作到的事────但，我们的古人在几个世纪之后，甚至是今天，仍然缺乏象他那样科学精神与思维方式。</p>
+<p>作为希腊七贤之一，每个人都有一句出名的话语，传说，泰勒斯的话是：</p>
+<p>“水为至善。”</p>
+<p>怎么样？是不是很熟悉？在我们的春秋时代，也有一位国家图书馆的馆长说过类似的话：</p>
+<p>“上善若水。”</p>
+<p>不过东西方人思维的切入点虽然相通，但是思维的走向可就大相径庭;长耳馆长看到的是水的抽象性，也许，他只是恰巧的把“水”这个概念作为他令人难解的哲学的一个典型代表。但泰勒斯不一样。他不仅是个哲学家，并且也是一个科学家，虽然<br>在《原本》中的很多归功于他的东西也许是归错了，但他是那个年代最出色的科学家之一，这是毋庸置疑的。科学的实证主义和还原论的方法，在那个时代也许还没有提出，但是这种精神本就是科学的一部分，就象呱呱坠地的孩子，与生俱来的带着人类的好奇，人类的灵魂，精神。</p>
+<p>泰勒斯把世界归结为水，不是说世界的本原，而是世界万物本身就是水。就连我们这个大陆，也是浮在无垠的水面上。</p>
+<p>不由得想起来：</p>
+<blockquote>
+<p>蒹葭苍苍，白露为霜。<br>所谓伊人，在水一方，<br>溯洄从之，道阻且长。<br>溯游从之，宛在水中央。<br>蒹葭萋萋，白露未晞。<br>所谓伊人，在水之湄。<br>溯洄从之，道阻且跻。<br>溯游从之，宛在水中坻。<br>蒹葭采采，白露未已。<br>所谓伊人，在水之涘。<br>溯洄从之，道阻且右。<br>溯游从之，宛在水中沚。</p>
+</blockquote>
+<p>这突然的插叙，不完全是意识流的浮动，对那个年代，对这种人类文明初期的纯洁，对未来的冲劲，热情，对知识的渴望，以及这种贤人存在的可能────现代人，知识爆炸，已经不可能出现这样对一切主流学科都如此掌握的大家了，每个人能够在自己的行当里有所建树，已是了不起的人生────充满了憧憬。是泰勒斯是那位伊人？还是那个年代是那位伊人？这，并不重要吧。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2007-09-12T11:22:00.000Z"><a href="/blog/2007/09/12/zi-sheng/">Sep 12 2007</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2007/09/12/zi-sheng/">自省</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>感情往往产生自己的对立物，吝啬有时侯产生挥霍，挥霍有时侯产生吝啬，我们<br>往往由于脆弱而坚强起来，由于怯懦而大胆起来”</p>
+<p><cite>拉-罗煦福高《箴言集》182节</cite></p>
+<p>人们通常总是被自己亲身所发现的道理说服，更甚于被别人精神里所想到的道理<br>说服。</p>
+<p><cite>帕斯卡《思想录》10节</cite></p>
+</blockquote>
+<p>我常常想，自己是个多么怯懦的人，有着数不清的缺点，总是憎恶自己，又总是为<br>自己开脱──这不就是怯懦的最好表现么？──然而──又是可恨的然而──自己却又总认<br>为自己识见高人一筹，在明明的白日下，假装谦虚的说着“大家都一样，只是我想<br>的角度不一样罢了”;回到阴暗的角落，却又沾沾自喜于自己的与众不同。</p>
+<p>难道，我真的不同吗？</p>
+<p>个人的精神，被禁锢在一个虚弱的身体里。这个身体的虚弱，不仅在于它会受到时<br>间，事务等等的拖累，而无暇自省，并且还在于这个身体所能体会到的感受，经<br>历，实在是无法和浩瀚的精神世界相媲美。试问：就算是技术昌明的今天，世界的<br>首富，国王，要人，能够穿梭在时间和空间中，就象是思普通想的穿梭那样迅捷吗？</p>
+<p>一弹指之间，人可以回顾完一生，犹如他又重新渡过了一生一般。</p>
+<p>可是，我们的精神却又寄生在这个虚弱的身体上，它的虚弱，不可避免的传染到我们。</p>
+<p>因为明白，所以慈悲。只是，这种慈悲，或许又是自己脆弱的悄悄表现──我又原谅<br>自己了，通过劝善式的外壳。</p>
+<p>我终究只是个普通人，套句世俗的歌词，一只小小鸟，想飞飞不高。</p>
+<p>想想父亲几年前的门幅：且做俗人，难道，父亲也是刚刚认识到么？也许吧，如果<br>如此，他真是个幸福的人：可以保持一颗高贵的心，到这样的年纪;但他也是个可<br>怜的人：终于没能活在自己的世界里，而且是在这个知天命的时候，对自己多么残忍。</p>
+<p>父母都说我是没有童年的孩子，也许正是如此，所以仍然期盼童年，希望着自己就<br>是个孩子。我终究，并不是逃出了造物的圈套，只是陷得更深────或许，本来没有<br>什么圈套，这就是人生。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2007-09-02T23:36:00.000Z"><a href="/blog/2007/09/03/ru-he-zai-linux-xia-geng-xin-dell-dian-nao-de-bios/">Sep 3 2007</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2007/09/03/ru-he-zai-linux-xia-geng-xin-dell-dian-nao-de-bios/">如何在linux下更新dell电脑的BIOS</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <pre><code>$ <span class="built_in">sudo</span> aptitude install libsmbios-bin libsmbios1
+$ <span class="built_in">sudo</span> getSystemId
+</code></pre><p>得到结果：</p>
+<blockquote>
+<p>Libsmbios: 0.13.6<br><strong>System ID: 0x01B5</strong><br>Service Tag: xxxxxxx<br>Express Service Code: xxxxxxxx<br><strong>Product Name: MXC051</strong><br><strong>BIOS Version: A02</strong><br>Vendor: Dell Inc.<br>Is Dell: 1  </p>
+</blockquote>
+<p>记住其中的<strong>system id：01b5</strong>。</p>
+<p>3、浏览 <a href="http://linux.dell.com/repo/software/bios-hdrs" target="_blank">网页</a><br>找到01b5的几个bios的目录。</p>
+<blockquote>
+<p>system_bios_ven_0x1028_dev_0x01b5_version_a00/<br>system_bios_ven_0x1028_dev_0x01b5_version_a02/<br>system_bios_ven_0x1028_dev_0x01b5_version_a03/<br>system_bios_ven_0x1028_dev_0x01b5_version_a04/  </p>
+</blockquote>
+<p>我的是a02版本，所以先下a03目录中的bios.hdr</p>
+<pre><code>$ <span class="built_in">sudo</span> modprobe dell_rbu
+$ <span class="built_in">sudo</span> dellBiosUpdate -u <span class="operator">-f</span> bios.hdr
+</code></pre><p>重启后会自动更新。如果bios版本不对，系统会提示没有合适的bios.hdr文件，不会强制更新上去。更新必须一级一级的更新。例如我就更新了两次，从a02到a04。</p>
+<p><strong>更新有危险，尝试需谨慎</strong>。</p>
+<p>自己在论坛写的东西，好久没更新了，把自己一些这段时间在乱七八糟的地方写的东西集中一下。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2007-08-19T02:10:00.000Z"><a href="/blog/2007/08/19/2007-8-19-fly-me-to-the-moon-different-performance/">Aug 19 2007</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2007/08/19/2007-8-19-fly-me-to-the-moon-different-performance/">Fly me to the moon: different performance</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>好友高考前推荐的卡通《EVA》中，有一首脍炙人口的歌曲《Fly me to the moon》。做了些简单搜索，算是自己的一个纪录：</p>
+<table>
+<thead>
+<tr>
+<th>Singer</th>
+<th>rhythm</th>
+<th>link</th>
+<th>Characters</th>
+<th>Rating</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Patrizio Buanne</td>
+<td>slow</td>
+<td><a href="http://www.youtube.com/watch?v=sWjjh4Jc20U" target="_blank">youtube</a></td>
+<td>mid age male</td>
+<td>★</td>
+</tr>
+<tr>
+<td>Tony Bennett</td>
+<td>Very Slow</td>
+<td><a href="http://www.youtube.com/watch?v=kIrcxGdyUdk" target="_blank">youtube</a></td>
+<td>Blue, Male, Low</td>
+<td>★★★</td>
+</tr>
+<tr>
+<td>Frank Sinatra</td>
+<td>Fast</td>
+<td><a href="http://www.youtube.com/watch?v=oCW9Hey6IVY" target="_blank">youtube</a></td>
+<td>Jazz, Party</td>
+<td>★★</td>
+</tr>
+<tr>
+<td>Julie London</td>
+<td>Fast</td>
+<td><a href="https://www.youtube.com/watch?v=w8r9ZPQ_828" target="_blank">youtube</a></td>
+<td>Female, more strong</td>
+<td>★★</td>
+</tr>
+<tr>
+<td>Astrud Gilberto</td>
+<td>Medium</td>
+<td><a href="https://www.youtube.com/watch?v=ldt_ylbAqe4" target="_blank">youtube</a></td>
+<td>Dream, Jazz,Female</td>
+<td>★</td>
+</tr>
+<tr>
+<td>Diana Krall</td>
+<td>Fast</td>
+<td><a href="https://www.youtube.com/watch?v=qVCgf6_M7i4" target="_blank">youtube</a></td>
+<td>Strong rhythm, changed</td>
+<td>★</td>
+</tr>
+</tbody>
+</table>
+<table>
+<thead>
+<tr>
+<th>Performer</th>
+<th>Instrument</th>
+<th>link</th>
+<th>Type</th>
+<th>Rating</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Joey Defrancesco</td>
+<td>Piano</td>
+<td><a href="http://www.youtube.com/watch?v=uhFIupVoVKc" target="_blank">youtube</a></td>
+<td>Metal</td>
+<td>★</td>
+</tr>
+<tr>
+<td>Monty Alexander</td>
+<td>Piano</td>
+<td><a href="http://www.youtube.com/watch?v=HKOh0q4h8QM" target="_blank">youtube</a></td>
+<td>Jazz</td>
+<td>★★</td>
+</tr>
+<tr>
+<td>Manu Dibango</td>
+<td>Saxophone</td>
+<td><a href="http://www.youtube.com/watch?v=jGJXO1hCnIc" target="_blank">youtube</a></td>
+<td>Jazz</td>
+<td>★★★</td>
+</tr>
+</tbody>
+</table>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2007-01-21T19:07:00.000Z"><a href="/blog/2007/01/22/how-to-upload-a-package-to-debian/">Jan 22 2007</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2007/01/22/how-to-upload-a-package-to-debian/">How to upload a package to Debian</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Create your gpg key</p>
+<pre><code><span class="comment">$</span> <span class="comment">gpg</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">gen</span><span class="literal">-</span><span class="comment">key</span>
+</code></pre><p>Select the default and go on like that.</p>
+<pre><code><span class="comment">$</span> <span class="comment">gpg</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">export</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">armor</span> <span class="comment">your</span><span class="literal">-</span><span class="comment">email</span><span class="literal">-</span><span class="comment">address</span> &gt; <span class="comment">public</span><span class="literal">-</span><span class="comment">key</span><span class="literal">-</span><span class="comment">file</span>
+</code></pre><p>This file is needed while your submit a create acount application in<br>mentors.debian.net</p>
+<p>Packaging;</p>
+<p>Create an acount and upload it into <a href="http://mentors.debian.net" target="_blank">mentors.debian.net</a></p>
+<pre><code><span class="variable">$ </span>apt install dupload reportbug dput
+<span class="variable">$ </span>vi ~<span class="regexp">/.dupload.conf</span>
+</code></pre><p>Add entry like:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+</pre></td><td class="code"><pre>package config;
+<span class="variable">$cfg</span>{<span class="string">'mentors'</span>} ={
+   fqdn =&gt; <span class="string">'mentors.debian.net'</span>,
+   incoming =&gt; <span class="string">'/'</span>,
+   dinstall_runs =&gt; <span class="number">1</span>,
+   passive =&gt; <span class="number">1</span>,
+};
+<span class="number">1</span>;
+</pre></td></tr></table></figure>
+
+<p>and the in the directory where changes and dsc files in.</p>
+<pre><code><span class="comment">$</span> <span class="comment">dupload</span> <span class="literal">-</span><span class="comment">t</span> <span class="comment">mentors</span> <span class="comment">cream_0</span><span class="string">.</span><span class="comment">32</span><span class="literal">-</span><span class="comment">2_i386</span><span class="string">.</span><span class="comment">changesor</span>
+</code></pre><p>you can use an alternatives tool: <strong>dput</strong></p>
+<pre><code>$ vi ~/<span class="preprocessor">.dupt</span><span class="preprocessor">.cf</span>
+</code></pre><figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+</pre></td><td class="code"><pre><span class="title">[mentors]</span>
+<span class="setting">fqdn = <span class="value">mentors.debian.net</span></span>
+<span class="setting">method = <span class="value">ftp</span></span>
+<span class="setting">login = <span class="value">anonymous</span></span>
+<span class="setting">incoming = <span class="value">.</span></span>
+<span class="setting">allow_unsigned_uploads = <span class="value"><span class="number">0</span></span></span>
+<span class="setting">run_dinstall = <span class="value"><span class="number">0</span></span></span>
+<span class="setting">progress_indicator = <span class="value"><span class="number">2</span></span></span>
+<span class="setting">passive_ftp = <span class="value"><span class="number">1</span></span></span>
+</pre></td></tr></table></figure>
+
+<p>and then type:</p>
+<pre><code>$ dput mentors <span class="transposed_variable">cream_0.</span><span class="number">32</span>-<span class="number">2</span><span class="transposed_variable">_i386.</span>changes
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/page/9/" class="alignleft prev">Prev</a>
+  
+  
+    <a href="/page/11/" class="alignright next">Next</a>
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:easontse.info">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Biochemistry/">Biochemistry</a><small>7</small></li>
+  
+    <li><a href="/categories/Books/">Books</a><small>12</small></li>
+  
+    <li><a href="/categories/Computer/">Computer</a><small>54</small></li>
+  
+    <li><a href="/categories/Game/">Game</a><small>12</small></li>
+  
+    <li><a href="/categories/Life/">Life</a><small>20</small></li>
+  
+    <li><a href="/categories/Movie/">Movie</a><small>2</small></li>
+  
+    <li><a href="/categories/Music/">Music</a><small>1</small></li>
+  
+    <li><a href="/categories/Science/">Science</a><small>1</small></li>
+  
+    <li><a href="/categories/Writing/">Writing</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/AD&D/" style="font-size: 13.33px;">AD&D</a><a href="/tags/ANO1/" style="font-size: 13.33px;">ANO1</a><a href="/tags/ANO2/" style="font-size: 10.00px;">ANO2</a><a href="/tags/ANOVA/" style="font-size: 10.00px;">ANOVA</a><a href="/tags/Adult/" style="font-size: 10.00px;">Adult</a><a href="/tags/Aiglx/" style="font-size: 10.00px;">Aiglx</a><a href="/tags/App/" style="font-size: 20.00px;">App</a><a href="/tags/Apple/" style="font-size: 10.00px;">Apple</a><a href="/tags/Apps/" style="font-size: 10.00px;">Apps</a><a href="/tags/BIOS/" style="font-size: 10.00px;">BIOS</a><a href="/tags/Blog/" style="font-size: 10.00px;">Blog</a><a href="/tags/CFBE/" style="font-size: 13.33px;">CFBE</a><a href="/tags/CFTR/" style="font-size: 10.00px;">CFTR</a><a href="/tags/CNAME/" style="font-size: 10.00px;">CNAME</a><a href="/tags/CaCC/" style="font-size: 10.00px;">CaCC</a><a href="/tags/Chinese/" style="font-size: 10.00px;">Chinese</a><a href="/tags/CoT/" style="font-size: 10.00px;">CoT</a><a href="/tags/Compiz/" style="font-size: 10.00px;">Compiz</a><a href="/tags/Debian/" style="font-size: 13.33px;">Debian</a><a href="/tags/Dell/" style="font-size: 13.33px;">Dell</a><a href="/tags/Dropbox/" style="font-size: 13.33px;">Dropbox</a><a href="/tags/Edgy/" style="font-size: 10.00px;">Edgy</a><a href="/tags/Epub/" style="font-size: 10.00px;">Epub</a><a href="/tags/Excel/" style="font-size: 10.00px;">Excel</a><a href="/tags/Firefox/" style="font-size: 10.00px;">Firefox</a><a href="/tags/GFW/" style="font-size: 10.00px;">GFW</a><a href="/tags/GNUPlot/" style="font-size: 10.00px;">GNUPlot</a><a href="/tags/Game/" style="font-size: 16.67px;">Game</a><a href="/tags/GiNaC/" style="font-size: 10.00px;">GiNaC</a><a href="/tags/Git/" style="font-size: 10.00px;">Git</a><a href="/tags/Github/" style="font-size: 10.00px;">Github</a><a href="/tags/Gmail/" style="font-size: 10.00px;">Gmail</a><a href="/tags/Grant proposal/" style="font-size: 10.00px;">Grant proposal</a><a href="/tags/Graphviz/" style="font-size: 10.00px;">Graphviz</a><a href="/tags/Hexo/" style="font-size: 10.00px;">Hexo</a><a href="/tags/ID3/" style="font-size: 10.00px;">ID3</a><a href="/tags/ImageMagick/" style="font-size: 13.33px;">ImageMagick</a><a href="/tags/Ion channels/" style="font-size: 10.00px;">Ion channels</a><a href="/tags/Isc/" style="font-size: 10.00px;">Isc</a><a href="/tags/Japan/" style="font-size: 10.00px;">Japan</a>
+  </div>
+</div>
+
+
+  
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Eason Tse
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'easonx';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

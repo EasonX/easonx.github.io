@@ -1,0 +1,523 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Cipher: Crack the Code (5) | Eason&#39;s Blog</title>
+  <meta name="author" content="Eason Tse">
+  
+  <meta name="description" content="32. Codeword: Blowgun
+Hints:
+Next to title in source code:
+
+forget this until you find the object to which you can apply it
+../music1.wavyayfor32.jpg
+">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <meta property="og:title" content="Cipher: Crack the Code (5)"/>
+  <meta property="og:site_name" content="Eason&#39;s Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Eason&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-6252783-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Eason&#39;s Blog</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/utils/multimarkdown-table-generator">Util</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper"><article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2011-12-09T15:49:00.000Z"><a href="/blog/2011/12/09/cipher-crack-the-code-5/">Dec 9 2011</a></time>
+      
+      
+  
+    <h1 class="title">Cipher: Crack the Code (5)</h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <h2 id="32-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-aroundtherosie-2f-rhombicosidodecahedron-htm-22-3e-Codeword-3a-_Blowgun-3c-2f-a-3e-">32. <a href="http://www.gamemastertips.com/cipher/aroundtherosie/rhombicosidodecahedron.htm" target="_blank">Codeword: Blowgun</a></h2>
+<p>Hints:</p>
+<p>Next to title in source code:</p>
+<blockquote>
+<p>forget this until you find the object to which you can apply it</p>
+<p>../music1.wav<br>yayfor32.jpg</p>
+</blockquote>
+<p>There must be “music2.wav” or “nayfor32.jpg”. I tried both but they all redirect to the one appeared in the source code. We got clues!</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> urllib</span>
+<span class="title">music2</span>=urllib.urlopen(<span class="string">"http://awesome:sauce@www.gamemastertips.com/cipher/music2.wav"</span>).read()
+<span class="title">nayfor32</span>=urllib.urlopen(<span class="string">"http://awesome:sauce@www.gamemastertips.com/cipher/aroundtherosie/nayfor32.jpg"</span>).read()
+<span class="import"><span class="keyword">import</span> Image</span>
+<span class="title">from</span> cStringIO <span class="import"><span class="keyword">import</span> StringIO</span>
+<span class="title">nayfor32</span>=<span class="type">Image</span>.open(<span class="type">StringIO</span>(nayfor32))
+</pre></td></tr></table></figure>
+
+<p>But it’s useless. I guess it may be the same as previous level, so I change extention to different format as PNG or GIF. And it turn out to be GIF.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> urllib</span>
+<span class="title">nayfor32</span>=urllib.urlopen(<span class="string">"http://awesome:sauce@www.gamemastertips.com/cipher/aroundtherosie/nayfor32.gif"</span>).read()
+<span class="import"><span class="keyword">import</span> Image</span>
+<span class="title">from</span> cStringIO <span class="import"><span class="keyword">import</span> StringIO</span>
+<span class="title">nayfor32</span>=<span class="type">Image</span>.open(<span class="type">StringIO</span>(nayfor32))
+</pre></td></tr></table></figure>
+
+<p>After several trial, It’s a GIF animation with 26 frames. </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+</pre></td><td class="code"><pre><span class="transposed_variable">nayfor32.</span>seek(<span class="number">0</span>)
+<span class="transposed_variable">nayfor32.</span>save(<span class="string">'lv32-0.jpg'</span>)
+pics=<span class="matrix">[nayfor32.copy()]</span>
+palette=<span class="transposed_variable">nayfor32.</span>getpalette()
+<span class="keyword">for</span> <span class="built_in">i</span> in range(<span class="number">1</span>,<span class="number">26</span>):
+	<span class="transposed_variable">nayfor32.</span>seek(<span class="built_in">i</span>)
+	pic=<span class="transposed_variable">nayfor32.</span>copy()
+	<span class="transposed_variable">pic.</span>putpalette(palette)
+	<span class="transposed_variable">pics.</span>append(pic)
+	<span class="transposed_variable">pic.</span>save(<span class="string">'lv32-%d.gif'</span> <span class="comment">% i)</span>
+</pre></td></tr></table></figure>
+
+<p><a href="http://www.evanolds.com/" target="_blank">GIF Frame Extractor</a> is an alternative program if you don’t want to do the python coding.</p>
+<p>And each one has a new letter in it. from 0 -&gt; 25, they are:</p>
+<blockquote>
+<p>G A H O T A E O L I U L I Y C X Q T N I M S H J A G,</p>
+</blockquote>
+<p>So I tried <strong>gahotaeoliuliycxqtnimshjag</strong> but failed.</p>
+<p>wikipedia for <strong><a href="http://en.wikipedia.org/wiki/Code_word" target="_blank">code word</a></strong> and <strong><a href="http://en.wikipedia.org/wiki/Blowgun" target="_blank">blowgun</a></strong>:</p>
+<blockquote>
+<p><strong>Code Word</strong>: In communication, a code word is an element of a standardized code or protocol. Each code word is assembled in accordance with the specific rules of the code and assigned a unique meaning. Code words are typically used for reasons of reliability, clarity, brevity, or secrecy.  </p>
+<p><strong>Blow Gun</strong>: A blowgun (also called a blowpipe or blow tube) is a simple weapon consisting of a small tube for firing light projectiles or darts.  </p>
+</blockquote>
+<p>I need to find another direction. 26 layers? does it means replacing letters? Or it’s  Vigenère cipher again? Let’s try.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> string</span>
+<span class="title">encoded</span>=<span class="string">"G A H O T A E O L I U L I Y C X Q T N I M S H J A G"</span>.translate(<span class="type">None</span>,<span class="string">" "</span>).lower()
+<span class="title">len_e</span>=len(encoded)
+<span class="title">decoded</span>=<span class="string">""</span>
+<span class="title">password</span>=<span class="string">"blowgun"</span>
+<span class="title">ord_a</span>=ord('a')
+<span class="title">lc</span>=string.lowercase
+<span class="title">len_p</span>=len(password)
+<span class="title">for</span> x <span class="keyword">in</span> range(len_e):
+	base=ord(encoded[x])-ord_a
+	shift=ord(password[x%len_p])-ord_a
+	decoded+=chr((base-shift)%<span class="number">26</span>+ord_a)
+</pre></td></tr></table></figure>
+
+<p>The result is nonsense. substitution?</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+</pre></td><td class="code"><pre>import string
+encoded=<span class="string">"G A H O T A E O L I U L I Y C X Q T N I M S H J A G"</span><span class="preprocessor">.translate</span>(None,<span class="string">" "</span>)<span class="preprocessor">.lower</span>()
+tbl=string<span class="preprocessor">.maketrans</span>(string<span class="preprocessor">.lowercase</span>,encoded)
+<span class="string">"blowgun"</span><span class="preprocessor">.translate</span>(tbl)
+</pre></td></tr></table></figure>
+
+<p>Oops, it seems work! The result is “<strong>alchemy</strong>“.</p>
+<h2 id="33-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-aroundtherosie-2f-alchemy-htm-22-3e-Fortune_teller-3c-2f-a-3e-">33. <a href="http://www.gamemastertips.com/cipher/aroundtherosie/alchemy.htm" target="_blank">Fortune teller</a></h2>
+<p>Hints: </p>
+<p>A long paragraph:</p>
+<blockquote>
+<p>In the present, a mad buffoon prances past. He is the spirit seeking experience;<br>From the past comes to me the iron fist of power, command, and order;<br>But the future is grim. Chaos, ruin; they blaze across my eyes like wildfire;<br>The reason behind the inquiry appears to ride on honor, conquest, and victory;<br>Lastly, there is great potential, but first there is a pressing need to withdraw from isolation and share what you have learned with the world.  </p>
+</blockquote>
+<p>picture name:</p>
+<blockquote>
+<p>gettingcreeped33.jpg</p>
+</blockquote>
+<p>link to next level:</p>
+<blockquote>
+<p>../convolutionistic/</p>
+</blockquote>
+<p>click the link:</p>
+<blockquote>
+<p>The rider is waiting.</p>
+</blockquote>
+<p>After several random googling. It turns out to be related to Tarot: <a href="http://en.wikipedia.org/wiki/Rider-Waite-Colman_Smith_deck" target="_blank">Rider-Waite-Colman smith deck</a>.</p>
+<p>And the 5 lines suggesting 5 cards in Major arcana:</p>
+<blockquote>
+<p>The Fool, The Emperor, The Tower, The Chariot and The Hermit.</p>
+</blockquote>
+<p>Connect the Initials, answer should be: <strong>fetch</strong>(username:cipher).</p>
+<h2 id="34-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-convolutionistic-2f-sentences-htm-22-3e-2C-3d-Y-3c-2f-a-3e-">34. <a href="http://www.gamemastertips.com/cipher/convolutionistic/sentences.htm" target="_blank">2C=Y</a></h2>
+<p>Hints:</p>
+<blockquote>
+<p>F7=N<br>white.jpg<br>A4=G  </p>
+</blockquote>
+<p>First, try <strong>black.jpg</strong>. A new figure showed and more hints:</p>
+<blockquote>
+<p>H6=X<br>Similarity breeds solution</p>
+</blockquote>
+<p>Refering to <a href="http://en.wikipedia.org/wiki/Chess" target="_blank">Chess</a> entry in wikipedia, I learnt the notation of chess.</p>
+<blockquote>
+<p>Rook, kNight, King, Queen, Pawn, Bishop</p>
+</blockquote>
+<p>But there’s no <strong>G</strong> , <strong>X</strong> or <strong>Y</strong> in the notation. After serveral trial, It turns out that it’s very simple: just place A-Z in the chessboard, and each position will represent a letter. Then , all four hints are in their position. </p>
+<blockquote>
+<p>A B C D E F G H<br>I J K L M N O P<br>Q R S T U V W X<br>Y Z A B C D E F<br>G H I J K L M N<br>O P Q R S T U V<br>W X Y Z A B C D<br>E F G H I J K L</p>
+</blockquote>
+<p>first, the white.jpg:</p>
+<blockquote>
+<p>white: B, M, R, S, X, Z, B, F<br>black: D, F, L, Q, U, W, A, F, H, D</p>
+</blockquote>
+<p>then, the black.jpg:</p>
+<blockquote>
+<p>white: U, B, L, R, S, W, C, D, F, J, L<br>black: B, G, I, J, M, P, V, A  </p>
+</blockquote>
+<p>What’s similarity? letters in common?</p>
+<p>From the top to bottom line, left to right direction, letters in shared position between 2 pictures are:</p>
+<blockquote>
+<p>B, U, A, R, S, D, </p>
+</blockquote>
+<p>By <a href="http://wordsmith.org/anagram/" target="_blank">anagram solver</a>, the anagram word should be <strong>absurd</strong>.</p>
+<h2 id="35-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-convolutionistic-2f-absurd-htm-22-3e-Quel_type_de_photographie_est_ceci-3f-3c-2f-a-3e-">35. <a href="http://www.gamemastertips.com/cipher/convolutionistic/absurd.htm" target="_blank">Quel type de photographie est ceci?</a></h2>
+<p>Source code:</p>
+<blockquote>
+<p>silvousplait35.jpg<br>Vous pouvez apprendre beaucoup plus sur une photo en regardant au-delà de la surface  </p>
+</blockquote>
+<p>The language seems like France. By <a href="http://translate.google.com" target="_blank">google translate</a>, the title means:</p>
+<blockquote>
+<p>What type of photography is this?</p>
+</blockquote>
+<p>And the picture filename:</p>
+<blockquote>
+<p>please</p>
+</blockquote>
+<p>The description:</p>
+<blockquote>
+<p>You can learn much more about a picture, looking beyond the surface</p>
+</blockquote>
+<p>To investigate the title question, I check wikipedia <a href="http://en.wikipedia.org/wiki/Photography" target="_blank">entry</a>. In the <strong>See Also</strong> Session, in the column of <strong>Techniques</strong>. There is a word and only it’s French word: <a href="http://en.wikipedia.org/wiki/Contre-jour" target="_blank"><strong>Contre-jour</strong></a> and it seems suitable for the picture.</p>
+<p>To address the second question, I think EXIF information will be helpful. According to <a href="http://stackoverflow.com/questions/765396/exif-manipulation-library-for-python" target="_blank">stackoverflow</a>, I used the code:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+</pre></td><td class="code"><pre><span class="keyword">from</span> PIL <span class="keyword">import</span> Image
+<span class="keyword">from</span> PIL.ExifTags <span class="keyword">import</span> TAGS
+
+<span class="function"><span class="keyword">def</span> <span class="title">get_exif</span><span class="params">(fn)</span>:</span>
+    ret = {}
+    i = Image.open(fn)
+    info = i._getexif()
+    <span class="keyword">for</span> tag, value <span class="keyword">in</span> info.items():
+        decoded = TAGS.get(tag, tag)
+        ret[decoded] = value
+    <span class="keyword">return</span> ret
+
+exif=get_exif(<span class="string">'silvousplait35.jpg'</span>)
+</pre></td></tr></table></figure>
+
+<p>A strange part in the exif is the date it was taken: <strong>1826-01-01</strong>. I google this date and French together. And it turns out that it was the first photo taken by <strong>Joseph Niepce</strong>. And He called this kind of photo <strong>heliography</strong>.</p>
+<p>Change the URL to <strong>heliography.jpg</strong>, and an identical picture appeared. Does it really the same?</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>exif=get_exif(<span class="comment">'heliography.jpg')</span>
+<span class="string">""</span>.<span class="built_in">join</span>([ <span class="built_in">chr</span>(x) <span class="keyword">for</span> x <span class="keyword">in</span> exif[<span class="number">40092</span>][::<span class="number">2</span>] ])
+</pre></td></tr></table></figure>
+
+<p>Next level should be <strong>jeprendslechoudansmonpantalon.htm</strong></p>
+<h2 id="36-_-3c-a_href-3d-22-http-3a-2f-2f-www-gamemastertips-com-2f-cipher-2f-convolutionistic-2f-jeprendslechoudansmonpantalon-htm-22-3e-Level_36-3c-2f-a-3e-">36. <a href="http://www.gamemastertips.com/cipher/convolutionistic/jeprendslechoudansmonpantalon.htm" target="_blank">Level 36</a></h2>
+<p>This level is very tricky, it will redirect directly to a new <a href="http://www.gamemastertips.com/cipher/convolutionistic/securityconfirmation.htm" target="_blank">page</a>.</p>
+<p>The hint is :</p>
+<blockquote>
+<p>Please re-enter the answer for level 36 in order to progress to level 37.</p>
+</blockquote>
+<p>By using google translate, the link is french and in English it means:</p>
+<blockquote>
+<p>I take the cabbage in my pants</p>
+</blockquote>
+<p>So, change the URL to <strong>itakethecabbageinmypants.htm</strong></p>
+<p>The new page appeared. </p>
+<p>The picture name:</p>
+<blockquote>
+<p>itakecabbageinmytrousers.jpg</p>
+</blockquote>
+<p>Then I was stuck here, I must look back to the page before redirecting. </p>
+<p>I have to use python code to get the content.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="import"><span class="keyword">import</span> urllib</span>
+<span class="title">f</span>=open('lv36.txt','w')
+<span class="title">lv36</span>=urllib.urlopen('http://www.gamemastertips.com/cipher/convolutionistic/jeprendslechoudansmonpantalon.htm').read()
+<span class="title">f</span>.write(lv36)
+<span class="title">f</span>.close()
+</pre></td></tr></table></figure>
+
+<p>The cotents are:</p>
+<blockquote>
+<p>|-|3ll0, d15 15 73|~| 1337 h4&gt;<x0r5 b0B. h4>&lt;&gt;<0r5 b0B H45 ha>&lt;&gt;&lt;0r33d L\/l 36 10L0L010L.<br>u n0 |-|4\/3<br>n0 w41 2 50l\/3 1\/L 36 n4u lolL00lo0lz0rrz2 j00<br>73|-| f41L3r H4xx0z b0b pwnz n00b20rz l0L00L0l!!!!1! joo c4n7 3\/3n f16ur3 0\/\/t b0b5 1337<br>53kr37 c0d3 LOl0l0lol!!!!1!!1  </p>
+</blockquote>
+<p>Obviously, it’s <a href="http://en.wikipedia.org/wiki/Leet" target="_blank">Leet</a>, after <a href="http://www.jayssite.com/stuff/l33t/l33t_translator.html" target="_blank">translation</a>, it should be:</p>
+<blockquote>
+<p>hello, dis is teh elite haxxors bob. haxxors bob has haxxoreed lvl eg iololoiol.<br>u no have<br>no wai to solve level 36 nau lollooloolerrzs you<br>teh failer haxxos bob owns noobers loloolol.i.you cant even figure owt bobs leet<br>sekret code lolololol.i.i</p>
+</blockquote>
+<p>Something similar to the tarot level, right? Connect the initials: <a href="http://www.gamemastertips.com/cipher/convolutionistic/hunts.htm" target="_blank"><strong>hunts</strong></a>.</p>
+<p>Even though this page claims it’s Error 403, but actually, new hint in the source:</p>
+<pre><code><span class="function_or_atom">l00oL</span> |-|<span class="number">4</span>kx20r5 <span class="function_or_atom">b0B</span> <span class="function_or_atom">h45</span> <span class="function_or_atom">h4</span>&gt;&lt;<span class="function_or_atom">xor33d</span> <span class="function_or_atom">d15</span> <span class="function_or_atom">p463</span> + <span class="function_or_atom">f0</span>\/\/<span class="function_or_atom">nd</span> <span class="function_or_atom">f0rb11d3n</span> <span class="function_or_atom">f1l3</span> <span class="number">10</span><span class="variable">L0lL0L</span> + <span class="number">73</span>h <span class="function_or_atom">f1l3</span> <span class="function_or_atom">n4m3</span> <span class="number">15</span> <span class="number">5</span>up3r4w50m3 <span class="function_or_atom">d07</span> <span class="function_or_atom">z1p</span> <span class="variable">L0llol1lz</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="number">1</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="number">1</span>
+</code></pre><p>after translation, it’s </p>
+<blockquote>
+<p>loool hakxers bob has haxxoreed dis page t fownd forbllden file iolollol t the file name is superawsome dot zip lollolils.i.i</p>
+</blockquote>
+<p>So, just download this file <a href="http://www.gamemastertips.com/cipher/convolutionistic/superawesome.zip" target="_blank"><strong>superawesome.zip</strong></a> and after extraction, the content of <strong>teh_answer.txt</strong> is:</p>
+<pre><code><span class="variable">L0000l0l11l0l22zzz</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span> <span class="number">1</span> <span class="function_or_atom">f007z0r23d</span> <span class="function_or_atom">joo</span> <span class="function_or_atom">n00bz0r</span> <span class="variable">LOLOLOL10101lol</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="number">11</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="number">1</span> <span class="variable">Teh</span> <span class="number">4</span>n5w3r <span class="number">15</span> <span class="number">1</span>n <span class="function_or_atom">t3</span>|-| <span class="number">533</span>kr37 <span class="function_or_atom">c0d3</span> <span class="function_or_atom">bu7</span> <span class="function_or_atom">jooz</span> <span class="function_or_atom">r</span> <span class="number">2</span> <span class="function_or_atom">n00b20r3d</span>  <span class="function_or_atom">f0r</span> <span class="function_or_atom">my</span> <span class="number">1337</span>z00r <span class="function_or_atom">c0d3</span> <span class="variable">LOLO1lOloLOL</span><span class="exclamation_mark">!</span><span class="variable">Lo1l10LoloLr0tflmfao</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="number">1</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="number">1</span><span class="exclamation_mark">!</span> <span class="variable">BTW</span> /\/\<span class="function_or_atom">y</span> <span class="function_or_atom">n4m3</span> <span class="number">15</span>n7 <span class="function_or_atom">b0B</span> <span class="function_or_atom">i75</span> <span class="number">54</span>mul3 + <span class="number">1</span>m <span class="function_or_atom">m0r3</span> |~|<span class="number">0</span>r53 <span class="variable">L0000Lz0rz</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="number">1</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="number">1</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span><span class="exclamation_mark">!</span> <span class="number">111011101000101110100010100011101110001110101110111</span> 
+</code></pre><p>which means:</p>
+<pre><code><span class="transposed_variable">loooolollllolzzzzs.</span><span class="built_in">i</span> footerzed you noober <span class="transposed_variable">lolololioioilol.</span><span class="transposed_variable">ll.</span><span class="built_in">i</span> the answer is in the seekret code but yous are <span class="number">5</span> noobered  <span class="keyword">for</span> my elitezoor code <span class="transposed_variable">loloilolololiloiliolololrotflmfao.</span><span class="transposed_variable">i.</span><span class="transposed_variable">i.</span>btw my name isnt bob its samule t im more <span class="built_in">i</span>~brse <span class="transposed_variable">loooolers.</span><span class="transposed_variable">i.</span><span class="transposed_variable">i.</span>lliollioloooiollioloooiolooolliolllooollioiolliolli
+</code></pre><p>The last line seems like ASCII code, </p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>str=<span class="string">"111011101000101110100010100011101110001110101110111"</span>
+<span class="function"><span class="title">len</span><span class="params">(str)</span></span>
+</pre></td></tr></table></figure>
+
+<p>The length is 51, so it must not be ASCII. Noticing the lenght of sequence of 1 or 0, it’s either 1 or 3, is it morse code?</p>
+<blockquote>
+<p>—. .-. .. — -.—</p>
+</blockquote>
+<p>Online <a href="http://www.onlineconversion.com/morse_code.htm" target="_blank">translator</a> help to decode this string to:</p>
+<blockquote>
+<p> <strong>GRIMY</strong> </p>
+</blockquote>
+<p>And that’s it. New page <a href="http://www.gamemastertips.com/cipher/convolutionistic/grimy.htm" target="_blank">grimy.htm</a> shows:</p>
+<blockquote>
+<p>Zip-a-dee-doo-dah</p>
+</blockquote>
+<p>So, download file <strong>grimy.zip</strong>, it contains a figure named level37_concept_ar_old.jpg. Address line URL is :</p>
+<blockquote>
+<p><strong>furryanimalprotest.htm</strong></p>
+</blockquote>
+
+      
+    </div>
+    <footer>
+      
+        
+  
+  <div class="categories">
+    <a href="/categories/Game/">Game</a>
+  </div>
+
+        
+  
+  <div class="tags">
+    <a href="/tags/Web/">Web</a>, <a href="/tags/Game/">Game</a>, <a href="/tags/Python/">Python</a>, <a href="/tags/cipher/">cipher</a>
+  </div>
+
+        
+  <div class="addthis addthis_toolbox addthis_default_style">
+    
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+    
+    
+      <a class="addthis_button_tweet"></a>
+    
+    
+      <a class="addthis_button_google_plusone" g:plusone:size="medium"></a>
+    
+    
+      <a class="addthis_button_pinterest_pinit" pi:pinit:layout="horizontal"></a>
+    
+    <a class="addthis_counter addthis_pill_style"></a>
+  </div>
+  <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js"></script>
+
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+<section id="comment">
+  <h1 class="title">Comments</h1>
+
+  
+  <div id="disqus_thread">
+    <noscript>Please enable JavaScript to view the <a href="//disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </div>
+  
+</section>
+</div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:easontse.info">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Biochemistry/">Biochemistry</a><small>7</small></li>
+  
+    <li><a href="/categories/Books/">Books</a><small>12</small></li>
+  
+    <li><a href="/categories/Computer/">Computer</a><small>54</small></li>
+  
+    <li><a href="/categories/Game/">Game</a><small>12</small></li>
+  
+    <li><a href="/categories/Life/">Life</a><small>20</small></li>
+  
+    <li><a href="/categories/Movie/">Movie</a><small>2</small></li>
+  
+    <li><a href="/categories/Music/">Music</a><small>1</small></li>
+  
+    <li><a href="/categories/Science/">Science</a><small>1</small></li>
+  
+    <li><a href="/categories/Writing/">Writing</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/AD&D/" style="font-size: 13.33px;">AD&D</a><a href="/tags/ANO1/" style="font-size: 13.33px;">ANO1</a><a href="/tags/ANO2/" style="font-size: 10.00px;">ANO2</a><a href="/tags/ANOVA/" style="font-size: 10.00px;">ANOVA</a><a href="/tags/Adult/" style="font-size: 10.00px;">Adult</a><a href="/tags/Aiglx/" style="font-size: 10.00px;">Aiglx</a><a href="/tags/App/" style="font-size: 20.00px;">App</a><a href="/tags/Apple/" style="font-size: 10.00px;">Apple</a><a href="/tags/Apps/" style="font-size: 10.00px;">Apps</a><a href="/tags/BIOS/" style="font-size: 10.00px;">BIOS</a><a href="/tags/Blog/" style="font-size: 10.00px;">Blog</a><a href="/tags/CFBE/" style="font-size: 13.33px;">CFBE</a><a href="/tags/CFTR/" style="font-size: 10.00px;">CFTR</a><a href="/tags/CNAME/" style="font-size: 10.00px;">CNAME</a><a href="/tags/CaCC/" style="font-size: 10.00px;">CaCC</a><a href="/tags/Chinese/" style="font-size: 10.00px;">Chinese</a><a href="/tags/CoT/" style="font-size: 10.00px;">CoT</a><a href="/tags/Compiz/" style="font-size: 10.00px;">Compiz</a><a href="/tags/Debian/" style="font-size: 13.33px;">Debian</a><a href="/tags/Dell/" style="font-size: 13.33px;">Dell</a><a href="/tags/Dropbox/" style="font-size: 13.33px;">Dropbox</a><a href="/tags/Edgy/" style="font-size: 10.00px;">Edgy</a><a href="/tags/Epub/" style="font-size: 10.00px;">Epub</a><a href="/tags/Excel/" style="font-size: 10.00px;">Excel</a><a href="/tags/Firefox/" style="font-size: 10.00px;">Firefox</a><a href="/tags/GFW/" style="font-size: 10.00px;">GFW</a><a href="/tags/GNUPlot/" style="font-size: 10.00px;">GNUPlot</a><a href="/tags/Game/" style="font-size: 16.67px;">Game</a><a href="/tags/GiNaC/" style="font-size: 10.00px;">GiNaC</a><a href="/tags/Git/" style="font-size: 10.00px;">Git</a><a href="/tags/Github/" style="font-size: 10.00px;">Github</a><a href="/tags/Gmail/" style="font-size: 10.00px;">Gmail</a><a href="/tags/Grant proposal/" style="font-size: 10.00px;">Grant proposal</a><a href="/tags/Graphviz/" style="font-size: 10.00px;">Graphviz</a><a href="/tags/Hexo/" style="font-size: 10.00px;">Hexo</a><a href="/tags/ID3/" style="font-size: 10.00px;">ID3</a><a href="/tags/ImageMagick/" style="font-size: 13.33px;">ImageMagick</a><a href="/tags/Ion channels/" style="font-size: 10.00px;">Ion channels</a><a href="/tags/Isc/" style="font-size: 10.00px;">Isc</a><a href="/tags/Japan/" style="font-size: 10.00px;">Japan</a>
+  </div>
+</div>
+
+
+  
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Eason Tse
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'easonx';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>

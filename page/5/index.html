@@ -1,0 +1,965 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Page 5 | Eason&#39;s Blog</title>
+  <meta name="author" content="Eason Tse">
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  
+  <meta property="og:site_name" content="Eason&#39;s Blog"/>
+
+  
+    <meta property="og:image" content="undefined"/>
+  
+
+  <link href="/favicon.png" rel="icon">
+  <link rel="alternate" href="/atom.xml" title="Eason&#39;s Blog" type="application/atom+xml">
+  <link rel="stylesheet" href="/css/style.css" media="screen" type="text/css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+<script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-6252783-3']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+
+</head>
+
+
+<body>
+  <header id="header" class="inner"><div class="alignleft">
+  <h1><a href="/">Eason&#39;s Blog</a></h1>
+  <h2><a href="/"></a></h2>
+</div>
+<nav id="main-nav" class="alignright">
+  <ul>
+    
+      <li><a href="/">Home</a></li>
+    
+      <li><a href="/archives">Archives</a></li>
+    
+      <li><a href="/utils/multimarkdown-table-generator">Util</a></li>
+    
+      <li><a href="/about">About</a></li>
+    
+  </ul>
+  <div class="clearfix"></div>
+</nav>
+<div class="clearfix"></div></header>
+  <div id="content" class="inner">
+    <div id="main-col" class="alignleft"><div id="wrapper">
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2012-09-22T02:39:00.000Z"><a href="/blog/2012/09/22/mobile-disk-mac-homebrew-and-dropbox-setup/">Sep 22 2012</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2012/09/22/mobile-disk-mac-homebrew-and-dropbox-setup/">Mobile disk Mac: Homebrew and Dropbox setup</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Since these days I could only access to Mac in Library, I need to setup my USB disk for mobile working environment.</p>
+<h2 id="Apps_required">Apps required</h2>
+<ol>
+<li><a href="http://www.iterm2.com/#/section/home" target="_blank">iTerm2</a> A good replacement for original Terminal app.</li>
+<li><a href="https://www.dropbox.com/install" target="_blank">Dropbox</a> To syncronize Dropbox content to USB disk.</li>
+<li><a href="http://mouapp.com" target="_blank">Mou</a> A very good markdown editor in Mac.</li>
+<li><a href="http://boredzo.org/make-ram-disk/" target="_blank">Make RAM Disk</a> The reason I prefer a ramdisk is the speed limitation of USB disk, I would rather prefer zip and unzip the whole virtual disk than dying waiting for compiling.</li>
+</ol>
+<p>I download these apps in my USB disk, Volume named “EasonUSB”.</p>
+<h2 id="Homebrew">Homebrew</h2>
+<p>First, create a RamDisk with volume 6G, copy the 4 apps to this disk and rename it to <strong>Eason</strong>.</p>
+<p>Following <a href="https://github.com/mxcl/homebrew/wiki/Installation" target="_blank">guide</a>, a one line script:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="comment">cd</span> <span class="comment">/Volumes/Eason</span>
+<span class="comment">mkdir</span> <span class="comment">homebrew</span> <span class="comment">&&</span> <span class="comment">curl</span> <span class="literal">-</span><span class="comment">L</span> <span class="comment">https://github</span><span class="string">.</span><span class="comment">com/mxcl/homebrew/tarball/master</span> <span class="comment">|</span> <span class="comment">tar</span> <span class="comment">xz</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">strip</span> <span class="comment">1</span> <span class="literal">-</span><span class="comment">C</span> <span class="comment">homebrew</span>
+</pre></td></tr></table></figure>
+
+<p>Then we need to prepend <strong>/Volumes/Eason/homebrew</strong> to <strong>$PATH</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="keyword">export</span> PATH=/Volumes/Eason/homebrew/bin:<span class="variable">$PATH</span>
+brew update
+</pre></td></tr></table></figure>
+
+<p>Change <strong>HOMEBREW_TEMP</strong> to a folder within the RamDisk, Mac could not handle cross volume symbol link.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre><span class="title">mkdir</span> /<span class="type">Volumes</span>/<span class="type">Eason</span>/<span class="type">Cache</span>
+<span class="title">export</span> <span class="type">HOMEBREW_TEMP</span>=/<span class="type">Volumes</span>/<span class="type">Eason</span>/<span class="type">Cache</span>
+</pre></td></tr></table></figure>
+
+<h2 id="Dropbox">Dropbox</h2>
+<p>Click Dropbox.app and set Dropbox folder in <strong>/Volumes/Eason</strong>. You don’t need administrator priviledges for syncronzing. And don’t forget, after usage, please unlink the public Mac computer in Preferences menu. I only selectively syncronize the octopress folder and original markdown file folder. several minutes should be enough.</p>
+<h2 id="Ruby">Ruby</h2>
+<p>Install Ruby and add it to <strong>$PATH</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+</pre></td><td class="code"><pre>brew install ruby
+<span class="keyword">export</span> PATH=/Volumes/Eason/homebrew/Cellar/ruby/<span class="number">1.9</span>.<span class="number">3</span>-p194/bin:<span class="variable">$PATH</span>
+</pre></td></tr></table></figure>
+
+<p>Following the official guide, intall octopress. done.</p>
+<h2 id="SSH">SSH</h2>
+<p>Cause github need ssh connection, we need to prepare config file and identity files.</p>
+<p>config:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+</pre></td><td class="code"><pre>Host github.com
+	User git
+	IdentityFile /Volumes/Eason/ssh/id_rsa
+</pre></td></tr></table></figure>
+
+<p>and id_rsa / id_rsa.pub files.</p>
+<p>Copy config and to <strong>~/.ssh</strong>,</p>
+<p>Check whether identity is added.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">ssh</span><span class="literal">-</span><span class="comment">add</span> <span class="literal">-</span><span class="comment">l</span>
+</pre></td></tr></table></figure>
+
+<p>If didn’t existed, add it:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">ssh</span><span class="literal">-</span><span class="comment">add</span> <span class="comment">/Volumes/Eason/ssh/id_rsa</span>
+</pre></td></tr></table></figure>
+
+<p>Don’t forget to delete identity after deployment.</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+</pre></td><td class="code"><pre><span class="comment">ssh</span><span class="literal">-</span><span class="comment">add</span> <span class="literal">-</span><span class="comment">d</span> <span class="comment">/Volumes/Eason/ssh/id_rsa</span>
+</pre></td></tr></table></figure>
+
+<h2 id="Script">Script</h2>
+<p>The content is in a RamDisk, so, remember to archive all contents and copy it to your USB Disk.</p>
+<p>To save the enviroment variable , make a file:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+</pre></td><td class="code"><pre><span class="shebang">#! /usr/bin/bash</span>
+<span class="keyword">export</span> PATH=<span class="string">"/Volumes/Eason/homebrew/bin"</span>:<span class="variable">$PATH</span>
+<span class="keyword">export</span> <span class="keyword">export</span> PATH=/Volumes/Eason/homebrew/Cellar/ruby/<span class="number">1.9</span>.<span class="number">3</span>-p194/bin:<span class="variable">$PATH</span>
+<span class="keyword">export</span> HOMEBREW_TEMP=/Volumes/Eason/Cache
+cp /Volumes/Eason/ssh/config ~/.ssh/config
+</pre></td></tr></table></figure>
+
+<p>And <strong>source</strong> it when necessary.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2012-07-19T08:31:00.000Z"><a href="/blog/2012/07/19/current-progress-on-tmem16a-ano1-research/">Jul 19 2012</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2012/07/19/current-progress-on-tmem16a-ano1-research/">Current progress on TMEM16A(ANO1) research</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>Since ANO1 was identified as CaCC through 3 individual groups, it’s spotlighted and under heavily investigation.</p>
+<h2 id="2012">2012</h2>
+<ol>
+<li><p><a href="http://www.pnas.org/content/109/26/10376.short" target="_blank">Hartzell and Fraundez</a> from Emory used SILAC proteomics approach to identify ANO1 interaction network and reported ezrin–radixin–moesin, RhoA, Syntaxin 2, 4, munc18b, munc18c and many other lipid interacting protein are either interacted or enriched by ANO1.</p>
+</li>
+<li><p><a href="http://ajpcell.physiology.org/content/302/3/C482.short" target="_blank">Hartzell</a> also examined other members of TMEM16 family. Only ANO1 and 2 traffic to membrane and others(3-7) are intracellular proteins. Endogenously expressed ANO7 in the human prostate is predominantly intracellular. </p>
+</li>
+<li><p><a href="http://cancerres.aacrjournals.org/content/72/13/3270.short" target="_blank">Duvvuri</a> from Pittsburgh reported ANO1 induced MARK. They found ANO1 induced cancer cell proliferation were accompanied by increase in ERK1/2 and cyclin D1 induction.</p>
+</li>
+<li><p><a href="http://jp.physoc.org/content/early/2012/02/20/jphysiol.2011.226126.short" target="_blank">Keely</a> from Ireland claimed EGF could increase 2.5 folds ANO1 expression and mRNA without affecting CFTR expression. PKC inhibitor rottlerin (20 μM) and PI3K inhibitor LY290042 (25 μM) could attenuate the effect induced by EGF treatment.</p>
+</li>
+<li><p><a href="http://www.plosone.org/article/info%3Adoi%2F10.1371%2Fjournal.pone.0038030" target="_blank">Verkman</a> found eugenol from a Thai herbal formula could inhibit ANO1 with single site IC<sub>50</sub> ~150 μM.</p>
+</li>
+<li><p><a href="http://ep.physoc.org/content/97/2/177.short" target="_blank">Galietta</a> from Italy reported TMEM16B (anoctamin-2), is also associated with CaCC activity, although with different properties. The TMEM16B-dependent channels require higher intracellular Ca2+ concentrations and have faster activation and deactivation kinetics.</p>
+</li>
+</ol>
+<h2 id="2011">2011</h2>
+<ol>
+<li><p><a href="http://www.jbc.org/content/286/3/2365.short" target="_blank">Verkman</a> screened from 110000 chemical compound and revealed 4 inhibitors with IC<sub>50</sub> &lt; 10    μM. </p>
+<p>Among them, an aminophenylthiazole (T16Ainh-A01) was most potent and had IC<sub>50</sub> &lt; 1 μM. </p>
+<p>There are <strong>2 kinds of inhibitors</strong>: Some compounds, such as tannic acid and the arylaminothiophene <strong>CaCCinh-A01</strong>, fully inhibited CaCC current in human bronchial and intestinal cells. </p>
+<p>Other compounds, including <strong>T16Ainh-A01</strong> and digallic acid, inhibited total CaCC current in these cells <strong>poorly</strong>, but blocked mainly an initial, agonist-stimulated transient chloride current. </p>
+<p>knockdown also inhibited mainly the transient chloride current.</p>
+</li>
+<li><p><a href="http://content.karger.com/ProdukteDB/produkte.asp?Doi=335765" target="_blank">Karl Kunzelmann</a> from Germany found in 16HBE, CFTR activation inhibit CaCC. They used CaCCinh-A01 and current was blocked.</p>
+</li>
+<li><p><a href="http://www.fasebj.org/content/25/3/1058.short" target="_blank">Karl Kunzelmann</a>‘s FASEB paper. TMEM16A-null mice exhibit severe defects in epithelial transport along with tracheomalacia and death within 1 mo after birth. </p>
+<p> demonstrate that TMEM16A is strictly membrane localized and requires cytoskeletal interactions to be fully activated. Despite the need for cytosolic ATP for full activation, phosphorylation by protein kinases is not required. In contrast, the Ca2+ binding protein calmodulin appears indispensable and interacts physically with TMEM16A. Openers of small- and intermediate-conductance Ca2+-activated potassium channels known to interact with calmodulin, such as 1-EBIO, DCEBIO, or riluzole, also activated TMEM16A. </p>
+</li>
+<li><p><a href="http://www.springerlink.com/content/ru21p74j10770757/" target="_blank">Karl Kunzelmann</a> published on EJP. The nonstructural protein NSP4 acts as a rotavirus enterotoxin. Activation of secretion and inhibition of Na+ absorption by NSP4114–135, respectively, could be potently suppressed by wheat germ agglutinin which probably competes with NSP4114–135 for binding to an unknown glycolipid receptor.</p>
+</li>
+<li><p><a href="http://www.sciencedirect.com/science/article/pii/S1357272512002105" target="_blank">Kunzelmann</a> also have a good comment/review on cAMP/Calcium pathway crosstalk.</p>
+</li>
+<li><p><a href="http://www.pnas.org/content/108/21/8891.short" target="_blank">Hartzell</a> published a PNAS paper, investigated Gating mechanism of ANO1. ANO1 is Ca<sup>2+</sup> and voltage sensitive. 448EAVK deletion decrease apparent Ca<sup>2+</sup> affinity. 444EEEE mutation abolishes intrinsic voltage dependence without altering the apparent Ca<sup>2+</sup> affinity. </p>
+</li>
+<li><p><a href="http://www.nature.com/aps/journal/v32/n6/full/aps201148a.html" target="_blank">Hartzell</a> contribute a review on physiological roles and diseases of proteins in TMEM16 family.</p>
+</li>
+<li><p><a href="http://www.mcponline.org/content/10/2/M110.004697.short" target="_blank">Schmalzing</a> from Aachen, Germany published a MCP paper. claim ANO1 is homodimer, similar to ClC-1.</p>
+</li>
+<li><p><a href="http://ajpheart.physiology.org/content/301/5/H1819.short" target="_blank">Jaggar</a> from Tennessee. AJP paper. Using pore-targeting ANO1 antibody (why not inhibitor), Knock-down, Western blot, fluorecence to prove ANO1 is in cerebral artery smooth muscle cells.</p>
+</li>
+<li><p><a href="http://www.jbc.org/content/286/1/766.short" target="_blank">Feranchak</a> from Texas published a JBC paper confirmed ANO1 is operative for Cl<sup>-</sup> secretion in BEC cells, via ATP-UTP-P2 receptor-Ca<sup>2+</sup> pathway.</p>
+</li>
+<li><p>Hartzell and <a href="http://www.jbc.org/content/286/2/1381.short" target="_blank">Tarren</a> from UNC. They Found Ano1 exists as a dimer and Ano1 subunits directly associated before they reached the plasma membrane.</p>
+</li>
+<li><p><a href="http://ep.physoc.org/content/97/2/200.short" target="_blank">Ward</a> from Nevada EP paper: ANO1 expressed in GI muscle and involved in slow wave pacemaker activity.</p>
+</li>
+</ol>
+<h2 id="2010">2010</h2>
+<ol>
+<li><p><a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC2857126/?report=abstract" target="_blank">James E. Melvin</a> from Pittsburgh had a JBC paper: They examine ANO1 and Best2 KO mice and only ANO1 KO showed impaired CaCC current. <em>In vitro</em> studies both ANO1 and Best2 are with similar properties to those expressed in native cells.</p>
+</li>
+<li><p><a href="http://onlinelibrary.wiley.com/doi/10.1113/jphysiol.2010.189506/abstract" target="_blank">Tammaro</a> in Manchester proved TMEM16A is the major constituent of the vascular calcium-activated chloride channel in rat pulmonary artery smooth muscle.</p>
+</li>
+<li><p><a href="http://ajpcell.physiology.org/content/299/5/C948.short" target="_blank">Greenwood</a> from London AJP paper: Quantitative PCR indicate ANO1 and ANO2 expression abundance follow order: portal vein &gt; thoracic aorta &gt; carotid artery &gt; brain. They showed that TMEM16A expression is robust in murine vascular smooth muscle cells, </p>
+</li>
+<li><p><a href="http://www.springerlink.com/content/d07477x656200wj7/" target="_blank">Karl Kunzelmann</a>‘s EJP paper: Best1 located in ER and loss of Best1 caused expansion of ER cisterns and induced Ca2+ deposits. The p21-activated protein kinase Pak2 was found to phosphorylate hBest1, thereby enhancing Ca2+ signaling and activation of TMEM16A and K+ (SK4) channels.</p>
+</li>
+<li><p><a href="http://physiologyonline.physiology.org/content/25/6/357.short" target="_blank">Galietta</a> contribute a review in Physiology. </p>
+</li>
+<li><p><a href="http://chemse.oxfordjournals.org/content/35/3/239.short" target="_blank">Eva M. Neuhaus</a> showed Tmem16b is Specifically Expressed in the Cilia of Olfactory Sensory Neurons.</p>
+</li>
+<li><p><a href="http://www.fasebj.org/content/24/11/4178.short" target="_blank">Verkman</a>‘s FASEB paper: Inhibition of Ca2+-activated Cl− channels by gallotannins as a possible molecular basis for health benefits of red wine and green tea.</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2012-07-17T02:48:00.000Z"><a href="/blog/2012/07/17/python-setup-notes-on-windows/">Jul 17 2012</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2012/07/17/python-setup-notes-on-windows/">Python setup notes on Windows</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>I love python, especially snippet code running in iPython, a good interpretation environment. But windows monolithic installer missed it.</p>
+<ol>
+<li>Download and install <a href="http://pypi.python.org/pypi/setuptools#files" target="_blank">setuptools</a> exe.</li>
+<li><p>Download and install <a href="http://pypi.python.org/pypi/pip#downloads" target="_blank">pip</a> via setuptools.</p>
+<pre><code> <span class="variable">$python</span> setup.py install
+</code></pre></li>
+<li><p>Add <code>C:\Python27\Scripts</code> to your $PATH.</p>
+</li>
+<li><p>Install ipython:</p>
+<pre><code> <span class="variable">$ </span>pip install ipython
+</code></pre><p> Because iPython has the capability of autoindentation and autocompletion, if your code contain <em>tab</em> then if may cause trouble. Please use meta command: <code>%paste</code> to achieve pasting code.</p>
+</li>
+<li><p>Install numpy</p>
+<pre><code> <span class="variable">$ </span>pip install numpy
+</code></pre></li>
+</ol>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2012-07-14T16:31:00.000Z"><a href="/blog/2012/07/15/octopress on windows notes/">Jul 15 2012</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2012/07/15/octopress on windows notes/">Octopress on Windows Notes</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>I sold my old iMac last Saturday and now I must rely on Windows box in my office to update my octopress. To prepare the installation, a few pacakges should be installed.</p>
+<h2 id="Install_applications_before_hand">Install applications before hand</h2>
+<ul>
+<li><a href="http://code.google.com/p/msysgit/downloads/list?q=full+installer+official+git" target="_blank">msysGit</a>   Official Git windows build, with a powerful bash terminal.</li>
+<li><a href="http://www.python.org/download/" target="_blank">Python 2.7</a> Pigment support</li>
+<li><a href="http://www.ruby-lang.org/en/downloads/" target="_blank">Ruby &gt;= 1.9.2</a> I use <em>Ruby Installer 1.9.3</em>.</li>
+<li><a href="http://rubyinstaller.org/downloads/" target="_blank">Ruby DevKit</a> Some Ruby package such as <em>posix-spawn</em> require build tools.</li>
+<li><a href="http://markdownpad.com/" target="_blank">MarkdownPad</a> Windows alternative of <a href="http://mouapp.com/" target="_blank">Mou</a></li>
+<li><a href="http://www.vim.org/download.php#pc" target="_blank">Vim</a> Swiss army knife.</li>
+<li><a href="http://mingw.org/wiki/Getting_Started" target="_blank">MinGW</a> First install <em>mingw-get-inst</em> then other parts. </li>
+</ul>
+<h2 id="Chinese_Characters">Chinese Characters</h2>
+<p>According to this <a href="http://www.cnblogs.com/baizx/archive/2010/08/09/1796120.html" target="_blank">Post</a>, I did some modification to show chinese correctly. </p>
+<ol>
+<li><p>Append to <code>C:\Program Files (x86)\Git\etc\git-completion.bash</code>:  </p>
+<pre><code> <span class="comment">$</span> <span class="comment">alias</span> <span class="comment">ls='ls</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">show</span><span class="literal">-</span><span class="comment">control</span><span class="literal">-</span><span class="comment">chars</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">color=auto'</span>
+</code></pre></li>
+<li><p>Change options in <code>C:\Program Files (x86)\Git\etc\inputrc</code>:  </p>
+<pre><code> <span class="built_in">set</span> output-meta <span class="command"><span class="keyword">on</span>
+ <span class="title">set</span> <span class="title">convert-meta</span> <span class="title">off</span></span>
+</code></pre></li>
+<li><p>Edit <code>C:\Program Files (x86)\Git\etc\profile</code>:  </p>
+<pre><code> <span class="keyword">export</span> LESSCHARSET=utf-<span class="number">8</span>
+</code></pre></li>
+</ol>
+<p>Follow my Post for normal octopress setting. But if you encounter error like this:</p>
+<pre><code>Invalid <span class="keyword">byte</span> sequence <span class="keyword">in</span> GB2312 (ArgumentError)
+</code></pre><p>Then please edit <code>~/.bashrc</code> and append</p>
+<pre><code><span class="keyword">export</span> LANG=<span class="string">"en_US.UTF-8"</span>
+</code></pre><h2 id="SSH_keys_and_git_recognition-">SSH keys and git recognition.</h2>
+<p>run :</p>
+<pre><code><span class="variable">$ </span>rake setup_github_pages 
+</code></pre><p>The git address should be like:</p>
+<pre><code><span class="label">github.com:</span>username/username<span class="preprocessor">.github</span><span class="preprocessor">.com</span><span class="preprocessor">.git</span>
+</code></pre><p>Then execute:</p>
+<pre><code>$ git config --<span class="keyword">global</span> user.name <span class="string">"Your Name Here"</span>
+# Sets the <span class="keyword">default</span> name <span class="keyword">for</span> git <span class="keyword">to</span> <span class="keyword">use</span> <span class="keyword">when</span> you commit
+$ git config --<span class="keyword">global</span> user.email <span class="string">"your_email@youremail.com"</span>
+# Sets the <span class="keyword">default</span> email <span class="keyword">for</span> git <span class="keyword">to</span> <span class="keyword">use</span> <span class="keyword">when</span> you commit
+</code></pre><p>After this, we could generate SSH public key.</p>
+<pre><code><span class="comment">$</span> <span class="comment">ssh</span><span class="literal">-</span><span class="comment">keygen</span> <span class="literal">-</span><span class="comment">C</span> <span class="comment">"username@email</span><span class="string">.</span><span class="comment">com"</span> <span class="literal">-</span><span class="comment">t</span> <span class="comment">rsa</span>
+</code></pre><p>During this step, you will be asked to offer a <strong>passphrase</strong>.<br>Then go to <code>C:\Users\YourUserName\.ssh</code> copy public key file contents and post it to github.com on your account setting, SSH key menu item. You need to offer your GitHub account password for confirmation.</p>
+<p>The first time you deploy website:</p>
+<pre><code><span class="variable">$ </span>rake deploy
+</code></pre><p>You will be asked for passphrase we offered before.</p>
+<p>Happy blogging.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2012-07-12T03:12:00.000Z"><a href="/blog/2012/07/12/git-notes/">Jul 12 2012</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2012/07/12/git-notes/">Git notes</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>This part is mostly refered to this excellent <a href="http://www.vogella.com/articles/Git/article.html" target="_blank">tutorial</a>.</p>
+<h3 id="Configure">Configure</h3>
+<p>Once installed Git. you need to configure your settings. among them, 2 are required:</p>
+<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">config</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">global</span> <span class="comment">user</span><span class="string">.</span><span class="comment">name</span> <span class="comment">"Your</span> <span class="comment">Name"</span>
+<span class="comment">$</span> <span class="comment">git</span> <span class="comment">config</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">global</span> <span class="comment">user</span><span class="string">.</span><span class="comment">email</span> <span class="comment">"you@gmail</span><span class="string">.</span><span class="comment">com"</span>
+</code></pre><p>And you could check configure options by</p>
+<pre><code><span class="comment">$</span> <span class="comment">git</span> <span class="comment">config</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">list</span>
+</code></pre><h3 id="Get_information">Get information</h3>
+<p>Get Git status:</p>
+<pre><code><span class="variable">$ </span>git status
+</code></pre><p>Get Git log:</p>
+<pre><code><span class="variable">$ </span>git log
+</code></pre><h3 id="Ignore_files-3a-">Ignore files:</h3>
+<p>Global setting:<code>core.excludesfile</code>. Or you could edit <code>.gitignore</code> to include those directories/files don’t want to trace. </p>
+<p>When a folder is empty, Git won’t record it. You could add any file in the folder to make it availble, conventionally this file is named <code>.gitkeep</code></p>
+<p>Permanently untrack folders (If only <strong>ignore</strong> the file, the last version will still in git though without furthor watching.):<br>    git rm -r —cached folder_name</p>
+<h3 id="Local_Git_Repository">Local Git Repository</h3>
+<p>Initialize the local Git repository</p>
+<pre><code><span class="title">git</span> init
+</code></pre><p>Add all (files and directories) to the Git repository</p>
+<pre><code><span class="title">git</span> add .
+</code></pre><p>Make a commit of your file to the local repository</p>
+<pre><code><span class="comment">git</span> <span class="comment">commit</span> <span class="literal">-</span><span class="comment">m</span> <span class="comment">"Initial</span> <span class="comment">commit"</span>
+</code></pre><p>To amend the last commit message</p>
+<pre><code><span class="comment">git</span> <span class="comment">commit</span> <span class="literal">-</span><span class="literal">-</span><span class="comment">amend</span> <span class="literal">-</span><span class="comment">m</span> <span class="comment">"More</span> <span class="comment">changes</span> <span class="literal">-</span> <span class="comment">now</span> <span class="comment">correct"</span> 
+</code></pre><p>Remove files, with <strong>-a</strong> option:</p>
+<pre><code><span class="comment">git</span> <span class="comment">commit</span> <span class="literal">-</span><span class="comment">a</span> <span class="literal">-</span><span class="comment">m</span> <span class="comment">"Deleted</span> <span class="comment">File</span> <span class="comment">will</span> <span class="comment">be</span> <span class="comment">removed"</span>
+</code></pre><h3 id="Remote_Repository">Remote Repository</h3>
+<p>Submit change to remote:</p>
+<pre><code>git <span class="keyword">push</span> remote-repository<span class="preprocessor">.git</span>
+</code></pre><p>Give remote repository a short name, <strong>origin</strong> is the default if <code>git push</code> without a destination.</p>
+<pre><code>git remote <span class="keyword">add</span> abcrepo remote-repository<span class="preprocessor">.git</span>
+</code></pre><p>Clone from a remote:</p>
+<pre><code>git clone remote<span class="attribute">-repository</span><span class="built_in">.</span>git <span class="built_in">local</span><span class="attribute">-repo</span><span class="attribute">-folder</span>
+</code></pre><p>After clone, the remote will be <strong>origin</strong> in the local repository.</p>
+<p>To get updated files from remote:</p>
+<pre><code><span class="comment">git</span> <span class="comment">pull</span> <span class="comment">remote</span><span class="literal">-</span><span class="comment">repository</span><span class="string">.</span><span class="comment">git</span>
+</code></pre><p>To disgard changes (test):</p>
+<pre><code><span class="comment">git</span> <span class="comment">clean</span> <span class="literal">-</span><span class="comment">n</span>
+</code></pre><p>Really delete:<br>    git clean -f</p>
+<p>Check available tags:</p>
+<pre><code><span class="title">git</span> tag
+</code></pre><p>Add tag:</p>
+<pre><code>git <span class="built_in">tag</span> new_tag_name <span class="attribute">-m</span> <span class="string">"Description of tag"</span>
+</code></pre><p>Get all code associate with tagname:</p>
+<pre><code><span class="title">git</span> checkout tagname
+</code></pre><h3 id="Branches_and_merging">Branches and merging</h3>
+<p>Check local branches:</p>
+<pre><code><span class="title">git</span> branch
+</code></pre><p>Including remote branches:</p>
+<pre><code>git branch <span class="operator">-a</span>
+</code></pre><p>New branch:</p>
+<pre><code><span class="title">git</span> branch new_branch_name
+</code></pre><p>switch to branch <code>testing</code>:</p>
+<pre><code><span class="title">git</span> checkout testing
+</code></pre><p>Merge branch:</p>
+<pre><code><span class="title">git</span> merge testing
+</code></pre><p>delete branch:</p>
+<pre><code>git branch <span class="operator">-d</span> testing
+</code></pre><p>Git will only push if a certain branch appeared on both local and remote. So, before pushing to remote, you need to push the branch name to remote firstly.</p>
+<pre><code><span class="title">git</span> push origin branch_name
+</code></pre><p>If merging conflict encountered</p>
+<pre><code><span class="title">git</span> mergetool
+</code></pre>
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2012-07-05T03:23:00.000Z"><a href="/blog/2012/07/05/anova-notes/">Jul 5 2012</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2012/07/05/anova-notes/">ANOVA Notes</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p><strong>ANOVA</strong> (analysis of variance) is a series of common statistical model and procedure. Here I would like to take some notes to facilitate my own understanding.</p>
+<ol>
+<li>It could test multiple groups data for their means whether are all equal and thus generlize T-Test to more than 2 groups.</li>
+<li>The Tukey test will be more strict for multiple comparison</li>
+</ol>
+<p>To setup R for the processing.</p>
+<pre><code><span class="variable">$ </span>brew install gfortran r
+</code></pre><p>First I would like to google for tutorial, it will be much easier if there is code sample, and I found <a href="http://personality-project.org/r/r.anova.html" target="_blank">this</a>. The code is working quite well. So I prepare my own <a href="files/calu3data.data">dataset</a> and apply the script:</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre>1
+2
+3
+4
+5
+6
+</pre></td><td class="code"><pre><span class="title">datafilename</span>=<span class="string">"calu3data.data"</span>
+<span class="title">data</span>.ex1=read.table(datafilename,header=<span class="type">T</span>)
+<span class="title">aov</span>.ex1 = aov(<span class="type">Response</span>~<span class="type">Treatment</span>,<span class="keyword">data</span>=data.ex1)
+<span class="title">summary</span>(aov.ex1)
+<span class="title">print</span>(model.tables(aov.ex1,<span class="string">"means"</span>),digits=<span class="number">3</span>) 
+<span class="title">boxplot</span>(<span class="type">Response</span>~<span class="type">Treatment</span>,<span class="keyword">data</span>=data.ex1)
+</pre></td></tr></table></figure>
+
+<p>To save the plot file, before plot</p>
+<pre><code><span class="function"><span class="title">png</span><span class="params">('calu3dose.png')</span></span>
+</code></pre><p>After plot</p>
+<pre><code><span class="title">dev</span>.off()
+</code></pre><p>To get the multiple comparison:</p>
+<pre><code>TukeyHSD(aov<span class="preprocessor">.ex</span>1)
+</code></pre><p>One more things, the factors name could not be numbers. Otherwise the final <code>boxplot</code> command will show a warning.</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2012-07-04T15:11:00.000Z"><a href="/blog/2012/07/04/yan-zhi-kou/">Jul 4 2012</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2012/07/04/yan-zhi-kou/">胭脂扣</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>梅艳芳，张国荣，关锦鹏于1987年的碰撞，产生了这样一部《胭脂扣》。</p>
+<p>电影甫开始，便是阿梅的男装扮相，唱一出粤剧小调。阿梅从来便算不得绝世美人，但自有一种慑人的气质，英气逼人；荣少饰演的十二少，眉眼里除了精致，总有一股妩媚：倒是雌中有雄，雄中有雌，好一对璧人，单独出现时的不和谐，一下子便烟消云散。</p>
+<p>53年后的如花，出现在香港街头，以“寻人”做引，巧妙的保留悬念，中间也保留了惯用的港式桥段，让颓废的剧情偶尔也颇能放松一下。万梓良和朱宝意的配村恰到好处分，虽然时时出现，但没有掩去戏份其实甚少的荣少的光芒。</p>
+<blockquote>
+<p>如梦如幻月<br>若即若离花</p>
+</blockquote>
+<p>这是十二少追求如花时，鞭炮声中飘下的对联。在老鸨的“从石塘咀到水坑口，未见过这么会讨女人欢心的温心老契”赞颂声中，这仿佛便为他们不受祝福的爱情埋下了阴影。</p>
+<p>从评论来开，大抵分为两派，一者认为，如花在与十二少相约殉情前下毒，本身就是对情人的不信任和对爱情的背叛，所以十二少的偷生，情有可原。并且，十二少为了如花，与家人决裂，做下贱戏子，甚至为她而死，本身已是做到尽了，实不该在要求更多。另一派认为，不管如何说，十二少终是殉情之后没有守约，如花毕竟空等了53年。</p>
+<p>我只能说，他们的爱情本来就不是对等的。</p>
+<p>如花的爱情，<em>如梦如幻</em>。“我得不到，别人也休想得到“，她所有的，原来只有签文，直到有了十二少。人生是需要许多支柱的，如花却只有十二少，这场爱情的赌博，她输不起，一旦输了，便是万念俱灰，不若来生再续。十二少却不然，24岁少东，年少多金，家人，娇妻，始终都在等着他的浪子回头：这场人生的游戏，他的筹码还多着呢。十二少的爱情，看上去烈火烹油，但是实际上，真正<em>若即若离</em>的是他，他随时有抽身而去的选择。虽然在如花的引诱下，他仍然选择了吃下鸦片膏，仍然记住了3811的暗号，直到衰老。</p>
+<blockquote>
+<p>十二少，谢谢你还记得我。这个胭脂盒我挂了53年，现在还给你，我不想再等了。<br><cite>如花</cite></p>
+</blockquote>
+<p>还有人说，如花在剧终时，终于放手，不再等待这个53年的情人，有违常情。我倒觉得不然。打从知道十二少尚在人间，如花便已经知道，自己的赌局已然是败了：十二少不出现，不是因为在阴间迷了路，不是已经投胎，而是：偷生。从那一刻起，如花大概已经决定不在等待了吧，如果爱情的主体已经不再，那贪恋那个对手戏的演员还有意思么？看到这的时候，颇为如花伤感：付出生命的代价，却原来还是唱的独角戏。</p>
+<p>陈振邦，大概也是可怜的，潦倒不堪倒也不算什么，53年来，究竟是为什么，还在留恋人间？他抛妻弃子，并不是一个负责的男人，可以想见，如花仍然在他心中的分量：竟然失去了爱人的能力。也许只是软弱吧，世家纨绔子弟的通病，想做却又不敢做，比之娼楼也不如。也许到一定年岁之后，也便淡漠遗忘了，可惜在垂老之年，却又被强制唤醒，接受最深的处罚——遗忘，放手。</p>
+<p>空余恨。</p>
+<blockquote>
+<p>凉风有信，秋月无边。<br>思娇情绪好比度日如年。<br>小生缪姓莲仙字，为忆多情妓女麦氏秋娟。<br>见渠声色性情人赞羡，更兼才貌的确两相全。<br>今日天隔一方难见面，是以孤舟沉寂晚景凉天。<br>你睇斜阳照住个对双飞燕，独倚蓬窗思悄然。<br>耳畔听得秋声桐叶落，又只见平桥衰柳锁寒烟。<br>第一触景更添情懊恼，亏你怀人愁对月华圆。<br><cite>《客途秋恨》</cite></p>
+</blockquote>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2012-07-01T14:50:00.000Z"><a href="/blog/2012/07/01/qi-yi-sui-xiang/">Jul 1 2012</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2012/07/01/qi-yi-sui-xiang/">七一随想</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>今日于北境，是稱之為黨慶的日子，于南鄉，卻是所謂回歸紀念。吊詭的是，鄉黨與皇黨，均藉此大做文章，各自鼓噪，小民若我，不過假日一天，＂核心價值在吃飯＂罷了。</p>
+<p>浦歸南鄉，喜聞H也至，時差難寐，于其室陪之；朝起，煮餃子共食；過午，買手機gadget。私意難耐，且與聞H於Z君之情事，內焚，表面尚做輕鬆顏色：自我貶抑若此，實屬極賤。</p>
+<p>＂若自身也不愛，怎可愛別人？＂一味對人好，無非作踐，全無珍惜，丟棄自尊，便是失去被愛的資格之時。</p>
+<blockquote>
+<p>我要的是強大的男人，不是圍著我的阿姨。<br><cite>H</cite></p>
+</blockquote>
+<p>紙上終覺淺，此事要恭行。變強大，變自信。</p>
+<blockquote>
+<p>沒有誰的使命是為了旁的人而存在的，若是如此做，便是失了自己，被淘汰了。<br><cite>D</cite></p>
+</blockquote>
+<p>自謂明智自省，卻總是看不破，膚淺，且又怯懦。如何破局？與H解釋白骨觀，其實自己修為如何？</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2012-07-01T14:37:00.000Z"><a href="/blog/2012/07/01/tan-cheng-ling-su/">Jul 1 2012</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2012/07/01/tan-cheng-ling-su/">谈程灵素</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <blockquote>
+<p>一切恩爱会 皆由因缘合<br>合会有别离 无常难得久<br>今我为尔母 恒恐不自保<br>生世多畏惧 命危于晨露<br><cite>《佛说鹿母经》</cite></p>
+<p>由爱故生忧，<br>由爱故生怖。<br>若离於爱者，<br>无忧亦无怖。<br><cite>《佛说妙色王因缘经》</cite></p>
+</blockquote>
+<p>之前看过一文，作者不记得了，或许可考，是谈论金庸人物中的各个女性的。我自认为最喜爱小昭：聪明，隐忍，是个能任事，却又不乏骨肉的人物。</p>
+<p>与飞机上听歌，D已经睡去，似是极疲倦。独自乱想，自不知H与H校 physics男的情况。自MM之后，再无如此情热之举。可恨，二者均为physics男所夺。</p>
+<p>温柔多才，说来明确，其实不然，为何？首句即：＂愿相视PP否？＂此即道明主旨矣。实念及程灵素来：灵素聪明绝顶，以小师妹之位得师傅真传，又极善良，每每相让与欲置自身于死地的师兄姐，对胡蜚也算情深一片，做了无数擦屁股的烂事。</p>
+<p>然而，胡婓愛她嗎？怕是感恩則有餘，愛意卻全無。之前文中分析甚多，如不善表達；過於強勢，賣弄玩弄，等等。于某家看來，這些統是事後文章：怕是胡婓若要自我開解，也是這般。但其實質，原因無他：靈素貌枯少，甚平凡。只此一條，便是一千個好處也是補不了的。</p>
+<p>靈素遭遇，意甚難平，蓋Empathy由之也。灵素坚忍，亦愈深。一次次的不计回报，直到身死心碎，然不悔而始终如一，胡斐何德何能，修诺大福份，竟能甘之如饴。</p>
+<p>自灵素后，世间再无一人能如此待胡斐。其悲哀伤痛，自其一时当然无两，然而之后呢？胡大侠的洒脱，除了紫衣姑娘可逆其意，于旁的不爱的人，更是＂随风而来，随风而去＂而已。</p>
+<p>这许多的评论，不外乎放不下的那个ego。在天堂里，灵素也许仍是淡淡地注视着胡斐，微笑自得。我<br>们皆是凡人，人心如此坚忍，岂是可以等灵素而视之？</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+  <article class="post">
+  
+    <div class="gallery">
+  <div class="photoset">
+    
+      <img src="">
+    
+  </div>
+  <div class="control">
+    <div class="prev"></div>
+    <div class="next"></div>
+  </div>
+</div>
+  
+  <div class="post-content">
+    <header>
+      
+        <div class="icon"></div>
+        <time datetime="2012-06-24T15:07:00.000Z"><a href="/blog/2012/06/24/a-club-yu-h-club/">Jun 24 2012</a></time>
+      
+      
+  
+    <h1 class="title"><a href="/blog/2012/06/24/a-club-yu-h-club/">A Club与H Club</a></h1>
+  
+
+    </header>
+    <div class="entry">
+      
+        <p>夜晚与D一起吃晚饭，原先是约了几位女生一起的，最后手机却在最当口的时机罢了工，死活联系不上人~终于还是作罢了~</p>
+<p>最后，在沙滩的尽头，在一家叫ISIS的泰式餐馆里安定了下来，觥筹交错，冬阴功汤辛香而开胃。</p>
+<p>D突然说道:“我们30来岁的人，大体也都确定了，以前少年的无限可能，变成了确定的一两种可能。”</p>
+<p>“那又怎么样？每个人不都是这样的么？”我回答道。</p>
+<p>“但是这样，虽然这样还是活着的，这和死了有什么两样？”D继续说。</p>
+<p>“有没有看过《卫斯理》？”D问我说。貌似這個問題似曾相識。果然，D又讲起了蚂蚁与科学家的故事了。</p>
+<p>“卫斯理调查一个科学家的自杀事件。事关有人交给这个科学家一份文件，科学家看了后，放下手头的一切，就自杀了。事情的最后，答案揭晓，这份文件只是精密的记录了一只蚂蚁活动的轨迹，但是，这只蚂蚁的轨迹，和这个科学家本人的极端规律的生活十分吻合，当这个科学家意识到，自己自以为有意义的人生，其实和一只蚂蚁没有什么两样，他对人生失去了信心。”D娓娓道来。</p>
+<p>“你其实是想说人类的终极目的么？”我问。</p>
+<p>“其实也不算是吧，我觉得与其说是群体的，物种的目的，不如说是自己的人生的目的。”</p>
+<p>D接着说：“我们每个人小时候，其实都有这样的时候，觉得自己就是世界的中心，觉得自己是世界的唯一，但是随着长大，读书，工作，我们开始接受，我只是普通的一个社会机器的组件而已，觉得这就是可以接受的生活，但是你最初的想法，最初的愿景，也便消灭掉了。”</p>
+<p>这不是第一次D表达这样的观点了，我想，也许D已经顺利到可以抛开生活中其他的眼前问题了。</p>
+<p>“但是从你开始接受自己的普通的时候，就像是玩一个游戏，其实你就已经出局了，你关注的是H club的琐事，你与本来你不属于的club来比较，然后获得虚拟的满足——但是，也许你是A club的人，只是因为你失去了想法，于是，与其他人一样了。”</p>
+<p>“可是人不是天生就甘于平凡的，每个人都是尝试，失败，再失败，接受自己，都是努力过的，你这样凭什么说他们的人生就是H club？关注家庭，体会生活中的美，大多数人，不也就只能这样了么，为什么说得好像其他人都是失败者？”我反对道。</p>
+<p>“可是这样的生活，意义在哪里？好吧，也许个人可以接受平凡，但是作为一个族群，作为一个物种，人总是有些意义的吧，统计上看普通的是大多数，但是总有些特殊的人，他们改变了世界，他们留下了痕迹，他们是有意义的。就像是上帝原本并不知道要挑谁，于是他只让大家的童年都有这样的想法，但是，只有坚持认为自己是特殊的那些人，他们才能获得成功。”D反驳我说。</p>
+<p>我笑问道：“听着怎么这么像成功学的洗脑？”</p>
+<p>D也笑了，这是我们遇到争议的时候的处理方式，这样更容易理性一些。</p>
+<p>我接着说：“你看过《自私的基因》么？”</p>
+<p>“没有。”</p>
+<p>“我应该和你说过的，初中的时候读的书。道金斯的观点大概是说，想象最开始的基因的进化，在没有意识，单纯的只是遗传分子的时候，什么样的分子会留下来？能形成膜结构的，能产生最简单的自我保护的，会留下来。之后的进化，无非是这个简单的膜所代表的’机器’的进化而已，就算是到了人类，也无非是这个‘机器’复杂到甚至个体会有‘想法’而已。”</p>
+<p>“就像编程里的duck typing一样，如果一个东西，看起来是鸭子，听起来是是鸭子，各种表象我区分不出它和鸭子来，那么，我就可以当它是鸭子。这就像是这个基因，从它出现的那天起，只有会让自己存留下去，并且大量复制，这就是它的目的。不是它有心想要怎么样，而是会这样的基因，才会留下来。”</p>
+<p>“那你是说生命没有意义吗？”D问道，听得出，D对此不以为然。</p>
+<p>“我不是说生命本身没有意义，我是说，去追问生命的意义没有意义，你说的个体的人生，无非还是在用世俗的观点去评判成功与否——”</p>
+<p>“——不一定是世俗的，我只是想要一个意义，不想简单的过这一生。”D打断了我。</p>
+<p>我反问道：“那你说的是像佛陀那样，参透人生？”</p>
+<p>D答道：“那也是一种成功吧。”</p>
+<p>我接着问道：“那假如有这样一位隐士，他参透了人生，取得了正果，获得的脱离世俗的无上宁静与快乐——但是只有一点，他不愿意像佛陀那样，传授他的思想，或者是像耶稣那样，承受世人的痛苦，他只是静静的享受自己的宁静，那你觉得，这还是成功的人生么？”</p>
+<p>“也算是吧。”D答道。</p>
+<p>“可是，这位隐士，并没有对这个世界有什么影响。”我说。</p>
+<p>“但是，我还是觉得，这个世界，宇宙，总有它的意义在吧，不然，太可怕了。”D坚持道。</p>
+<p>“好吧，其实这已经纯粹是信念了，而信念是没有对错，无法证伪的。我觉得在这个没有意义的世界里，过好自己的日子，从每一天开始，就是意义所在了”。我觉得大家应该都已经明白对方的意思了吧。</p>
+<p>晚上的海风很大，雨也豆粒般的打下来。远处有电光闪闪。我们却还在餐台伞下坐着。</p>
+<p>“回去吧。”</p>
+<p>归来，记下所叙，也许以后我们都会变吧。</p>
+
+      
+    </div>
+    <footer>
+      
+        
+        
+      
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</article>
+
+
+
+
+<nav id="pagination">
+  
+    <a href="/page/4/" class="alignleft prev">Prev</a>
+  
+  
+    <a href="/page/6/" class="alignright next">Next</a>
+  
+  <div class="clearfix"></div>
+</nav></div></div>
+    <aside id="sidebar" class="alignright">
+  <div class="search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:easontse.info">
+  </form>
+</div>
+
+  
+<div class="widget tag">
+  <h3 class="title">Categories</h3>
+  <ul class="entry">
+  
+    <li><a href="/categories/Biochemistry/">Biochemistry</a><small>7</small></li>
+  
+    <li><a href="/categories/Books/">Books</a><small>12</small></li>
+  
+    <li><a href="/categories/Computer/">Computer</a><small>54</small></li>
+  
+    <li><a href="/categories/Game/">Game</a><small>12</small></li>
+  
+    <li><a href="/categories/Life/">Life</a><small>20</small></li>
+  
+    <li><a href="/categories/Movie/">Movie</a><small>2</small></li>
+  
+    <li><a href="/categories/Music/">Music</a><small>1</small></li>
+  
+    <li><a href="/categories/Science/">Science</a><small>1</small></li>
+  
+    <li><a href="/categories/Writing/">Writing</a><small>12</small></li>
+  
+  </ul>
+</div>
+
+
+  
+<div class="widget tagcloud">
+  <h3 class="title">Tag Cloud</h3>
+  <div class="entry">
+    <a href="/tags/AD&D/" style="font-size: 13.33px;">AD&D</a><a href="/tags/ANO1/" style="font-size: 13.33px;">ANO1</a><a href="/tags/ANO2/" style="font-size: 10.00px;">ANO2</a><a href="/tags/ANOVA/" style="font-size: 10.00px;">ANOVA</a><a href="/tags/Adult/" style="font-size: 10.00px;">Adult</a><a href="/tags/Aiglx/" style="font-size: 10.00px;">Aiglx</a><a href="/tags/App/" style="font-size: 20.00px;">App</a><a href="/tags/Apple/" style="font-size: 10.00px;">Apple</a><a href="/tags/Apps/" style="font-size: 10.00px;">Apps</a><a href="/tags/BIOS/" style="font-size: 10.00px;">BIOS</a><a href="/tags/Blog/" style="font-size: 10.00px;">Blog</a><a href="/tags/CFBE/" style="font-size: 13.33px;">CFBE</a><a href="/tags/CFTR/" style="font-size: 10.00px;">CFTR</a><a href="/tags/CNAME/" style="font-size: 10.00px;">CNAME</a><a href="/tags/CaCC/" style="font-size: 10.00px;">CaCC</a><a href="/tags/Chinese/" style="font-size: 10.00px;">Chinese</a><a href="/tags/CoT/" style="font-size: 10.00px;">CoT</a><a href="/tags/Compiz/" style="font-size: 10.00px;">Compiz</a><a href="/tags/Debian/" style="font-size: 13.33px;">Debian</a><a href="/tags/Dell/" style="font-size: 13.33px;">Dell</a><a href="/tags/Dropbox/" style="font-size: 13.33px;">Dropbox</a><a href="/tags/Edgy/" style="font-size: 10.00px;">Edgy</a><a href="/tags/Epub/" style="font-size: 10.00px;">Epub</a><a href="/tags/Excel/" style="font-size: 10.00px;">Excel</a><a href="/tags/Firefox/" style="font-size: 10.00px;">Firefox</a><a href="/tags/GFW/" style="font-size: 10.00px;">GFW</a><a href="/tags/GNUPlot/" style="font-size: 10.00px;">GNUPlot</a><a href="/tags/Game/" style="font-size: 16.67px;">Game</a><a href="/tags/GiNaC/" style="font-size: 10.00px;">GiNaC</a><a href="/tags/Git/" style="font-size: 10.00px;">Git</a><a href="/tags/Github/" style="font-size: 10.00px;">Github</a><a href="/tags/Gmail/" style="font-size: 10.00px;">Gmail</a><a href="/tags/Grant proposal/" style="font-size: 10.00px;">Grant proposal</a><a href="/tags/Graphviz/" style="font-size: 10.00px;">Graphviz</a><a href="/tags/Hexo/" style="font-size: 10.00px;">Hexo</a><a href="/tags/ID3/" style="font-size: 10.00px;">ID3</a><a href="/tags/ImageMagick/" style="font-size: 13.33px;">ImageMagick</a><a href="/tags/Ion channels/" style="font-size: 10.00px;">Ion channels</a><a href="/tags/Isc/" style="font-size: 10.00px;">Isc</a><a href="/tags/Japan/" style="font-size: 10.00px;">Japan</a>
+  </div>
+</div>
+
+
+  
+
+  
+</aside>
+    <div class="clearfix"></div>
+  </div>
+  <footer id="footer" class="inner"><div class="alignleft">
+  
+  &copy; 2014 Eason Tse
+  
+</div>
+<div class="clearfix"></div></footer>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+
+
+<script type="text/javascript">
+var disqus_shortname = 'easonx';
+
+(function(){
+  var dsq = document.createElement('script');
+  dsq.type = 'text/javascript';
+  dsq.async = true;
+  dsq.src = '//' + disqus_shortname + '.disqus.com/count.js';
+  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+}());
+</script>
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+(function($){
+  $('.fancybox').fancybox();
+})(jQuery);
+</script>
+
+</body>
+</html>
